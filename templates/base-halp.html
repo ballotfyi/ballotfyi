@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+	<!-- Hello! Thanks for taking a peek under the covers. Please make sure you're registered to vote. -->
+	{% block header %}
+	<title>{% block title %}Super quick guide to the CA State Props - Election Day Nov 8 {% endblock title %}</title>
+	{% endblock header %}
+	<link rel="canonical" href="https://ballot.fyi/halp/" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="https://s3.amazonaws.com/ballot.fyi/static/img/share-fb-2.png" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="fb:app_id" content="1134187086655814" />
+	{% block fbtags %}
+	<meta property="og:url" content="https://ballot.fyi/halp/" />
+	<meta property="og:title" content="In the voting booth? Here's a nonpartisan cheat sheet." />
+	<meta property="og:description" content="A nonpartisan, super quick guide for Californians." />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@ballotfyi" />
+	<meta name="twitter:title" content="In a voting booth? Here's a nonpartisan digest to educate you" />
+	<meta name="twitter:description" content="Weed, plastic bags, guns, condoms  – it's up to you. This is the quickest voter non-partisan guide to California's state propositions." />
+	<meta name="twitter:image" content="https://s3.amazonaws.com/ballot.fyi/static/img/share-twit.png" />	
+	{% endblock fbtags %}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% block meta-description %}<meta name="description" content="It's Election Day. Here's a quick unbiased rundown of the 17 state propositions in California">{% endblock meta-description %}
+	<meta name="keywords" content="California state propositions, voter guide, nonpartisan, simplified, explained">
+	<meta name="author" content="Citizen & Citizens">
+	<link rel="shortcut icon" href="{% static '/img/favicon.ico' %}">
+	<meta http-equiv="max-age" content="86400" />
+	<link rel="apple-touch-icon-precomposed" href="{% static '/img/apple-touch-icon-precomposed.png' %}"><!-- 57×57px -->
+	<link rel="icon" sizes="192x192" href="{% static '/img/touch-icon-192x192.png' %}">
+
+	<script type="application/ld+json">
+	{
+	  "@context": "http://schema.org",
+	  "@type": "WebSite",
+	  "name": "ballot.fyi",
+	  "headline":"Ballot.fyi: California State Propositions for Busy People - Summarized and Explained",
+	  "description":"The quickest, nonpartisan voter guide.",
+	  "author":{
+	    "@type": "Organization",
+	    "name": "Citizen & Citizens",
+	    "email": "fax@ballot.fyi",
+	    "founder": "Jimmy Chion",
+	    "logo": "https://s3.amazonaws.com/ballot.fyi/static/img/share-twit.png"
+	  },
+	  "image":{
+	  	"@type":"ImageObject",
+	    "URL": "https://s3.amazonaws.com/ballot.fyi/static/img/share-twit.png",
+	    "representativeOfPage": "true"
+	  },
+	  "url": "https://ballot.fyi",
+	  "sameAs": [
+	    "https://www.facebook.com/ballotfyi/",
+	    "https://instagram.com/ballotfyi/"
+	  ],
+	  "copyrightYear":"2016",
+	  "keywords":"California state propositions, simplified, summary, quick, nonpartisan, unbiased, simple, explained"
+
+	}
+	</script>
+
+	{% block stylesheets %}
+		{% include 'stylesheets.html' %}
+	{% endblock stylesheets%}
+
+
+
+</head>
+<body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=1134187086655814";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<nav role="navigation" class="needsclick navbar navbar-fixed-top navbar-justified">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" id="hamburger" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand needsclick logo" href="{{indexpath}}">ballot.fyi</a>
+	    </div>
+		<div class="collapse navbar-collapse needsclick" id="nav">
+	      <ul class="nav navbar-nav navbar-right needsclick">
+	        <li class="header-button"><a href="{{indexpath}}/halp/">all props summarized</a></li>
+	        <li class="header-button"><a href="{{indexpath}}#props">the issues</a></li>
+	        <li class="header-button"><a href="{{indexpath}}/about">about</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>	
+	{% block content %}
+	{% endblock content %}
+
+	<div class="line-division"></div>
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="centered">
+					<p style="text-align:center;">If you found this site useful, please help us cover costs:</p>
+				<div class="centered"> <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick" />
+				<input type="hidden" name="hosted_button_id" value="FKK9MRE2VA4KC" />
+				<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate" />
+				</div>
+				</div>
+				(You can also just venmo @Jimmy-Chion)
+				<br><br>
+				<div class="social">
+				<div class="fb-like" data-href="http://ballot.fyi" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ballot.fyi/" data-lang="en" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+				</div>
+
+				<div class="col-lg-offset-3 col-lg-6 col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10">Site designed &amp; built by <a href="{{indexpath}}/about#citzens">Citizen &amp; Citizens </a> &copy; 2016 </a> 🇺🇸<br> 
+				Until Nov. 9, the site will be constantly updated.<br>
+				<a href="{{indexpath}}/terms">terms of service</a> • 
+				<a href="{{indexpath}}/about">about</a> • 
+				<a href="https://www.instagram.com/ballotfyi/">instagram</a> • 
+				<a href="{{indexpath}}/takeaction">do something</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% block scripts %}
+		{% include 'scripts.html' %}
+	{% endblock scripts%}
+</body>
+</html>

@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'ITCAvantGardeStd-XLtCn';
+  src: url('../fonts/ITCAvantGardeStd-XLtCn.eot');
+  src: url('../fonts/ITCAvantGardeStd-XLtCn.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/ITCAvantGardeStd-XLtCn.woff2') format('woff2'),
+    url('../fonts/ITCAvantGardeStd-XLtCn.woff') format('woff'),
+    url('../fonts/ITCAvantGardeStd-XLtCn.ttf') format('truetype'),
+    url('../fonts/ITCAvantGardeStd-XLtCn.svg#ITCAvantGardeStd-XLtCn') format('svg');
+  font-weight: light;
+  font-style: condensed;
+  font-stretch: normal; }
+
+  @font-face {
+    font-family: 'ITCAvantGardeStd-Bold';
+    src: url('../fonts/ITCAvantGardeStd-Bold.eot');
+    src: url('../fonts/ITCAvantGardeStd-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/ITCAvantGardeStd-Bold.woff2') format('woff2'),
+        url('../fonts/ITCAvantGardeStd-Bold.woff') format('woff'),
+        url('../fonts/ITCAvantGardeStd-Bold.ttf') format('truetype'),
+        url('../fonts/ITCAvantGardeStd-Bold.svg#ITCAvantGardeStd-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal; }
+
+    @font-face {
+      font-family: 'ITCAvantGardeStd-Bk';
+      src: url('../fonts/ITCAvantGardeStd-Bk.eot');
+      src: url('../fonts/ITCAvantGardeStd-Bk.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/ITCAvantGardeStd-Bk.woff2') format('woff2'),
+            url('../fonts/ITCAvantGardeStd-Bk.woff') format('woff'),
+            url('../fonts/ITCAvantGardeStd-Bk.ttf') format('truetype'),
+            url('../fonts/ITCAvantGardeStd-Bk.svg#ITCAvantGardeStd-Bk') format('svg');
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal; }

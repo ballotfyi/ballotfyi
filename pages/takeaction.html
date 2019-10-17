@@ -1,0 +1,81 @@
+imgpath: ../../static/img/action
+indexpath: ..
+espanolpath: ../espanol/hazalgo/
+
+
+<!-- FOLLOW -->
+
+{% extends "base.html" %}
+
+{% block title %}California State Propositions – summarized and explained | Do something{% endblock title %}
+{% block meta-description %}<meta name="description" content="Do something about this election.">{% endblock meta-description %}
+{% block content %}
+
+	<div class="header-spacer"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-offset-2 col-lg-6 col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-10">
+				<h1>Here's what you can do right now (in order of importance)</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-offset-4 col-lg-4 col-sm-offset-3 col-sm-6 col-xs-offset-0 col-xs-12">
+				<h2><span class="emoji-lg">😬</span> Brace yourself for Nov. 8</h2>
+				<p> In California, it's the law that you can get paid time off to vote. Hopefully you registered to vote, because it's past the deadline. We made <a target="_blank" href="{{indexpath}}/static/resources/ballotfyi-printable.pdf">a shiny printable version</a> of this site that you can take into the polls with you to remember your opinions.</p>
+			</div>
+		</div>
+
+		<div class="line-division"></div>
+
+		<div class="row">
+			<div class="col-lg-offset-4 col-lg-4 col-sm-offset-3 col-sm-6 col-xs-offset-0 col-xs-12">
+				<h2><span class="emoji-lg">✍️</span> Educate your friends</h2>
+				
+				<p>A simple <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fballot.fyi%2F&display=popup&ref=plugin&src=like&app_id=1134187086655814">click</a> and your friends could be a lot more informed. Please give them the tools to know more. 
+				<br><br>Tip: if you want to maximize reach, share it publicly so others can share it: <span class="public-btn"><img src="{{imgpath}}/public.png"></span></p>
+				
+				<div class="share-img">
+					<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fballot.fyi%2F&amp;src=sdkpreparse"><img src="{{imgpath}}/share.png"></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="line-division"></div>
+
+		<div class="row">
+			<div class="col-lg-offset-4 col-lg-4 col-sm-offset-3 col-sm-6 col-xs-offset-0 col-xs-12">
+				<h2><span class="emoji-lg">🌎</span> Candidates? City props? Non-Californian?</h2>
+				<p>There's a lot more to vote on, we know. If you can't vote in CA or you want to know more about city/county candidates and issues, take a look at these other resources to make you smart fast.</p>
+				<div class="row">
+					<div class="partner-logo">
+						<a target="_blank" href="https://www.brigade.com/"><img src="https://lever-client-logos.s3.amazonaws.com/eacd5726-6a7e-487d-b48c-68197bc49492-1472842102475.png"></a>
+					</div>
+					<div class="partner-logo-caption">Brigade is the only social network for voters.</div>
+					<div class="partner-logo" id="voter-logo">
+						<a target="_blank"  href="http://www.voter.xyz/?utm_source=http%3A%2F%2Fballot.fyi%2F&utm_medium=partner&utm_campaign=ballotfyi"><img alt="Voter matches you with candidates after you answer some questions" src="{{imgpath}}/voter-logo.svg"></a>
+					</div>
+					<div class="partner-logo-caption">Answer a few questions to find out which candidates support the same things you do.</div>
+					<div class="partner-logo">
+						<a target="_blank" href="https://www.ballotready.org"><img alt="BallotReady gives you a rundown of everything on your ballot" src="https://pbs.twimg.com/profile_images/690319560570986496/JIExm1Fq_400x400.png"></a>
+					</div>
+					<div class="partner-logo-caption">Learn about every candidate's background.</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="line-division"></div>
+		<div class="row">
+			<div class="col-lg-offset-4 col-lg-4 col-sm-offset-3 col-sm-6 col-xs-offset-0 col-xs-12">
+				<h2><span class="emoji-lg">🖖</span> Subscribe and/or follow us</h2>
+
+				<p><a target="_blank" href="https://tinyletter.com/ballotfyi">Sign up</a> for our email digests, or follow us on Instagram <a target="_blank" href="http://instagram.com/ballotfyi">@ballotfyi</a> and stay up-to-date on these issues. We'll post updates and tiny bits of info every other day until Nov 8.</p>
+			</div>
+
+			<div class="follow-img col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-1 col-sm-10 col-xs-offset-0 col-xs-12">
+				<a target="_blank" href="http://instagram.com/ballotfyi"><img src="{{imgpath}}/follow.png"></a>
+			</div>
+		</div>
+	</div>
+
+{% endblock content%}

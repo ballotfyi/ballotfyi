@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+	{% block header %}
+	<title>{% block title %}Las propuestas del estado de California - La guía para votar más rápida e imparcial {% endblock title %}</title>
+	{% endblock header %}
+	<!-- Hello! Thanks for taking a peek under the covers. Please make sure you're registered to vote. -->
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="https://s3.amazonaws.com/ballot.fyi/static/img/share-fb-2.png" />
+	<meta property="og:locale" content="es_US" />
+	<meta property="fb:app_id" content="1134187086655814" />
+	{% block fbtags %}
+	<meta property="og:url" content="http://ballot.fyi" />
+	<meta property="og:title" content="Las propuestas del estado de California - La guía para votar más rápida e imparcial "/>
+	<meta property="og:description" content="Hay propuestas estatales que te afectarán - como la mala hierba, bolsas de plástico, y el porno – y estan al voto" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@ballotfyi" />
+	<meta name="twitter:title" content="Las propuestas del estado de California - La guía para votar más rápida e imparcial " />
+	<meta name="twitter:description" content="Hay propuestas estatales que te afectarán - como la mala hierba, bolsas de plástico, y el porno – y estan al voto" />
+	<meta name="twitter:image" content="https://s3.amazonaws.com/ballot.fyi/static/img/share-twit.png" />	
+	{% endblock fbtags %}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% block meta-description %}<meta name="description" content="La más rápida imparcial guía para votar para las propuestas del estado de California | Elección 2016">{% endblock meta-description %}
+	<meta name="keywords" content="las propuestas del estado de California, propuesta, propisiticiones, imparcial, guía del voltante, simplificado, resumen, rápida">
+	<meta name="author" content="Citizen & Citizens">
+	<link rel="canonical" href="{{ CURRENT_PAGE.absolute_final_url }}" />
+	<link rel="shortcut icon" href="{% static '/img/favicon.ico' %}">
+	<meta http-equiv="max-age" content="86400" />
+	<link rel="apple-touch-icon-precomposed" href="{% static '/img/apple-touch-icon-precomposed.png' %}"><!-- 57×57px -->
+	<link rel="icon" sizes="192x192" href="{% static '/img/touch-icon-192x192.png' %}">
+
+	<script type="application/ld+json">
+	{
+	  "@context": "http://schema.org",
+	  "@type": "WebSite",
+	  "name": "ballot.fyi",
+	  "headline":"Las propuestas del estado de California - La guía para votar más rápida e imparcial ",
+	  "description":"La guía para votar más rápida e imparcial para las propuestas del estado de California",
+	  "author":{
+	    "@type": "Organization",
+	    "name": "Citizen & Citizens",
+	    "email": "fax@ballot.fyi",
+	    "founder": "Jimmy Chion",
+	    "logo": "https://s3.amazonaws.com/ballot.fyi/static/img/share-twit.png"
+	  },
+	  "image":{
+	  	"@type":"ImageObject",
+	    "URL": "https://s3.amazonaws.com/ballot.fyi/static/img/share-twit.png",
+	    "representativeOfPage": "true"
+	  },
+	  "url": "http://ballot.fyi",
+	  "sameAs": [
+	    "https://www.facebook.com/ballotfyi/",
+	    "https://instagram.com/ballotfyi/"
+	  ],
+	  "copyrightYear":"2016",
+	  "keywords":"las propuestas del estado de California, guia, imparcial, simplificado, resumen, rápido"
+
+	}
+	</script>
+
+	{% block stylesheets %}
+		{% include 'stylesheets.html' %}
+	{% endblock stylesheets%}
+
+
+
+</head>
+<body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=1134187086655814";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<nav role="navigation" class="needsclick navbar navbar-fixed-top navbar-justified">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand needsclick logo" href="{{indexpath}}">ballot.fyi</a>
+	    </div>
+		<div class="collapse navbar-collapse needsclick" id="nav">
+	      <ul class="nav navbar-nav navbar-right needsclick">
+	        <li class="header-button"><a href="{{indexpath}}#props">Los temas</a></li>
+	        <li class="header-button"><a href="{{indexpath}}/quienes">Quiénes somos</a></li>
+	        <li class="header-button"><a href="{{indexpath}}/hazalgo">Haz algo</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>	
+	<a href="{{englishpath}}"><div class="international-menu">Switch to boring english</div></a>
+	{% block content %}
+	{% endblock content %}
+	<div class="line-division"></div>
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="social">
+				<div class="fb-like" data-href="http://ballot.fyi" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ballot.fyi/" data-lang="en" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+				</div>
+
+				<div class="col-lg-offset-3 col-lg-6 col-sm-offset-2 col-sm-8 col-xs-offset-0 col-xs-12">Sitio web hecho por <a href="{{indexpath}}/quienes#citzens">Citizen &amp; Citizens </a> &copy; 2016 </a> 🇺🇸<br> ¿Se puede mejorar esta traducción? Decirnos cómo mejorar a <a href="mailto:fax@ballot.fyi">fax@ballot.fyi</a><br>
+				<a href="{{indexpath}}/terms">términos de servicio</a> • 
+				<a href="{{indexpath}}/quienes">Quiénes somos</a> • 
+				<a href="https://www.instagram.com/ballotfyi/">instagram</a> • 
+				<a href="{{indexpath}}/hazalgo">Haz algo</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% block scripts %}
+		{% include 'scripts.html' %}
+	{% endblock scripts%}
+</body>
+</html>

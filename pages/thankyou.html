@@ -1,0 +1,22 @@
+imgpath: ../../static/img/index
+indexpath: ..
+<!-- 404 -->
+
+{% extends "base-halp.html" %}
+{% block meta-description %}<meta name="description" content="thanks!">{% endblock meta-description %}
+
+{% block content %}
+
+	<div class="header-spacer"></div>
+	<br><br><br>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-xs-offset-0 col-xs-12">
+				<img class="centered" style="width:200px; height:auto;" src="{{imgpath}}/plastic-bag.png">
+				<div class="center-text prop-title">...Thank you</div>
+				<div class="prop-text">Thank you for supporting ballot.fyi. We're looking to expand this for future elections – we'll see you then.</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock content%}

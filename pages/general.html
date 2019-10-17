@@ -1,0 +1,49 @@
+imgpath: ../../static/img/general
+indexpath: ..
+<!-- GENERAL -->
+
+{% extends "base.html" %}
+
+{% block title %}California State Propositions – summarized and explained | About propositions in general{% endblock title %}
+{% block meta-description %}<meta name="description" content="Some things about the California state propositions in general">{% endblock meta-description %}
+
+{% block content %}
+
+	<div class="header-spacer"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-offset-2 col-lg-6 col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-10">
+				<h1>Three things to understand about state propositions</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-offset-4 col-lg-4 col-sm-offset-3 col-sm-6 col-xs-offset-0 col-xs-12">
+				<h2><span class="emoji-lg">✅</span> It's a simple majority vote</h2>
+				<p>For a proposition to pass, it requires a simple majority –  more Yes votes than No votes. 50%+1. In other words, a vote in LA counts as much as a vote in Fresno. That's empowering, but also dangerous because...</p>
+			</div>
+		</div>
+
+		<div class="line-division"></div>
+
+		<div class="row">
+			<div class="col-lg-offset-4 col-lg-4 col-sm-offset-3 col-sm-6 col-xs-offset-0 col-xs-12">
+				<h2><span class="emoji-lg">🔒</span> If passed, it's locked in.</h2>
+				
+				<p> Once a proposition is passed, the legislature cannot adjust or repeal the measure without another vote by the voters. That's why you get to vote on <a href="{{indexpath}}/58">Prop 58</a> this year, to potentially repeal key parts of Prop 227, from 1998. This protection can be waived if the proposition puts in a clause explaining the mechanism to waive it. For example, in a case of an emergency, <a href="{{indexpath}}/54">Prop 54</a> has a clause that says it can be waived by 2/3 vote of the State Legislature. This inflexibility is a common argument against propositions that have uncertain dependencies (like the uncertainty in how drug manufacturers will respond to <a href="{{indexpath}}/61">Prop 61</a>).<br><br>Even though it can't be changed, law can be interpreted in various ways. Courts will decide what to do when laws conflict or when laws might be unlawful. In the case of <a href="{{indexpath}}/65-67/">Prop 67 and 65</a>, a clause in 65 might conflict with 67, potentially negating 67. And in <a href="{{indexpath}}/64">Prop 64</a> Section 26130a(1) says "<em>Marijuana products shall be not designed to be appealing to children or easily confused with commercially sold candy or foods that do not contain marijuana.</em>" Gummy bears, lollipops, makes sense. But does this include brownies? Courts may have to decide.</p>
+			</div>
+		</div>
+
+		<div class="line-division"></div>
+		<div class="row">
+			<div class="col-lg-offset-4 col-lg-4 col-sm-offset-3 col-sm-6 col-xs-offset-0 col-xs-12">
+				<h2><span class="emoji-lg">🤔</span> Should it be on the ballot?</h2>
+				<p>The original intention of the voter-initiated ballot measures was to level the field against special interests. Nowadays, billionaires or groups with tens of millions are the only ones that can get a measure on the ballot. Some argue that the measures bypass the legislature at the whim of those with money, and that only things that the legislature can't or won't do should be on it. Others argue that the legislature is balky and slow, and this has allowed California to be particularly progressive. Read more at the <a target="_blank" href="http://www.nytimes.com/2016/09/06/us/california-voter-initiatives.html">NYTimes</a>.
+				<br><br>
+				A measure can end up on the ballot in two ways: by being referred by the State Legislature, or by gathering enough signatures. <a href="{{indexpath}}/58/">Prop 58</a> is the only prop that is legislatively referred. All other propositions were put on the ballot after a person or group gathered enough signatures.
+				</p>
+		</div>
+	</div>
+
+
+{% endblock content%}

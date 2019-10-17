@@ -1,0 +1,62 @@
+imgpath: ../../static/img/about
+indexpath: ..
+espanolpath: ../espanol/quienes
+<!-- ABOUT -->
+
+{% extends "base.html" %}
+{% block title %}California State Propositions – summarized and explained | About{% endblock title %}
+{% block meta-description %}<meta name="description" content="About Citizen & Citzens, the group behind ballot.fyi">{% endblock meta-description %}
+
+{% block content %}
+
+	<div class="header-spacer"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="about-intro col-lg-offset-2 col-lg-6 col-sm-offset-2 col-sm-6">
+				<h1>BALLOT.FYI is three things</h1>
+			</div>
+		</div>
+
+		<div class="row about-section">
+			<div class="col-lg-offset-2 col-lg-4 col-sm-offset-2 col-sm-4">
+				<img class="about-img" src="{{imgpath}}/nonpartisan.svg">
+			</div>
+			<div class="col-lg-4 col-sm-4">
+				<div class="about-title">nonpartisan</div>
+				<div class="about-text">BALLOT.FYI is a side project of a few folks who are tired of last-minute voting the way a pamphlet tells us to, godamnnit. We will <em>not</em> give you a recommendation. We will give you facts about the propositions, concisely, so you can make your own conclusion. We are 100% organic, independent of any organization or group. We have not and will not accept any money or favors. The only thing that may sway us is facts. Please send electronically: <a href="mailto:fax@ballot.fyi">fax@ballot.fyi</a> and include your sources.</div>
+			</div>
+		</div>
+
+		<div class="row about-section">
+			<div class="col-lg-offset-2 col-lg-4 col-md-offset-2 col-md-push-4 col-sm-offset-2 col-sm-4">
+				<img class="about-img" src="{{imgpath}}/concise.svg">
+			</div>
+			<div class="col-lg-4 col-md-offset-2 col-md-pull-6 col-sm-4">
+				<div class="about-title">concise</div>
+				<div class="about-text">We've read the full text of the propositions, the official arguments of both sides, opinion articles, and most "non-partisan" sources, so we could give you these brief and comprehensive digests of the propositions. We know you don't have a lot of time. These are real issues that affect real people (except <a href="{{indexpath}}/59">Prop 59</a>), and we hope that these summaries either get you interested enough to read more, or give you enough information to make you feel like you can make an informed decision.</div>
+			</div>
+		</div>
+
+		<div class="row about-section">
+			<div class="col-lg-offset-2 col-lg-4 col-sm-offset-2 col-sm-4">
+				<img class="about-img" src="{{imgpath}}/tool.svg">
+			</div>
+			<div class="col-lg-4 col-sm-4">
+				<div class="about-title">a tool</div>
+				<div class="about-text">We want you to feel empowered on Election Day, and we want you to give you ammo to make your own decisions. We also hope that you'll want your friends to feel empowered as well, because this site has no other purpose than to provide useful information, and giving your friends more information is the most important thing you can do this election.</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container" id="citzens">
+		<div class="row">
+			<div class="col-lg-offset-2 col-lg-8 col-sm-offset-2 col-sm-8">
+
+			<h3>About ballot.fyi</h3>
+			<p>Ballot.fyi was created by Jimmy Chion, an artist and engineer, with the help and balance of many friends. We were tired of only seeing dry, dense information about the issues, or highly partisan voter guides. We <em>strive</em> for presenting a middle view. But because we're all human, and despite our best efforts, ballot.fyi is not without bias. I mean, most of us live in San Francisco for God's sake. What makes this site different from the rest (because it's hard to do!) is its concise, nonpartisan presentation of the facts. So please check us and send suggestions, corrections, facts to <a href="mailto:fax@ballot.fyi">fax@ballot.fyi</a>. <br/><br/>Update: We are currently working on the next iteration of ballot.fyi for the 2018 elections: <a href='https://bythebay.cool'>By The Bay</a> explaining local issues in SF.
+			</div>
+		</div>
+	</div>
+
+{% endblock content%}

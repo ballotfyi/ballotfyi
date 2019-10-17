@@ -1,0 +1,319 @@
+imgpath: ../../static/img/index
+indexpath: .
+espanolpath: ../espanol/
+
+<!-- INDEX -->
+
+{% extends "base.html" %}
+{% block content %}
+
+
+<!-- intro -->
+<div class="intro">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-offset-2 col-lg-4 col-md-offset-1 col-md-5 col-xs-offset-0 col-xs-12">
+				<h1>November 8, 2016 results –<br>California's state propositions</h1>
+			</div>
+			<div class="col-lg-4 col-md-5 col-xs-offset-0 col-xs-12">
+				<div class="index-intro-small"><em>We're currently prepping ballot.fyi for 2018. You can check out our current project: <a href='https://bythebay.cool'>By The Bay</a>, explaining SF stickiest issues. Here are the results and what they mean for you.</em><br><br><em>Updated Nov. 9, 2016: Here are the results and what they mean for you.</em><br><br> If you're looking for what this site looked like before Nov 8. You can see it preserved at <a href="http://original.ballot.fyi">original.ballot.fyi</a>
+				</div>
+				<div id="props"></div>
+			</div>
+		</div>
+		<div class="row sort-menu">
+			<div class="col-lg-offset-2 col-lg-2 col-md-offset-1 col-md-2 col-xs-offset-0 col-xs-4">
+				<div class="sort-label">List props by:</div>
+			</div>
+			<div class="col-lg-2 col-md-2 col-xs-4">
+				<div class="sort-btn" id="sortByNumBtn">Prop Number</div>
+			</div>
+			<div class="col-lg-2 col-md-2 col-xs-4">
+				<div class="sort-btn" id="sortByNastyBtn">Nasty</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="sort-container">
+
+	<!-- PROP 65 -->
+	<div data-num="65" data-nasty="1" class="index-prop-section p65-color">
+		<div class="index-prop-section-overlay">	
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 col-xs-12">
+					<a href="{{indexpath}}/65-67">
+					<div class="index-prop-title">prop 67 &amp; 65 bans plastic bags statewide and redirects the 10 cents</div>
+					<div class="index-prop-img"><img class="" src="{{imgpath}}/plastic-bag.png"></div>
+					<div class="index-prop-result">bags banned.</div>
+					<div class="index-rectangle"></div>
+					</a>
+					<div class="index-prop-num">67 &amp; 65</div>
+
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+
+	<!-- PROP 64 -->
+	<div data-num="64" data-nasty="3" class="index-prop-section p64-color">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 col-xs-12">
+					<a href="{{indexpath}}/64">
+					<div class="index-prop-title">prop 64 legalizes mar!juana</div>
+					<div class="index-prop-img"><img class="" src="{{imgpath}}/marijuana-leaf.png"></div>
+					<div class="index-prop-result">LEGALIZED.</div>
+					<div class="index-rectangle"></div>
+					</a>
+					<div class="index-prop-num">64</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- PROP 53 -->
+	<div data-num="53"  data-nasty="8"  class="index-prop-section p53-color">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 col-xs-12">
+					<a href="{{indexpath}}/53">
+					<div class="index-prop-title">Prop 53 requires state infrastructure projects over $2B to be voter approved</div>
+					<div class="index-prop-img"><img class="index-make-smaller" src="{{imgpath}}/checkbook.png"></div>
+					<div class="index-prop-result">failed.</div>
+					<div class="index-rectangle"></div>
+					</a>
+					<div class="index-prop-num">53</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<!-- PROP 60 -->
+	<div data-num="60" data-nasty="6" class="index-prop-section p60-color">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 col-xs-12">
+					<a href="{{indexpath}}/60">
+					<div class="index-prop-title">Prop 60 requires pornstars to wear condoms (during sex)</div>
+					<div class="index-prop-img"><img class="" src="{{imgpath}}/banana.png"></div>
+					<div class="index-prop-result">failed.</div>
+					<div class="index-rectangle"></div>
+					</a>
+					<div class="index-prop-num">60</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<!-- PROP 55 -->
+	<div data-num="55" data-nasty="9" class="index-prop-section p55-color">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 col-xs-12">
+					<a href="{{indexpath}}/55">
+					<div class="index-prop-title">Prop 55 extends an income tax for high income earners</div>
+					<div class="index-prop-img"><img class='index-make-smaller' src="{{imgpath}}/monopoly-car.png"></div>
+					<div class="index-prop-result">passed.</div>
+					<div class="index-rectangle"></div>
+					</a>
+					<div class="index-prop-num">55</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- PROP 56 -->
+	<div data-num="56" data-nasty="2" class="index-prop-section p56-color">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 col-xs-12">
+					<a href="{{indexpath}}/56">
+					<div class="index-prop-title">Prop 56 increases the tobacco tax by $2</div>
+					<div class="index-prop-img"><img class="" src="{{imgpath}}/cigarettes.png"></div>
+					<div class="index-prop-result">passed.</div>
+					<div class="index-rectangle"></div>
+					</a>
+					<div class="index-prop-num">56</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- PROP 51 -->
+	<div data-num="51" data-nasty="10" class="index-prop-section p51-color">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 col-xs-12">
+					<a href="{{indexpath}}/51">
+					<div class="index-prop-title">Prop 51 makes $9B to build and improve schools</div>
+					<div class="index-prop-img"><img class="index-make-smaller" src="{{imgpath}}/schoolbus.png"></div>
+					<div class="index-prop-result">passed.</div>
+					<div class="index-rectangle"></div>
+					</a>
+					<div class="index-prop-num">51</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- PROP 58 -->
+	<div data-num="58"  data-nasty="12"  class="index-prop-section p58-color">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 col-xs-12">
+					<a href="{{indexpath}}/58">
+					<div class="index-prop-title">Prop 58 gives local control on how to teach English-learners</div>
+					<div class="index-prop-img"><img class="" src="{{imgpath}}/rosetta.png"></div>
+					<div class="index-prop-result">passed.</div>
+					<div class="index-rectangle"></div>
+					</a>
+					<div class="index-prop-num">58</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- PROP 57 -->
+	<div data-num="57"  data-nasty="5"  class="index-prop-section p57-color">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 col-xs-12">
+					<a href="{{indexpath}}/57">
+					<div class="index-prop-title">Prop 57 makes it easier for nonviolent offenders to get parole</div>
+					<div class="index-prop-img"><img class="" src="{{imgpath}}/hamburglar.png"></div>
+					<div class="index-prop-result">passed.</div>
+					<div class="index-rectangle"></div>
+					</a>
+					<div class="index-prop-num">57</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+		<!-- PROP 63 -->
+	<div data-num="63" data-nasty="4" class="index-prop-section p63-color">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 col-xs-12">
+					<a href="{{indexpath}}/63">
+					<div class="index-prop-title">Prop 63 creates stricter laws around ammunition</div>
+					<div class="index-prop-img"><img class="" src="{{imgpath}}/arnold.png"></div>
+					<div class="index-prop-result">passed.</div>
+					<div class="index-rectangle"></div>
+					</a>
+					<div class="index-prop-num">63</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- PROP 52 -->
+	<div data-num="52"  data-nasty="13"  class="index-prop-section p52-color">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 col-xs-12">
+					<a href="{{indexpath}}/52">
+					<div class="index-prop-title">Prop 52 continues a mechanism that makes money for hospitals</div>
+					<div class="index-prop-img"><img class="index-make-smaller" src="{{imgpath}}/ambulance.png"></div>
+					<div class="index-prop-result">passed.</div>
+					<div class="index-rectangle"></div>
+					</a>
+					<div class="index-prop-num">52</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- PROP 61 -->
+	<div data-num="61"  data-nasty="6"  class="index-prop-section p61-color">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 col-xs-12">
+					<a href="{{indexpath}}/61">
+					<div class="index-prop-title">Prop 61 might lower drug prices for state agencies</div>
+					<div class="index-prop-img"><img class="index-make-smaller" src="{{imgpath}}/bottles.png"></div>
+					<div class="index-prop-result">failed.</div>
+					<div class="index-rectangle"></div>
+					</a>
+					<div class="index-prop-num">61</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- PROP 62 & 66 -->
+	<div data-num="62" data-nasty="0" class="index-prop-section p62-color">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 col-xs-12">
+				<a href="{{indexpath}}/62-66">
+					<div class="index-prop-title">prop 62 &amp; 66 either abolishes or speeds up the death penalty</div>
+					<div class="index-prop-img"><img class="" src="{{imgpath}}/syringe.png"></div>
+					<div class="index-prop-result">☠️ Sped up.</div>
+				<div class="index-rectangle"></div>
+				</a>
+				<div class="index-prop-num">62 &amp; 66</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- PROP 54 -->
+	<div data-num="54" data-nasty="11" class="index-prop-section p54-color">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 col-xs-12">
+					<a href="{{indexpath}}/54">
+					<div class="index-prop-title">Prop 54 requires that before voting, bills be frozen and made public</div>
+					<div class="index-prop-img"><img class='index-make-smaller'src="{{imgpath}}/mac.png"></div>
+					<div class="index-prop-result">passed.</div>
+					<div class="index-rectangle"></div>
+					</a>
+					<div class="index-prop-num">54</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- PROP 59 -->
+	<div data-num="59"  data-nasty="14"  class="index-prop-section p59-color">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 col-xs-12">
+					<a href="{{indexpath}}/59">
+					<div class="index-prop-title">Prop 59 tells the state government what you think about Citizens United</div>
+					<div class="index-prop-img"><img class="index-make-smaller" src="{{imgpath}}/corporation.png"></div>
+					<div class="index-prop-result">passed.</div>
+					<div class="index-rectangle"></div>
+					</a>
+					<div class="index-prop-num">59</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+</div>
+
+{% endblock content%}

@@ -1,0 +1,25 @@
+imgpath: ../../static/img/error
+indexpath: ..
+englishpath: ../../error/
+<!-- 404 -->
+
+{% extends "base-es.html" %}
+{% block meta-description %}<meta name="description" content="whoops">{% endblock meta-description %}
+
+{% block content %}
+
+	<div class="header-spacer"></div>
+
+
+	<div class="container">
+		<div class="line-division"></div>
+		<div class="row">
+			<div class="col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-xs-offset-0 col-xs-12">
+				<img class="centered" src="{{imgpath}}/shimmery.gif">
+				<div class="center-text prop-title">Woo! Okay!</div>
+				<div class="prop-text">Lo siento. No estamos seguros en la que desea ir. Volver a <a href="http://ballot.fyi">ballot.fyi</a>?</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock content%}
