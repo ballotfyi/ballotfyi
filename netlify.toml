@@ -1,15 +1,6 @@
 [Settings]
 ID = "ballot_fyi"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
 [build]
-  publish = "build"
-  command = "react-scripts build"
-
-[build.environment]
-  YARN_VERSION = "1.9.4"
-  YARN_FLAGS = "--no-ignore-optional"
+  publish = ".deploy"
+  command = "ls"

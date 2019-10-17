@@ -1,0 +1,8 @@
+{
+    "aws-access-key": "AKIAJLMP3Z7CTUBFRPMA",
+    "aws-bucket-name": "ballot.fyi",
+    "aws-bucket-website": "ballot.fyi.s3-website-us-east-1.amazonaws.com",
+    "optimize": "js",
+    "prettify": true,
+    "site-url": "http://ballot.fyi"
+}
