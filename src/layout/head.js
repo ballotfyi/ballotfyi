@@ -139,7 +139,7 @@ class Head extends React.Component{
         <meta prefix="og: http://ogp.me/ns#" property="og:type"         content="website" />
         <meta prefix="og: http://ogp.me/ns#" property="og:title"        content={headline} />
         <meta prefix="og: http://ogp.me/ns#" property="og:description"  content={description} />
-        <meta prefix="og: http://ogp.me/ns#" property="og:image"        content={"https://www.ballot.fyi/socialimages/" + image} />
+        <meta prefix="og: http://ogp.me/ns#" property="og:image"        content={"https://2018.ballot.fyi/socialimages/" + image} />
         <meta prefix="og: http://ogp.me/ns#" property="og:locale"       content="en_US" />
         <meta prefix="og: http://ogp.me/ns#" property="fb:app_id"       content="1134187086655814" />
 
@@ -147,7 +147,7 @@ class Head extends React.Component{
         <meta name="twitter:site"        content="@ballotfyi" />
         <meta name="twitter:title"       content={headline} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image"       content={"https://www.ballot.fyi/socialimages/" + image} />
+        <meta name="twitter:image"       content={"https://2018.ballot.fyi/socialimages/" + image} />
 
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="mobile-web-app-capable" content="yes"/>
