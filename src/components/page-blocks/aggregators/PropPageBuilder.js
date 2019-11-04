@@ -29,8 +29,8 @@ const PropPageBuilder = (props) => {
   return(
 		<div>
 	    <Head
-	      url={"https://www.ballot.fyi/prop-" + propNum}
-				title={`Prop ${propNum} | California Propositions | ballot.fyi`}
+	      url={"https://2018.ballot.fyi/prop-" + propNum}
+				title={`Prop ${propNum} | California Propositions 2018 | ballot.fyi`}
 	      headline={socialHeadline}
 	      description={socialDescription}
 	      image={`Prop-${propNum}.png`}

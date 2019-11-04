@@ -56,7 +56,7 @@ class Head extends React.Component{
             "headline": "${headline && (headline).replace(/"/g, "'")}",
             "name": "${title && (title).replace(/"/g, "'")}",
             "url": "${url}",
-            "image": "${("https://www.ballot.fyi/socialimages/" + image) || ""}",
+            "image": "${("https://2018.ballot.fyi/socialimages/" + image) || ""}",
             "datePublished": "${dateCreated || ""}",
             "dateCreated": "${dateCreated || ""}",
             "dateModified": "${dateModified || dateCreated || ""}",
@@ -76,7 +76,7 @@ class Head extends React.Component{
               "url":"https://www.ballot.fyi/",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://www.ballot.fyi/touch-icon-512x512.png"
+                "url": "https://2018.ballot.fyi/touch-icon-512x512.png"
               },
               "description": "ballot.fyi is a nonpartisan voter guide for California's statewide elections",
               "email": "fax@ballot.fyi",
@@ -106,10 +106,10 @@ class Head extends React.Component{
             "@type": "Organization",
             "name": "ballot.fyi",
             "description": "ballot.fyi is a nonpartisan voter guide for California elections",
-            "url": "https://www.ballot.fyi/",
+            "url": "https://2018.ballot.fyi/",
             "email": "fax@ballot.fyi",
             "founder": ["Jimmy Chion", "Yvonne Leow"],
-            "logo": "https://www.ballot.fyi/touch-icon-512x512.png",
+            "logo": "https://2018.ballot.fyi/touch-icon-512x512.png",
             "sameAs": [
               "https://www.facebook.com/ballotfyi/",
               "https://twitter.com/ballotfyi/",
