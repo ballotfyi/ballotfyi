@@ -1,30 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
+[![Netlify Status](https://api.netlify.com/api/v1/badges/78dce639-08f4-4601-9d43-2d6dc1d96b19/deploy-status)](https://app.netlify.com/sites/ballotfyi/deploys)
 
-## Getting Started
+# ballot.fyi
+*2020 edition*
+Previous editions:
+[2016](https://www.2016.ballot.fyi)
+[2018](https://www.2018.ballot.fyi)
 
-First, run the development server:
+## Our goals
+ballot.fyi will be the most straightforward and accessible guide to California's ballot propositions in 2020. To create a more accessible site, we'll optimize for readability, accessible web design patterns, and modes of learning to educate the most people possible.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### Voice and style
+We aim to provide a nonpartisan, no-bull, free resource for California voters. Our guide is nonpartisan to ensure that we weigh all sides equally, explaining all legitimate arguments and facts as empathetically as possible. We explain issues as if we're explaining it to a friend, but with 100% accuracy, given the best information we can find. Our voice is somewhat irreverent, but not imparting an opinion.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Accessibility
+- Mobile-first
+- printable
+- Screen reader-friendly
+- visual options for high-contrast, monochrome colors, no/reduced motion
+- audio version of primary texts
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Donations, gifts
+We do **not** accept any money, gifts, favors, or promise of those from any individuals, companies, or advertisers.
 
-## Learn More
+By the election, we hope to have served over 1 million California residents, surpassing the 2016 edition's metrics. More viewers simply means more reach – our site will not display ads, nor store any personal information for any use.
 
-To learn more about Next.js, take a look at the following resources:
+### Social media targeting
+Our goal is to be the guide that you share with your friends, but because Facebook encompasses a much larger network than most millennials and Gen-Z'ers close friends, efforts in 2020 will focus on Twitter sharing. Norms around sharing provide an appropriate amount of gravity. Facebook has limited the spread of political content,
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Fun
 
-You can check out [the Next.js GitHub repository](https://github.com/zeit/next.js/) - your feedback and contributions are welcome!
+#### Different themes
+(ideally non-exclusive to high-contrast and monochrome)
+- original
+- dark mode
+- 90s/vaporwave
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Development plan
+- [] build new front for 2020 site
+- [] design article layout
+  - [] figure out how to take user contributions
+- [] design about page
+- [] architect CMS and information flow
+- [] configure and build devOps pipeline
