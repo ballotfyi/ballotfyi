@@ -7,7 +7,7 @@
  * [x] webp-first, jpg, png, svg support
  * [x] optional lazy-loading (per web.dev's suggestion: https://web.dev/use-lazysizes-to-lazyload-images/)
  * [x] doesn't cause FOUC/layout thrashing
-\ * [ish] gracefully handle no javascript <noscript>
+ * [ish] gracefully handle no javascript <noscript>
  * */
 import PropTypes from 'prop-types'
 import {extname} from 'path'
@@ -54,7 +54,7 @@ const Image = (props) => {
     const [srcWebp, srcsetWebp] = extractSrcAndSrcset(webpArr);
     const [srcFallback, srcsetFallback] = extractSrcAndSrcset(fallbackArr);
     const extension = extname(srcFallback).substring(1).toLowerCase();
-    if(extension !== 'jpg') setExt(extension); //-- bc we default to 'jpeg', foo.jpg => ext == jpeg
+    if(extension !== 'jpg') setExt(extension); //-- bc we default to 'jpeg', foo.jpg -> ext == 'jpeg'
     setSrcWebp(srcWebp);
     setSrcsetWebp(srcsetWebp);
     setSrcFallback(srcFallback);
@@ -136,7 +136,7 @@ const Image = (props) => {
             style={{width: '100%', ...style}}/>
         </picture>
       )
-    } else { //-- not lazyload
+    } else { //-- not lazyload, recommended for small images
       return (
         <picture style={{width: '100%', ...style}}>
           <source srcset={srcsetWebp} type="image/webp"/>
