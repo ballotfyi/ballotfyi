@@ -139,8 +139,8 @@ const Image = (props) => {
     } else { //-- not lazyload, recommended for small images
       return (
         <picture style={{width: '100%', ...style}}>
-          <source srcset={srcsetWebp} type="image/webp"/>
-          <source srcset={srcsetFallback} type={`image/${ext}`}/> 
+          <source srcSet={srcsetWebp} type="image/webp"/>
+          <source srcSet={srcsetFallback} type={`image/${ext}`}/> 
           <img 
             src={srcFallback}
             srcSet={srcFallback}

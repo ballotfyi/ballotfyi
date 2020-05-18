@@ -1,7 +1,8 @@
 import styled from 'styled-components'
-import Header from 'layout/header.js'
+import Header from 'components/layout/header.js'
 import Image from 'components/Image/Image'
 import {useAmp} from 'next/amp'
+import withBasicTemplate from 'template/basic'
 
 import ScrollToTop from 'components/ScrollToTop/ScrollToTopButton'
 
@@ -24,7 +25,7 @@ const IndexPage = () => {
       {isAmp ? 
         <>
           {/* scrollToTopElem is used for ScrollToTop AMP component, needs a target to move to*/}
-          <div id="scrollToTopElem">amp</div>
+          <h1><div id="scrollToTopElem">amptastic</div></h1>
           <ImageContainer>
             <Image
               alt="alt text example"
@@ -87,8 +88,8 @@ const IndexPage = () => {
                 {url: './static/lostcoast-lg.jpg', width: 1400},
                 {url: './static/lostcoast-lg.webp', width: 1400},
               ]}
-              width={2000}
-              height={1333}
+              width={3}
+              height={2}
             />
           </ImageContainer>
         </div>
@@ -103,7 +104,8 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage;
+export default withBasicTemplate(IndexPage);
+
 export const config = { 
   amp: 'hybrid' 
 }

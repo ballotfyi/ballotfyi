@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 /* Next.js automatically pulls the correct AMP resource */
-
+//-------------------------------------
 // https://amp.dev/documentation/components/amp-animation/
 export const AmpAnimation = (props) => {
   return(
@@ -13,6 +13,25 @@ export const AmpAnimation = (props) => {
 }
 AmpAnimation.propTypes = {
   id: PropTypes.string,
+  children: PropTypes.object.isRequired
+}
+
+//-------------------------------------
+// https://amp.dev/documentation/components/amp-analytics/
+export const AmpAnalytics = (props) => {
+  return(
+    <amp-analytics type={props.type}>
+      <script type="application/json" dangerouslySetInnerHTML={{__html: JSON.stringify(props.children)}}>
+      </script>
+    </amp-analytics>
+  )
+}
+AmpAnalytics.propTypes = {
+  type: PropTypes.string,
+  children: PropTypes.object.isRequired
+}
+AmpAnalytics.defaultProps = {
+  type: "googleanalytics",
   children: PropTypes.object.isRequired
 }
 

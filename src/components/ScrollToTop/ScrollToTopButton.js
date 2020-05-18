@@ -1,4 +1,4 @@
-import {AmpAnimation, AmpPositionObserver} from 'components/AmpHelpers/AmpWrappers'
+import {AmpAnimation, AmpPositionObserver} from 'components/amp/amp-wrappers'
 import useScrollToTop from 'components/ScrollToTop/useScrollToTop'
 import styled from 'styled-components'
 import {useAmp} from 'next/amp'
@@ -100,7 +100,7 @@ const ScrollToTopButton = () => {
   )
 }
 
-const ScrollToTopBtn = () => {
+const ScrollToTopBtn = React.memo(() => {
   return (useAmp() ? <ScrollToTopButtonAmp/> : <ScrollToTopButton/>)
-}
+})
 export default ScrollToTopBtn;
