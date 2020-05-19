@@ -25,6 +25,9 @@ const IndexPage = () => {
       <Header/>
       {isAmp ? 
         <>
+          <Link href='/about?amp=1'><a>About</a></Link>
+          <br/>
+          <Link href='/privacy?amp=1'><a>Privacy</a></Link>
           {/* scrollToTopElem is used for ScrollToTop AMP component, needs a target to move to*/}
           <h1><div id="scrollToTopElem">amptastic</div></h1>
           <ImageContainer>

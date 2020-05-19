@@ -1,7 +1,13 @@
+import withBasicTemplate from 'template/basic'
+
 const AboutPage = () => {
   return(
     <div>About</div>
   )
 }
 
-export default AboutPage;
+export default withBasicTemplate(AboutPage);
+
+export const config = { 
+  amp: 'hybrid' 
+}

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import {AmpAnalytics} from 'components/amp/amp-wrappers'
 import {useAmp} from 'next/amp'
+import {useRouter} from 'next/router'
 
 import { GA_TRACKING_ID } from 'lib/gtag'
 
@@ -10,6 +11,7 @@ const Analytics = React.memo(() => {
 
 //-- must be placed in body
 const AmpHead = React.memo(() => {
+  const router = useRouter()
   const body = {
     "vars": {
       "account": GA_TRACKING_ID
@@ -19,7 +21,7 @@ const AmpHead = React.memo(() => {
         "on": "visible",
         "request": "pageview",
         "vars": {
-          "title": "some title"
+          "canonicalPath": router.pathname
         }
       }
     }
