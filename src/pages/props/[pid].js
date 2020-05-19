@@ -1,8 +1,6 @@
 
 
 const PropPage = (props) => {
-  console.log(props);
-
   return (
     <div>Prop: {props.pid}</div>
   )
@@ -31,7 +29,6 @@ export async function getStaticPaths() {
 //-- returned object gets sent to default exported object
 //-- such as data needed to render page
 export async function getStaticProps({ params }) {
-  console.log(params);
   return { props: {
     ...params
   }}
