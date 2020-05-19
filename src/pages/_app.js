@@ -1,14 +1,22 @@
+import {useEffect} from 'react'
 import './styles.css'
 import Router from 'next/router'
-import * as gtag from 'lib/gtag'
-
-const isProd = process.env.NODE_ENV === 'production'
-
-if(isProd) {
-  Router.events.on('routeChangeComplete', url => gtag.pageview(url))
-}
+import {pageview} from 'lib/gtag'
 
 const App = ({ Component, pageProps }) => {
+  const isProd = (process.env.NODE_ENV === 'production')
+  
+  //-- track page views
+  useEffect(() => {
+    const handleRouteChange = url => {
+      if(isProd) pageview(url);
+    }
+    Router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      Router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [])
+  
   return <Component {...pageProps} />
 }
 

@@ -2,7 +2,7 @@
  * Also gives a convenient hook useAmp() which allows to detect if amp is in use.
  * Follows best pratices from web.dev and https://github.com/aFarkas/lazysizes
  * Wishlist:
- * [x] all browser support
+ * [x] wide browser support
  * [x] AMP and non-AMP
  * [x] webp-first, jpg, png, svg support
  * [x] optional lazy-loading (per web.dev's suggestion: https://web.dev/use-lazysizes-to-lazyload-images/)

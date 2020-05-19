@@ -3,6 +3,7 @@ import Header from 'components/layout/header.js'
 import Image from 'components/Image/Image'
 import {useAmp} from 'next/amp'
 import withBasicTemplate from 'template/basic'
+import Link from 'next/link'
 
 import ScrollToTop from 'components/ScrollToTop/ScrollToTopButton'
 
@@ -76,7 +77,9 @@ const IndexPage = () => {
         </>
         :
         <div>
-          not amp
+          not amp 
+          <Link href='/about'><a>About</a></Link>
+          <Link href='/privacy'><a>Privacy</a></Link>
           <ImageContainer>
             <Image
               alt="alt text example"
