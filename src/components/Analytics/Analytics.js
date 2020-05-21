@@ -11,6 +11,8 @@ const Analytics = React.memo(() => {
 
 //-- must be placed in body
 const AmpHead = React.memo(() => {
+  const isProd = (process.env.NODE_ENV === 'production')
+  if (!isProd) return null;
   const router = useRouter()
   const body = {
     "vars": {
