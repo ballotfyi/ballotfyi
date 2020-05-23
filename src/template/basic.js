@@ -12,6 +12,7 @@ const withBasicTemplate = (WrappedComponent) => {
     return (
       <>
         <Fonts/>
+        <StructuredData/>
         <Analytics />
         <WrappedComponent {...props} />
       </>
