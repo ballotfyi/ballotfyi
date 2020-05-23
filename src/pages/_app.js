@@ -9,7 +9,9 @@ const App = ({ Component, pageProps }) => {
   //-- track page views
   useEffect(() => {
     const handleRouteChange = (url) => {
-      if (isProd) pageview(url);
+      if (isProd) {
+        pageview(url);
+      }
     };
     Router.events.on("routeChangeComplete", handleRouteChange);
     return () => {

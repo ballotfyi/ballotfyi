@@ -5,14 +5,18 @@ import { useRouter } from "next/router";
 
 import { GA_TRACKING_ID } from "lib/gtag";
 
+/**
+ * Part of the analytics logging (for non-AMP) is in pages/_app.js
+ * */
+
 const Analytics = React.memo(() => {
+  const isProd = process.env.NODE_ENV === "production";
+  if (!isProd) return null;
   return useAmp() ? <AmpHead /> : <GoogAnalyticsHead />;
 });
 
 //-- must be placed in body
 const AmpHead = React.memo(() => {
-  const isProd = process.env.NODE_ENV === "production";
-  if (!isProd) return null;
   const router = useRouter();
   const body = {
     vars: {

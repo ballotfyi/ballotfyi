@@ -11,9 +11,11 @@ const TallPage = styled.div`
   position: relative;
   height: 2500px;
   background: linear-gradient(#e66465, #9198e5);
+  padding: 30px;
 `;
 const ImageContainer = styled.div`
   width: 50%;
+  margin-top: 10px;
 `;
 
 const IndexPage = () => {
@@ -25,6 +27,8 @@ const IndexPage = () => {
         <Header />
         {isAmp ? (
           <>
+            {/* scrollToTopElem is used for ScrollToTop AMP component, needs a target to move to*/}
+            <h1 id="scrollToTopElem">ballot.fyi (AMP)</h1>
             <Link href="/about?amp=1">
               <a>About</a>
             </Link>
@@ -32,10 +36,6 @@ const IndexPage = () => {
             <Link href="/privacy?amp=1">
               <a>Privacy</a>
             </Link>
-            {/* scrollToTopElem is used for ScrollToTop AMP component, needs a target to move to*/}
-            <h1>
-              <div id="scrollToTopElem">amptastic</div>
-            </h1>
             <ImageContainer>
               <Image
                 alt="alt text example"
@@ -86,10 +86,14 @@ const IndexPage = () => {
           </>
         ) : (
           <div>
-            not amp
+            <h1>ballot.fyi</h1>
+            <h2>not amp</h2>
+            <br/>
             <Link href="/about">
               <a>About</a>
             </Link>
+            <br/>
+            <br/>
             <Link href="/privacy">
               <a>Privacy</a>
             </Link>
