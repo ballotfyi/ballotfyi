@@ -36,6 +36,10 @@ const IndexPage = () => {
             <Link href="/privacy?amp=1">
               <a>Privacy</a>
             </Link>
+            <br />
+            <Link href="/">
+              <a>Non-AMP</a>
+            </Link>
             <ImageContainer>
               <Image
                 alt="alt text example"
@@ -88,6 +92,10 @@ const IndexPage = () => {
           <div>
             <h1>ballot.fyi</h1>
             <h2>not amp</h2>
+            <Link href="?amp=1">
+              <a>AMP ⚡️</a>
+            </Link>
+            <br/>
             <br/>
             <Link href="/about">
               <a>About</a>
