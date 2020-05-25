@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import "./styles.css";
 import Router from "next/router";
 import { pageview } from "lib/gtag";
 

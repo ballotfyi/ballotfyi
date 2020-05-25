@@ -96,13 +96,13 @@ const IndexPage = () => {
             <Link href="?amp=1">
               <a>AMP ⚡️</a>
             </Link>
-            <br/>
-            <br/>
+            <br />
+            <br />
             <Link href="/about">
               <a>About</a>
             </Link>
-            <br/>
-            <br/>
+            <br />
+            <br />
             <Link href="/privacy">
               <a>Privacy</a>
             </Link>

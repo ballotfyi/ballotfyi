@@ -1,48 +1,48 @@
-
 /* See Fonts/Fonts.js and @zachleat's https://github.com/zachleat/web-font-loading-recipes */
 @font-face {
   font-family: InterPre;
   src: url("/static/fonts/Inter-Regular.woff2?v=3.13") format("woff2"),
-       url("/static/fonts/Inter-Regular.woff?v=3.13") format("woff");
+    url("/static/fonts/Inter-Regular.woff?v=3.13") format("woff");
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-weight: 100 900;
   font-style: normal;
-  font-named-instance: 'Regular';
+  font-named-instance: "Regular";
   src: url("/static/fonts/Inter-roman.var.woff2?v=3.13") format("woff2");
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-weight: 100 900;
   font-style: italic;
-  font-named-instance: 'Italic';
+  font-named-instance: "Italic";
   src: url("/static/fonts/Inter-italic.var.woff2?v=3.13") format("woff2");
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: serif;
 }
+
 .fonts-loading body {
-  font-family: 'InterPre'
+  font-family: "InterPre";
 }
 
 @supports (font-variation-settings: normal) {
   .fonts-loaded body {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-weight: 200;
   }
 }
 
 a {
-  font-weight: 720;
+  font-weight: 420;
   color: white;
 }
 
 amp-img {
-  background-color: gray;
+  background-color: #ddd;
 }

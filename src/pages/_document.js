@@ -1,5 +1,6 @@
 import Document from "next/document";
 import { ServerStyleSheet } from "styled-components";
+import stylesCss from "!raw-loader!./index.min.css";
 
 export default class CustomDocument extends Document {
   static async getInitialProps(ctx) {
@@ -17,6 +18,11 @@ export default class CustomDocument extends Document {
         ...initialProps,
         styles: (
           <>
+            <style
+              dangerouslySetInnerHTML={{
+                __html: stylesCss,
+              }}
+            />
             {initialProps.styles}
             {sheet.getStyleElement()}
           </>

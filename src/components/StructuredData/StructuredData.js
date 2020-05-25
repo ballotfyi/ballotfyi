@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from "next/head";
 import PropTypes from "prop-types";
 /**
  * TODO
@@ -12,107 +12,111 @@ import PropTypes from "prop-types";
 
 // https://developers.google.com/search/docs/data-types/article#amp-sd
 const StructuredData = (props) => {
-  const {datePublished, dateModified, title, description, canonicalUrl, images} = props;
-  const urlBase = "https://www.ballot.fyi/"
+  const {
+    datePublished,
+    dateModified,
+    title,
+    description,
+    canonicalUrl,
+    images,
+  } = props;
+  const urlBase = "https://www.ballot.fyi/";
   const publisherId = urlBase + "#publisher";
-  const articleUrls = [
-    urlBase+'1',
-    urlBase+'2',
-    urlBase+'3',
-  ]
-  const articleData = {    
+  const articleUrls = [urlBase + "1", urlBase + "2", urlBase + "3"];
+  const articleData = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
-    "mainEntityOfPage": {
+    mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": canonicalUrl
+      "@id": canonicalUrl,
     },
-    "headline": title,
-    "description": description,
-    "image": images.map( img => ({
-        "@context": "https://schema.org",
-        "@type": "ImageObject",
-        "url": img.url || "www.google.com",
-        "caption": img.caption || "",
-        "height": img.height || 1,
-        "width": img.width || 1,
-      })),
-    "inLanguage": "en-US",
-    "isAccessibleForFree": true,
-    "copyrightYear": datePublished.getFullYear(),
-    "copyrightHolder": {
-      "@id": publisherId
-    },
-    "datePublished": datePublished.toISOString(),
-    "dateModified": dateModified.toISOString() || datePublished.toISOString(),
-    "author": {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Jimmy Chion"
-    },
-    "publisher": {
-      "@id": publisherId
-    },
-    "sourceOrganization": {
-      "@id": publisherId
-    }
-  }
-  const homeData = {    
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "mainEntity": {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      "numberOfItems": articleUrls.length,
-      "itemListElement": articleUrls.map( (url, index) => ({
-        "@context": "https://schema.org",
-        "@type": "ListItem",
-        "position": index,
-        "url": url
-      }))
-    },
-    "image": images.map( img => ({
+    headline: title,
+    description: description,
+    image: images.map((img) => ({
       "@context": "https://schema.org",
       "@type": "ImageObject",
-      "url": img.url || "www.google.com",
-      "caption": img.caption || "",
-      "height": img.height || 1,
-      "width": img.width || 1,
+      url: img.url || "www.google.com",
+      caption: img.caption || "",
+      height: img.height || 1,
+      width: img.width || 1,
     })),
-    "name": "ballot.fyi",
-    "publisher": {
-      "@id": publisherId
+    inLanguage: "en-US",
+    isAccessibleForFree: true,
+    copyrightYear: datePublished.getFullYear(),
+    copyrightHolder: {
+      "@id": publisherId,
     },
-  }
+    datePublished: datePublished.toISOString(),
+    dateModified: dateModified.toISOString() || datePublished.toISOString(),
+    author: {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Jimmy Chion",
+    },
+    publisher: {
+      "@id": publisherId,
+    },
+    sourceOrganization: {
+      "@id": publisherId,
+    },
+  };
+  const homeData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    mainEntity: {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      numberOfItems: articleUrls.length,
+      itemListElement: articleUrls.map((url, index) => ({
+        "@context": "https://schema.org",
+        "@type": "ListItem",
+        position: index,
+        url: url,
+      })),
+    },
+    image: images.map((img) => ({
+      "@context": "https://schema.org",
+      "@type": "ImageObject",
+      url: img.url || "www.google.com",
+      caption: img.caption || "",
+      height: img.height || 1,
+      width: img.width || 1,
+    })),
+    name: "ballot.fyi",
+    publisher: {
+      "@id": publisherId,
+    },
+  };
 
   const publisher = {
     "@context": "https://schema.org",
     "@id": publisherId,
     "@type": "NewsMediaOrganization",
-    "name": "ballot.fyi",
-    "alternateName": ["ballotfyi", "ballot fyi"],
-    "description": "A nonpartisan voter guide for propositions for California's 2020 Election",
-    "foundingDate": "2016-10-01",
-    "url": urlBase,
-    "email": "fax@ballot.fyi",
-    "founder": {
+    name: "ballot.fyi",
+    alternateName: ["ballotfyi", "ballot fyi"],
+    description:
+      "A nonpartisan voter guide for propositions for California's 2020 Election",
+    foundingDate: "2016-10-01",
+    url: urlBase,
+    email: "fax@ballot.fyi",
+    founder: {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Jimmy Chion"
+      name: "Jimmy Chion",
     },
-    "sameAs": [
+    sameAs: [
       "https://www.facebook.com/ballotfyi/",
       "https://twitter.com/ballotfyi/",
-      "https://www.instagram.com/ballotfyi/"
+      "https://www.instagram.com/ballotfyi/",
     ],
-    "logo": {
+    logo: {
       "@context": "https://schema.org",
       "@type": "ImageObject",
-      "url": "https://google.com/logo.jpg",
-      "width": 300,
-      "height": 200
-    }
-  }
+      url: "https://google.com/logo.jpg",
+      width: 300,
+      height: 200,
+    },
+  };
   return (
     <Head>
       <script
@@ -124,8 +128,8 @@ const StructuredData = (props) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(publisher) }}
       ></script>
     </Head>
-  )
-}
+  );
+};
 
 export default React.memo(StructuredData);
 
@@ -149,7 +153,7 @@ StructuredData.defaultProps = {
   title: "ballot.fyi",
   description: "ballot.fyi",
   canonicalUrl: "https://www.ballot.fyi",
-  datePublished: (new Date),
-  dateModified: (new Date),
-  images: [{}]
+  datePublished: new Date(),
+  dateModified: new Date(),
+  images: [{}],
 };

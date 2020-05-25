@@ -11,9 +11,9 @@ const withBasicTemplate = (WrappedComponent) => {
   return (props) => {
     return (
       <>
-        <Fonts/>
-        <StructuredData/>
+        <StructuredData />
         <Analytics />
+        <Fonts />
         <WrappedComponent {...props} />
       </>
     );
