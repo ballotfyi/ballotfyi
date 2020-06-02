@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Header from "components/layout/header.js";
 import Image from "components/Image/Image";
+import Acronym from "components/Acronym/Acronym";
 import { useAmp } from "next/amp";
 import withBasicTemplate from "template/basic";
 import Link from "next/link";
@@ -92,12 +93,14 @@ const IndexPage = () => {
         ) : (
           <div>
             <h1>ballot.fyi</h1>
+            <Acronym acronym='CIA' expanded='Central Intelligence Agency' />
             <h2>not amp</h2>
             <Link href="?amp=1">
               <a>AMP ⚡️</a>
             </Link>
             <br />
             <br />
+
             <Link href="/about">
               <a>About</a>
             </Link>

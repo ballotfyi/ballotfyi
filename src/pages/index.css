@@ -25,6 +25,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: serif;
+  font-synthesis: weight style;
 }
 
 .fonts-loading body {
@@ -34,7 +35,7 @@ body {
 @supports (font-variation-settings: normal) {
   .fonts-loaded body {
     font-family: "Inter";
-    font-weight: 200;
+    font-weight: 500;
   }
 }
 
