@@ -1,7 +1,7 @@
 import {useState, useRef} from 'react'
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
+import {useAmp} from 'next/amp'
 /*
 Expands an acronym to the full text. Toggleable
 
@@ -18,7 +18,7 @@ const AcronymContainer = styled.span`
 
 	@media not all and (hover: none) {
 		&:hover {
-      border-bottom: 1px solid black;
+      border-bottom: ${p => p.toggleable ? '1px solid black' : 'none'};
     }
   }
 `;
@@ -49,7 +49,7 @@ const Acronym = (props) => {
 
 	//-- toggle between expanded and acronym
 	const handleClick = (e) => {
-		const currentlyIsExpanded = !isExpanded
+		let currentlyIsExpanded = !isExpanded
 		if(!props.toggleable && didExpand) {
 			currentlyIsExpanded = true;
 		} //-- force it to stay expanded
@@ -59,16 +59,31 @@ const Acronym = (props) => {
 		if(props.highlightOnClick){ selectText() }
 	}
 
-  return(
-    <AcronymContainer
-      isExpanded={isExpanded}
-      onClick={handleClick}
-      ref={textRef}        
-    >
-      {textDisplayed}
-    </AcronymContainer>
+  //-- without some craziness, in AMP, the acronym is not toggleable. You can only exapnd it once. 
+  if(useAmp()) {
+    return (
+      <AcronymContainer
+        toggleable={false}
+        data-amp-bind-text="displayedText"
+        data-amp-bind-class="containerClass"
+        on={`tap:AMP.setState({displayedText:'${props.expanded}', containerClass: 'unstyled'})`}
+      >
+        {props.acronym}
+      </AcronymContainer>
+    )
+  } else {
+    return(
+      <AcronymContainer
+        isExpanded={isExpanded}
+        toggleable={props.toggleable}
+        onClick={handleClick}
+        ref={textRef}        
+      >
+        {textDisplayed}
+      </AcronymContainer>
 
-  );
+    );
+  }
 	
 }
 

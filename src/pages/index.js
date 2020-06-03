@@ -30,6 +30,8 @@ const IndexPage = () => {
           <>
             {/* scrollToTopElem is used for ScrollToTop AMP component, needs a target to move to*/}
             <h1 id="scrollToTopElem">ballot.fyi (AMP)</h1>
+            <Acronym acronym='CIA' expanded='Central Intelligence Agency' />
+            <br/>
             <Link href="/">
               <a>Non-AMP</a>
             </Link>
