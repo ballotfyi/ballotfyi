@@ -13,7 +13,7 @@ Text-decoration style not supported on mobile, so maybe have to switch to border
 
 // text-decoration: ${p => p.isExpanded ? 'none' : 'underline dotted black'};
 const AcronymContainer = styled.span`
-  border-bottom: ${p => p.isExpanded ? 'none' : '1px solid #333'};
+  border-bottom: ${p => p.isExpanded ? 'none' : '1px dashed #333'};
   cursor: pointer;
 
 	@media not all and (hover: none) {
@@ -49,20 +49,26 @@ const Acronym = (props) => {
 
 	//-- toggle between expanded and acronym
 	const handleClick = (e) => {
-		let currentlyIsExpanded = !isExpanded
-		if(!props.toggleable && didExpand) {
-			currentlyIsExpanded = true;
-		} //-- force it to stay expanded
-		currentlyIsExpanded ? setTextDisplayed(props.expanded) : setTextDisplayed(props.acronym)
-    setDidExpand(true);
-    setIsExpanded(currentlyIsExpanded);
-		if(props.highlightOnClick){ selectText() }
+    if (!e.keyCode || e.keyCode === 13 || e.keyCode === 32) {
+      e.preventDefault();
+      let currentlyIsExpanded = !isExpanded
+      if(!props.toggleable && didExpand) {
+        currentlyIsExpanded = true;
+      } //-- force it to stay expanded
+      currentlyIsExpanded ? setTextDisplayed(props.expanded) : setTextDisplayed(props.acronym)
+      setDidExpand(true);
+      setIsExpanded(currentlyIsExpanded);
+      if(props.highlightOnClick){ selectText() }
+    }
 	}
 
-  //-- without some craziness, in AMP, the acronym is not toggleable. You can only exapnd it once. 
+  //-- without some craziness, in AMP, the acronym is not toggleable. You can only exapnd it once.
+  //-- role="button" for space/enter key to work. I would prefer it to be a role.defintion
   if(useAmp()) {
     return (
       <AcronymContainer
+        role="button"
+        tabIndex="0"
         toggleable={false}
         data-amp-bind-text="displayedText"
         data-amp-bind-class="containerClass"
@@ -74,9 +80,13 @@ const Acronym = (props) => {
   } else {
     return(
       <AcronymContainer
+        role="definition"
+        tabIndex="0"
+        aria-expanded={isExpanded}
         isExpanded={isExpanded}
         toggleable={props.toggleable}
         onClick={handleClick}
+        onKeyDown={handleClick}
         ref={textRef}        
       >
         {textDisplayed}
