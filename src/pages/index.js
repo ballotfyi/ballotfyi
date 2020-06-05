@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Header from "components/layout/header.js";
 import Image from "components/Image/Image";
 import Acronym from "components/Acronym/Acronym";
+import EmbeddedDoc from "components/EmbeddedDoc/EmbeddedDoc";
 import { useAmp } from "next/amp";
 import withBasicTemplate from "template/basic";
 import Link from "next/link";
@@ -96,6 +97,8 @@ const IndexPage = () => {
           <div>
             <h1>ballot.fyi</h1>
             <Acronym acronym='CIA' expanded='Central Intelligence Agency' />
+            <EmbeddedDoc src="https://www.gpo.gov/fdsys/pkg/GPO-CONAN-1992/pdf/GPO-CONAN-1992-6.pdf"/>
+
             <h2>not amp</h2>
             <Link href="?amp=1">
               <a>AMP ⚡️</a>
