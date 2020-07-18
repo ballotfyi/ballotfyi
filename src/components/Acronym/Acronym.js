@@ -82,7 +82,6 @@ const Acronym = (props) => {
       <AcronymContainer
         role="definition"
         tabIndex="0"
-        aria-expanded={isExpanded}
         isExpanded={isExpanded}
         toggleable={props.toggleable}
         onClick={handleClick}

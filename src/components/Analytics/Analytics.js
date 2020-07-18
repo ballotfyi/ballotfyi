@@ -10,7 +10,7 @@ import { GA_TRACKING_ID } from "lib/gtag";
  * */
 
 const Analytics = React.memo(() => {
-  const isProd = process.env.NODE_ENV === "production";
+  const isProd = process.env.NODE_ENV === "production"; // eslint-disable-line
   if (!isProd) return null;
   return useAmp() ? <AmpHead /> : <GoogAnalyticsHead />;
 });

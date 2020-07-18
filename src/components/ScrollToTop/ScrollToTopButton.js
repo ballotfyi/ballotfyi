@@ -67,7 +67,7 @@ const ScrollToTopButtonAmp = () => {
       <Container isDisplayed={true}>
         <Button
           role="button"
-          tabIndex="10"
+          tabIndex="0"
           id={`${buttonId}`}
           on="tap:scrollToTopElem.scrollTo(duration=200)"
         >
