@@ -152,10 +152,7 @@ const Tag = styled.div`
   color: #aaa;
   font-size: 12px;
 `;
-const IntroText = styled.div`
-  font-size: 14px;
 
-`;
 const SubscribeForm = styled.div`
   display: flex;
 `;
