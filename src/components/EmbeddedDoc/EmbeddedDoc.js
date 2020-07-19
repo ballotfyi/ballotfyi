@@ -2,8 +2,9 @@ import {useAmp} from 'next/amp'
 import PropTypes from 'prop-types';
 
 const EmbeddedDocument = (props) => {
+  const { isAmp } = useAmp();
   if (!props.src) return null;
-  if( useAmp() ) {
+  if( isAmp ) {
     return ( 
       <amp-google-document-embed 
         src={props.src}

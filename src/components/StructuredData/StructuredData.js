@@ -22,7 +22,9 @@ const StructuredData = (props) => {
   } = props;
   const urlBase = "https://www.ballot.fyi/";
   const publisherId = urlBase + "#publisher";
-  const articleUrls = [urlBase + "1", urlBase + "2", urlBase + "3"];
+  const propNums = Array(12).fill(14).map((val, index) => val+index); // [14, 15, ..., 25]
+  const articleUrls = propNums.map( (n) => `${urlBase}prop-${n}` );
+  
   const articleData = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -60,6 +62,7 @@ const StructuredData = (props) => {
       "@id": publisherId,
     },
   };
+
   const homeData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -119,6 +122,7 @@ const StructuredData = (props) => {
   };
   return (
     <Head>
+      {/* TODO put in structured data for home page */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleData) }}

@@ -10,9 +10,10 @@ import { GA_TRACKING_ID } from "lib/gtag";
  * */
 
 const Analytics = React.memo(() => {
+  const isAmp = useAmp();
   const isProd = process.env.NODE_ENV === "production"; // eslint-disable-line
   if (!isProd) return null;
-  return useAmp() ? <AmpHead /> : <GoogAnalyticsHead />;
+  return isAmp ? <AmpHead /> : <GoogAnalyticsHead />;
 });
 
 //-- must be placed in body

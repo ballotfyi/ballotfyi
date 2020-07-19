@@ -101,7 +101,7 @@ const IndexPage = () => {
 
             <h2>not amp</h2>
             <Link href="?amp=1">
-              <a>AMP ⚡️</a>
+              <a>AMP <span role="img" aria-label="amp">⚡️</span></a>
             </Link>
             <br />
             <br />

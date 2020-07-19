@@ -30,7 +30,7 @@ const useScrollToTop = (showOnVertPercentage) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [containerHeight]);
+  }, [containerHeight, showOnVertPercentage]);
 
   //-- provide a click handler that scrolls back to top
   const onClickHandler = useCallback((e) => {

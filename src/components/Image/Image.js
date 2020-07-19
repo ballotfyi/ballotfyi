@@ -40,7 +40,7 @@ import "lazysizes/plugins/attrchange/ls.attrchange";
 const Image = (props) => {
   const isAmp = useAmp();
   const [srcsetWebp, setSrcsetWebp] = useState("");
-  const [srcWebp, setSrcWebp] = useState("");
+  const [srcWebp, setSrcWebp] = useState(""); // eslint-disable-line no-unused-vars
   const [srcsetFallback, setSrcsetFallback] = useState("");
   const [srcFallback, setSrcFallback] = useState("");
   const [ext, setExt] = useState("jpeg");

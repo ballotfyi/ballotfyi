@@ -1,6 +1,5 @@
 import React from "react";
 import Analytics from "components/Analytics/Analytics";
-import StructuredData from "components/StructuredData/StructuredData";
 import Fonts from "components/Fonts/Fonts";
 
 /**
@@ -11,7 +10,6 @@ const withBasicTemplate = (WrappedComponent) => {
   return (props) => {
     return (
       <>
-        <StructuredData />
         <Analytics />
         <Fonts />
         <WrappedComponent {...props} />

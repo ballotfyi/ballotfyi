@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import Header from "components/layout/header.js";
-import { useAmp } from "next/amp";
+// import { useAmp } from "next/amp";
 import withBasicTemplate from "template/basic";
 import { Row, Col, Form, Input, Button} from 'antd';
 import { Space } from 'components/util'
 import { MailOutlined } from '@ant-design/icons'
 
 const IndexPage = () => {
-  const isAmp = useAmp();
+  // const isAmp = useAmp();
   const handleFormSubmit = (values) => {
     console.log(values.email);
   }
@@ -30,13 +30,14 @@ const IndexPage = () => {
           <Space height={10} />
           <Tag>COMING SOON</Tag>
           <Space height={80} />
-          <IntroText>
-            We’ll be back in October to explain the arguments behind this year’s 12 Calfornia state propositions. Elections are, by definition, freakin’ fun, and 2020 is no exception, really.
-          </IntroText>
+          <Description>
+            We’ll be back in October to explain the arguments behind this year’s twelve Calfornia state propositions. Elections are, by definition, freakin’ fun, and 2020 is no exception, really.
+          </Description>
           <Space height={20} />
           <SubscribeTitle>We’ll let you know when we publish our guide</SubscribeTitle>
           <SubscribeForm>
-            <Form 
+            <Form
+              style={{width: '100%'}}
               onFinish={handleFormSubmit}
               hideRequiredMark
               validateTrigger="onSubmit"
@@ -61,7 +62,6 @@ const IndexPage = () => {
                       style={{padding: '10px 15px', borderRadius: 23}}
                       prefix={<MailOutlined style={{marginRight: 6}}/>}
                       placeholder="Your email"
-                      enterButton='LMK'
                     />
                   </Form.Item>
                 </Col>
@@ -164,6 +164,8 @@ const SubscribeTitle = styled.h3`
   font-size: 14px;
 `;
 const Description = styled.div`
+  font-size: 14px;
+  line-height: 23px;
 `;
 
 const StyledButton = styled(Button)`
