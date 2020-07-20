@@ -2,15 +2,14 @@ import styled from "styled-components";
 import Header from "components/layout/header.js";
 // import { useAmp } from "next/amp";
 import withBasicTemplate from "template/basic";
-import { Row, Col, Form, Input, Button} from 'antd';
+import { Row, Col } from 'antd';
 import { Space } from 'components/util'
-import { MailOutlined } from '@ant-design/icons'
+import EmailSubscribe from 'components/EmailSubscribe/EmailSubscribe'
 
 const IndexPage = () => {
+
   // const isAmp = useAmp();
-  const handleFormSubmit = (values) => {
-    console.log(values.email);
-  }
+
   return (
     <>
       <Header />
@@ -35,44 +34,7 @@ const IndexPage = () => {
           </Description>
           <Space height={20} />
           <SubscribeTitle>We’ll let you know when we publish our guide</SubscribeTitle>
-          <SubscribeForm>
-            <Form
-              style={{width: '100%'}}
-              onFinish={handleFormSubmit}
-              hideRequiredMark
-              validateTrigger="onSubmit"
-            >
-              <Row gutter={8}>
-                <Col span={18}>
-                  <Form.Item 
-                    name="email"
-                    normalize={(val) => val.trim()}
-                    rules={[
-                      {
-                        type: 'email',
-                        message: 'Email please, not a tweet',
-                      },
-                      {
-                        required: true,
-                        message: 'Email needed',
-                      },
-                    ]}
-                  >
-                    <Input
-                      style={{padding: '10px 15px', borderRadius: 23}}
-                      prefix={<MailOutlined style={{marginRight: 6}}/>}
-                      placeholder="Your email"
-                    />
-                  </Form.Item>
-                </Col>
-                <Col span={6}>
-                  <StyledButton>
-                    LMK
-                  </StyledButton>
-                </Col>
-              </Row>
-            </Form>
-          </SubscribeForm>          
+          <EmailSubscribe/>
           <Space height={20} />
 
           <Description>
@@ -153,9 +115,7 @@ const Tag = styled.div`
   font-size: 12px;
 `;
 
-const SubscribeForm = styled.div`
-  display: flex;
-`;
+
 const SubscribeTitle = styled.h3`
   font-weight: 500;
   font-size: 14px;
@@ -163,26 +123,4 @@ const SubscribeTitle = styled.h3`
 const Description = styled.div`
   font-size: 14px;
   line-height: 23px;
-`;
-
-const StyledButton = styled(Button)`
-  font-size: 12px;
-  color: white;
-  height: 44px;
-  border-radius: 22px;
-  width: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #ADAAFE 16.67%, #FFB9B9 73.81%);
-  background-color: #FFB9B9;
-  border: 0;
-  transition: color 200ms ease-in-out;
-  @media not all and (hover: none) {
-    &:hover {
-      color: #FFB9B9;
-      background-color: #ADAAFE;
-      background: linear-gradient(90deg, #ADAAFE 0%, #ADAAFE 100%);
-    }
-  }
 `;

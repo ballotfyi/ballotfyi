@@ -1,11 +1,13 @@
 const functions = require('firebase-functions');
 const cors = require('cors')({
-  origin: [/\.ballot\.fyi$/, 'localhost:3000']
+  origin: [/\.ballot\.fyi$/, 'http://localhost:3000'],
+  methods: ['POST']
 });
 const axios = require('axios');
 const crypto = require('crypto');
 
-//-- Test call in Firebase Functions shell: subscribeEmail.post('/').form({email:'jimmychion@gmail.com'})
+//-- Test call in Firebase Functions shell: 
+// subscribeEmail.post('/').form({email:'jimmychion@gmail.com'})
 /** send a request to this function from the origins whitelisted
  * to subscribe an email address to ballotfyi's audience
  * 
@@ -13,13 +15,12 @@ const crypto = require('crypto');
  * and assumes that those who have unsubscribed but reentering their email
  * wish to have their information updated
  */ 
-exports.subscribeEmail = functions.https.onRequest( (req, res) => {
-  const { email } = req.body;
-  if (!email) {
-    res.sendStatus(400);
-  }
-  return cors(req, res, async () => {
-
+exports.subscribeEmail = functions.https.onRequest( async (req, res) => {
+  return cors(req, res, async () => {    
+    const { email } = req.body;
+    if (!email) {
+      res.sendStatus(400);
+    }
     let doesExistRes;
     let doesExist = false;
     try {
@@ -27,12 +28,13 @@ exports.subscribeEmail = functions.https.onRequest( (req, res) => {
         type: 'check existence',
         targetEmail: email,
       });
-      if (doesExistRes.status === 200) {
+      if (doesExistRes && doesExistRes.status === 200) {
         doesExist = true;
       }
     } catch (err) {
-      if (err.response.status !== 404) {
+      if (err && err.response && err.response.status !== 404) {
         res.sendStatus(500);
+        return;
       }
     }
 
@@ -64,21 +66,20 @@ exports.subscribeEmail = functions.https.onRequest( (req, res) => {
           type: subscribeType,
           targetEmail: email,
         });
+        if (subRes && subRes.status === 200) {
+          res.status(200).send(subscribeType);
+        } else {
+          res.sendStatus(500);
+        }
       } catch (err) {
         console.warn(`Error trying to ${subscribeType}`);
         res.sendStatus(500);
       }
-      if (subRes.status === 200) {
-        res.status(200).send(subscribeType);
-      } else {
-        res.sendStatus(500);
-      }
     }
-
   })
 });
 
-const sendMailchimpRequest = (params) => {
+function sendMailchimpRequest(params) {
   const { type, targetEmail } = params;
   const audienceId = functions.config().mailchimp.id;
   const key = functions.config().mailchimp.key;
@@ -87,6 +88,7 @@ const sendMailchimpRequest = (params) => {
   const baseEndpoint = `https://${dc}.api.mailchimp.com/3.0/lists/${audienceId}/members/`;
   let method = 'GET';
   let data = null;
+  let endpoint = baseEndpoint;
   if (type === 'check existence') {
     method = 'GET';
     endpoint = baseEndpoint + emailHash;
@@ -114,4 +116,4 @@ const sendMailchimpRequest = (params) => {
     },
     data: data,
   });
-};
+}

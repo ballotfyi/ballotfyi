@@ -2,7 +2,7 @@
   "name": "ballotfyi-functions",
   "description": "Firebase functions for ballot.fyi",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "./node_modules/.bin/eslint .",
     "serve": "firebase emulators:start --only functions",
     "shell": "firebase functions:shell",
     "start": "npm run shell",
@@ -19,7 +19,7 @@
     "firebase-functions": "^3.6.1"
   },
   "devDependencies": {
-    "eslint": "^5.12.0",
+    "eslint": "^7.5.0",
     "eslint-plugin-promise": "^4.0.1",
     "firebase-functions-test": "^0.2.0"
   },
