@@ -9,12 +9,12 @@
  * [x] doesn't cause FOUC/layout thrashing
  * [ish] gracefully handle no javascript <noscript>
  * */
-import PropTypes from "prop-types";
-import { extname } from "path";
-import { useEffect, useState } from "react";
-import { useAmp } from "next/amp";
-import "lazysizes";
-import "lazysizes/plugins/attrchange/ls.attrchange";
+import PropTypes from 'prop-types';
+import { extname } from 'path';
+import { useEffect, useState } from 'react';
+import { useAmp } from 'next/amp';
+import 'lazysizes';
+import 'lazysizes/plugins/attrchange/ls.attrchange';
 
 /**
   * Example usage:
@@ -39,11 +39,11 @@ import "lazysizes/plugins/attrchange/ls.attrchange";
 
 const Image = (props) => {
   const isAmp = useAmp();
-  const [srcsetWebp, setSrcsetWebp] = useState("");
-  const [srcWebp, setSrcWebp] = useState(""); // eslint-disable-line no-unused-vars
-  const [srcsetFallback, setSrcsetFallback] = useState("");
-  const [srcFallback, setSrcFallback] = useState("");
-  const [ext, setExt] = useState("jpeg");
+  const [srcsetWebp, setSrcsetWebp] = useState('');
+  const [srcWebp, setSrcWebp] = useState(''); // eslint-disable-line no-unused-vars
+  const [srcsetFallback, setSrcsetFallback] = useState('');
+  const [srcFallback, setSrcFallback] = useState('');
+  const [ext, setExt] = useState('jpeg');
 
   const { srcset, lazyload, alt, width, height, style } = props;
 
@@ -54,7 +54,7 @@ const Image = (props) => {
     const [srcWebp, srcsetWebp] = extractSrcAndSrcset(webpArr);
     const [srcFallback, srcsetFallback] = extractSrcAndSrcset(fallbackArr);
     const extension = extname(srcFallback).substring(1).toLowerCase();
-    if (extension !== "jpg") setExt(extension); //-- bc we default to 'jpeg', foo.jpg -> ext == 'jpeg'
+    if (extension !== 'jpg') setExt(extension); //-- bc we default to 'jpeg', foo.jpg -> ext == 'jpeg'
     setSrcWebp(srcWebp);
     setSrcsetWebp(srcsetWebp);
     setSrcFallback(srcFallback);
@@ -65,9 +65,7 @@ const Image = (props) => {
     let webpArr = [];
     let fallbackArr = [];
     srcsetArr.forEach((img) => {
-      extname(img.url).toLowerCase() === ".webp"
-        ? webpArr.push(img)
-        : fallbackArr.push(img);
+      extname(img.url).toLowerCase() === '.webp' ? webpArr.push(img) : fallbackArr.push(img);
     });
     return [webpArr, fallbackArr];
   };
@@ -75,12 +73,11 @@ const Image = (props) => {
   //-- isolating logic outside of useEffect so that it can be used by AMP
   const extractSrcAndSrcset = (arr) => {
     //-- convert array to usable srcset string (e.g. "/static/img.jpg 1200w, ...")
-    let srcset = "";
+    let srcset = '';
     arr.forEach((img, i) => {
-      srcset += `${img.url} ${img.width}w${i < arr.length - 1 ? ", " : ""}`;
+      srcset += `${img.url} ${img.width}w${i < arr.length - 1 ? ', ' : ''}`;
     });
-    const src =
-      arr.length > 0 ? arr[Math.floor(arr.length / 2)].url : undefined;
+    const src = arr.length > 0 ? arr[Math.floor(arr.length / 2)].url : undefined;
 
     return [src, srcset];
   };
@@ -117,12 +114,7 @@ const Image = (props) => {
             )
           }
           <noscript>
-            <img
-              src={srcFallback}
-              width={`${width}`}
-              height={`${height}`}
-              alt={alt}
-            />
+            <img src={srcFallback} width={`${width}`} height={`${height}`} alt={alt} />
           </noscript>
         </amp-img>
       </>
@@ -130,7 +122,7 @@ const Image = (props) => {
   } else {
     if (lazyload) {
       return (
-        <picture style={{ width: "100%", ...style }}>
+        <picture style={{ width: '100%', ...style }}>
           <source data-srcset={srcsetWebp} type="image/webp" />
           <source data-srcset={srcsetFallback} type={`image/${ext}`} />
           <img
@@ -140,21 +132,21 @@ const Image = (props) => {
             data-srcset={srcsetFallback}
             className="lazyload"
             alt={alt}
-            style={{ width: "100%", ...style }}
+            style={{ width: '100%', ...style }}
           />
         </picture>
       );
     } else {
       //-- not lazyload, recommended for small images
       return (
-        <picture style={{ width: "100%", ...style }}>
+        <picture style={{ width: '100%', ...style }}>
           <source srcSet={srcsetWebp} type="image/webp" />
           <source srcSet={srcsetFallback} type={`image/${ext}`} />
           <img
             src={srcFallback}
             srcSet={srcFallback}
             alt={alt}
-            style={{ width: "100%", ...style }}
+            style={{ width: '100%', ...style }}
           />
         </picture>
       );
@@ -186,7 +178,7 @@ Image.propTypes = {
 
 Image.defaultProps = {
   srcSet: [],
-  alt: "",
+  alt: '',
   width: 1,
   height: 1,
   lazyload: true,

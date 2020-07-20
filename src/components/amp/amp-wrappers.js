@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 /* Next.js automatically pulls the correct AMP resource */
 //-------------------------------------
@@ -35,7 +35,7 @@ AmpAnalytics.propTypes = {
   children: PropTypes.object.isRequired,
 };
 AmpAnalytics.defaultProps = {
-  type: "googleanalytics",
+  type: 'googleanalytics',
   children: PropTypes.object.isRequired,
 };
 
@@ -63,7 +63,7 @@ AmpPositionObserver.propTypes = {
 AmpPositionObserver.defaultProps = {
   target: undefined,
   on: undefined,
-  intersectionRatios: "0",
-  viewportMargins: "0",
+  intersectionRatios: '0',
+  viewportMargins: '0',
   once: undefined,
 };

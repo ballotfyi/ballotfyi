@@ -1,7 +1,7 @@
-import Document from "next/document";
-import { ServerStyleSheet } from "styled-components";
-import stylesCss from "!raw-loader!./index.min.css";
-import antdCss from "!raw-loader!antd/dist/antd.css";
+import Document from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
+import stylesCss from '!raw-loader!./index.min.css';
+import antdCss from '!raw-loader!antd/dist/antd.css';
 
 export default class CustomDocument extends Document {
   static async getInitialProps(ctx) {
@@ -10,8 +10,7 @@ export default class CustomDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />),
+          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
         });
 
       const initialProps = await Document.getInitialProps(ctx);

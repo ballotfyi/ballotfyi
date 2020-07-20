@@ -1,5 +1,5 @@
-import Head from "next/head";
-import PropTypes from "prop-types";
+import Head from 'next/head';
+import PropTypes from 'prop-types';
 /**
  * TODO
  * [ ] replace logo images
@@ -12,110 +12,104 @@ import PropTypes from "prop-types";
 
 // https://developers.google.com/search/docs/data-types/article#amp-sd
 const StructuredData = (props) => {
-  const {
-    datePublished,
-    dateModified,
-    title,
-    description,
-    canonicalUrl,
-    images,
-  } = props;
-  const urlBase = "https://www.ballot.fyi/";
-  const publisherId = urlBase + "#publisher";
-  const propNums = Array(12).fill(14).map((val, index) => val+index); // [14, 15, ..., 25]
-  const articleUrls = propNums.map( (n) => `${urlBase}prop-${n}` );
-  
+  const { datePublished, dateModified, title, description, canonicalUrl, images } = props;
+  const urlBase = 'https://www.ballot.fyi/';
+  const publisherId = urlBase + '#publisher';
+  const propNums = Array(12)
+    .fill(14)
+    .map((val, index) => val + index); // [14, 15, ..., 25]
+  const articleUrls = propNums.map((n) => `${urlBase}prop-${n}`);
+
   const articleData = {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
     mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": canonicalUrl,
+      '@type': 'WebPage',
+      '@id': canonicalUrl,
     },
     headline: title,
     description: description,
     image: images.map((img) => ({
-      "@context": "https://schema.org",
-      "@type": "ImageObject",
-      url: img.url || "www.google.com",
-      caption: img.caption || "",
+      '@context': 'https://schema.org',
+      '@type': 'ImageObject',
+      url: img.url || 'www.google.com',
+      caption: img.caption || '',
       height: img.height || 1,
       width: img.width || 1,
     })),
-    inLanguage: "en-US",
+    inLanguage: 'en-US',
     isAccessibleForFree: true,
     copyrightYear: datePublished.getFullYear(),
     copyrightHolder: {
-      "@id": publisherId,
+      '@id': publisherId,
     },
     datePublished: datePublished.toISOString(),
     dateModified: dateModified.toISOString() || datePublished.toISOString(),
     author: {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: "Jimmy Chion",
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Jimmy Chion',
     },
     publisher: {
-      "@id": publisherId,
+      '@id': publisherId,
     },
     sourceOrganization: {
-      "@id": publisherId,
+      '@id': publisherId,
     },
   };
 
   const homeData = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
     mainEntity: {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
       numberOfItems: articleUrls.length,
       itemListElement: articleUrls.map((url, index) => ({
-        "@context": "https://schema.org",
-        "@type": "ListItem",
+        '@context': 'https://schema.org',
+        '@type': 'ListItem',
         position: index,
         url: url,
       })),
     },
     image: images.map((img) => ({
-      "@context": "https://schema.org",
-      "@type": "ImageObject",
-      url: img.url || "www.google.com",
-      caption: img.caption || "",
+      '@context': 'https://schema.org',
+      '@type': 'ImageObject',
+      url: img.url || 'www.google.com',
+      caption: img.caption || '',
       height: img.height || 1,
       width: img.width || 1,
     })),
-    name: "ballot.fyi",
+    name: 'ballot.fyi',
     publisher: {
-      "@id": publisherId,
+      '@id': publisherId,
     },
   };
 
   const publisher = {
-    "@context": "https://schema.org",
-    "@id": publisherId,
-    "@type": "NewsMediaOrganization",
-    name: "ballot.fyi",
-    alternateName: ["ballotfyi", "ballot fyi"],
-    description:
-      "A nonpartisan voter guide for propositions for California's 2020 Election",
-    foundingDate: "2016-10-01",
+    '@context': 'https://schema.org',
+    '@id': publisherId,
+    '@type': 'NewsMediaOrganization',
+    name: 'ballot.fyi',
+    alternateName: ['ballotfyi', 'ballot fyi'],
+    description: "A nonpartisan voter guide for propositions for California's 2020 Election",
+    foundingDate: '2016-10-01',
     url: urlBase,
-    email: "fax@ballot.fyi",
+    email: 'fax@ballot.fyi',
     founder: {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: "Jimmy Chion",
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Jimmy Chion',
     },
     sameAs: [
-      "https://www.facebook.com/ballotfyi/",
-      "https://twitter.com/ballotfyi/",
-      "https://www.instagram.com/ballotfyi/",
+      'https://www.facebook.com/ballotfyi/',
+      'https://twitter.com/ballotfyi/',
+      'https://www.instagram.com/ballotfyi/',
     ],
     logo: {
-      "@context": "https://schema.org",
-      "@type": "ImageObject",
-      url: "https://google.com/logo.jpg",
+      '@context': 'https://schema.org',
+      '@type': 'ImageObject',
+      url: 'https://google.com/logo.jpg',
       width: 300,
       height: 200,
     },
@@ -154,9 +148,9 @@ StructuredData.propTypes = {
 };
 
 StructuredData.defaultProps = {
-  title: "ballot.fyi",
-  description: "ballot.fyi",
-  canonicalUrl: "https://www.ballot.fyi",
+  title: 'ballot.fyi',
+  description: 'ballot.fyi',
+  canonicalUrl: 'https://www.ballot.fyi',
   datePublished: new Date(),
   dateModified: new Date(),
   images: [{}],

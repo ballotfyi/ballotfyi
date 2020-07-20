@@ -1,5 +1,5 @@
-import Head from "next/head";
-import { useAmp } from "next/amp";
+import Head from 'next/head';
+import { useAmp } from 'next/amp';
 //-- thank you @zachleat https://github.com/zachleat/web-font-loading-recipes
 
 const AmpFonts = () => (

@@ -1,9 +1,9 @@
-import Head from "next/head";
-import { AmpAnalytics } from "components/amp/amp-wrappers";
-import { useAmp } from "next/amp";
-import { useRouter } from "next/router";
+import Head from 'next/head';
+import { AmpAnalytics } from 'components/amp/amp-wrappers';
+import { useAmp } from 'next/amp';
+import { useRouter } from 'next/router';
 
-import { GA_TRACKING_ID } from "lib/gtag";
+import { GA_TRACKING_ID } from 'lib/gtag';
 
 /**
  * Part of the analytics logging (for non-AMP) is in pages/_app.js
@@ -11,7 +11,7 @@ import { GA_TRACKING_ID } from "lib/gtag";
 
 const Analytics = React.memo(() => {
   const isAmp = useAmp();
-  const isProd = process.env.NODE_ENV === "production"; // eslint-disable-line
+  const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
   if (!isProd) return null;
   return isAmp ? <AmpHead /> : <GoogAnalyticsHead />;
 });
@@ -24,9 +24,9 @@ const AmpHead = React.memo(() => {
       account: GA_TRACKING_ID,
     },
     triggers: {
-      "default pageview": {
-        on: "visible",
-        request: "pageview",
+      'default pageview': {
+        on: 'visible',
+        request: 'pageview',
         vars: {
           canonicalPath: router.pathname,
         },

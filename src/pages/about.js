@@ -1,4 +1,4 @@
-import withBasicTemplate from "template/basic";
+import withBasicTemplate from 'template/basic';
 
 const AboutPage = () => {
   return <div>About</div>;
@@ -7,5 +7,5 @@ const AboutPage = () => {
 export default withBasicTemplate(AboutPage);
 
 export const config = {
-  amp: "hybrid",
+  amp: 'hybrid',
 };

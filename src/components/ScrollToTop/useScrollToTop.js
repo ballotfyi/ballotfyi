@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from 'react';
 
 /**
  * custom hook provides the logic for a scroll to top (of page) button that shows after the window is scrolled
@@ -26,9 +26,9 @@ const useScrollToTop = (showOnVertPercentage) => {
     const handleScroll = () => {
       setIsDisplayed(window.scrollY / containerHeight > showOnVertPercentage);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [containerHeight, showOnVertPercentage]);
 
@@ -38,7 +38,7 @@ const useScrollToTop = (showOnVertPercentage) => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }, []);
 

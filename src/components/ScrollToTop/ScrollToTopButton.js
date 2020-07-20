@@ -1,12 +1,12 @@
-import { AmpAnimation, AmpPositionObserver } from "components/amp/amp-wrappers";
-import useScrollToTop from "components/ScrollToTop/useScrollToTop";
-import styled from "styled-components";
-import { useAmp } from "next/amp";
+import { AmpAnimation, AmpPositionObserver } from 'components/amp/amp-wrappers';
+import useScrollToTop from 'components/ScrollToTop/useScrollToTop';
+import styled from 'styled-components';
+import { useAmp } from 'next/amp';
 
 //-- styles
 const Container = styled.div`
   width: 100%;
-  display: ${(props) => (props.isDisplayed ? "flex" : "none")};
+  display: ${(props) => (props.isDisplayed ? 'flex' : 'none')};
   justify-content: center;
 `;
 
@@ -18,26 +18,26 @@ const Button = styled.div`
   padding: 10px;
   background-color: white;
   border-radius: 20px;
-  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
-    0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+    0 9px 28px 8px rgba(0, 0, 0, 0.05);
 `;
 
 //-- AMP version
 const ScrollToTopButtonAmp = () => {
   //-- to keep the animations paired with the button
-  const buttonId = "scrollToTopBtn";
+  const buttonId = 'scrollToTopBtn';
   const showAnim = {
-    duration: "200ms",
-    fill: "both",
-    iterations: "1",
-    direction: "alternate",
+    duration: '200ms',
+    fill: 'both',
+    iterations: '1',
+    direction: 'alternate',
     animations: [
       {
         selector: `#${buttonId}`,
         keyframes: [
           {
-            opacity: "1",
-            visibility: "visible",
+            opacity: '1',
+            visibility: 'visible',
           },
         ],
       },
@@ -45,17 +45,17 @@ const ScrollToTopButtonAmp = () => {
   };
 
   const hideAnim = {
-    duration: "200ms",
-    fill: "both",
-    iterations: "1",
-    direction: "alternate",
+    duration: '200ms',
+    fill: 'both',
+    iterations: '1',
+    direction: 'alternate',
     animations: [
       {
         selector: `#${buttonId}`,
         keyframes: [
           {
-            opacity: "0",
-            visibility: "hidden",
+            opacity: '0',
+            visibility: 'hidden',
           },
         ],
       },
@@ -78,10 +78,7 @@ const ScrollToTopButtonAmp = () => {
       <AmpAnimation id="hideAnim">{hideAnim}</AmpAnimation>
       <AmpAnimation id="showAnim">{showAnim}</AmpAnimation>
       {/* waits until target element comes into viewport */}
-      <AmpPositionObserver
-        target="bottomEl"
-        on="enter:hideAnim.start; exit:showAnim.start"
-      />
+      <AmpPositionObserver target="bottomEl" on="enter:hideAnim.start; exit:showAnim.start" />
     </>
   );
 };

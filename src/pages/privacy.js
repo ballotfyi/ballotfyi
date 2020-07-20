@@ -1,4 +1,4 @@
-import withBasicTemplate from "template/basic";
+import withBasicTemplate from 'template/basic';
 
 const PrivacyPage = () => {
   return <div>Privacy</div>;
@@ -6,5 +6,5 @@ const PrivacyPage = () => {
 
 export default withBasicTemplate(PrivacyPage);
 export const config = {
-  amp: "hybrid",
+  amp: 'hybrid',
 };
