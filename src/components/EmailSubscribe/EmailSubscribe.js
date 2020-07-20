@@ -48,7 +48,7 @@ const EmailSubscribe = () => {
       {isSending ? spinner : 'LMK'}
     </StyledButton>
   );
-  let subMessage = '';
+  let subMessage = null;
 
   if (signupResult === 'success') {
     statusOrButton = (
@@ -56,21 +56,21 @@ const EmailSubscribe = () => {
         <CheckOutlined style={{ color: '#fff' }} />
       </Circle>
     );
-    subMessage = "Subscribed. We'll let you know";
+    subMessage = "> Subscribed! We'll let you know";
   } else if (signupResult === 'already') {
     statusOrButton = (
       <Circle color={'mediumslateblue'}>
         <HeartFilled style={{ color: 'magenta' }} />
       </Circle>
     );
-    subMessage = "Already a subscriber! You're an OG.";
+    subMessage = "> Already a subscriber! You're an OG.";
   } else if (signupResult === 'error') {
     statusOrButton = (
       <Circle color={'#DC143C'}>
         <ExclamationOutlined style={{ color: '#fff' }} />
       </Circle>
     );
-    subMessage = "Something went wrong, and we couldn't subscribe you.";
+    subMessage = "> Something went wrong, and we couldn't subscribe you.";
   }
 
   return (
@@ -107,12 +107,14 @@ const EmailSubscribe = () => {
                   placeholder="Your email"
                 />
               </Form.Item>
+              <Absolute>
+                <Message>{subMessage}</Message>
+              </Absolute>
             </Col>
             <Col span={6}>{statusOrButton}</Col>
           </Row>
         </Form>
       </SubscribeForm>
-      {subMessage}
     </div>
   );
 };
@@ -121,6 +123,21 @@ export default EmailSubscribe;
 
 const SubscribeForm = styled.div`
   display: flex;
+`;
+
+const Absolute = styled.div`
+  position: absolute;
+  width: 100%;
+`;
+
+const Message = styled.div`
+  position: relative;
+  top: -22px;
+  padding-left: 30px;
+  padding-top: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  font-style: italic;
 `;
 
 const Circle = styled.div`
