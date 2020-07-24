@@ -1,63 +1,97 @@
+import {useState, useRef, useEffect} from 'react';
 import styled from 'styled-components';
-import Header from 'components/layout/header.js';
+import HeadContent from 'components/HeadContent/HeadContent.js';
+import Footer from 'components/layout/footer.js';
 // import { useAmp } from "next/amp";
 import withBasicTemplate from 'template/basic';
 import { Row, Col } from 'antd';
 import { Space } from 'components/util';
 import EmailSubscribe from 'components/EmailSubscribe/EmailSubscribe';
+import Acronym from 'components/Acronym/Acronym';
 
 const IndexPage = () => {
   // const isAmp = useAmp();
+  const [footerHeight, setFooterHeight] = useState(0);
+  const footerRef = useRef();
+
+  useEffect(() => {
+    setFooterHeight(footerRef.current.getBoundingClientRect().height);
+  },[footerRef])
 
   return (
     <>
-      <Header />
-      <Row>
-        <Col offset={1} span={10}>
-          <TopHat>
-            <TopHatDot />
-            <TopHatBar />
-          </TopHat>
-        </Col>
-      </Row>
-      <Space height={60} />
-      <Row>
-        <Col offset={1} span={8}>
-          <Title>ballot.fyi</Title>
-          <Subtitle>The 2020 California Ballot Propositions, Explained</Subtitle>
-          <Space height={10} />
-          <Tag>COMING SOON</Tag>
-          <Space height={80} />
-          <Description>
-            We’ll be back in October to explain the arguments behind this year’s twelve Calfornia
-            state propositions. Elections are, by definition, freakin’ fun, and 2020 is no
-            exception, really.
-          </Description>
-          <Space height={20} />
-          <SubscribeTitle>We’ll let you know when we publish our guide</SubscribeTitle>
-          <EmailSubscribe />
-          <Space height={20} />
+      {/* <HeadContent /> */}
+      <div style={{ minHeight: `calc(100vh - ${footerHeight}px)` }}>
+        <Row>
+          <Col 
+            xs={{ offset:1, span:18 }}
+            xl={{ offset:3, span:13 }}
+            lg={{ offset:1, span:10 }}
+            xxl={{ offset:5, span:14 }}
+          >
+            <TopHat>
+              <TopHatDot />
+              <TopHatBar />
+            </TopHat>
+          </Col>
+        </Row>
+        <Space height={60} xsHeight={35}/>
+        <Row>
+          <Col
+            xs={{ offset:1, span:22 }}
+            sm={{ offset:2, span:20 }}
+            md={{ offset:1, span:10 }}
+            lg={{ offset:1, span:9 }}
+            xl={{ offset:3, span:8 }}
+            xxl={{ offset:5, span:6 }}
+          >
+            <Title>ballot.fyi</Title>
+            <Subtitle>The 2020 California Ballot Propositions, Explained</Subtitle>
+            <Space height={10}/>
+            <Tag>COMING SOON</Tag>
 
-          <Description>
-            If you’d like to be notified when we publish our multi-opinionated explainers, sign up
-            for our biennial email list.
-          </Description>
-        </Col>
-        <Col offset={6} span={8}>
-          <Subtitle>12 Propositions</Subtitle>
+            <Space height={80} xsHeight={40} />
 
-          <Description>
-            ...as if you didn’t think this election wasn’t already a BFD. We’re doing the research
-            to understand the issues and their possible ramifications, so that come October, when
-            you get your mail-in ballot, you can read our summaries to understand the broad set of
-            opinions, dive into the details, and come to your own conclusions.
-            <br />
-            <br />
-            P.S. If you’re curious to learn more about any of these props, like right now,
-            ballotpedia is a good and dense place to start.
-          </Description>
-        </Col>
-      </Row>
+            <Description>
+              We’ll be back in October to explain the arguments behind this year’s twelve Calfornia
+              state propositions. Elections are, by definition, freakin’ fun, and 2020 is no
+              exception, really.
+            </Description>
+            <Space height={20} />
+            <SubscribeTitle>We’ll let you know when we publish our guide</SubscribeTitle>
+            <EmailSubscribe />
+
+            <Space height={20} xsHeight={15}/>
+
+            <Description>
+              If you’d like to be notified when we publish our multi-opinionated explainers, sign up
+              for our biennial email list.
+            </Description>
+          </Col>
+          <Col
+            xs={{ offset:1, span:22 }}
+            sm={{ offset:2, span:20 }}
+            md={{ offset:2, span:10 }}
+            lg={{ offset:4, span:9 }}
+            xl={{ offset:2, span:8 }}
+            xxl={{ offset:2, span:6 }}
+          >
+            <Subtitle>12 Propositions</Subtitle>
+
+            <Description>
+              ...as if you didn’t think this election wasn’t already a <Acronym acronym='BFD' expanded='big fucking deal'/>. We’re doing the research
+              to understand the issues and their possible ramifications, so that come October, when
+              you get your mail-in ballot, you can read our summaries to understand the broad set of
+              opinions, dive into the details, and come to your own conclusions.
+              <br />
+              <br />
+              P.S. If you’re curious to learn more about any of these props, like right now,
+              ballotpedia is a good and dense place to start.
+            </Description>
+          </Col>
+        </Row>
+      </div>
+      <Footer ref={footerRef} />
     </>
   );
 };
@@ -114,10 +148,10 @@ const Tag = styled.div`
   box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   padding: 10px 15px;
-  letter-spacing: 0.095em;
   width: 150px;
   color: #aaa;
   font-size: 12px;
+  letter-spacing: 0.095em;
 `;
 
 const SubscribeTitle = styled.h3`

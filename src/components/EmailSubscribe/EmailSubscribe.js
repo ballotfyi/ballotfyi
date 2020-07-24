@@ -38,13 +38,12 @@ const EmailSubscribe = () => {
         setTimeout(() => {
           setSignupResult(null);
         }, 3000);
-        console.log(res.data);
       }
     });
   };
 
   let statusOrButton = (
-    <StyledButton disabled={isSending} tabIndex="0" type="submit" onClick={handleFormSubmit}>
+    <StyledButton disabled={isSending || !emailInput} tabIndex="0" type="submit" onClick={handleFormSubmit}>
       {isSending ? spinner : 'LMK'}
     </StyledButton>
   );
@@ -74,48 +73,46 @@ const EmailSubscribe = () => {
   }
 
   return (
-    <div>
-      <SubscribeForm>
-        <Form
-          style={{ width: '100%' }}
-          onFinish={handleFormSubmit}
-          hideRequiredMark
-          validateTrigger="onSubmit"
-        >
-          <Row gutter={8}>
-            <Col span={18}>
-              <Form.Item
-                name="email"
-                normalize={(val) => val.trim()}
-                rules={[
-                  {
-                    type: 'email',
-                    message: 'Email please, not a tweet',
-                  },
-                  {
-                    required: true,
-                    message: 'Email needed to sign up',
-                  },
-                ]}
-              >
-                <Input
-                  disabled={isSending}
-                  value={emailInput}
-                  onChange={(e) => setEmailInput(e.target.value)}
-                  style={{ padding: '10px 15px', borderRadius: 23 }}
-                  prefix={<MailOutlined style={{ marginRight: 6 }} />}
-                  placeholder="Your email"
-                />
-              </Form.Item>
-              <Absolute>
-                <Message>{subMessage}</Message>
-              </Absolute>
-            </Col>
-            <Col span={6}>{statusOrButton}</Col>
-          </Row>
-        </Form>
-      </SubscribeForm>
-    </div>
+    <SubscribeForm>
+      <Form
+        style={{ width: '100%' }}
+        onFinish={handleFormSubmit}
+        hideRequiredMark
+        validateTrigger="onSubmit"
+      >
+        <Row gutter={8}>
+          <Col xs={{span:20}} sm={{span:18}}>
+            <Form.Item
+              name="email"
+              normalize={(val) => val.trim()}
+              rules={[
+                {
+                  type: 'email',
+                  message: 'Email please, not a tweet',
+                },
+                {
+                  required: true,
+                  message: 'Email needed to sign up',
+                },
+              ]}
+            >
+              <Input
+                disabled={isSending}
+                value={emailInput}
+                onChange={(e) => setEmailInput(e.target.value)}
+                style={{ padding: '10px 15px', borderRadius: 23 }}
+                prefix={<MailOutlined style={{ marginRight: 6 }} />}
+                placeholder="Your email"
+              />
+            </Form.Item>
+            <Absolute>
+              <Message>{subMessage}</Message>
+            </Absolute>
+          </Col>
+          <Col xs={{span:4}} sm={{span:6}}>{statusOrButton}</Col>
+        </Row>
+      </Form>
+    </SubscribeForm>
   );
 };
 
@@ -123,6 +120,10 @@ export default EmailSubscribe;
 
 const SubscribeForm = styled.div`
   display: flex;
+  width: 100%;
+  @media screen and (max-width: 576px) {
+    justify-content: center;
+  }
 `;
 
 const Absolute = styled.div`
