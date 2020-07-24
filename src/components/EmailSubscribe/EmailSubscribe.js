@@ -59,8 +59,8 @@ const EmailSubscribe = () => {
     subMessage = "> Subscribed! We'll let you know";
   } else if (signupResult === 'already') {
     statusOrButton = (
-      <Circle color={'mediumslateblue'}>
-        <HeartFilled style={{ color: 'magenta' }} />
+      <Circle color={'#eb75eb'}>
+        <HeartFilled style={{ color: 'white' }} />
       </Circle>
     );
     subMessage = "> Already a subscriber! You're an OG.";
