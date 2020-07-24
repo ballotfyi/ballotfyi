@@ -43,7 +43,12 @@ const EmailSubscribe = () => {
   };
 
   let statusOrButton = (
-    <StyledButton disabled={isSending || !emailInput} tabIndex="0" type="submit" onClick={handleFormSubmit}>
+    <StyledButton
+      disabled={isSending || !emailInput}
+      tabIndex="0"
+      type="submit"
+      onClick={handleFormSubmit}
+    >
       {isSending ? spinner : 'LMK'}
     </StyledButton>
   );
@@ -81,7 +86,7 @@ const EmailSubscribe = () => {
         validateTrigger="onSubmit"
       >
         <Row gutter={8}>
-          <Col xs={{span:20}} sm={{span:18}}>
+          <Col xs={{ span: 20 }} sm={{ span: 18 }}>
             <Form.Item
               name="email"
               normalize={(val) => val.trim()}
@@ -109,7 +114,9 @@ const EmailSubscribe = () => {
               <Message>{subMessage}</Message>
             </Absolute>
           </Col>
-          <Col xs={{span:4}} sm={{span:6}}>{statusOrButton}</Col>
+          <Col xs={{ span: 4 }} sm={{ span: 6 }}>
+            {statusOrButton}
+          </Col>
         </Row>
       </Form>
     </SubscribeForm>

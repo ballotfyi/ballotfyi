@@ -1,4 +1,4 @@
-import {useState, useRef, useEffect} from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import HeadContent from 'components/HeadContent/HeadContent.js';
 import Footer from 'components/layout/footer.js';
@@ -16,18 +16,18 @@ const IndexPage = () => {
 
   useEffect(() => {
     setFooterHeight(footerRef.current.getBoundingClientRect().height);
-  },[footerRef])
+  }, [footerRef]);
 
   return (
     <>
       {/* <HeadContent /> */}
       <div style={{ minHeight: `calc(100vh - ${footerHeight}px)` }}>
         <Row>
-          <Col 
-            xs={{ offset:1, span:18 }}
-            xl={{ offset:3, span:13 }}
-            lg={{ offset:1, span:10 }}
-            xxl={{ offset:5, span:14 }}
+          <Col
+            xs={{ offset: 1, span: 18 }}
+            xl={{ offset: 3, span: 13 }}
+            lg={{ offset: 1, span: 10 }}
+            xxl={{ offset: 5, span: 14 }}
           >
             <TopHat>
               <TopHatDot />
@@ -35,19 +35,19 @@ const IndexPage = () => {
             </TopHat>
           </Col>
         </Row>
-        <Space height={60} xsHeight={35}/>
+        <Space height={60} xsHeight={35} />
         <Row>
           <Col
-            xs={{ offset:1, span:22 }}
-            sm={{ offset:2, span:20 }}
-            md={{ offset:1, span:10 }}
-            lg={{ offset:1, span:9 }}
-            xl={{ offset:3, span:8 }}
-            xxl={{ offset:5, span:6 }}
+            xs={{ offset: 1, span: 22 }}
+            sm={{ offset: 2, span: 20 }}
+            md={{ offset: 1, span: 10 }}
+            lg={{ offset: 1, span: 9 }}
+            xl={{ offset: 3, span: 8 }}
+            xxl={{ offset: 5, span: 6 }}
           >
             <Title>ballot.fyi</Title>
             <Subtitle>The 2020 California Ballot Propositions, Explained</Subtitle>
-            <Space height={10}/>
+            <Space height={10} />
             <Tag>COMING SOON</Tag>
 
             <Space height={80} xsHeight={40} />
@@ -61,7 +61,7 @@ const IndexPage = () => {
             <SubscribeTitle>We’ll let you know when we publish our guide</SubscribeTitle>
             <EmailSubscribe />
 
-            <Space height={20} xsHeight={15}/>
+            <Space height={20} xsHeight={15} />
 
             <Description>
               If you’d like to be notified when we publish our multi-opinionated explainers, sign up
@@ -69,19 +69,20 @@ const IndexPage = () => {
             </Description>
           </Col>
           <Col
-            xs={{ offset:1, span:22 }}
-            sm={{ offset:2, span:20 }}
-            md={{ offset:2, span:10 }}
-            lg={{ offset:4, span:9 }}
-            xl={{ offset:2, span:8 }}
-            xxl={{ offset:2, span:6 }}
+            xs={{ offset: 1, span: 22 }}
+            sm={{ offset: 2, span: 20 }}
+            md={{ offset: 2, span: 10 }}
+            lg={{ offset: 4, span: 9 }}
+            xl={{ offset: 2, span: 8 }}
+            xxl={{ offset: 2, span: 6 }}
           >
             <Subtitle>12 Propositions</Subtitle>
 
             <Description>
-              ...as if you didn’t think this election wasn’t already a <Acronym acronym='BFD' expanded='big fucking deal'/>. We’re doing the research
-              to understand the issues and their possible ramifications, so that come October, when
-              you get your mail-in ballot, you can read our summaries to understand the broad set of
+              ...as if you didn’t think this election wasn’t already a{' '}
+              <Acronym acronym="BFD" expanded="big fucking deal" />. We’re doing the research to
+              understand the issues and their possible ramifications, so that come October, when you
+              get your mail-in ballot, you can read our summaries to understand the broad set of
               opinions, dive into the details, and come to your own conclusions.
               <br />
               <br />
