@@ -120,9 +120,9 @@ const IndexPage = () => {
 
 export default withBasicTemplate(IndexPage);
 
-export const config = {
-  amp: 'hybrid',
-};
+// export const config = {
+//   amp: 'hybrid',
+// };
 
 //-----------------------------
 

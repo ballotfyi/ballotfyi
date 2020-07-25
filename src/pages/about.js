@@ -6,6 +6,6 @@ const AboutPage = () => {
 
 export default withBasicTemplate(AboutPage);
 
-export const config = {
-  amp: 'hybrid',
-};
+// export const config = {
+//   amp: 'hybrid',
+// };

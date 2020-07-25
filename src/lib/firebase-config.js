@@ -1,14 +1,15 @@
 import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 import 'firebase/functions';
 import { projectConfigs } from 'components/contexts/FirebaseProjectContext';
 
 export const getProjectConfig = () => {
   const GcpEnv = process.env.REACT_APP_GCP_ENV;
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  const envParam = urlParams.get('env');
+  // const queryString = window.location.search;
+  // const urlParams = new URLSearchParams(queryString);
+  // const envParam = urlParams.get('env');
   //-- Order of precedence: URL param, Node env REACT_APP_GCP_ENV, default dev
-  if (envParam && projectConfigs[envParam]) return projectConfigs[envParam];
+  // if (envParam && projectConfigs[envParam]) return projectConfigs[envParam];
   if (GcpEnv && projectConfigs[GcpEnv]) return projectConfigs[GcpEnv];
   return projectConfigs['dev'];
 };
@@ -43,5 +44,4 @@ const getFirebaseConfig = (project) => {
 firebase.initializeApp(getFirebaseConfig(getProjectConfig().project));
 
 const db = firebase.firestore();
-const subscribeEmail = firebase.functions().httpsCallable('subscribeEmail');
-export { firebase, db, subscribeEmail };
+export { firebase, db };

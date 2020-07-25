@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import Router from 'next/router';
+import dynamic from "next/dynamic";
 
 const App = ({ Component, pageProps }) => {
   //-- track page views

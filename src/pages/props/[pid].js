@@ -8,7 +8,7 @@ export default PropPage;
 //-- must return paths to prerender. See: https://nextjs.org/docs/basic-features/data-fetching
 //-- runs at build, so console.log()s won't work
 export async function getStaticPaths() {
-  const propNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const propNumbers = [12];
   const paths = propNumbers.map((num) => ({
     params: {
       pid: `${num}`,

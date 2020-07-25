@@ -5,6 +5,6 @@ const PrivacyPage = () => {
 };
 
 export default withBasicTemplate(PrivacyPage);
-export const config = {
-  amp: 'hybrid',
-};
+// export const config = {
+//   amp: 'hybrid',
+// };
