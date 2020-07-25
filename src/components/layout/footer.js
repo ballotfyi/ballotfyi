@@ -5,10 +5,10 @@ const Container = styled.div`
   height: 60px;
   display: flex;
   align-items: center;
-  box-shadow: 0 -5px 50px 30px rgba(0,0,0,0.025);
+  box-shadow: 0 -5px 50px 30px rgba(0, 0, 0, 0.025);
 `;
 
-const FooterItem = styled.div`
+const FooterItem = styled.a`
   font-size: 12px;
   letter-spacing: 0.095em;
   text-transform: uppercase;
@@ -42,8 +42,8 @@ const Footer = React.forwardRef((props, ref) => {
   ];
 
   const linkComponents = links.map((item) => (
-    <Link href={item.link} key={item.link} tabIndex="0">
-      <FooterItem>{item.label}</FooterItem>
+    <Link href={item.link} key={item.link} passHref>
+      <FooterItem tabIndex="0">{item.label}</FooterItem>
     </Link>
   ));
 

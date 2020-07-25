@@ -15,7 +15,9 @@ const IndexPage = () => {
   const footerRef = useRef();
 
   useEffect(() => {
-    setFooterHeight(footerRef.current.getBoundingClientRect().height);
+    if(footerRef.current) {
+      setFooterHeight(footerRef.current.getBoundingClientRect().height);
+    }
   }, [footerRef]);
 
   return (
@@ -111,7 +113,7 @@ const IndexPage = () => {
           </Col>
         </Row>
       </div>
-      <Footer ref={footerRef} />
+      {/* <Footer ref={footerRef} /> */}
     </>
   );
 };
@@ -145,10 +147,10 @@ const TopHatBar = styled.div`
 `;
 
 const Title = styled.h1`
-  font-family: ITC Avant Garde Gothic Pro, Inter;
+  font-family: 'itc-avant-garde-gothic-pro', Inter, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 44px;
-  line-height: 53px;
+  line-height: 58px;
   color: #5b6a9e;
   text-transform: uppercase;
   margin-bottom: 0;
@@ -199,5 +201,5 @@ const IssuesHeader = styled.h3`
   font-style: italic;
   font-weight: 300;
   font-size: 16px;
-  color: #999; 
+  color: #999;
 `;

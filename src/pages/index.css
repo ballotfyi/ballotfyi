@@ -21,12 +21,22 @@
   src: url('/static/fonts/Inter-italic.var.woff2?v=3.13') format('woff2');
 }
 
+@import url("https://p.typekit.net/p.css?s=1&k=tee1tuv&ht=tk&f=39347&a=20376723&app=typekit&e=css");
+
+@font-face {
+  font-family:"itc-avant-garde-gothic-pro";
+  src:url("https://use.typekit.net/af/0d47f8/00000000000000003b9b3ddf/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/0d47f8/00000000000000003b9b3ddf/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/0d47f8/00000000000000003b9b3ddf/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+  font-display:auto;
+  font-style:normal;
+  font-weight:700;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: serif;
   font-synthesis: weight style;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .fonts-loading body {
@@ -35,7 +45,7 @@ body {
 
 @supports (font-variation-settings: normal) {
   .fonts-loaded body {
-    font-family: 'Inter';
+    font-family: Inter;
     font-weight: 400;
   }
 }
