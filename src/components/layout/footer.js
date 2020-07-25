@@ -5,7 +5,9 @@ const Container = styled.div`
   height: 60px;
   display: flex;
   align-items: center;
+  box-shadow: 0 -5px 50px 30px rgba(0,0,0,0.025);
 `;
+
 const FooterItem = styled.div`
   font-size: 12px;
   letter-spacing: 0.095em;

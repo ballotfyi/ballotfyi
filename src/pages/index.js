@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import HeadContent from 'components/HeadContent/HeadContent.js';
+// import HeadContent from 'components/HeadContent/HeadContent.js';
 import Footer from 'components/layout/footer.js';
 // import { useAmp } from "next/amp";
 import withBasicTemplate from 'template/basic';
@@ -64,8 +64,11 @@ const IndexPage = () => {
             <Space height={20} xsHeight={15} />
 
             <Description>
-              If you’d like to be notified when we publish our multi-opinionated explainers, sign up
-              for our biennial email list.
+              <span role="img" aria-label="pointing up">
+                ☝️
+              </span>
+              {` `}If you’d like to be notified when we publish our multi-opinionated explainers,
+              sign up for our biennial email list.
             </Description>
           </Col>
           <Col
@@ -77,18 +80,34 @@ const IndexPage = () => {
             xxl={{ offset: 2, span: 6 }}
           >
             <Subtitle>12 Propositions</Subtitle>
-
+            <IssuesHeader>Here are some of the juicy decisions you get to make</IssuesHeader>
+            <Issues>
+              <li>How commercial properties are taxed (that’s a big deal)</li>
+              <li>Whether cities can enact new rent control laws</li>
+              <li>Whether older folks can transfer their property tax assessment</li>
+              <li>Whether affirmative action should be legal again</li>
+              <li>Whether Lyft and Uber drivers are independent contractors</li>
+              <li>Whether we should get rid of the cash bail system</li>
+            </Issues>
             <Description>
-              ...as if you didn’t think this election wasn’t already a{' '}
-              <Acronym acronym="BFD" expanded="big fucking deal" />. We’re doing the research to
-              understand the issues and their possible ramifications, so that come October, when you
-              get your mail-in ballot, you can read our summaries to understand the broad set of
-              opinions, dive into the details, and come to your own conclusions.
+              As if you didn’t think this election wasn’t already a{' '}
+              <Acronym acronym="BFD" expanded="big fucking deal" />. The ballot is set, and we’re
+              researching it all, so that come October, when you get your mail-in ballot, you can
+              read our summaries to understand the broad set of opinions, dive into the details, and
+              come to your own conclusions.
               <br />
               <br />
-              P.S. If you’re curious to learn more about any of these props, like right now,
-              ballotpedia is a good and dense place to start.
+              P.S. If you’re curious to learn more about any of these props, like right now,{` `}
+              <a
+                href="https://ballotpedia.org/California_2020_ballot_propositions"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                ballotpedia
+              </a>{' '}
+              is a good and dense place to start.
             </Description>
+            <Space height={0} xsHeight={50} />
           </Col>
         </Row>
       </div>
@@ -137,8 +156,13 @@ const Title = styled.h1`
 
 const Subtitle = styled.h2`
   font-weight: 700;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 19px;
+  line-height: 24px;
+  @media screen and (max-width: 576px) {
+    padding-top: 30px;
+    margin-top: 15px;
+    border-top: 1px solid #ddd;
+  }
 `;
 
 const Tag = styled.div`
@@ -146,7 +170,7 @@ const Tag = styled.div`
   justify-content: center;
   align-items: center;
   background: #ffffff;
-  box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.03);
   border-radius: 4px;
   padding: 10px 15px;
   width: 150px;
@@ -162,4 +186,18 @@ const SubscribeTitle = styled.h3`
 const Description = styled.div`
   font-size: 14px;
   line-height: 23px;
+`;
+
+const Issues = styled.div`
+  margin-top: 30px;
+  margin-bottom: 50px;
+  line-height: 28px;
+  color: #111;
+`;
+
+const IssuesHeader = styled.h3`
+  font-style: italic;
+  font-weight: 300;
+  font-size: 16px;
+  color: #999; 
 `;
