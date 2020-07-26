@@ -21,7 +21,7 @@
   src: url('/static/fonts/Inter-italic.var.woff2?v=3.13') format('woff2');
 }
 
-@import url("https://p.typekit.net/p.css?s=1&k=tee1tuv&ht=tk&f=39347&a=20376723&app=typekit&e=css");
+/* @import url("https://p.typekit.net/p.css?s=1&k=tee1tuv&ht=tk&f=39347&a=20376723&app=typekit&e=css"); */
 
 @font-face {
   font-family:"itc-avant-garde-gothic-pro";
@@ -52,7 +52,10 @@ body {
 
 a {
   font-weight: 420;
-  color: white;
+}
+
+a:focus {
+  text-decoration: underline;
 }
 
 amp-img {

@@ -1,7 +1,7 @@
 import Document from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import stylesCss from '!raw-loader!./index.min.css';
-import antdCss from '!raw-loader!antd/dist/antd.css';
+import antdCss from '!raw-loader!antd/dist/antd.min.css';
 
 export default class CustomDocument extends Document {
   static async getInitialProps(ctx) {

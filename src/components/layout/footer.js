@@ -23,6 +23,10 @@ const FooterItem = styled.a`
       background-color: rgba(0, 0, 255, 0.3);
     }
   }
+  &:focus {
+    color: white;
+    background-color: rgba(0, 0, 255, 0.3);
+  }
 `;
 
 const Footer = React.forwardRef((props, ref) => {
@@ -43,7 +47,7 @@ const Footer = React.forwardRef((props, ref) => {
 
   const linkComponents = links.map((item) => (
     <Link href={item.link} key={item.link} passHref>
-      <FooterItem tabIndex="0">{item.label}</FooterItem>
+      <FooterItem>{item.label}</FooterItem>
     </Link>
   ));
 

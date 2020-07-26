@@ -1,7 +1,9 @@
 import withBasicTemplate from 'template/basic';
 
 const PrivacyPage = () => {
-  return <div>Privacy</div>;
+  return (
+    <h1>Privacy</h1>
+  );
 };
 
 export default withBasicTemplate(PrivacyPage);

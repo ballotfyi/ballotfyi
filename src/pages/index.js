@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-// import HeadContent from 'components/HeadContent/HeadContent.js';
+import HeadContent from 'components/HeadContent/HeadContent.js';
+import Header from 'components/layout/header'
 import Footer from 'components/layout/footer.js';
 // import { useAmp } from "next/amp";
 import withBasicTemplate from 'template/basic';
@@ -22,22 +23,10 @@ const IndexPage = () => {
 
   return (
     <>
-      {/* <HeadContent /> */}
+      <HeadContent />
       <div style={{ minHeight: `calc(100vh - ${footerHeight}px)` }}>
-        <Row>
-          <Col
-            xs={{ offset: 1, span: 18 }}
-            xl={{ offset: 3, span: 13 }}
-            lg={{ offset: 1, span: 10 }}
-            xxl={{ offset: 5, span: 14 }}
-          >
-            <TopHat>
-              <TopHatDot />
-              <TopHatBar />
-            </TopHat>
-          </Col>
-        </Row>
-        <Space height={60} xsHeight={35} />
+        <Header/>
+        <Space h={60} xsHeight={35} />
         <Row>
           <Col
             xs={{ offset: 1, span: 22 }}
@@ -49,21 +38,21 @@ const IndexPage = () => {
           >
             <Title>ballot.fyi</Title>
             <Subtitle>The 2020 California Ballot Propositions, Explained</Subtitle>
-            <Space height={10} />
+            <Space h={10} />
             <Tag>COMING SOON</Tag>
 
-            <Space height={80} xsHeight={40} />
+            <Space h={80} xsHeight={40} />
 
             <Description>
               We’ll be back in October to explain the arguments behind this year’s twelve Calfornia
               state propositions. Elections are, by definition, freakin’ fun, and 2020 is no
               exception, really.
             </Description>
-            <Space height={20} />
+            <Space h={20} />
             <SubscribeTitle>We’ll let you know when we publish our guide</SubscribeTitle>
             <EmailSubscribe />
 
-            <Space height={20} xsHeight={15} />
+            <Space h={20} xsHeight={15} />
 
             <Description>
               <span role="img" aria-label="pointing up">
@@ -104,16 +93,17 @@ const IndexPage = () => {
                 href="https://ballotpedia.org/California_2020_ballot_propositions"
                 target="_blank"
                 rel="noreferrer noopener"
+                tabIndex="0"
               >
                 ballotpedia
               </a>{' '}
               is a good and dense place to start.
             </Description>
-            <Space height={0} xsHeight={50} />
+            <Space h={0} xsHeight={50} />
           </Col>
         </Row>
       </div>
-      {/* <Footer ref={footerRef} /> */}
+      <Footer ref={footerRef} />
     </>
   );
 };
@@ -126,25 +116,6 @@ export default withBasicTemplate(IndexPage);
 
 //-----------------------------
 
-const TopHat = styled.div`
-  display: flex;
-  padding-top: 16px;
-  padding-bottom: 30px;
-`;
-
-const TopHatDot = styled.div`
-  height: 20px;
-  width: 20px;
-  background: linear-gradient(135deg, #adaafe 16.67%, #ffb9b9 73.81%);
-  margin-right: 20px;
-  border-radius: 10px;
-`;
-
-const TopHatBar = styled.div`
-  width: 100%;
-  background: linear-gradient(90deg, #ffb9b9 0%, rgba(129, 126, 255, 0.66) 100%);
-  border-radius: 10px;
-`;
 
 const Title = styled.h1`
   font-family: 'itc-avant-garde-gothic-pro', Inter, Helvetica, sans-serif;

@@ -77,7 +77,7 @@ const EmailSubscribe = () => {
     subMessage = "> Something went wrong, and we couldn't subscribe you.";
   }
 
-  return (
+  return (    
     <SubscribeForm>
       <Form
         style={{ width: '100%' }}
@@ -121,6 +121,7 @@ const EmailSubscribe = () => {
       </Form>
     </SubscribeForm>
   );
+
 };
 
 export default EmailSubscribe;
