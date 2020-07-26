@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "postcss src/pages/index.css --config postcss.config.js -o src/pages/index.min.css && next dev",
     "build": "postcss src/pages/index.css --config postcss.config.js -o src/pages/index.min.css && next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "next export"
   },
   "dependencies": {
     "antd": "^4.4.2",
