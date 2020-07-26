@@ -1,6 +1,6 @@
 const functions = require('firebase-functions');
 const cors = require('cors')({
-  origin: [/\.ballot\.fyi$/, 'http://localhost:3000'],
+  origin: [/\.ballot\.fyi$/],
   methods: ['POST']
 });
 const axios = require('axios');
