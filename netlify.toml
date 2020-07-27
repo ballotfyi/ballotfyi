@@ -2,5 +2,5 @@
   command = "yarn build && yarn export"
   publish = "out"
 
-[[context.'dev'.build]]
-  command = "sed -i s/AUTH_PLACEHOLDER/${AUTH_HEADER}/g _headers && yarn build && yarn export && cp _headers out/_headers"
+[context.branch-deploy]
+  command = "yarn build && yarn export && cp netlifyheaders out/_headers"
