@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import HeadContent from 'components/HeadContent/HeadContent.js';
 import Header from 'components/layout/header'
-import Footer from 'components/layout/footer.js';
+// import Footer from 'components/layout/footer.js';
 // import { useAmp } from "next/amp";
 import withBasicTemplate from 'template/basic';
 import { Row, Col } from 'antd';
@@ -98,7 +98,7 @@ const IndexPage = () => {
           </Col>
         </Row>
       </div>
-      <Footer ref={footerRef} />
+      {/* <Footer ref={footerRef} /> */}
     </>
   );
 };
