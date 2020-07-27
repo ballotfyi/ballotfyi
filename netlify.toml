@@ -8,4 +8,4 @@
 [[context.dev.headers]]
   for = "/*"
   [headers.values]
-    Basic-Auth = AUTH_PLACEHOLDER
+    Basic-Auth = "AUTH_PLACEHOLDER"
