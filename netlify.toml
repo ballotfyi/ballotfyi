@@ -2,10 +2,5 @@
   command = "yarn build && yarn export"
   publish = "out"
 
-[[context.dev.headers]]
-  for = "/*"
-  [headers.values]
-    Basic-Auth = "AUTH_PLACEHOLDER"
-
-[[context.dev.build]]
-  command = "sed -i s/AUTH_PLACEHOLDER/${AUTH_HEADER}/g netlify.toml && yarn build && yarn export"
+[[context.'dev'.build]]
+  command = "sed -i s/AUTH_PLACEHOLDER/${AUTH_HEADER}/g _headers && yarn build && yarn export && cp _headers out/_headers"
