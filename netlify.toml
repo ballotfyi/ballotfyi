@@ -2,5 +2,7 @@
   command = "yarn build && yarn export"
   publish = "out"
 
+# Used to password protect branch deploys
+# sed command replace the placeholder in netlifyheaders file with environmental var (password)
 [context.branch-deploy]
   command = "sed -i s/AUTH_PLACEHOLDER/${AUTH_HEADER}/g netlifyheaders && yarn build && yarn export && cp netlifyheaders out/_headers"
