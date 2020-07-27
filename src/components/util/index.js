@@ -6,3 +6,14 @@ export const Space = styled.div`
     height: ${(props) => (props.xsHeight ? props.xsHeight : props.height)}px;
   }
 `;
+
+export const LinkOut = (props) => (
+  <a
+    href={props.href || "#"}
+    target="_blank"
+    rel="noreferrer noopener"
+    tabIndex="0"
+  >
+    {props.children}
+  </a>
+);

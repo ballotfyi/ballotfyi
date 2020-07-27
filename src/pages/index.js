@@ -6,7 +6,7 @@ import Footer from 'components/layout/footer.js';
 // import { useAmp } from "next/amp";
 import withBasicTemplate from 'template/basic';
 import { Row, Col } from 'antd';
-import { Space } from 'components/util';
+import { Space, LinkOut } from 'components/util';
 import EmailSubscribe from 'components/EmailSubscribe/EmailSubscribe';
 import Acronym from 'components/Acronym/Acronym';
 
@@ -89,14 +89,9 @@ const IndexPage = () => {
               <br />
               <br />
               P.S. If you’re curious to learn more about any of these props, like right now,{` `}
-              <a
-                href="https://ballotpedia.org/California_2020_ballot_propositions"
-                target="_blank"
-                rel="noreferrer noopener"
-                tabIndex="0"
-              >
+              <LinkOut href="https://ballotpedia.org/California_2020_ballot_propositions">
                 ballotpedia
-              </a>{' '}
+              </LinkOut>{' '}
               is a good and dense place to start.
             </Description>
             <Space h={0} xsHeight={50} />
