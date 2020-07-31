@@ -9,6 +9,7 @@
     "export": "next export"
   },
   "dependencies": {
+    "@sentry/react": "^5.20.1",
     "antd": "^4.4.2",
     "axios": "^0.19.2",
     "firebase": "^7.16.1",

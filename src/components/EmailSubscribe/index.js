@@ -10,6 +10,7 @@ import {
   ExclamationOutlined,
 } from '@ant-design/icons';
 import axios from 'axios';
+import { captureException } from '@sentry'
 
 const EmailSubscribe = () => {
   const [emailInput, setEmailInput] = useState('');
@@ -39,7 +40,9 @@ const EmailSubscribe = () => {
           setSignupResult(null);
         }, 3000);
       }
-    });
+    }).catch( err => {
+      captureException(err);
+    })
   };
 
   let statusOrButton = (
