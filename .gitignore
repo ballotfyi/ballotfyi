@@ -33,3 +33,6 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+# temporarilyy hide
+src/pages/props/*

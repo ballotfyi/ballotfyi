@@ -15,6 +15,7 @@ const PrivacyPage = () => {
           xxl={{ offset: 5, span: 14 }}
         >
           <h1>How We Handle Your Data | Our Policy</h1>
+          <Space h={40} />
           <h2>Our Commitment</h2>
             <p>Ballot.fyi will collect the minimal amount of data about its users to provide good service, and we will never monetize this data. We do not host or display any advertisements, nor serve any trackers for any advertisement purpose. We do not store any personal information on any internal databases. As much as possible, we will respect and respond to your privacy requests.
             </p>

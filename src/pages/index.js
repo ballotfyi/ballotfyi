@@ -1,14 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import HeadContent from 'components/HeadContent/HeadContent.js';
+import HeadContent from 'components/HeadContent';
 import Header from 'components/layout/header'
 // import Footer from 'components/layout/footer.js';
 // import { useAmp } from "next/amp";
 import withBasicTemplate from 'template/basic';
 import { Row, Col } from 'antd';
 import { Space, LinkOut } from 'components/util';
-import EmailSubscribe from 'components/EmailSubscribe/EmailSubscribe';
-import Acronym from 'components/Acronym/Acronym';
+import EmailSubscribe from 'components/EmailSubscribe';
+import Acronym from 'components/Acronym';
 
 const IndexPage = () => {
   // const isAmp = useAmp();
@@ -75,7 +75,7 @@ const IndexPage = () => {
             <Issues>
               <li>How commercial properties are taxed (that’s a big deal)</li>
               <li>Whether cities can enact new rent control laws</li>
-              <li>Whether older folks can transfer their property tax assessment</li>
+              <li>Whether older folks can move with their property tax assessment</li>
               <li>Whether affirmative action should be legal again</li>
               <li>Whether Lyft and Uber drivers are independent contractors</li>
               <li>Whether we should get rid of the cash bail system</li>
