@@ -36,13 +36,13 @@ const Footer = React.forwardRef((props, ref) => {
       link: '/about',
     },
     // {
-    //   label: 'Our Approach',
-    //   link: '/approach'
+    //   label: 'Privacy',
+    //   link: '/privacy',
     // },
-    {
-      label: 'Investors',
-      link: '/investors',
-    },
+    // {
+    //   label: 'Terms',
+    //   link: '/terms',
+    // },
   ];
 
   const linkComponents = links.map((item) => (
