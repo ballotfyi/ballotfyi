@@ -33,13 +33,10 @@ const fontload = `
       });
     }
   })();
-`
+`;
 const NonAmpFonts = () => (
   <Head>
-    <script
-      type="text/javascript"
-      dangerouslySetInnerHTML={{ __html: fontload }}
-    ></script>
+    <script type="text/javascript" dangerouslySetInnerHTML={{ __html: fontload }}></script>
   </Head>
 );
 

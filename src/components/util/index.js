@@ -8,12 +8,7 @@ export const Space = styled.div`
 `;
 
 export const LinkOut = (props) => (
-  <a
-    href={props.href || "#"}
-    target="_blank"
-    rel="noreferrer noopener"
-    tabIndex="0"
-  >
+  <a href={props.href || '#'} target="_blank" rel="noreferrer noopener" tabIndex="0">
     {props.children}
   </a>
 );

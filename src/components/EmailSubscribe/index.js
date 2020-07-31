@@ -10,7 +10,7 @@ import {
   ExclamationOutlined,
 } from '@ant-design/icons';
 import axios from 'axios';
-import { captureException } from '@sentry/react'
+import { captureException } from '@sentry/react';
 
 const EmailSubscribe = () => {
   const [emailInput, setEmailInput] = useState('');
@@ -27,22 +27,24 @@ const EmailSubscribe = () => {
       url: endpoint,
       method: 'POST',
       data: { email: values.email || emailInput },
-    }).then((res) => {
-      setIsSending(false);
-      if (res.status === 200) {
-        if (res.data === 'subscribed') {
-          setSignupResult('already');
-        } else {
-          setSignupResult('success');
-        }
-
-        setTimeout(() => {
-          setSignupResult(null);
-        }, 3000);
-      }
-    }).catch( err => {
-      captureException(err);
     })
+      .then((res) => {
+        setIsSending(false);
+        if (res.status === 200) {
+          if (res.data === 'subscribed') {
+            setSignupResult('already');
+          } else {
+            setSignupResult('success');
+          }
+
+          setTimeout(() => {
+            setSignupResult(null);
+          }, 3000);
+        }
+      })
+      .catch((err) => {
+        captureException(err);
+      });
   };
 
   let statusOrButton = (
@@ -80,7 +82,7 @@ const EmailSubscribe = () => {
     subMessage = "> Something went wrong, and we couldn't subscribe you.";
   }
 
-  return (    
+  return (
     <SubscribeForm>
       <Form
         style={{ width: '100%' }}
@@ -124,7 +126,6 @@ const EmailSubscribe = () => {
       </Form>
     </SubscribeForm>
   );
-
 };
 
 export default EmailSubscribe;

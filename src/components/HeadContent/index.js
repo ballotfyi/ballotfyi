@@ -18,23 +18,45 @@ const HeadContent = (props) => {
 
         <meta property="article:opinion" content="false" />
 
-        <meta prefix="og: http://ogp.me/ns#" property="og:url" content={canonicalUrlBase + canonicalUrlSlug} />
+        <meta
+          prefix="og: http://ogp.me/ns#"
+          property="og:url"
+          content={canonicalUrlBase + canonicalUrlSlug}
+        />
         <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
         <meta prefix="og: http://ogp.me/ns#" property="og:title" content={headline} />
         <meta prefix="og: http://ogp.me/ns#" property="og:description" content={description} />
-        
-        { images.length > 0 && <meta prefix="og: http://ogp.me/ns#" property="og:image" content={images[0].url} /> }
-        { images.length > 0 && <meta prefix="og: http://ogp.me/ns#" property="og:image:alt" content={images[0].caption} /> }
+
+        {images.length > 0 && (
+          <meta prefix="og: http://ogp.me/ns#" property="og:image" content={images[0].url} />
+        )}
+        {images.length > 0 && (
+          <meta
+            prefix="og: http://ogp.me/ns#"
+            property="og:image:alt"
+            content={images[0].caption}
+          />
+        )}
         <meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US" />
 
-        <meta prefix="og: http://ogp.me/ns/article#" property="article:published_time" content={datePublished} />
-        { dateModified && <meta prefix="og: http://ogp.me/ns/article#" property="article:modified_time" content={dateModified} /> }
+        <meta
+          prefix="og: http://ogp.me/ns/article#"
+          property="article:published_time"
+          content={datePublished}
+        />
+        {dateModified && (
+          <meta
+            prefix="og: http://ogp.me/ns/article#"
+            property="article:modified_time"
+            content={dateModified}
+          />
+        )}
 
         <meta name="twitter:url" content={canonicalUrlBase + canonicalUrlSlug} />
         <meta name="twitter:title" content={headline} />
         <meta name="twitter:description" content={description} />
-        { images.length > 0 && <meta name="twitter:image" content={images[0].url} /> }
-        { images.length > 0 && <meta name="twitter:image:alt" content={images[0].caption} /> }
+        {images.length > 0 && <meta name="twitter:image" content={images[0].url} />}
+        {images.length > 0 && <meta name="twitter:image:alt" content={images[0].caption} />}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ballotfyi" />
 
@@ -88,5 +110,5 @@ HeadContent.defaultProps = {
   datePublished: new Date(),
   dateModified: null,
   images: [],
-  pageType: 'page'
+  pageType: 'page',
 };

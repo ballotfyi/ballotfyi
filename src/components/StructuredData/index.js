@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 
 // https://developers.google.com/search/docs/data-types/article#amp-sd
 const StructuredData = (props) => {
-  const { 
+  const {
     datePublished,
     dateModified,
     title,
@@ -124,17 +124,17 @@ const StructuredData = (props) => {
   };
   return (
     <Head>
-      {pageType === 'article' ? 
+      {pageType === 'article' ? (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(articleData) }}
         ></script>
-        :
+      ) : (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(homeData) }}
         ></script>
-      }
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(publisher) }}
@@ -164,10 +164,11 @@ StructuredData.propTypes = {
 
 StructuredData.defaultProps = {
   title: 'ballot.fyi → 2020 CA Propositions, explained',
-  description: "Everything you need to vote informed Nov 2020 for California's ballot propositions.",
+  description:
+    "Everything you need to vote informed Nov 2020 for California's ballot propositions.",
   canonicalUrlSlug: '',
   datePublished: new Date(),
   dateModified: null,
   images: [],
-  pageType: 'page'
+  pageType: 'page',
 };

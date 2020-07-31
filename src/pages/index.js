@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import HeadContent from 'components/HeadContent';
-import Header from 'components/layout/header'
+import Header from 'components/layout/header';
 // import Footer from 'components/layout/footer.js';
 // import { useAmp } from "next/amp";
 import withBasicTemplate from 'template/basic';
@@ -16,16 +16,16 @@ const IndexPage = () => {
   const footerRef = useRef();
 
   useEffect(() => {
-    if(footerRef.current) {
+    if (footerRef.current) {
       setFooterHeight(footerRef.current.getBoundingClientRect().height);
     }
   }, [footerRef]);
 
   return (
     <>
-      <HeadContent />
+      <HeadContent datePublished={new Date('July 31, 2020')} pageType="page" />
       <div style={{ minHeight: `calc(100vh - ${footerHeight}px)` }}>
-        <Header/>
+        <Header />
         <Space h={60} xsHeight={35} />
         <Row>
           <Col
@@ -110,7 +110,6 @@ export default withBasicTemplate(IndexPage);
 // };
 
 //-----------------------------
-
 
 const Title = styled.h1`
   font-family: 'itc-avant-garde-gothic-pro', Inter, Helvetica, sans-serif;
