@@ -10,7 +10,7 @@ import {
   ExclamationOutlined,
 } from '@ant-design/icons';
 import axios from 'axios';
-import { captureException } from '@sentry'
+import { captureException } from '@sentry/react'
 
 const EmailSubscribe = () => {
   const [emailInput, setEmailInput] = useState('');
