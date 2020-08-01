@@ -2,7 +2,6 @@ import Head from 'next/head';
 import { AmpAnalytics } from 'components/amp/amp-wrappers';
 import { useAmp } from 'next/amp';
 import { useRouter } from 'next/router';
-
 import { GA_TRACKING_ID } from 'lib/gtag';
 
 /**

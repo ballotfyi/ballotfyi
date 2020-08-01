@@ -14,8 +14,9 @@ const PrivacyPage = () => {
           lg={{ offset: 1, span: 10 }}
           xxl={{ offset: 5, span: 14 }}
         >
-          <h1>How We Handle Your Data | Our Policy</h1>
-          <Space h={40} />
+          <h1>How We Handle Your Data: Our Policy</h1>
+          <em>Effective July 29, 2020</em>
+          <Space h={20} />
           <h2>Our Commitment</h2>
           <p>
             Ballot.fyi will collect the minimal amount of data about its users to provide good
@@ -54,9 +55,9 @@ const PrivacyPage = () => {
           <h2>Who we are</h2>
           <p>
             Ballot.fyi is a personal project, 100% independently owned by Jimmy Chion, a person, and
-            maintained by a team of volunteers. Ballot.fyi has no affiliation with any business
-            entities, nor any current (or future) obligations or debts – implicit or explicit – to
-            any persons or entities.
+            with the support of a team of volunteers. Ballot.fyi has no affiliation with any
+            business entities, nor any current (or future) obligations or debts – implicit or
+            explicit – to any persons or entities.
             <br />
             <br />
             For full disclosure, from 2017 to 2018, ballot.fyi was a project under the business
@@ -67,21 +68,14 @@ const PrivacyPage = () => {
             , a nonpartisan organization. Amir & Erica (a pun off &ldquo;America&rdquo;) was
             dissolved in 2019 due to lack of funding, and the rights to ballot.fyi were transferred
             back to Jimmy Chion.
-            <br />
-            <br />
-            From its inception in Oct 2015 to its transfer to Amir & Erica, it was a personal
-            project, owned solely by Jimmy Chion.
-            <br />
-            <br />
-            Ballot.fyi&apos;s primary audience is California residents.
           </p>
 
           <h2>Do Not Track (DNT)</h2>
           <p>
             Ballot.fyi&apos;s website respects the Do Not Track header supplied by modern browsers.
             We will detect the DNT header if your browser emits it, and ballot.fyi will not employ
-            Google Analytics on the ballot.fyi domain for that session. If you are unfamiliar with
-            DNT, or would like to enable it, we recommend reading the{' '}
+            Google Analytics on the ballot.fyi domain for that session. If you would like to learn
+            more about DNT, or would like to enable it, we recommend reading the{' '}
             <LinkOut href="https://en.wikipedia.org/wiki/Do_Not_Track">Wikipedia article</LinkOut>,
             and then referring to guides at{' '}
             <LinkOut href="https://allaboutdnt.com/">allaboutdnt.com</LinkOut>. To be clear,
@@ -96,11 +90,28 @@ const PrivacyPage = () => {
             <LinkOut href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage">
               all the cookies used by Google Analytics
             </LinkOut>
-            . As mentioned above, we will not serve cookies if the Do Not Track header indicates
-            that websites should not track the session.
+            . The Google Analytics cookies (third party) served from the domain ballot.fyi are
+            `_gat_gtag_UA_83939332_1`, `_gid`, and `_ga`. These have an expiration date of 1 day, 2
+            days, and 2 years, respectively from when they are served. . As mentioned above, we will
+            not serve cookies if the Do Not Track header indicates that websites should not track
+            the session.
           </p>
 
-          <h2>Service Usage Data Flow</h2>
+          <h2>Information We Collect</h2>
+          <h3>Personal Information</h3>
+          <p>
+            The only personal information we can collect from you is your email address, if you
+            decide to sign up for our newsletter. We use this information for our email newsletter
+            only.
+          </p>
+          <h3>Usage Information</h3>
+          <p>
+            We employ third-party providers to collect usage information for analytical purposes.
+            The information collected and from whom are described in more detail below. We use this
+            information to understand our audience so that we can improve our service.
+          </p>
+
+          <h2>Analytical Data Collection</h2>
           <p>
             Ballot.fyi, when permitted, will record service usage data for analytical purposes. The
             data is recorded by up to three providers, listed below. These are the only three
@@ -130,6 +141,11 @@ const PrivacyPage = () => {
               Google&apos;s Privacy Policy
             </LinkOut>
             .
+            <br />
+            <br />
+            Google also offers{' '}
+            <LinkOut href="https://tools.google.com/dlpage/gaoptout">a browser add-on</LinkOut> to
+            always opt out of Google Analytics for any site you visit.
           </p>
           <h3>Netlify</h3>
           <p>
@@ -143,7 +159,7 @@ const PrivacyPage = () => {
             <LinkOut href="https://docs.netlify.com/monitor-sites/analytics/#get-started">
               here
             </LinkOut>
-            . All information is deidentified.
+            . All information is deidentified. Netlify does not serve any cookies.
             <br />
             <br />
             For more information:{' '}
@@ -160,7 +176,8 @@ const PrivacyPage = () => {
             <br />
             <br />
             Within the boundaries of its privacy policy, Mailchimp will track data regarding email
-            campaigns such as email opens and link clicks.
+            campaigns such as email opens and link clicks. Mailchimp does not serve any cookies on
+            this site.
             <br />
             <br />
             You may have been added to the email list if you have subscribed to a previous service
@@ -179,16 +196,24 @@ const PrivacyPage = () => {
           <h2>CCPA</h2>
           <p>
             The California Consumer Privacy Act of 2018 provides rights to all California residents
-            with respect to the data that a company holds about them. For example, you have the
-            right, as a California resident, to know &ldquo;what personal information [a company
-            has] collected, used, shared, or sold about you&rdquo;, and why they did so. Please read
-            more about it <LinkOut href="https://oag.ca.gov/privacy/ccpa">here</LinkOut>.
+            with respect to the data that a company holds about them. In fact, the changes proposed
+            by Prop 24 of this year builds on top of the CCPA we talk about here. For example, you
+            have the right, as a California resident, to know &ldquo;what personal information [a
+            company has] collected, used, shared, or sold about you&rdquo;, and why they did so.
+            Please read more about it <LinkOut href="https://oag.ca.gov/privacy/ccpa">here</LinkOut>
+            .
+            <br />
+            <br />
+            In essence, you have a right to know what personal information a company has collected
+            on you, the right to delete that information, and the right to opt-out of any
+            &ldquo;sale&rdquo; of that information. And finally, you have the right of and
+            non-discrimination should you exercise any of these rights.
             <br />
             <br />
             CCPA does not explicitly apply to ballot.fyi because we are not a for-profit company
             that makes more than $25 million a year. However, because our primary audience is made
-            up for Californians, and we believe in the rights espoused by the law, we will
-            voluntarily comply with requests that fall under the CCPA.
+            up for Californians, and to bring awareness to this new law, we will voluntarily comply
+            with requests that fall under the CCPA.
           </p>
 
           <h2>Contact</h2>

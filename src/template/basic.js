@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Analytics from 'components/Analytics';
 import Fonts from 'components/Fonts';
 
@@ -8,9 +8,20 @@ import Fonts from 'components/Fonts';
 
 const withBasicTemplate = (WrappedComponent) => {
   return (props) => {
+    const [enableGA, setEnableGA] = useState(false);
+    useEffect(() => {
+      function isDoNotTrackEnabled() {
+        const doNotTrackOption =
+          window.doNotTrack || window.navigator.doNotTrack || window.navigator.msDoNotTrack;
+        if (!doNotTrackOption) return false;
+        return doNotTrackOption.charAt(0) === '1' || doNotTrackOption === 'yes';
+      }
+
+      setEnableGA(!isDoNotTrackEnabled());
+    }, []);
     return (
       <>
-        <Analytics />
+        {enableGA && <Analytics />}
         <Fonts />
         <WrappedComponent {...props} />
       </>
