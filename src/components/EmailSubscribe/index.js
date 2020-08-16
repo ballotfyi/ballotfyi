@@ -133,6 +133,7 @@ export default EmailSubscribe;
 const SubscribeForm = styled.div`
   display: flex;
   width: 100%;
+  font-family: Inter, Helvetica;
   @media screen and (max-width: 576px) {
     justify-content: center;
   }

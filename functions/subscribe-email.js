@@ -19,7 +19,7 @@ exports.subscribeEmail = functions.https.onRequest( async (req, res) => {
   return cors(req, res, async () => {    
     const { email } = req.body;
     if (!email) {
-      res.sendStatus(400);
+      res.sendStatus(401);
     }
     let doesExistRes;
     let doesExist = false;

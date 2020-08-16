@@ -12,7 +12,7 @@ const HeadContent = (props) => {
         <title>{headline}</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href={canonicalUrlBase + canonicalUrlSlug} />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        {/* <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> */}
         <meta name="description" content={description} />
         <meta name="keywords" content="California, Nov 2020, propositions" />
 

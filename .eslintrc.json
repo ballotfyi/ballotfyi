@@ -23,6 +23,7 @@
 		"react/react-in-jsx-scope": "off",
 		"react/prop-types": "off",
 		"react/display-name": "off",
+		"react/no-unescaped-entities": "off",
 		"no-unused-vars": "warn",
 		"jsx-a11y/anchor-is-valid": "off",
 		"jsx-a11y/accessible-emoji": "warn"

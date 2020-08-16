@@ -39,23 +39,47 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: serif;
+  font-family: Georgia, serif;
   font-synthesis: weight style;
   font-size: 16px;
+  line-height: 26px;
+  color: #222;
+}
+
+h1 {
+  font-family: 'itc-avant-garde-gothic-pro', 'InterPre', sans-serif;
+  font-size: 3.875em;
+  line-height: 76px;
+  letter-spacing: -1px;
 }
 
 h2 {
-  padding-top: 30px;
+  font-family: Inter, 'InterPre', sans-serif;
+  margin-top: 1.8em;
+  margin-bottom: .5em;
+  color: rgba(0,0,0,.85);
+  font-weight: 850;
+  font-size: 2.2em;
+  line-height: 43px;
 }
 
-.fonts-loading body {
+h3 {
+  font-family: Inter, 'InterPre', sans-serif;
+  margin-top: 1.8em;
+  margin-bottom: .5em;
+  color: rgba(0,0,0,.85);
+  font-weight: 850;
+  font-size: 1.1em;
+  line-height: 30px;
+}
+
+.fonts-loading h1 {
   font-family: 'InterPre';
 }
 
 @supports (font-variation-settings: normal) {
-  .fonts-loaded body {
+  .fonts-loaded h2 {
     font-family: Inter;
-    font-weight: 400;
   }
 }
 

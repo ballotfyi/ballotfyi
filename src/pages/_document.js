@@ -1,7 +1,6 @@
 import Document from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import stylesCss from '!raw-loader!./index.min.css';
-import antdCss from '!raw-loader!antd/dist/antd.min.css';
 
 export default class CustomDocument extends Document {
   static async getInitialProps(ctx) {
@@ -21,11 +20,6 @@ export default class CustomDocument extends Document {
             <style
               dangerouslySetInnerHTML={{
                 __html: stylesCss,
-              }}
-            />
-            <style
-              dangerouslySetInnerHTML={{
-                __html: antdCss,
               }}
             />
             {initialProps.styles}

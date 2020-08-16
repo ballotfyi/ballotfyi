@@ -1,7 +1,7 @@
 import withBasicTemplate from 'template/basic';
 import Header from 'components/layout/header';
 import { Space, LinkOut } from 'components/util';
-import { Row, Col } from 'antd';
+import { Row, Col } from 'react-grid-system';
 
 const PrivacyPage = () => {
   return (
@@ -9,10 +9,11 @@ const PrivacyPage = () => {
       <Header />
       <Row>
         <Col
-          xs={{ offset: 1, span: 18 }}
-          xl={{ offset: 3, span: 13 }}
-          lg={{ offset: 1, span: 10 }}
-          xxl={{ offset: 5, span: 14 }}
+          offset={{xs: 1, lg: 1, xl: 3, xxl: 5}}
+          xs={18}
+          lg={10}
+          xl={13}
+          xxl={14}
         >
           <h1>How We Handle Your Data: Our Policy</h1>
           <em>Effective July 29, 2020</em>
@@ -92,7 +93,7 @@ const PrivacyPage = () => {
             </LinkOut>
             . The Google Analytics cookies (third party) served from the domain ballot.fyi are
             `_gat_gtag_UA_83939332_1`, `_gid`, and `_ga`. These have an expiration date of 1 day, 2
-            days, and 2 years, respectively from when they are served. . As mentioned above, we will
+            days, and 2 years, respectively from when they are served. As mentioned above, we will
             not serve cookies if the Do Not Track header indicates that websites should not track
             the session.
           </p>
@@ -122,7 +123,7 @@ const PrivacyPage = () => {
             of services.
           </p>
           <h3>Google Analytics</h3>
-          <p>
+          <div>
             Google Analytics (analytics.google.com) is a widely-used analytics service provided by
             Google that tracks unique users. To be clear, Google Analytics is able to track a wide
             amount of information including:
@@ -146,7 +147,9 @@ const PrivacyPage = () => {
             Google also offers{' '}
             <LinkOut href="https://tools.google.com/dlpage/gaoptout">a browser add-on</LinkOut> to
             always opt out of Google Analytics for any site you visit.
-          </p>
+            <br />
+            <br />
+          </div>
           <h3>Netlify</h3>
           <p>
             Netlify (www.netlify.com) is a website-hosting service and hosts www.ballot.fyi,
@@ -197,7 +200,7 @@ const PrivacyPage = () => {
           <p>
             The California Consumer Privacy Act of 2018 provides rights to all California residents
             with respect to the data that a company holds about them. In fact, the changes proposed
-            by Prop 24 of this year builds on top of the CCPA we talk about here. For example, you
+            by Prop 24 of this year build on top of the CCPA. For example, you
             have the right, as a California resident, to know &ldquo;what personal information [a
             company has] collected, used, shared, or sold about you&rdquo;, and why they did so.
             Please read more about it <LinkOut href="https://oag.ca.gov/privacy/ccpa">here</LinkOut>

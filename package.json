@@ -10,15 +10,16 @@
   },
   "dependencies": {
     "@sentry/react": "^5.20.1",
-    "antd": "^4.4.2",
     "axios": "^0.19.2",
     "firebase": "^7.16.1",
     "lazysizes": "^5.2.0",
-    "next": "^9.4.1",
+    "next": "^9.5.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-grid-system": "^7.0.3",
     "react-is": "^16.13.1",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "webpack": "^4.44.1"
   },
   "devDependencies": {
     "cssnano": "^4.1.10",

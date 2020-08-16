@@ -1,14 +1,15 @@
 import styled from 'styled-components';
-import { Row, Col } from 'antd';
+import { Row, Col } from 'react-grid-system';
 
 const Header = () => {
   return (
     <Row>
       <Col
-        xs={{ offset: 1, span: 18 }}
-        xl={{ offset: 3, span: 13 }}
-        lg={{ offset: 1, span: 10 }}
-        xxl={{ offset: 5, span: 14 }}
+        offset={{xs: 1, lg: 1, xl: 3, xxl: 5}}
+        xs={18}
+        lg={13}
+        xl={10}
+        xxl={14}
       >
         <TopHat>
           <TopHatDot />
