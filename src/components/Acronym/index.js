@@ -6,7 +6,7 @@ import { useAmp } from 'next/amp';
 Expands an acronym to the full text. Toggleable
 
 Usage:
-<Acronym acronym='CIA' expanded='Central Intelligence Agency' />
+<Acronym short='CIA' long='Central Intelligence Agency' />
 
 Text-decoration style not supported on mobile, so maybe have to switch to border-bottom
 */
@@ -24,7 +24,7 @@ const AcronymContainer = styled.span`
 `;
 
 const Acronym = (props) => {
-  const [textDisplayed, setTextDisplayed] = useState(props.acronym);
+  const [textDisplayed, setTextDisplayed] = useState(props.short);
   const [isExpanded, setIsExpanded] = useState(false);
   const [didExpand, setDidExpand] = useState(false);
   const textRef = useRef(null);
@@ -54,7 +54,7 @@ const Acronym = (props) => {
       if (!props.toggleable && didExpand) {
         currentlyIsExpanded = true;
       } //-- force it to stay expanded
-      currentlyIsExpanded ? setTextDisplayed(props.expanded) : setTextDisplayed(props.acronym);
+      currentlyIsExpanded ? setTextDisplayed(props.long) : setTextDisplayed(props.short);
       setDidExpand(true);
       setIsExpanded(currentlyIsExpanded);
       if (props.highlightOnClick) {
@@ -73,9 +73,9 @@ const Acronym = (props) => {
         toggleable={false}
         data-amp-bind-text="displayedText"
         data-amp-bind-class="containerClass"
-        on={`tap:AMP.setState({displayedText:'${props.expanded}', containerClass: 'unstyled'})`}
+        on={`tap:AMP.setState({displayedText:'${props.long}', containerClass: 'unstyled'})`}
       >
-        {props.acronym}
+        {props.short}
       </AcronymContainer>
     );
   } else {
@@ -96,15 +96,15 @@ const Acronym = (props) => {
 };
 
 Acronym.propTypes = {
-  acronym: PropTypes.string.isRequired,
-  expanded: PropTypes.string.isRequired,
+  short: PropTypes.string.isRequired,
+  long: PropTypes.string.isRequired,
   toggleable: PropTypes.bool,
   highlightOnClick: PropTypes.bool,
 };
 
 Acronym.defaultProps = {
-  acronym: '',
-  expanded: '',
+  short: '',
+  long: '',
   toggleable: true,
   highlightOnClick: false,
 };

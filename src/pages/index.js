@@ -2,17 +2,17 @@ import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import HeadContent from 'components/HeadContent';
 import Header from 'components/layout/header';
-// import Footer from 'components/layout/footer.js';
-import { useAmp } from "next/amp";
+import Footer from 'components/layout/footer.js';
+// import { useAmp } from "next/amp";
 import withBasicTemplate from 'template/basic';
 import { Row, Col } from 'react-grid-system';
 import { Space, LinkOut } from 'components/util';
-// import EmailSubscribe from 'components/EmailSubscribe';
+import EmailSubscribe from 'components/EmailSubscribe';
 import Acronym from 'components/Acronym';
 
 const IndexPage = () => {
-  const isAmp = useAmp();
-  if(isAmp) {console.log('amp')}
+  // const isAmp = useAmp();
+  // if(isAmp) {console.log('amp')}
   const [footerHeight, setFooterHeight] = useState(0);
   const footerRef = useRef();
 
@@ -28,15 +28,15 @@ const IndexPage = () => {
       <div style={{ minHeight: `calc(100vh - ${footerHeight}px)` }}>
         <Header />
         <Space h={60} xsHeight={35} />
-          <Row>
+          <Row style={{marginLeft: 0, marginRight: 0}}>
             <Col 
-              offset={{xs: 1, sm: 2, md: 1, lg: 1, xl: 3, xxl: 5}}
+              offset={{xs: 1, sm: 2, md: 1, lg: 1, xl: 3, xxl: 1}}
               xs={22}
               sm={20}
               md={10}
               lg={9}
               xl={8}
-              xxl={6}
+              xxl={10}
             >
               <Title>ballot.fyi</Title>
               <Subtitle>The 2020 California Ballot Propositions, Explained</Subtitle>
@@ -48,11 +48,11 @@ const IndexPage = () => {
               <Description>
                 We’ll be back in October to explain the arguments behind this year’s twelve Calfornia
                 state propositions. Elections are, by definition, freakin’ fun, and 2020 is no
-                exception, really.
+                exception.
               </Description>
               <Space h={20} />
-              <SubscribeTitle>We’ll let you know when we publish our guide</SubscribeTitle>
-              {/* <EmailSubscribe /> */}
+              <SubscribeTitle>We can let you know when we publish our guide</SubscribeTitle>
+              <EmailSubscribe />
 
               <Space h={20} xsHeight={15} />
 
@@ -65,13 +65,13 @@ const IndexPage = () => {
               </Description>
             </Col>
             <Col 
-              offset={{xs: 1, sm: 2, md: 2, lg: 4, xl: 2, xxl: 2}}
+              offset={{xs: 1, sm: 2, md: 2, lg: 4, xl: 2, xxl: 1}}
               xs={22}
               sm={20}
               md={10}
               lg={9}
               xl={8}
-              xxl={6}
+              xxl={10}
             >
               <Subtitle>12 Propositions</Subtitle>
               <IssuesHeader>Here are some of the juicy decisions you get to make</IssuesHeader>
@@ -85,7 +85,7 @@ const IndexPage = () => {
               </Issues>
               <Description>
                 As if you didn’t think this election wasn’t already a{' '}
-                <Acronym acronym="BFD" expanded="big fucking deal" />. The ballot is set, and we’re
+                <Acronym short="BFD" long="big fucking deal" />. The ballot is set, and we’re
                 researching it all, so that come October, when you get your mail-in ballot, you can
                 read our summaries to understand the broad set of opinions, dive into the details, and
                 come to your own conclusions.
@@ -101,16 +101,16 @@ const IndexPage = () => {
             </Col>
           </Row>
       </div>
-      {/* <Footer ref={footerRef} /> */}
+      <Footer ref={footerRef} />
     </>
   );
 };
 
 export default withBasicTemplate(IndexPage);
 
-export const config = {
-  amp: 'hybrid',
-};
+// export const config = {
+//   amp: 'hybrid',
+// };
 
 //-----------------------------
 
@@ -148,7 +148,7 @@ const Tag = styled.div`
   width: 150px;
   color: #aaa;
   font-size: 12px;
-  letter-spacing: 0.095em;
+  letter-spacing: 0.195em;
 `;
 
 const SubscribeTitle = styled.h3`

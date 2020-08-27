@@ -9,9 +9,11 @@ const Container = styled.div`
 `;
 
 const FooterItem = styled.a`
+  font-family: Inter, Helvetica;
   font-size: 12px;
-  letter-spacing: 0.095em;
+  letter-spacing: 0.195em;
   text-transform: uppercase;
+  text-decoration: none;
   padding: 5px 20px;
   cursor: pointer;
   margin-left: 30px;
@@ -35,10 +37,10 @@ const Footer = React.forwardRef((props, ref) => {
       label: 'About',
       link: '/about',
     },
-    // {
-    //   label: 'Privacy',
-    //   link: '/privacy',
-    // },
+    {
+      label: 'Privacy',
+      link: '/privacy',
+    },
     // {
     //   label: 'Terms',
     //   link: '/terms',

@@ -1,16 +1,26 @@
 import withBasicTemplate from 'template/basic';
-import Header from 'components/layout/header';
+import styled from 'styled-components';
+// import Header from 'components/layout/header';
 import { Container, Row, Col } from 'react-grid-system';
 import { Space, LinkOut } from 'components/util';
+// import EmailSubscribe from 'components/EmailSubscribe';
+import Acronym from 'components/Acronym';
+import Button from 'components/Button';
+
+const HeaderBgContainer = styled.div`
+  position: absolute;
+`;
 
 const AboutPage = () => {
   return (
     <Container fluid>
-      <Header />
+      <HeaderBgContainer>
+        <img style={{minWidth: '100vw'}} src="./static/about-bg.png" alt='swirly line' />
+      </HeaderBgContainer>
       <Row>
         <Col
           offset={{xs: 1, sm: 2, md: 4, lg: 4, xl: 3, xxl: 3}}
-          xs={22} sm={22} md={20} lg={16} xl={18} xxl={18}
+          xs={22} sm={22} md={20} lg={16} xl={14} xxl={12}
         >
           <h1>Ballot.fyi helps you do your election homework</h1>
         </Col>
@@ -27,20 +37,20 @@ const AboutPage = () => {
 
           <h2>Our principles</h2>
           <div>
-            <p>
-            <h3>We will explain to you all the rational arguments</h3>
-            Unlike many other ballot guides, we don't take sides, and we'll try to explain how the Yes and the No sides are trying to convince you.
-            </p>
+            <div>
+            <h3><em>All</em> the rational arguments</h3>
+            Unlike other ballot guides, we don't take sides. We'll try to explain how the Yes and the No sides are trying to convince you and dive into the relevant research and reporting behind their claims. The issues tend to be pretty complicated, so we let you decide.
+            </div>
 
-            <p>
-            <h3>We do not advertise or accept any monetary or in-kind contributions, except facts.</h3>
-            We can not conscientiously make money from organizations or people who may be impacted by our coverage.*More details about our past regarding funding.
-            </p>
+            <div>
+            <h3>No money$ allowed</h3>
+            Unlike most people and organizations, we don't want to make any money. We do not sell advertisements or accept any monetary or in-kind contributions. (In full transparency, we have in the past, and you can <Acronym toggleable={false} short='click here to learn more)' long={`In previous years, we have asked for donations from readers after the elections were over. (All were under $100.) We are discontinuing that practice. Also, in 2018, ballot.fyi received a grant from The Knight Foundation, a nonpartisan organization advancing media and information to aid democracy. We no longer have any obligation or affiliation to The Knight Foundation, or any other organization`}/>.
+            </div>
 
-            <p>
-            <h3>We do not know everything.</h3>
-            We'd like to know everything. If you know something we don't (regarding the props), send us the facts: fax@ballot.fyi.
-            </p>
+            <div>
+            <h3>We don't know everything</h3>
+            But, we'd like to know everything. If you know something we don't (regarding the props), send us the facts: <b>fax@ballot.fyi</b>.
+            </div>
           </div>
 
           <h2>Your vote goes beyond the Presidential race</h2>
@@ -50,11 +60,11 @@ const AboutPage = () => {
             </p>
 
             <p>
-            For example, we're voting on whether to make affirmative action legal again in CA. It was banned via ballot proposition XX years ago. In 2016, a ballot prop was the vehicle for marijuana legalization. Own property? It's a really big deal this year that we might change Prop 13, a ballot prop voted in 1978, which sets the max for your property taxes. Oh sorry, you rent? You get to decide whether cities can enact new rent control measures.
+            For example, we're voting on whether to make affirmative action legal again in CA. It was banned via ballot proposition 24 years ago. In 2016, a ballot prop was the vehicle for marijuana legalization. Own property? It's a really big deal this year that we might change Prop 13, a ballot prop voted in 1978, which sets the max for your property taxes. Oh sorry, you rent? You get to decide whether cities can enact new rent control measures.
             </p>
             
             <p>
-            These decisions 100% matter. They might not directly affect you, but they might affect your friends, your future children, or even that colleague you used to say hello to everyday but didn't actually know their name.
+            Your decisions 100% matter. They might not directly affect you, but they might affect your friends, your future children, or even that colleague you used to say hello to everyday but didn't actually know their name.
             </p>
 
             <p>
@@ -64,7 +74,12 @@ const AboutPage = () => {
 
           <h2>Register to vote. Register to ballot.fyi</h2>
           <div>
-            First, make sure you're registered to vote. In some civilizations, you can vote by mail.
+            First, make sure you're registered to vote in California. In some civilizations, you can vote by mail.
+            <Button
+              href="https://registertovote.ca.gov/"
+            >
+              Register to vote
+            </Button>
             <br />
             Second, sign up to be emailed when we release our state prop digests.
           </div>
@@ -82,6 +97,6 @@ const AboutPage = () => {
 
 export default withBasicTemplate(AboutPage);
 
-export const config = {
-  amp: 'hybrid',
-};
+// export const config = {
+//   amp: 'hybrid',
+// };

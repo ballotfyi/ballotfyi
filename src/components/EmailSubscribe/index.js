@@ -1,16 +1,11 @@
 import { useState } from 'react';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 // import { useAmp } from "next/amp";
-import { Row, Col, Form, Input, Button, Spin } from 'antd';
-import {
-  MailOutlined,
-  LoadingOutlined,
-  CheckOutlined,
-  HeartFilled,
-  ExclamationOutlined,
-} from '@ant-design/icons';
 import axios from 'axios';
 import { captureException } from '@sentry/react';
+import LoadingSvg from './loading.svg'
+
+/* eslint-disable jsx-a11y/accessible-emoji */
 
 const EmailSubscribe = () => {
   const [emailInput, setEmailInput] = useState('');
@@ -18,15 +13,14 @@ const EmailSubscribe = () => {
   const [signupResult, setSignupResult] = useState(null);
   // const isAmp = useAmp();
 
-  const spinner = <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />} />;
-
-  const handleFormSubmit = (values) => {
+  const handleFormSubmit = () => {
     const endpoint = 'https://us-central1-ballotfyi.cloudfunctions.net/subscribeEmail';
     setIsSending(true);
+
     axios({
       url: endpoint,
       method: 'POST',
-      data: { email: values.email || emailInput },
+      data: { email: emailInput },
     })
       .then((res) => {
         setIsSending(false);
@@ -43,40 +37,46 @@ const EmailSubscribe = () => {
         }
       })
       .catch((err) => {
+        setSignupResult('error');
+        setIsSending(false);
+        setTimeout(() => {
+          setSignupResult(null);
+        }, 3000);
         captureException(err);
       });
   };
 
   let statusOrButton = (
-    <StyledButton
-      disabled={isSending || !emailInput}
+    <SubmitButton
+      disabled={isSending || emailInput === ''}
       tabIndex="0"
       type="submit"
       onClick={handleFormSubmit}
     >
-      {isSending ? spinner : 'LMK'}
-    </StyledButton>
+      {isSending ? <Spin><LoadingSvg /></Spin> : emailInput === '' ? <Emoji label="pointing left">👈</Emoji> : 'LMK'} 
+    </SubmitButton>
   );
   let subMessage = null;
 
+
   if (signupResult === 'success') {
     statusOrButton = (
-      <Circle color={'#82C036'}>
-        <CheckOutlined style={{ color: '#fff' }} />
+      <Circle color={'#3CB371'}>
+        <Emoji label="check">👍</Emoji>
       </Circle>
     );
     subMessage = "> Subscribed! We'll let you know";
   } else if (signupResult === 'already') {
     statusOrButton = (
-      <Circle color={'#eb75eb'}>
-        <HeartFilled style={{ color: 'white' }} />
+      <Circle color={'#9370DB'}>
+        <Emoji label="love">🥰</Emoji>
       </Circle>
     );
     subMessage = "> Already a subscriber! You're an OG.";
   } else if (signupResult === 'error') {
     statusOrButton = (
-      <Circle color={'#DC143C'}>
-        <ExclamationOutlined style={{ color: '#fff' }} />
+      <Circle color={'#C0C0C0'}>
+        <Emoji label="error">❌</Emoji>
       </Circle>
     );
     subMessage = "> Something went wrong, and we couldn't subscribe you.";
@@ -85,69 +85,55 @@ const EmailSubscribe = () => {
   return (
     <SubscribeForm>
       <Form
-        style={{ width: '100%' }}
-        onFinish={handleFormSubmit}
-        hideRequiredMark
-        validateTrigger="onSubmit"
+        name='subscribe'
+        onSubmit={handleFormSubmit}
       >
-        <Row gutter={8}>
-          <Col xs={{ span: 20 }} sm={{ span: 18 }}>
-            <Form.Item
-              name="email"
-              normalize={(val) => val.trim()}
-              rules={[
-                {
-                  type: 'email',
-                  message: 'Email please, not a tweet',
-                },
-                {
-                  required: true,
-                  message: 'Email needed to sign up',
-                },
-              ]}
-            >
-              <Input
-                disabled={isSending}
-                value={emailInput}
-                onChange={(e) => setEmailInput(e.target.value)}
-                style={{ padding: '10px 15px', borderRadius: 23 }}
-                prefix={<MailOutlined style={{ marginRight: 6 }} />}
-                placeholder="Your email"
-              />
-            </Form.Item>
-            <Absolute>
-              <Message>{subMessage}</Message>
-            </Absolute>
-          </Col>
-          <Col xs={{ span: 4 }} sm={{ span: 6 }}>
-            {statusOrButton}
-          </Col>
-        </Row>
+        <TextField 
+          required={true}
+          type='email'
+          name='subscribe'
+          placeholder='Your email addy'
+          tabIndex="0"
+          onChange={(e) => setEmailInput(e.target.value)}
+          onSubmit={handleFormSubmit}
+          autoComplete="on"
+          aria-label='Email address to subscribe to ballot.fyi'
+          value={emailInput}
+          size={30}
+          disabled={isSending}
+        /> 
+        {statusOrButton}
       </Form>
+      <Message>{subMessage}</Message>
     </SubscribeForm>
   );
 };
 
 export default EmailSubscribe;
 
+const Emoji = (props) => {
+  return (
+    <span style={{fontSize: 20}} role="img" aria-label={props.label}>{props.children}</span>
+  )
+}
+
 const SubscribeForm = styled.div`
-  display: flex;
-  width: 100%;
   font-family: Inter, Helvetica;
+  box-sizing: border-box;
   @media screen and (max-width: 576px) {
     justify-content: center;
   }
 `;
 
-const Absolute = styled.div`
-  position: absolute;
-  width: 100%;
+const Form = styled.form`
+  display: flex;
+  align-items: center;
 `;
 
 const Message = styled.div`
   position: relative;
-  top: -22px;
-  padding-left: 30px;
+  top: -10px;
+  padding-left: 20px;
   padding-top: 5px;
   font-size: 12px;
   font-weight: 700;
@@ -165,7 +151,7 @@ const Circle = styled.div`
   background-color: ${(props) => (props.color ? props.color : 'white')};
 `;
 
-const StyledButton = styled(Button)`
+const SubmitButton = styled.button`
   font-size: 12px;
   color: white;
   height: 44px;
@@ -174,15 +160,75 @@ const StyledButton = styled(Button)`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 10px;
   background: linear-gradient(135deg, #adaafe 16.67%, #ffb9b9 73.81%);
   background-color: #ffb9b9;
   border: 0;
   transition: color 200ms ease-in-out;
+  cursor: pointer;
+
   @media not all and (hover: none) {
     &:hover {
-      color: #ffb9b9;
-      background-color: #adaafe;
-      background: linear-gradient(90deg, #adaafe 0%, #adaafe 100%);
+      background-color: #ffb9b9;
     }
   }
+
+  &:disabled {
+    cursor: auto;
+    background: none;
+    background-color: #adaafe;
+  }
 `;
+
+
+const TextField = styled.input`
+  font-weight: 600;
+  font-size: 15px;
+  width: 70%;
+  display: inline-block;
+  box-sizing: border-box;
+  line-height: 20px;
+  text-transform: none;
+  letter-spacing: none;
+  padding-left: 20px;
+  padding-top: 16px;
+  padding-bottom: 10px;
+  margin-top: 9px;
+  margin-bottom: 9px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 5px solid #eee;
+  outline: none;
+  background-color: white;
+  border-radius: 3px;
+  background-color: rgba(0,0,0,0.025);
+  transition: background-color 200ms ease-in;
+  ::placeholder {
+    color: #999;
+  }
+
+  &:focus {
+    background-color: white;
+    border-bottom: 5px solid blue;
+    box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.03);
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+    border-radius: 0;
+  }
+`;
+
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const Spin = styled.div`
+  animation: ${spin} 800ms linear infinite;
+`

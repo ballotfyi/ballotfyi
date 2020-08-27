@@ -12,7 +12,7 @@ export const getProjectConfig = () => {
   // if (envParam && projectConfigs[envParam]) return projectConfigs[envParam];
   if (GcpEnv && projectConfigs[GcpEnv]) return projectConfigs[GcpEnv];
   return projectConfigs['dev'];
-};
+}
 
 const getFirebaseConfig = (project) => {
   switch (project) {
@@ -41,7 +41,9 @@ const getFirebaseConfig = (project) => {
       };
   }
 };
-firebase.initializeApp(getFirebaseConfig(getProjectConfig().project));
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(getFirebaseConfig('ballotfyi'));
+}
 
 const db = firebase.firestore();
 export { firebase, db };

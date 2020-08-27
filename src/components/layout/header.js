@@ -3,7 +3,7 @@ import { Row, Col } from 'react-grid-system';
 
 const Header = () => {
   return (
-    <Row>
+    <Row style={{marginLeft: 0, marginRight: 0}}>
       <Col
         offset={{xs: 1, lg: 1, xl: 3, xxl: 5}}
         xs={18}
