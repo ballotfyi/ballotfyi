@@ -2,10 +2,20 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 const Container = styled.div`
-  height: 60px;
+  height: 40px;
+  position: sticky;
+  bottom: 0;
   display: flex;
   align-items: center;
-  box-shadow: 0 -5px 50px 30px rgba(0, 0, 0, 0.025);
+  justify-content: space-between;
+  box-shadow: 0 -5px 50px 30px rgba(0, 0, 0, 0.035);
+  background-color: white;
+  @media screen and (max-width: 768px) {
+    height: 35px;
+  }
+  @media screen and (max-width: 576px) {
+    height: 30px;
+  }
 `;
 
 const FooterItem = styled.a`
@@ -16,9 +26,14 @@ const FooterItem = styled.a`
   text-decoration: none;
   padding: 5px 20px;
   cursor: pointer;
-  margin-left: 30px;
+  margin-left: 15px;
+  margin-right: 15px;
   text-align: center;
   border-radius: 15px;
+  color: #222;
+  @media screen and (max-width: 768px) {
+    padding: 5px 10px;
+  }
   @media not all and (hover: none) {
     &:hover {
       color: white;
@@ -32,28 +47,41 @@ const FooterItem = styled.a`
 `;
 
 const Footer = React.forwardRef((props, ref) => {
-  const links = [
+  const left = [
+    {
+      label: 'Home',
+      link: '/',
+    },
     {
       label: 'About',
       link: '/about',
     },
+  ];
+
+  const right = [
     {
       label: 'Privacy',
       link: '/privacy',
     },
-    // {
-    //   label: 'Terms',
-    //   link: '/terms',
-    // },
   ];
 
-  const linkComponents = links.map((item) => (
+  const leftItems = left.map((item) => (
+    <Link href={item.link} key={item.link} passHref>
+      <FooterItem>{item.label}</FooterItem>
+    </Link>
+  ));
+  const rightItems = right.map((item) => (
     <Link href={item.link} key={item.link} passHref>
       <FooterItem>{item.label}</FooterItem>
     </Link>
   ));
 
-  return <Container ref={ref}>{linkComponents}</Container>;
+  return (
+    <Container ref={ref}>
+      <div>{leftItems}</div>
+      <div>{rightItems}</div>
+    </Container>
+  );
 });
 
 export default Footer;

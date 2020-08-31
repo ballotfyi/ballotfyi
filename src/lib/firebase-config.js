@@ -12,7 +12,7 @@ export const getProjectConfig = () => {
   // if (envParam && projectConfigs[envParam]) return projectConfigs[envParam];
   if (GcpEnv && projectConfigs[GcpEnv]) return projectConfigs[GcpEnv];
   return projectConfigs['dev'];
-}
+};
 
 const getFirebaseConfig = (project) => {
   switch (project) {

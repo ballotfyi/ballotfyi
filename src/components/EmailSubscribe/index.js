@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 // import { useAmp } from "next/amp";
 import axios from 'axios';
 import { captureException } from '@sentry/react';
-import LoadingSvg from './loading.svg'
+import LoadingSvg from './loading.svg';
 
 /* eslint-disable jsx-a11y/accessible-emoji */
 
@@ -53,11 +53,18 @@ const EmailSubscribe = () => {
       type="submit"
       onClick={handleFormSubmit}
     >
-      {isSending ? <Spin><LoadingSvg /></Spin> : emailInput === '' ? <Emoji label="pointing left">👈</Emoji> : 'LMK'} 
+      {isSending ? (
+        <Spin>
+          <LoadingSvg />
+        </Spin>
+      ) : emailInput === '' ? (
+        <Emoji label="pointing left">👈</Emoji>
+      ) : (
+        'LMK'
+      )}
     </SubmitButton>
   );
   let subMessage = null;
-
 
   if (signupResult === 'success') {
     statusOrButton = (
@@ -84,24 +91,21 @@ const EmailSubscribe = () => {
 
   return (
     <SubscribeForm>
-      <Form
-        name='subscribe'
-        onSubmit={handleFormSubmit}
-      >
-        <TextField 
+      <Form name="subscribe" onSubmit={handleFormSubmit}>
+        <TextField
           required={true}
-          type='email'
-          name='subscribe'
-          placeholder='Your email addy'
+          type="email"
+          name="subscribe"
+          placeholder="Your email addy"
           tabIndex="0"
           onChange={(e) => setEmailInput(e.target.value)}
           onSubmit={handleFormSubmit}
           autoComplete="on"
-          aria-label='Email address to subscribe to ballot.fyi'
+          aria-label="Email address to subscribe to ballot.fyi"
           value={emailInput}
           size={30}
           disabled={isSending}
-        /> 
+        />
         {statusOrButton}
       </Form>
       <Message>{subMessage}</Message>
@@ -113,9 +117,11 @@ export default EmailSubscribe;
 
 const Emoji = (props) => {
   return (
-    <span style={{fontSize: 20}} role="img" aria-label={props.label}>{props.children}</span>
-  )
-}
+    <span style={{ fontSize: 20 }} role="img" aria-label={props.label}>
+      {props.children}
+    </span>
+  );
+};
 
 const SubscribeForm = styled.div`
   font-family: Inter, Helvetica;
@@ -148,6 +154,7 @@ const Circle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 10px;
   background-color: ${(props) => (props.color ? props.color : 'white')};
 `;
 
@@ -176,10 +183,9 @@ const SubmitButton = styled.button`
   &:disabled {
     cursor: auto;
     background: none;
-    background-color: #adaafe;
+    background-color: #6a5acd;
   }
 `;
-
 
 const TextField = styled.input`
   font-weight: 600;
@@ -202,7 +208,7 @@ const TextField = styled.input`
   outline: none;
   background-color: white;
   border-radius: 3px;
-  background-color: rgba(0,0,0,0.025);
+  background-color: #f9f9f9;
   transition: background-color 200ms ease-in;
   ::placeholder {
     color: #999;
@@ -231,4 +237,4 @@ const spin = keyframes`
 
 const Spin = styled.div`
   animation: ${spin} 800ms linear infinite;
-`
+`;

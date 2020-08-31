@@ -1,8 +1,8 @@
 /* See Fonts/Fonts.js and @zachleat's https://github.com/zachleat/web-font-loading-recipes */
 @font-face {
   font-family: InterPre;
-  src: url('/static/fonts/Inter-Regular.woff2?v=3.13') format('woff2'),
-    url('/static/fonts/Inter-Regular.woff?v=3.13') format('woff');
+  src: url('/static/fonts/Inter-Black.woff2?v=3.13') format('woff2'),
+    url('/static/fonts/Inter-Black.woff?v=3.13') format('woff');
 }
 
 @font-face {
@@ -24,7 +24,7 @@
 /* @import url("https://p.typekit.net/p.css?s=1&k=tee1tuv&ht=tk&f=39347&a=20376723&app=typekit&e=css"); */
 
 @font-face {
-  font-family: 'itc-avant-garde-gothic-pro';
+  font-family: 'ITC Avant Garde';
   src: url('https://use.typekit.net/af/0d47f8/00000000000000003b9b3ddf/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
       format('woff2'),
     url('https://use.typekit.net/af/0d47f8/00000000000000003b9b3ddf/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
@@ -35,6 +35,7 @@
   font-style: normal;
   font-weight: 700;
 }
+
 
 body {
   margin: 0;
@@ -47,7 +48,7 @@ body {
 }
 
 h1 {
-  font-family: 'itc-avant-garde-gothic-pro', 'InterPre', sans-serif;
+  font-family: 'ITC Avant Garde', 'InterPre', sans-serif;
   font-size: 3.875em;
   line-height: 76px;
   letter-spacing: -1px;
@@ -56,8 +57,8 @@ h1 {
 h2 {
   font-family: Inter, 'InterPre', sans-serif;
   margin-top: 1.8em;
-  margin-bottom: .5em;
-  color: rgba(0,0,0,.85);
+  margin-bottom: 0.5em;
+  color: rgba(0, 0, 0, 0.85);
   font-weight: 850;
   font-size: 2.2em;
   line-height: 43px;
@@ -66,8 +67,8 @@ h2 {
 h3 {
   font-family: Inter, 'InterPre', sans-serif;
   margin-top: 1.8em;
-  margin-bottom: .5em;
-  color: rgba(0,0,0,.85);
+  margin-bottom: 0.5em;
+  color: rgba(0, 0, 0, 0.85);
   font-weight: 850;
   font-size: 1.1em;
   line-height: 30px;

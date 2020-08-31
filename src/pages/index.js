@@ -1,12 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import HeadContent from 'components/HeadContent';
-import Header from 'components/layout/header';
 import Footer from 'components/layout/footer.js';
 // import { useAmp } from "next/amp";
 import withBasicTemplate from 'template/basic';
-import { Row, Col } from 'react-grid-system';
-import { Space, LinkOut } from 'components/util';
+import { Space, LinkOut, Col, Row } from 'components/util';
 import EmailSubscribe from 'components/EmailSubscribe';
 import Acronym from 'components/Acronym';
 
@@ -26,80 +24,69 @@ const IndexPage = () => {
     <>
       <HeadContent datePublished={new Date('July 31, 2020')} pageType="page" />
       <div style={{ minHeight: `calc(100vh - ${footerHeight}px)` }}>
-        <Header />
         <Space h={60} xsHeight={35} />
-          <Row style={{marginLeft: 0, marginRight: 0}}>
-            <Col 
-              offset={{xs: 1, sm: 2, md: 1, lg: 1, xl: 3, xxl: 1}}
-              xs={22}
-              sm={20}
-              md={10}
-              lg={9}
-              xl={8}
-              xxl={10}
-            >
-              <Title>ballot.fyi</Title>
-              <Subtitle>The 2020 California Ballot Propositions, Explained</Subtitle>
-              <Space h={10} />
-              <Tag>COMING SOON</Tag>
+        <Row>
+          <Col
+            off={{ xs: 1, sm: 2, md: 1, lg: 1, xl: 3, xxl: 3 }}
+            span={{ xs: 22, sm: 20, md: 10, lg: 9, xl: 8, xxl: 8 }}
+          >
+            <Title>ballot.fyi</Title>
+            <Subtitle>The 2020 California Ballot Propositions, Explained</Subtitle>
+            <Space h={10} />
+            <Tag>COMING SOON</Tag>
 
-              <Space h={80} xsHeight={40} />
+            <Space h={80} xsHeight={40} />
 
-              <Description>
-                We’ll be back in October to explain the arguments behind this year’s twelve Calfornia
-                state propositions. Elections are, by definition, freakin’ fun, and 2020 is no
-                exception.
-              </Description>
-              <Space h={20} />
-              <SubscribeTitle>We can let you know when we publish our guide</SubscribeTitle>
-              <EmailSubscribe />
+            <Description>
+              We’ll be back in October to explain the arguments behind this year’s twelve Calfornia
+              state propositions. Elections are, by definition, freakin’ fun, and 2020 is no
+              exception.
+            </Description>
+            <Space h={20} />
+            <SubscribeTitle>We can let you know when we publish our guide</SubscribeTitle>
+            <EmailSubscribe />
 
-              <Space h={20} xsHeight={15} />
+            <Space h={20} xsHeight={15} />
 
-              <Description>
-                <span role="img" aria-label="pointing up">
-                  ☝️
-                </span>
-                {` `}If you’d like to be notified when we publish our multi-opinionated explainers,
-                sign up for our biennial email list.
-              </Description>
-            </Col>
-            <Col 
-              offset={{xs: 1, sm: 2, md: 2, lg: 4, xl: 2, xxl: 1}}
-              xs={22}
-              sm={20}
-              md={10}
-              lg={9}
-              xl={8}
-              xxl={10}
-            >
-              <Subtitle>12 Propositions</Subtitle>
-              <IssuesHeader>Here are some of the juicy decisions you get to make</IssuesHeader>
-              <Issues>
-                <li>How commercial properties are taxed (that’s a big deal)</li>
-                <li>Whether cities can enact new rent control laws</li>
-                <li>Whether older folks can move with their property tax assessment</li>
-                <li>Whether affirmative action should be legal again</li>
-                <li>Whether Lyft and Uber drivers are independent contractors</li>
-                <li>Whether we should get rid of the cash bail system</li>
-              </Issues>
-              <Description>
-                As if you didn’t think this election wasn’t already a{' '}
-                <Acronym short="BFD" long="big fucking deal" />. The ballot is set, and we’re
-                researching it all, so that come October, when you get your mail-in ballot, you can
-                read our summaries to understand the broad set of opinions, dive into the details, and
-                come to your own conclusions.
-                <br />
-                <br />
-                P.S. If you’re curious to learn more about any of these props, like right now,{` `}
-                <LinkOut href="https://ballotpedia.org/California_2020_ballot_propositions">
-                  ballotpedia
-                </LinkOut>{' '}
-                is a good and dense place to start.
-              </Description>
-              <Space h={0} xsHeight={50} />
-            </Col>
-          </Row>
+            <Description>
+              <span role="img" aria-label="pointing up">
+                ☝️
+              </span>
+              {` `}If you’d like to be notified when we publish our multi-opinionated explainers,
+              sign up for our biennial email list.
+            </Description>
+          </Col>
+          <Col
+            off={{ xs: 1, sm: 2, md: 2, lg: 4, xl: 2, xxl: 1 }}
+            span={{ xs: 22, sm: 20, md: 10, lg: 9, xl: 8, xxl: 10 }}
+          >
+            <Subtitle>12 Propositions</Subtitle>
+            <IssuesHeader>Here are some of the juicy decisions you get to make</IssuesHeader>
+            <Issues>
+              <li>How commercial properties are taxed (that’s a big deal)</li>
+              <li>Whether cities can enact new rent control laws</li>
+              <li>Whether older folks can move with their property tax assessment</li>
+              <li>Whether affirmative action should be legal again</li>
+              <li>Whether Lyft and Uber drivers are independent contractors</li>
+              <li>Whether we should get rid of the cash bail system</li>
+            </Issues>
+            <Description>
+              As if you didn’t think this election wasn’t already a{' '}
+              <Acronym short="BFD" long="big fucking deal" />. The ballot is set, and we’re
+              researching it all, so that come October, when you get your mail-in ballot, you can
+              read our summaries to understand the broad set of opinions, dive into the details, and
+              come to your own conclusions.
+              <br />
+              <br />
+              P.S. If you’re curious to learn more about any of these props, like right now,{` `}
+              <LinkOut href="https://ballotpedia.org/California_2020_ballot_propositions">
+                ballotpedia
+              </LinkOut>{' '}
+              is a good and dense place to start.
+            </Description>
+            <Space h={0} xsHeight={50} />
+          </Col>
+        </Row>
       </div>
       <Footer ref={footerRef} />
     </>
@@ -115,7 +102,7 @@ export default withBasicTemplate(IndexPage);
 //-----------------------------
 
 const Title = styled.div`
-  font-family: 'itc-avant-garde-gothic-pro', Helvetica, sans-serif;
+  font-family: 'ITC Avant Garde', Helvetica, sans-serif;
   font-weight: bold;
   font-size: 44px;
   line-height: 58px;
