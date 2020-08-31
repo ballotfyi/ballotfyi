@@ -6,6 +6,15 @@
 }
 
 @font-face {
+  font-family: 'ITC Avant Garde';
+  font-weight: 700;
+  font-style: normal;
+  font-named-instance: 'bold';
+  src: url('/static/fonts/itc-avant-garde-gothic-pro.woff2?v=3') format('woff2'),
+    url('/static/fonts/itc-avant-garde-gothic-pro.woff?v=3') format('woff');
+}
+
+@font-face {
   font-family: 'Inter';
   font-weight: 100 900;
   font-style: normal;
@@ -13,83 +22,25 @@
   src: url('/static/fonts/Inter-roman.var.woff2?v=3.13') format('woff2');
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Inter';
   font-weight: 100 900;
   font-style: italic;
   font-named-instance: 'Italic';
   src: url('/static/fonts/Inter-italic.var.woff2?v=3.13') format('woff2');
-}
-
-/* @import url("https://p.typekit.net/p.css?s=1&k=tee1tuv&ht=tk&f=39347&a=20376723&app=typekit&e=css"); */
-
-@font-face {
-  font-family: 'ITC Avant Garde';
-  src: url('https://use.typekit.net/af/0d47f8/00000000000000003b9b3ddf/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-      format('woff2'),
-    url('https://use.typekit.net/af/0d47f8/00000000000000003b9b3ddf/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-      format('woff'),
-    url('https://use.typekit.net/af/0d47f8/00000000000000003b9b3ddf/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-      format('opentype');
-  font-display: auto;
-  font-style: normal;
-  font-weight: 700;
-}
-
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Georgia, serif;
-  font-synthesis: weight style;
-  font-size: 16px;
-  line-height: 26px;
-  color: #222;
-}
-
-h1 {
-  font-family: 'ITC Avant Garde', 'InterPre', sans-serif;
-  font-size: 3.875em;
-  line-height: 76px;
-  letter-spacing: -1px;
-}
-
-h2 {
-  font-family: Inter, 'InterPre', sans-serif;
-  margin-top: 1.8em;
-  margin-bottom: 0.5em;
-  color: rgba(0, 0, 0, 0.85);
-  font-weight: 850;
-  font-size: 2.2em;
-  line-height: 43px;
-}
-
-h3 {
-  font-family: Inter, 'InterPre', sans-serif;
-  margin-top: 1.8em;
-  margin-bottom: 0.5em;
-  color: rgba(0, 0, 0, 0.85);
-  font-weight: 850;
-  font-size: 1.1em;
-  line-height: 30px;
-}
+} */
 
 .fonts-loading h1 {
   font-family: 'InterPre';
 }
 
 @supports (font-variation-settings: normal) {
-  .fonts-loaded h2 {
-    font-family: Inter;
+  .fonts-loaded h1 {
+    font-family: 'ITC Avant Garde';
   }
-}
-
-a {
-  font-weight: 420;
-}
-
-a:focus {
-  text-decoration: underline;
+  .fonts-loaded h2 {
+    font-family: 'Inter';
+  }
 }
 
 amp-img {

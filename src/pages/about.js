@@ -14,7 +14,7 @@ import TopNav from 'components/layout/TopNav';
 const AboutPage = () => {
   return (
     <div>
-      <TopNav/>
+      <TopNav />
       {/* <HeaderBgContainer>
         <img style={{ minWidth: '100vw' }} src="./static/about-bg.png" alt="swirly line" />
       </HeaderBgContainer> */}

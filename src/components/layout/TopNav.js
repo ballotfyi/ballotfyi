@@ -1,14 +1,14 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const TopNav = () => {
-  return(
+  return (
     <Container>
-      <Line/>
+      <Line />
       <Center>ballot.fyi</Center>
-      <Line/>
+      <Line />
     </Container>
   );
-}
+};
 
 export default TopNav;
 

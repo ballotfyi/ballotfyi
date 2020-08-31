@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Router from 'next/router';
 import { pageview } from 'lib/gtag';
 import * as Sentry from '@sentry/react';
+import GlobalStyles from 'components/GlobalStyles';
 
 const App = ({ Component, pageProps }) => {
   //-- track page views
@@ -23,7 +24,12 @@ const App = ({ Component, pageProps }) => {
     };
   }, []);
 
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <GlobalStyles />
+      <Component {...pageProps} />;
+    </>
+  );
 };
 
 export default App;
