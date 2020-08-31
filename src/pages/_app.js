@@ -27,7 +27,7 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <GlobalStyles />
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </>
   );
 };
