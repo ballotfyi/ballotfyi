@@ -16,7 +16,10 @@ const crypto = require('crypto');
  * wish to have their information updated
  */ 
 exports.subscribeEmail = functions.https.onRequest( async (req, res) => {
-  return cors(req, res, async () => {    
+  return cors(req, res, async () => {   
+    if(!req.secure) {
+      res.sendStatus(501);
+    }
     const { email } = req.body;
     if (!email) {
       res.sendStatus(401);
