@@ -56,6 +56,14 @@ const FooterItem = styled.a`
   color: #222;
   @media screen and (max-width: 768px) {
     padding: 5px 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  @media screen and (max-width: 576px) {
+    padding: 5px 5px;
+    margin-left: 3px;
+    margin-right: 3px;
+    font-size: 10px;
   }
   @media not all and (hover: none) {
     &:hover {

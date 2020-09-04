@@ -94,15 +94,6 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const Subtitle = styled.h2`
-  margin-top: 0;
-  @media screen and (max-width: 576px) {
-    padding-top: 30px;
-    margin-top: 15px;
-    border-top: 1px solid #ddd;
-  }
-`;
-
 const Tag = styled.div`
   display: flex;
   justify-content: center;
