@@ -58,10 +58,22 @@ const IndexPage = () => {
               <Acronym short="BFD" long="big fucking deal" />. Come October, when you get your mail-in ballot, you can read our summaries to understand the broad set of opinions, dive into the details, and come to your own conclusions.
             </Description>
             <Space h={20} xsHeight={10} />
+          </Col>
+          <Col
+            off={{ xs: 2, sm: 3, md: 4, lg: 6, xl: 7, xxl: 7 }}
+            span={{ xs: 20, sm: 18, md: 16, lg: 12, xl: 10, xxl: 10 }}
+          >
             <ShadowBox>
-              <SubscribeTitle>We'll drop the guide in early October and can let you know. Sign up below.</SubscribeTitle>
+              <SubscribeTitle>
+                We'll drop the guide in early October and can let you know. Sign up below.
+              </SubscribeTitle>
               <EmailSubscribe />
             </ShadowBox>
+          </Col>
+          <Col
+            off={{ xs: 2, sm: 4, md: 5, lg: 7, xl: 8, xxl: 8 }}
+            span={{ xs: 20, sm: 16, md: 14, lg: 10, xl: 8, xxl: 8 }}
+          >
             <Space h={20} xsHeight={10} />
             <Description>
               P.S. Can't wait?{` `}
