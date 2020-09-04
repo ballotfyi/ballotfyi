@@ -4,7 +4,6 @@ const cors = require('cors')({
     /\.ballot\.fyi$/,
     /ballot-fyi\.cdn\.ampproject\.org/,
     /ballot-fyi\.bing-amp\.com/,
-    'http://localhost:3000'
   ],
   methods: ['POST']
 });
