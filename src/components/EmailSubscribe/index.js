@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
-// import { useAmp } from "next/amp";
+import { useAmp } from "next/amp";
 import axios from 'axios';
 import { captureException } from '@sentry/react';
 import LoadingSvg from './loading.svg';
@@ -11,10 +11,10 @@ const EmailSubscribe = () => {
   const [emailInput, setEmailInput] = useState('');
   const [isSending, setIsSending] = useState(false);
   const [signupResult, setSignupResult] = useState(null);
-  // const isAmp = useAmp();
+  const isAmp = useAmp();
+  const endpoint = 'https://us-central1-ballotfyi.cloudfunctions.net/subscribeEmail';
 
   const handleFormSubmit = () => {
-    const endpoint = 'https://us-central1-ballotfyi.cloudfunctions.net/subscribeEmail';
     setIsSending(true);
 
     axios({
@@ -88,29 +88,63 @@ const EmailSubscribe = () => {
     );
     subMessage = "> Something went wrong, and we couldn't subscribe you.";
   }
-
-  return (
-    <SubscribeForm>
-      <Form name="subscribe" onSubmit={handleFormSubmit}>
-        <TextField
-          required={true}
-          type="email"
-          name="subscribe"
-          placeholder="Your email addy"
-          tabIndex="0"
-          onChange={(e) => setEmailInput(e.target.value)}
-          onSubmit={handleFormSubmit}
-          autoComplete="on"
-          aria-label="Email address to subscribe to ballot.fyi"
-          value={emailInput}
-          size={30}
-          disabled={isSending}
+  if(!isAmp) {
+    return (
+      <SubscribeForm>
+        <Form name="subscribe" onSubmit={handleFormSubmit}>
+          <TextField
+            required={true}
+            type="email"
+            name="subscribe"
+            placeholder="Your email addy"
+            tabIndex="0"
+            onChange={(e) => setEmailInput(e.target.value)}
+            onSubmit={handleFormSubmit}
+            autoComplete="on"
+            aria-label="Email address to subscribe to ballot.fyi"
+            value={emailInput}
+            size={30}
+            disabled={isSending}
+          />
+          {statusOrButton}
+        </Form>
+        <Message>{subMessage}</Message>
+      </SubscribeForm>
+    );
+  } else {
+    return (
+      <form 
+        method="post"
+        action-xhr={endpoint} 
+        target="_top"
+        on="submit-success: AMP.setState({'formMessage': event.response})"
+      >
+        <FieldSet>
+          <TextField
+            required={true}
+            type="email"
+            name="subscribe"
+            placeholder="Your email addy"
+            tabIndex="0"
+            onChange={(e) => setEmailInput(e.target.value)}
+            autoComplete="on"
+            aria-label="Email address to subscribe to ballot.fyi"
+            size={30}
+            disabled={isSending}
+          />
+          <SubmitButton 
+            type="submit"
+            value="Subscribe"
+          >
+            LMK
+          </SubmitButton>
+        </FieldSet>
+        <Message 
+          data-amp-bind-text="formMessage"
         />
-        {statusOrButton}
-      </Form>
-      <Message>{subMessage}</Message>
-    </SubscribeForm>
-  );
+      </form>
+    )
+  }
 };
 
 export default EmailSubscribe;
@@ -164,7 +198,7 @@ const SubmitButton = styled.button`
   height: 44px;
   border-radius: 22px;
   width: 44px;
-  display: flex;
+  display: inline;
   align-items: center;
   justify-content: center;
   margin-left: 10px;
@@ -191,7 +225,7 @@ const TextField = styled.input`
   font-weight: 600;
   font-size: 15px;
   width: 70%;
-  display: inline-block;
+  display: inline;
   box-sizing: border-box;
   line-height: 20px;
   text-transform: none;
@@ -237,4 +271,10 @@ const spin = keyframes`
 
 const Spin = styled.div`
   animation: ${spin} 800ms linear infinite;
+`;
+
+const FieldSet = styled.fieldset`
+  padding: 0;
+  margin: 0;
+  border: none;
 `;

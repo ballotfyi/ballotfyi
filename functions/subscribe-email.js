@@ -1,6 +1,11 @@
 const functions = require('firebase-functions');
 const cors = require('cors')({
-  origin: [/\.ballot\.fyi$/],
+  origin: [
+    /\.ballot\.fyi$/,
+    /ballot-fyi\.cdn\.ampproject\.org/,
+    /ballot-fyi\.bing-amp\.com/,
+    'http://localhost:3000'
+  ],
   methods: ['POST']
 });
 const axios = require('axios');
@@ -17,15 +22,25 @@ const crypto = require('crypto');
  */ 
 exports.subscribeEmail = functions.https.onRequest( async (req, res) => {
   return cors(req, res, async () => {   
+    const origin = req.get('origin');
+    res.set('Access-Control-Allow-Origin', origin);
+    res.set('Access-Control-Allow-Credentials', 'true');
     if(!req.secure) {
       res.sendStatus(501);
     }
-    const { email } = req.body;
+    let email = null;
+    if( Buffer.isBuffer(req.body) ) {
+      const bufferBody = req.body.toString('utf-8');
+      email = bufferBody.split('\r\n')[3].trim();
+    } else {
+      email = req.body.email;
+    }
     if (!email) {
       res.sendStatus(401);
     }
     let doesExistRes;
     let doesExist = false;
+
     try {
       doesExistRes = await sendMailchimpRequest({
         type: 'check existence',

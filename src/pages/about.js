@@ -127,7 +127,7 @@ const AboutPage = () => {
             span={{ xs: 22, sm: 20, md: 6, lg: 6, xl: 6, xxl: 6 }}
           >
             <Action>
-              <Button bgColor="#E6E6FA" color="#333" href="https://registertovote.ca.gov/">
+              <Button bgColor="#E6E6FA" col="#333" href="https://registertovote.ca.gov/">
                 Check my registration
               </Button>
             </Action>

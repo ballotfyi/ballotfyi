@@ -14,7 +14,7 @@ admin.initializeApp();
  * has the appropriate permissions to promote other users. i.e. check that auth exists and is an admin.
  */
 
-exports.updateCustomClaims = functions.https.onCall( (data, { auth }) => {
+exports.updateCustomClaims = functions.https.onCall( (data) => {
   admin.auth().getUserByEmail(data.email).then((user) => {
     if (user.emailVerified) {
       return admin.auth().setCustomUserClaims(user.uid, data.claim);

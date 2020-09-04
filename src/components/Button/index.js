@@ -5,7 +5,7 @@ const Button = (props) => {
   if (href) {
     return (
       <ABlock style={props.style} href={href} target="_blank" rel="noopener noreferrer">
-        <StyledButton {...props}>{label || children}</StyledButton>
+        <StyledButton col={props.col} bgColor={props.bgColor}>{label || children}</StyledButton>
       </ABlock>
     );
   }
@@ -22,7 +22,7 @@ const StyledButton = styled.button`
   font-size: 12px;
   letter-spacing: 0.195em;
   text-transform: uppercase;
-  color: ${(props) => (props.color ? props.color : '#fff')};
+  color: ${(props) => (props.col ? props.col : '#fff')};
   text-transform: uppercase;
   height: 44px;
   border-radius: 4px;
