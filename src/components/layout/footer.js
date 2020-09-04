@@ -1,6 +1,29 @@
 import styled from 'styled-components';
 import Link from 'next/link';
 
+const Logo = styled.div`
+  font-family: 'ITC Avant Garde', Inter, sans-serif;
+  font-size: 14px;
+  background-color: #121212;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  @media screen and (max-width: 768px) {
+    height: 35px;
+  }
+  @media screen and (max-width: 576px) {
+    height: 30px;
+  }
+`;
+
+const LeftSide = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const Container = styled.div`
   height: 40px;
   position: sticky;
@@ -78,7 +101,10 @@ const Footer = React.forwardRef((props, ref) => {
 
   return (
     <Container ref={ref}>
-      <div>{leftItems}</div>
+      <LeftSide>
+        <Logo>ballot.fyi</Logo>
+        {leftItems}
+      </LeftSide>
       <div>{rightItems}</div>
     </Container>
   );

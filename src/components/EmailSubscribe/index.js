@@ -222,8 +222,8 @@ const SubmitButton = styled.button`
 `;
 
 const TextField = styled.input`
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 300;
+  font-size: 14px;
   width: 70%;
   display: inline;
   box-sizing: border-box;
