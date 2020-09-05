@@ -100,7 +100,6 @@ export const config = {
 //-----------------------------
 
 const Title = styled.h1`
-  text-transform: uppercase;
   margin-top: 0;
   margin-bottom: 0;
   text-align: center;
