@@ -6,7 +6,7 @@ import { useAmp } from 'next/amp';
 Expands an acronym to the full text. Toggleable
 
 Usage:
-<Acronym short='CIA' long='Central Intelligence Agency' />
+<Acronym long='Central Intelligence Agency'>CIA</Acronym>
 
 Text-decoration style not supported on mobile, so maybe have to switch to border-bottom
 */
@@ -24,7 +24,7 @@ const AcronymContainer = styled.span`
 `;
 
 const Acronym = (props) => {
-  const [textDisplayed, setTextDisplayed] = useState(props.short);
+  const [textDisplayed, setTextDisplayed] = useState(props.children);
   const [isExpanded, setIsExpanded] = useState(false);
   const [didExpand, setDidExpand] = useState(false);
   const textRef = useRef(null);
@@ -54,7 +54,7 @@ const Acronym = (props) => {
       if (!props.toggleable && didExpand) {
         currentlyIsExpanded = true;
       } //-- force it to stay expanded
-      currentlyIsExpanded ? setTextDisplayed(props.long) : setTextDisplayed(props.short);
+      currentlyIsExpanded ? setTextDisplayed(props.long) : setTextDisplayed(props.children);
       setDidExpand(true);
       setIsExpanded(currentlyIsExpanded);
       if (props.highlightOnClick) {
@@ -75,7 +75,7 @@ const Acronym = (props) => {
         data-amp-bind-class="containerClass"
         on={`tap:AMP.setState({displayedText:'${props.long}', containerClass: 'unstyled'})`}
       >
-        {props.short}
+        {props.children}
       </AcronymContainer>
     );
   } else {
@@ -96,14 +96,12 @@ const Acronym = (props) => {
 };
 
 Acronym.propTypes = {
-  short: PropTypes.string.isRequired,
   long: PropTypes.string.isRequired,
   toggleable: PropTypes.bool,
   highlightOnClick: PropTypes.bool,
 };
 
 Acronym.defaultProps = {
-  short: '',
   long: '',
   toggleable: true,
   highlightOnClick: false,

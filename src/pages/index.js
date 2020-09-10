@@ -55,7 +55,7 @@ const IndexPage = () => {
             </Issues>
             <Description>
               As if you didn’t think this election wasn’t already a{' '}
-              <Acronym short="BFD" long="big fucking deal" />. Come October, when you get your mail-in ballot, you can read our summaries to understand the broad set of opinions, dive into the details, and come to your own conclusions.
+              <Acronym long="big fucking deal">BFD</Acronym>. Come October, when you get your mail-in ballot, you can read our summaries to understand the broad set of opinions, dive into the details, and come to your own conclusions.
             </Description>
             <Space h={20} xsHeight={10} />
           </Col>

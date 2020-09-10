@@ -61,9 +61,8 @@ const AboutPage = () => {
             <br /> In full transparency, we have asked for contributions in the past, and you can{' '}
             <Acronym
               toggleable={false}
-              short="learn more about it here"
               long={`In previous years, we have asked for donations from readers after the elections were over. (All were under $100.) We are discontinuing that practice. Also, in 2018, ballot.fyi received a grant from The Knight Foundation, a nonpartisan organization advancing media and information to aid democracy. We no longer have any obligation or affiliation to The Knight Foundation, or any other organization`}
-            />
+            >learn more about it here</Acronym>
             .
           </div>
 
