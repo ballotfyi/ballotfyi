@@ -5,7 +5,9 @@ const Button = (props) => {
   if (href) {
     return (
       <ABlock style={props.style} href={href} target="_blank" rel="noopener noreferrer">
-        <StyledButton col={props.col} bgColor={props.bgColor}>{label || children}</StyledButton>
+        <StyledButton col={props.col} bgColor={props.bgColor}>
+          {label || children}
+        </StyledButton>
       </ABlock>
     );
   }

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const TopNav = () => {
+const TopHat = () => {
   return (
     <Container>
       <Line />
@@ -10,7 +10,7 @@ const TopNav = () => {
   );
 };
 
-export default TopNav;
+export default TopHat;
 
 const Container = styled.div`
   display: flex;
@@ -28,6 +28,10 @@ const Center = styled.div`
   min-width: 140px;
   display: flex;
   justify-content: center;
+  @media screen and (max-width: 576px) {
+    font-size: 10px;
+    min-width: 100px;
+  }
 `;
 
 const Line = styled.div`
@@ -36,4 +40,12 @@ const Line = styled.div`
   margin-left: 16px;
   margin-right: 16px;
   width: 100%;
+  @media screen and (max-width: 768px) {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+  @media screen and (max-width: 576px) {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
 `;

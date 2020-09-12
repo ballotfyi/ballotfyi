@@ -1,13 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import HeadContent from 'components/HeadContent';
-import Footer from 'components/layout/footer.js';
+import Footer from 'components/Footer';
 import withBasicTemplate from 'template/basic';
 import { Space, LinkOut, Col, Row } from 'components/util';
 import EmailSubscribe from 'components/EmailSubscribe';
 import Acronym from 'components/Acronym';
-import TopNav from 'components/layout/TopNav';
-
+import TopNav from 'components/TopHat';
 
 const IndexPage = () => {
   const [footerHeight, setFooterHeight] = useState(0);
@@ -32,7 +31,9 @@ const IndexPage = () => {
           >
             <Title>The 2020 California Ballot Propositions, Explained</Title>
             <Space h={10} />
-            <Center><Tag>COMING SOON</Tag></Center>
+            <Center>
+              <Tag>COMING SOON</Tag>
+            </Center>
             <Space h={40} />
           </Col>
 
@@ -41,7 +42,10 @@ const IndexPage = () => {
             span={{ xs: 20, sm: 16, md: 14, lg: 10, xl: 8, xxl: 8 }}
           >
             <Description>
-              We explain all the arguments behind the twelve Calfornia state propositions. Check out our <LinkOut href="https://2018.ballot.fyi/">2018</LinkOut> and <LinkOut href="https://2016.ballot.fyi/">2016</LinkOut> editions to know what to expect (except we're redesigning it all).
+              We explain all the arguments behind the twelve Calfornia state propositions. Check out
+              our <LinkOut href="https://2018.ballot.fyi/">2018</LinkOut> and{' '}
+              <LinkOut href="https://2016.ballot.fyi/">2016</LinkOut> editions to know what to
+              expect (except we're redesigning it all).
             </Description>
 
             <h2>This is up to you</h2>
@@ -55,7 +59,9 @@ const IndexPage = () => {
             </Issues>
             <Description>
               As if you didn’t think this election wasn’t already a{' '}
-              <Acronym long="big fucking deal">BFD</Acronym>. Come October, when you get your mail-in ballot, you can read our summaries to understand the broad set of opinions, dive into the details, and come to your own conclusions.
+              <Acronym long="big fucking deal">BFD</Acronym>. Come October, when you get your
+              mail-in ballot, you can read our summaries to understand the broad set of opinions,
+              dive into the details, and come to your own conclusions.
             </Description>
             <Space h={20} xsHeight={10} />
           </Col>

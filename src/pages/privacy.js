@@ -1,7 +1,7 @@
 import withBasicTemplate from 'template/basic';
 import GradientBar from 'components/layout/gradient-bar';
 import { Space, LinkOut, Col } from 'components/util';
-import Footer from 'components/layout/footer.js';
+import Footer from 'components/Footer';
 
 const PrivacyPage = () => {
   return (

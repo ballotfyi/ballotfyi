@@ -64,3 +64,29 @@ export const breakpoints = {
   xl: '1200px',
   xxl: '1600px',
 };
+
+// export const NoiseBackground = styled.div`
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   background: conic-gradient(from 325deg at 0% -4%, rgba(255,255,255,0), black),url(/static/noise.svg);
+//   filter: contrast(170%) brightness(905%);
+//   border-radius: 1px;
+// `;
+
+// const NoiseOffset = styled.div`
+//   position: relative;
+//   top: -14px;
+//   left: -18px;
+//   width: 100%;
+//   height: 100%;
+// `
+
+// export const NoiseParent = (props) => {
+//   return ( 
+//     <NoiseBackground style={props.style}>
+//       {props.children}
+//     </NoiseBackground>
+//   )
+// }

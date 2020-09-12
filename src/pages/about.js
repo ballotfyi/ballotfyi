@@ -4,8 +4,9 @@ import { Space, LinkOut, Col } from 'components/util';
 import EmailSubscribe from 'components/EmailSubscribe';
 import Acronym from 'components/Acronym';
 import Button from 'components/Button';
-import Footer from 'components/layout/footer.js';
-import TopNav from 'components/layout/TopNav';
+import Footer from 'components/Footer';
+import TopHat from 'components/TopHat';
+import PropNav from 'components/PropNav';
 
 // const HeaderBgContainer = styled.div`
 //   position: absolute;
@@ -14,7 +15,8 @@ import TopNav from 'components/layout/TopNav';
 const AboutPage = () => {
   return (
     <div>
-      <TopNav />
+      <TopHat />
+      <PropNav />
       {/* <HeaderBgContainer>
         <img style={{ minWidth: '100vw' }} src="./static/about-bg.png" alt="swirly line" />
       </HeaderBgContainer> */}
@@ -62,7 +64,9 @@ const AboutPage = () => {
             <Acronym
               toggleable={false}
               long={`In previous years, we have asked for donations from readers after the elections were over. (All were under $100.) We are discontinuing that practice. Also, in 2018, ballot.fyi received a grant from The Knight Foundation, a nonpartisan organization advancing media and information to aid democracy. We no longer have any obligation or affiliation to The Knight Foundation, or any other organization`}
-            >learn more about it here</Acronym>
+            >
+              learn more about it here
+            </Acronym>
             .
           </div>
 
@@ -174,7 +178,12 @@ const AboutPage = () => {
           <br />
           Contact us at fax@ballot.fyi (via email).
         </div>
+        <NoiseContainer>
+          <Inner/>
+        </NoiseContainer>
       </Col>
+      <Space h={30} />
+
       <Space h={120} />
       <Footer />
     </div>
@@ -214,12 +223,48 @@ const Action = styled.div`
 `;
 
 const CTAContainer = styled.div`
-  background: #121212;
   padding-top: 60px;
   padding-bottom: 60px;
   color: white;
+  background-color: #222;
   @media screen and (max-width: 768px) {
     padding-top: 0;
     padding-bottom: 30px;
+  }
+`;
+
+const NoiseContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  height: 400px;
+  background: conic-gradient(from 325deg at 0% -4%, rgba(255,255,255,0), black),url(/static/noise.svg);
+  filter: contrast(170%) brightness(905%);
+  border-radius: 1px;
+  @media not all and (min-resolution:.001dpcm) { 
+    @media {
+      background: conic-gradient(from 232deg at -60% -34%,rgba(255,255,255,0),black),url(/static/noise.svg);
+      filter: contrast(310%) brightness(635%);
+    }
+  }
+  `;
+
+
+const Inner = styled.div`
+  position: relative;
+  top: -14px;
+  left: -18px;
+  width: 100%;
+  height: 100%;
+  box-shadow: 4px 6px 40px 30px rgba(0, 0, 0, 0.06);
+  mix-blend-mode: color-burn;
+  border-radius: 1px;
+  @media not all and (min-resolution:.001dpcm) { 
+    @media {
+      background: none;
+      mix-blend-mode: overlay;
+    }
   }
 `;

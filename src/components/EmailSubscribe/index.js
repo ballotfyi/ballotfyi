@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { useAmp } from "next/amp";
+import { useAmp } from 'next/amp';
 import axios from 'axios';
 import { captureException } from '@sentry/react';
 import LoadingSvg from './loading.svg';
@@ -88,7 +88,7 @@ const EmailSubscribe = () => {
     );
     subMessage = "> Something went wrong, and we couldn't subscribe you.";
   }
-  if(!isAmp) {
+  if (!isAmp) {
     return (
       <SubscribeForm>
         <Form name="subscribe" onSubmit={handleFormSubmit}>
@@ -113,9 +113,9 @@ const EmailSubscribe = () => {
     );
   } else {
     return (
-      <form 
+      <form
         method="post"
-        action-xhr={endpoint} 
+        action-xhr={endpoint}
         target="_top"
         on="submit-success: AMP.setState({'formMessage': event.response})"
       >
@@ -132,18 +132,13 @@ const EmailSubscribe = () => {
             size={30}
             disabled={isSending}
           />
-          <SubmitButton 
-            type="submit"
-            value="Subscribe"
-          >
+          <SubmitButton type="submit" value="Subscribe">
             LMK
           </SubmitButton>
         </FieldSet>
-        <Message 
-          data-amp-bind-text="formMessage"
-        />
+        <Message data-amp-bind-text="formMessage" />
       </form>
-    )
+    );
   }
 };
 
