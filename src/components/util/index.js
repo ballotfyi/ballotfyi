@@ -84,7 +84,7 @@ export const breakpoints = {
 // `
 
 // export const NoiseParent = (props) => {
-//   return ( 
+//   return (
 //     <NoiseBackground style={props.style}>
 //       {props.children}
 //     </NoiseBackground>

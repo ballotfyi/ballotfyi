@@ -51,13 +51,15 @@ export default Footer;
 
 const Background = styled.div`
   height: 100%;
-  background: conic-gradient(from 325deg at 0% -4%, rgba(255,255,255,0), black),url(/static/noise.svg);
+  background: conic-gradient(from 325deg at 0% -4%, rgba(255, 255, 255, 0), black),
+    url(/static/noise.svg);
   filter: contrast(170%) brightness(905%);
   border-radius: 21px;
-  @media not all and (min-resolution:.001dpcm) { 
+  @media not all and (min-resolution: 0.001dpcm) {
     @media {
-      background: conic-gradient(from 195deg at -10% -4%,rgba(255,255,255,0),black),url(/static/noise.svg);
-      filter: contrast(220%) brightness(635%)
+      background: conic-gradient(from 195deg at -10% -4%, rgba(255, 255, 255, 0), black),
+        url(/static/noise.svg);
+      filter: contrast(220%) brightness(635%);
     }
   }
 `;
@@ -150,12 +152,12 @@ const FooterItem = styled.a`
   }
   @media not all and (hover: none) {
     &:hover {
-      background-color: #EDDD19;
+      background-color: #eddd19;
       mix-blend-mode: multiply;
     }
   }
   &:focus {
-    background-color: #EDDD19;
+    background-color: #eddd19;
     mix-blend-mode: multiply;
   }
 `;
