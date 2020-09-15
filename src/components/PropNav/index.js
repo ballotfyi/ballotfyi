@@ -7,49 +7,37 @@ const PropNav = (props) => {
   const isAmp = useAmp();
   const seq = Array.from(Array(12).keys());
   const listItems = seq.map((n) => {
-    const propNum = n+14;
-    return (
-      <NavItem 
-        key={n}
-        isAmp={isAmp}
-        propNum={propNum}
-        comp={props.comp}
-      >
-      </NavItem>
-    );
+    const propNum = n + 14;
+    return <NavItem key={n} isAmp={isAmp} propNum={propNum} comp={props.comp}></NavItem>;
   });
   return (
     <MenuContainer id="propNav">
       {listItems}
       <NavBtn onClick={() => props.comp.fullpageApi.moveSectionUp()}>Prev</NavBtn>
-      <NavBtn onClick={() => props.comp.fullpageApi.moveSectionDown()}>Next</NavBtn> 
+      <NavBtn onClick={() => props.comp.fullpageApi.moveSectionDown()}>Next</NavBtn>
     </MenuContainer>
-  )
-}
-
+  );
+};
 
 const NavItem = (props) => {
   const [isHovered, setIsHovered] = useState(false);
   const { propNum, isAmp } = props;
-  const sectionId = `prop-${propNum}-intro`
+  const sectionId = `prop-${propNum}-intro`;
 
   // <Link href={`prop-${propNum}`}>
   // </Link>
   return (
-      <ItemContainer
-        data-menuanchor={sectionId}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onClick={()=>props.comp.fullpageApi.moveTo(propNum-13)}
-      > 
-        <Circle className="propnav-circle"/>
-        <Label>
-          {isHovered || isAmp ? `Prop ${propNum}` : null}
-        </Label>
-      </ItemContainer>
+    <ItemContainer
+      data-menuanchor={sectionId}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={() => props.comp.fullpageApi.moveTo(propNum - 13)}
+    >
+      <Circle className="propnav-circle" />
+      <Label>{isHovered || isAmp ? `Prop ${propNum}` : null}</Label>
+    </ItemContainer>
   );
 };
-
 
 const MenuContainer = styled.div`
   position: absolute;
@@ -102,7 +90,5 @@ const NavBtn = styled.div`
   }
 `;
 // background-color: ${(props) => (props.propNum ? propColors[props.propNum] : '#222')};
-
-
 
 export default PropNav;

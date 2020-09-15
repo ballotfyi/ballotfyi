@@ -23,9 +23,7 @@ const Footer = React.forwardRef((props, ref) => {
     </Link>
   ));
 
-  return (
-    <Set ref={ref}>{linkItems}</Set>
-  );
+  return <Set ref={ref}>{linkItems}</Set>;
 });
 
 export default Footer;
