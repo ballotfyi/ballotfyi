@@ -46,3 +46,7 @@
 amp-img {
   background-color: #ddd;
 }
+
+#propNav > .active {
+  background-color: #333;
+}

@@ -178,9 +178,15 @@ const AboutPage = () => {
           <br />
           Contact us at fax@ballot.fyi (via email).
         </div>
-        <NoiseContainer>
-          <Inner/>
-        </NoiseContainer>
+      </Col>
+      <Col
+        off={{ xs: 2, sm: 4, md: 2, lg: 2, xl: 8, xxl: 8 }}
+        span={{ xs: 20, sm: 16, md: 20, lg: 20, xl: 8, xxl: 8 }}
+      >
+        <Isolate>
+          <Noise />
+          <Overlay />
+        </Isolate>
       </Col>
       <Space h={30} />
 
@@ -233,38 +239,36 @@ const CTAContainer = styled.div`
   }
 `;
 
-const NoiseContainer = styled.div`
+const Isolate = styled.div`
+  isolation: isolate;
+`;
+
+const Noise = styled.div`
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 30px;
+  width: 100%;
   height: 400px;
-  background: conic-gradient(from 325deg at 0% -4%, rgba(255,255,255,0), black),url(/static/noise.svg);
+  background: conic-gradient(from 325deg at 0% -4%, rgba(255, 255, 255, 0), black),
+    url(/static/noise.svg);
   filter: contrast(170%) brightness(905%);
-  border-radius: 1px;
-  @media not all and (min-resolution:.001dpcm) { 
+  @media not all and (min-resolution: 0.001dpcm) {
     @media {
-      background: conic-gradient(from 232deg at -60% -34%,rgba(255,255,255,0),black),url(/static/noise.svg);
+      background: conic-gradient(from 232deg at -60% -34%, rgba(255, 255, 255, 0), black),
+        url(/static/noise.svg);
       filter: contrast(310%) brightness(635%);
     }
   }
-  `;
+`;
 
-
-const Inner = styled.div`
+const Overlay = styled.div`
   position: relative;
-  top: -14px;
-  left: -18px;
+  top: -400px;
   width: 100%;
-  height: 100%;
+  height: 400px;
   box-shadow: 4px 6px 40px 30px rgba(0, 0, 0, 0.06);
-  mix-blend-mode: color-burn;
-  border-radius: 1px;
-  @media not all and (min-resolution:.001dpcm) { 
-    @media {
-      background: none;
-      mix-blend-mode: overlay;
-    }
-  }
+  background: linear-gradient(90deg, orange, darkorchid);
+  mix-blend-mode: lighten;
 `;

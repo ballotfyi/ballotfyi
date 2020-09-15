@@ -1,80 +1,109 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { useAmp } from 'next/amp';
-import { propColors } from 'components/attributes';
 
-const LinkItem = (props) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const { propNum, isAmp } = props;
-  return (
-    <Link href={`prop-${propNum}`}>
-      <Item
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+const PropNav = (props) => {
+  const isAmp = useAmp();
+  const seq = Array.from(Array(12).keys());
+  const listItems = seq.map((n) => {
+    const propNum = n+14;
+    const sectionId = `prop-${propNum}-intro`
+    return (
+      <NavItem 
+        key={n} 
+        data-menuanchor={sectionId}
+        isAmp={isAmp}
         propNum={propNum}
       >
-        {isHovered || isAmp ? propNum : null}
-      </Item>
-    </Link>
-  );
-};
-
-const PropNav = () => {
-  const isAmp = useAmp();
-  const propNums = Array.from(Array(12).keys());
-  const propLinks = propNums.map((n) => {
-    const propNum = n + 14;
-    return <LinkItem key={propNum} isAmp={isAmp} propNum={propNum} />;
+      </NavItem>
+    );
   });
-
   return (
-    <Placement>
-      <Absolute>
-        <Container>{propLinks}</Container>
-      </Absolute>
-    </Placement>
+    <MenuContainer id="propNav">
+      {listItems}
+      <NavBtn onClick={() => props.comp.fullpageApi.moveSectionUp()}>Prev</NavBtn>
+      <NavBtn onClick={() => props.comp.fullpageApi.moveSectionDown()}>Next</NavBtn> 
+    </MenuContainer>
+  )
+}
+
+
+const NavItem = (props) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const { propNum, isAmp } = props;
+  const sectionId = `prop-${propNum}-intro`
+
+  // <Link href={`prop-${propNum}`}>
+  // </Link>
+  return (
+    <a href={`#${sectionId}`}>
+      <ItemContainer
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      > 
+        <Circle />
+        <Label>
+          {isHovered || isAmp ? `Prop ${propNum}` : null}
+        </Label>
+      </ItemContainer>
+    </a>
   );
 };
 
-const Absolute = styled.div`
+
+const MenuContainer = styled.div`
   position: absolute;
-`;
-
-const Placement = styled.div`
-  position: sticky;
   left: 0;
-  top: 100px;
-`;
-
-const Container = styled.div`
+  top: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: 100%;
-  padding-left: 5px;
+  margin-left: 16px;
+  margin-top: 19%;
 `;
 
-const Item = styled.div`
-  height: 24px;
-  width: 24px;
+const ItemContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+`;
+
+const Circle = styled.div`
+  width: 22px;
+  height: 22px;
   border-radius: 11px;
-  margin-bottom: 4px;
-  background-color: ${(props) => (props.propNum ? propColors[props.propNum] : '#222')};
-  color: white;
+  border: 1px solid #333;
+`;
+
+const Label = styled.span`
+  color: black;
+  margin-left: 10px;
   font-family: Inter, InterPre, sans-serif;
   font-size: 12px;
-  font-weight: 750;
+  font-weight: 500;
+  user-select: none;
+  height: 20px;
+`;
+
+const NavBtn = styled.div`
+  font-family: Inter, Helvetica;
+  font-weight: 400;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  transform: rotate(90deg) translateY(-11px);
+  transform-origin: left;
   cursor: pointer;
+  user-select: none;
   @media not all and (hover: none) {
     &:hover {
-      background-color: #222;
+      text-decoration: underline;
     }
   }
-  user-select: none;
 `;
+// background-color: ${(props) => (props.propNum ? propColors[props.propNum] : '#222')};
+
+
 
 export default PropNav;

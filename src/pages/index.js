@@ -6,7 +6,7 @@ import withBasicTemplate from 'template/basic';
 import { Space, LinkOut, Col, Row } from 'components/util';
 import EmailSubscribe from 'components/EmailSubscribe';
 import Acronym from 'components/Acronym';
-import TopNav from 'components/TopHat';
+import TopHat from 'components/TopHat';
 
 const IndexPage = () => {
   const [footerHeight, setFooterHeight] = useState(0);
@@ -21,7 +21,7 @@ const IndexPage = () => {
   return (
     <>
       <HeadContent datePublished={new Date('July 31, 2020')} pageType="page" />
-      <TopNav />
+      <TopHat />
       <div style={{ minHeight: `calc(100vh - ${footerHeight}px)` }}>
         <Space h={60} xsHeight={35} />
         <Row>

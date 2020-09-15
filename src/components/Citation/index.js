@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 // import enhanceWithClickOutside from 'react-click-outside'
 
-// import Color from 'layout/colors'
 import CitationButton from './citation-button';
 import PopupContainer from './popup-container';
 

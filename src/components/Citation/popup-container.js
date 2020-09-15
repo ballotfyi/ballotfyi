@@ -34,12 +34,12 @@ const PopupContainer = (props) => {
   // );
   const containerRef = useRef();
   const { toggleVisibility } = props;
-  
-  useEffect( () => {
-    if(containerRef.current) {
-      containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center'});
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-  },[containerRef])
+  }, [containerRef]);
 
   //-- listeners
   useEffect(() => {
@@ -71,7 +71,9 @@ const PopupContainer = (props) => {
   const handleScroll = useCallback(() => {
     //-- dismiss after user scrolls past it
     const height = window.innerHeight || document.documentElement.clientHeight;
-    const bottomOfPopup = containerRef.current ? containerRef.current.getBoundingClientRect().bottom : 0;
+    const bottomOfPopup = containerRef.current
+      ? containerRef.current.getBoundingClientRect().bottom
+      : 0;
     if (bottomOfPopup < -100 || bottomOfPopup - height > 100) {
       toggleVisibility(false);
     }
