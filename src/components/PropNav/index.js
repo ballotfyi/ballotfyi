@@ -8,13 +8,12 @@ const PropNav = (props) => {
   const seq = Array.from(Array(12).keys());
   const listItems = seq.map((n) => {
     const propNum = n+14;
-    const sectionId = `prop-${propNum}-intro`
     return (
       <NavItem 
-        key={n} 
-        data-menuanchor={sectionId}
+        key={n}
         isAmp={isAmp}
         propNum={propNum}
+        comp={props.comp}
       >
       </NavItem>
     );
@@ -37,17 +36,17 @@ const NavItem = (props) => {
   // <Link href={`prop-${propNum}`}>
   // </Link>
   return (
-    <a href={`#${sectionId}`}>
       <ItemContainer
+        data-menuanchor={sectionId}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        onClick={()=>props.comp.fullpageApi.moveTo(propNum-13)}
       > 
-        <Circle />
+        <Circle className="propnav-circle"/>
         <Label>
           {isHovered || isAmp ? `Prop ${propNum}` : null}
         </Label>
       </ItemContainer>
-    </a>
   );
 };
 

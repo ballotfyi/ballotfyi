@@ -90,10 +90,13 @@ const FullPageTest = () => {
       </SeparateLayer>
       <ReactFullpage
         licenseKey='3CB1143B-BE7D4092-876D11C1-7FBD29BB'
+        lockAnchors
+        easing={'cubic-bezier(0.215, 0.610, 0.355, 1.000)'}
+        easingcss3={'cubic-bezier(0.215, 0.610, 0.355, 1.000)'}
         menu='#propNav'
         anchors={anchors}
         verticalCentered={false}
-        scrollingSpeed={540}
+        scrollingSpeed={600}
         touchSensitivity={1}
         render={(comp) => {
           return(

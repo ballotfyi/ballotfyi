@@ -47,6 +47,6 @@ amp-img {
   background-color: #ddd;
 }
 
-#propNav > .active {
+#propNav > .active .propnav-circle{
   background-color: #333;
 }
