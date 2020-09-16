@@ -3,6 +3,8 @@ import { blockTypes } from 'lib/block-types';
 import Acronym from 'components/Acronym';
 import Citation from 'components/Citation';
 import JsxParser from 'react-jsx-parser';
+import Footer from 'components/Footer';
+import PropNav from 'components/PropNav';
 
 const PropPage = (props) => {
   const {
@@ -15,11 +17,12 @@ const PropPage = (props) => {
     blocks,
   } = props;
 
-  const renderedBlocks = blocks.map((block) => {
+  const renderedBlocks = blocks.map((block, i) => {
     const hasBody = blockTypes[block.type].fields.some((field) => field.type === 'richText');
     if (hasBody) {
       return (
         <JsxParser
+          key={i} //later change this to a nonsequential key
           components={{ Acronym, Citation }}
           jsx={`${block.data.markup}`}
           showWarnings={true}
@@ -30,9 +33,11 @@ const PropPage = (props) => {
 
   return (
     <>
+      <PropNav />
       <h1>{title}</h1>
       <div>{description}</div>
       {renderedBlocks}
+      <Footer />
     </>
   );
 };

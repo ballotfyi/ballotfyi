@@ -6,7 +6,6 @@ import Acronym from 'components/Acronym';
 import Button from 'components/Button';
 import Footer from 'components/Footer';
 import TopHat from 'components/TopHat';
-import PropNav from 'components/PropNav';
 
 // const HeaderBgContainer = styled.div`
 //   position: absolute;
@@ -16,7 +15,6 @@ const AboutPage = () => {
   return (
     <div>
       <TopHat />
-      <PropNav />
       {/* <HeaderBgContainer>
         <img style={{ minWidth: '100vw' }} src="./static/about-bg.png" alt="swirly line" />
       </HeaderBgContainer> */}
@@ -179,16 +177,6 @@ const AboutPage = () => {
           Contact us at fax@ballot.fyi (via email).
         </div>
       </Col>
-      <Col
-        off={{ xs: 2, sm: 4, md: 2, lg: 2, xl: 8, xxl: 8 }}
-        span={{ xs: 20, sm: 16, md: 20, lg: 20, xl: 8, xxl: 8 }}
-      >
-        <Isolate>
-          <Noise />
-          <Overlay />
-        </Isolate>
-      </Col>
-      <Space h={30} />
 
       <Space h={120} />
       <Footer />
@@ -243,32 +231,32 @@ const Isolate = styled.div`
   isolation: isolate;
 `;
 
-const Noise = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-  width: 100%;
-  height: 400px;
-  background: conic-gradient(from 325deg at 0% -4%, rgba(255, 255, 255, 0), black),
-    url(/static/noise.svg);
-  filter: contrast(170%) brightness(905%);
-  @media not all and (min-resolution: 0.001dpcm) {
-    @media {
-      background: conic-gradient(from 232deg at -60% -34%, rgba(255, 255, 255, 0), black),
-        url(/static/noise.svg);
-      filter: contrast(310%) brightness(635%);
-    }
-  }
-`;
+// const Noise = styled.div`
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin-top: 30px;
+//   width: 100%;
+//   height: 400px;
+//   background: conic-gradient(from 325deg at 0% -4%, rgba(255, 255, 255, 0), black),
+//     url(/static/noise.svg);
+//   filter: contrast(170%) brightness(905%);
+//   @media not all and (min-resolution: 0.001dpcm) {
+//     @media {
+//       background: conic-gradient(from 232deg at -60% -34%, rgba(255, 255, 255, 0), black),
+//         url(/static/noise.svg);
+//       filter: contrast(310%) brightness(635%);
+//     }
+//   }
+// `;
 
-const Overlay = styled.div`
-  position: relative;
-  top: -400px;
-  width: 100%;
-  height: 400px;
-  box-shadow: 4px 6px 40px 30px rgba(0, 0, 0, 0.06);
-  background: linear-gradient(90deg, orange, darkorchid);
-  mix-blend-mode: lighten;
-`;
+// const Overlay = styled.div`
+//   position: relative;
+//   top: -400px;
+//   width: 100%;
+//   height: 400px;
+//   box-shadow: 4px 6px 40px 30px rgba(0, 0, 0, 0.06);
+//   background: linear-gradient(90deg, orange, darkorchid);
+//   mix-blend-mode: lighten;
+// `;

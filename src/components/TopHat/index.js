@@ -55,11 +55,6 @@ const Logo = styled.div`
 const RightSide = styled.div`
   margin: 17px 16px 0 16px;
   width: 100%;
-`;
-
-const Line = styled.div`
-  height: 1px;
-  background-color: magenta;
   @media screen and (max-width: 768px) {
     margin-left: 12px;
     margin-right: 12px;
@@ -70,6 +65,11 @@ const Line = styled.div`
   }
 `;
 
+const Line = styled.div`
+  height: 1px;
+  background-color: magenta;
+`;
+
 const Description = styled.div`
   padding-top: 4px;
   font-family: Inter, Helvetica;
@@ -77,4 +77,8 @@ const Description = styled.div`
   font-size: 12px;
   letter-spacing: 0.095em;
   text-transform: uppercase;
+  @media screen and (max-width: 768px) {
+    font-size: 10px;
+    font-weight: 400;
+  }
 `;

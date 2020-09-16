@@ -1,163 +1,229 @@
-import { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
-import HeadContent from 'components/HeadContent';
-import Footer from 'components/Footer';
-import withBasicTemplate from 'template/basic';
-import { Space, LinkOut, Col, Row } from 'components/util';
-import EmailSubscribe from 'components/EmailSubscribe';
-import Acronym from 'components/Acronym';
 import TopHat from 'components/TopHat';
+import ReactFullpage from '@fullpage/react-fullpage';
+import Footer from 'components/Footer';
+import styled from 'styled-components';
+import { propColors } from 'components/attributes';
+import PropNav from 'components/PropNav';
+import { Row, Col } from 'components/util';
 
-const IndexPage = () => {
-  const [footerHeight, setFooterHeight] = useState(0);
-  const footerRef = useRef();
+const sections = [
+  {
+    propNum: '15',
+    title: 'Prop 15 issues $4B for housing programs',
+    description:
+      'Michael Caputo, the assistant secretary of health for public affairs, told a Facebook audience without evidence that left-wing hit squads were being trained for insurrection, and he accused C.D.C. scientists of “sedition.”',
+  },
+  {
+    propNum: '16',
+    title: 'Prop 16 gives old folks a property tax discount when they move',
+    description:
+      'Michael Caputo, the assistant secretary of health for public affairs, told a Facebook audience without evidence that left-wing hit squads were being trained for insurrection, and he accused C.D.C. scientists of “sedition.”',
+  },
+  {
+    propNum: '18',
+    title: `Prop 18 limits dialysis clinics' revenue`,
+    description:
+      'Michael Caputo, the assistant secretary of health for public affairs, told a Facebook audience without evidence that left-wing hit squads were being trained for insurrection, and he accused C.D.C. scientists of “sedition.”',
+  },
+  {
+    propNum: '20',
+    title: 'Would have split CA into three states',
+    description:
+      'Michael Caputo, the assistant secretary of health for public affairs, told a Facebook audience without evidence that left-wing hit squads were being trained for insurrection, and he accused C.D.C. scientists of “sedition.”',
+  },
+  {
+    propNum: '22',
+    title: 'Sets minimum space requirements for farm animals',
+    description:
+      'Michael Caputo, the assistant secretary of health for public affairs, told a Facebook audience without evidence that left-wing hit squads were being trained for insurrection, and he accused C.D.C. scientists of “sedition.”',
+  },
+];
 
-  useEffect(() => {
-    if (footerRef.current) {
-      setFooterHeight(footerRef.current.getBoundingClientRect().height);
-    }
-  }, [footerRef]);
+const Sections = React.memo(() => {
+  const sectionsRendered = sections.map((section) => {
+    const { propNum, title, description } = section;
+    return (
+      <div key={propNum} className="section">
+        <Top>
+          <Isolate>
+            <Noise />
+            <Overlay propNum={propNum} />
+            <Overlay2 propNum={propNum} />
+          </Isolate>
+          <FirstDigit>{propNum.substring(0, 1)}</FirstDigit>
+          <SecondDigit>{propNum.substring(1, 2)}</SecondDigit>
+          <Row style={{ position: 'absolute', width: '100%' }}>
+            <Col
+              off={{ xs: 3, sm: 3, md: 13, lg: 13, xl: 12, xxl: 12 }}
+              span={{ xs: 20, sm: 20, md: 10, lg: 10, xl: 10, xxl: 10 }}
+            >
+              <Title>{title}</Title>
+              <Bar />
+            </Col>
+          </Row>
+        </Top>
+        <Col
+          off={{ xs: 3, sm: 3, md: 13, lg: 13, xl: 12, xxl: 12 }}
+          span={{ xs: 20, sm: 20, md: 9, lg: 9, xl: 10, xxl: 10 }}
+        >
+          <Description>{description}</Description>
+        </Col>
+      </div>
+    );
+  });
+
+  return sectionsRendered;
+});
+
+const FullPageTest = () => {
+  const seq = Array.from(Array(12).keys());
+  const anchors = seq.map((n) => `prop-${n + 14}-intro`);
 
   return (
     <>
-      <HeadContent datePublished={new Date('July 31, 2020')} pageType="page" />
-      <TopHat />
-      <div style={{ minHeight: `calc(100vh - ${footerHeight}px)` }}>
-        <Space h={60} xsHeight={35} />
-        <Row>
-          <Col
-            off={{ xs: 2, sm: 2, md: 2, lg: 2, xl: 2, xxl: 2 }}
-            span={{ xs: 20, sm: 20, md: 20, lg: 20, xl: 20, xxl: 20 }}
-          >
-            <Title>The 2020 California Ballot Propositions, Explained</Title>
-            <Space h={10} />
-            <Center>
-              <Tag>COMING SOON</Tag>
-            </Center>
-            <Space h={40} />
-          </Col>
-
-          <Col
-            off={{ xs: 2, sm: 4, md: 5, lg: 7, xl: 8, xxl: 8 }}
-            span={{ xs: 20, sm: 16, md: 14, lg: 10, xl: 8, xxl: 8 }}
-          >
-            <Description>
-              We explain all the arguments behind the twelve Calfornia state propositions. Check out
-              our <LinkOut href="https://2018.ballot.fyi/">2018</LinkOut> and{' '}
-              <LinkOut href="https://2016.ballot.fyi/">2016</LinkOut> editions to know what to
-              expect (except we're redesigning it all).
-            </Description>
-
-            <h2>This is up to you</h2>
-            <Issues>
-              <li>Whether affirmative action should be legal again</li>
-              <li>Whether Lyft and Uber drivers are independent contractors</li>
-              <li>How commercial properties are taxed (that’s a big deal)</li>
-              <li>Whether cities can enact new rent control laws</li>
-              <li>Whether older folks can move with their property tax assessment</li>
-              <li>Whether we should get rid of the cash bail system</li>
-            </Issues>
-            <Description>
-              As if you didn’t think this election wasn’t already a{' '}
-              <Acronym long="big fucking deal">BFD</Acronym>. Come October, when you get your
-              mail-in ballot, you can read our summaries to understand the broad set of opinions,
-              dive into the details, and come to your own conclusions.
-            </Description>
-            <Space h={20} xsHeight={10} />
-          </Col>
-          <Col
-            off={{ xs: 2, sm: 3, md: 4, lg: 6, xl: 7, xxl: 7 }}
-            span={{ xs: 20, sm: 18, md: 16, lg: 12, xl: 10, xxl: 10 }}
-          >
-            <ShadowBox>
-              <SubscribeTitle>
-                We'll drop the guide in early October and can let you know. Sign up below.
-              </SubscribeTitle>
-              <EmailSubscribe />
-            </ShadowBox>
-          </Col>
-          <Col
-            off={{ xs: 2, sm: 4, md: 5, lg: 7, xl: 8, xxl: 8 }}
-            span={{ xs: 20, sm: 16, md: 14, lg: 10, xl: 8, xxl: 8 }}
-          >
-            <Space h={20} xsHeight={10} />
-            <Description>
-              P.S. Can't wait?{` `}
-              <LinkOut href="https://ballotpedia.org/California_2020_ballot_propositions">
-                Ballotpedia
-              </LinkOut>{' '}
-              is a good and dense place to start.
-            </Description>
-            <Space h={80} xsHeight={15} />
-          </Col>
-        </Row>
-      </div>
-      <Footer ref={footerRef} />
+      <SeparateLayer>
+        <TopHat />
+        <PropNav />
+      </SeparateLayer>
+      <ReactFullpage
+        licenseKey="3CB1143B-BE7D4092-876D11C1-7FBD29BB"
+        lockAnchors
+        easing={'cubic-bezier(0.215, 0.610, 0.355, 1.000)'}
+        easingcss3={'cubic-bezier(0.215, 0.610, 0.355, 1.000)'}
+        menu="#propNav"
+        anchors={anchors}
+        verticalCentered={false}
+        scrollingSpeed={600}
+        touchSensitivity={1}
+        render={(comp) => {
+          return (
+            <>
+              <ReactFullpage.Wrapper>
+                <Sections />
+              </ReactFullpage.Wrapper>
+            </>
+          );
+        }}
+      />
+      <Footer />
     </>
   );
 };
 
-export default withBasicTemplate(IndexPage);
+export default FullPageTest;
 
-export const config = {
-  amp: 'hybrid',
-};
-
-//-----------------------------
-
-const Title = styled.h1`
-  margin-top: 0;
-  margin-bottom: 0;
-  text-align: center;
+const SeparateLayer = styled.div`
+  width: 100%;
+  position: absolute;
+  z-index: 10;
 `;
 
-const Tag = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #ffffff;
-  font-family: Inter, Helvetica;
-  box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.055);
-  border-radius: 4px;
-  padding: 10px 15px;
-  width: 150px;
-  color: #aaa;
-  font-size: 12px;
-  letter-spacing: 0.195em;
-  margin-left: 20px;
-  height: 28px;
+const Noise = styled.div`
+  height: 100%;
+  background: conic-gradient(from 325deg at 0% -4%, rgba(255, 255, 255, 0), black),
+    url(/static/noise.svg);
+  filter: contrast(170%) brightness(905%);
+  @media not all and (min-resolution: 0.001dpcm) {
+    @media {
+      background: conic-gradient(from 232deg at -60% -34%, rgba(255, 255, 255, 0), black),
+        url(/static/noise.svg);
+      filter: contrast(320%) brightness(485%);
+    }
+  }
 `;
 
-const ShadowBox = styled.div`
-  background: #fff;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  border-radius: 8px;
-  padding: 10px 15px;
-  box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.055);
+const Top = styled.div`
+  position: relative;
+  height: 63vh;
+  @media screen and (max-width: 768px) {
+    height: 50vh;
+  }
 `;
 
-const SubscribeTitle = styled.h3`
-  font-family: Inter;
-  font-weight: 800;
+const Isolate = styled.div`
+  isolation: isolate;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: calc(100% - 10px);
+  background: linear-gradient(
+    90deg,
+    ${(props) => (props.propNum ? propColors[props.propNum] : 'purple')},
+    ${(props) => (props.propNum ? propColors[`${parseInt(props.propNum - 1)}`] : 'purple')}
+  );
+  box-shadow: 4px 6px 40px 30px rgba(0, 0, 0, 0.06);
+  mix-blend-mode: lighten;
+`;
+const Overlay2 = styled.div`
+  position: absolute;
+  top: calc(100% - 10px);
+  width: 100%;
+  height: 10px;
+  background-color: ${(props) => (props.propNum ? propColors[props.propNum] : 'purple')};
+  mix-blend-mode: exclusion;
+`;
+
+const Digit = styled.div`
+  position: absolute;
+  font-size: 290px;
+  font-family: Inter, InterPre, Helvetica, sans-serif;
+  font-weight: 750;
+  color: rgba(255, 255, 255, 0.35);
+  user-select: none;
+  @media screen and (max-width: 576px) {
+    font-size: 230px;
+  }
+`;
+
+const FirstDigit = styled(Digit)`
+  top: 38%;
+  left: 16px;
+`;
+
+const SecondDigit = styled(Digit)`
+  top: 52%;
+  left: calc(16px + 6%);
+  @media screen and (max-width: 768px) {
+    left: calc(16px + 16%);
+  }
+`;
+
+const Title = styled.h2`
+  font-size: 52px;
+  line-height: 59px;
+  font-family: 'ITC Avant Garde', Inter, Helvetica, sans-serif;
   color: #333;
-  text-align: center;
-  margin-top: 20px;
+  @media screen and (max-width: 768px) {
+    font-size: 30px;
+    line-height: normal;
+    position: relative;
+    top: 20vh;
+  }
+  @media screen and (max-width: 576px) {
+    font-size: 26px;
+    line-height: normal;
+    position: relative;
+    top: 10vh;
+  }
 `;
+
 const Description = styled.div`
-  font-size: 16px;
-  line-height: 26px;
-`;
-
-const Issues = styled.div`
+  display: inline-block;
   margin-top: 30px;
-  margin-bottom: 50px;
-  line-height: 28px;
-  color: #111;
 `;
 
-const Center = styled.div`
-  display: flex;
-  justify-content: center;
+const Bar = styled.div`
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;

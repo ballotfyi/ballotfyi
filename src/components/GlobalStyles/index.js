@@ -13,6 +13,10 @@ const Styles = createGlobalStyle`
     font-size: 16px;
     line-height: 26px;
     color: #222;
+    @media screen and (max-width: 576px) {
+      font-size: 14px;
+      line-height: 22px;
+    }
   }
 
   h1 {

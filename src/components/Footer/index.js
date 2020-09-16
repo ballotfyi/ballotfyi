@@ -1,10 +1,38 @@
+import { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { getNextAndPrevPropNum } from 'components/util';
 
 const Footer = React.forwardRef((props, ref) => {
+  const [windowWidth, setWindowWidth] = useState(1000);
+  const router = useRouter();
+
+  const handleResize = useCallback(() => {
+    setWindowWidth(window.innerWidth || document.documentElement.clientWidth);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [handleResize]);
+
+  const propPageRegex = /prop-\d\d/i;
+  const path = router.asPath;
+  const isPropPage = propPageRegex.test(path);
+  const currentPropNum = isPropPage ? parseInt(path.match(propPageRegex)[0].split('-')[1]) : null;
+  const nextAndPrev = currentPropNum
+    ? getNextAndPrevPropNum(currentPropNum)
+    : { prev: null, next: null };
+  const isHomePage = path === '/';
+  const isMobile = windowWidth < 768;
+
   const items = [
     {
-      label: 'All Props',
+      label: 'Home',
       link: '/',
     },
     {
@@ -22,19 +50,68 @@ const Footer = React.forwardRef((props, ref) => {
       <FooterItem>{item.label}</FooterItem>
     </Link>
   ));
-
-  return <Set ref={ref}>{linkItems}</Set>;
+  return (
+    <Container ref={ref}>
+      <Set>{linkItems}</Set>
+      {isPropPage && isMobile && (
+        <Set>
+          <FooterItem
+            onClick={() => {
+              router.push(`/prop-${nextAndPrev.prev}`);
+            }}
+          >
+            Prev
+          </FooterItem>
+          <FooterItem
+            onClick={() => {
+              router.push(`/prop-${nextAndPrev.next}`);
+            }}
+          >
+            Next
+          </FooterItem>
+        </Set>
+      )}
+      {isHomePage && isMobile && (
+        <Set>
+          <FooterItem
+            onClick={() => {
+              window.fullpage_api.moveSectionUp();
+            }}
+          >
+            Prev
+          </FooterItem>
+          <FooterItem
+            onClick={() => {
+              window.fullpage_api.moveSectionDown();
+            }}
+          >
+            Next
+          </FooterItem>
+        </Set>
+      )}
+    </Container>
+  );
 });
 
 export default Footer;
 
-const Set = styled.div`
+const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   position: sticky;
   bottom: 0;
   background-color: white;
+  @media screen and (max-width: 768px) {
+    justify-content: space-between;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+`;
+
+const Set = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const FooterItem = styled.a`

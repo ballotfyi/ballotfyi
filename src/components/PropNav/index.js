@@ -1,20 +1,41 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-// import Link from 'next/link';
 import { useAmp } from 'next/amp';
+import { useRouter } from 'next/router';
+import { getNextAndPrevPropNum } from 'components/util';
 
-const PropNav = (props) => {
+const PropNav = () => {
   const isAmp = useAmp();
+  const router = useRouter();
+
   const seq = Array.from(Array(12).keys());
   const listItems = seq.map((n) => {
     const propNum = n + 14;
-    return <NavItem key={n} isAmp={isAmp} propNum={propNum} comp={props.comp}></NavItem>;
+    return <NavItem key={n} isAmp={isAmp} propNum={propNum}></NavItem>;
   });
+  const propPageRegex = /prop-\d\d/i;
+  const path = router.asPath;
+  const isPropPage = propPageRegex.test(path);
+  const currentPropNum = isPropPage ? parseInt(path.match(propPageRegex)[0].split('-')[1]) : null;
+  const nextAndPrev = currentPropNum
+    ? getNextAndPrevPropNum(currentPropNum)
+    : { prev: null, next: null };
+  const isHomePage = path === '/';
   return (
     <MenuContainer id="propNav">
       {listItems}
-      <NavBtn onClick={() => props.comp.fullpageApi.moveSectionUp()}>Prev</NavBtn>
-      <NavBtn onClick={() => props.comp.fullpageApi.moveSectionDown()}>Next</NavBtn>
+      {isHomePage && (
+        <>
+          <NavBtn onClick={() => window.fullpage_api.moveSectionUp()}>Prev</NavBtn>
+          <NavBtn onClick={() => window.fullpage_api.moveSectionDown()}>Next</NavBtn>
+        </>
+      )}
+      {isPropPage && (
+        <>
+          <NavBtn onClick={() => router.push(`/prop-${nextAndPrev.prev}`)}>Prev</NavBtn>
+          <NavBtn onClick={() => router.push(`/prop-${nextAndPrev.next}`)}>Next</NavBtn>
+        </>
+      )}
     </MenuContainer>
   );
 };
@@ -24,14 +45,12 @@ const NavItem = (props) => {
   const { propNum, isAmp } = props;
   const sectionId = `prop-${propNum}-intro`;
 
-  // <Link href={`prop-${propNum}`}>
-  // </Link>
   return (
     <ItemContainer
       data-menuanchor={sectionId}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => props.comp.fullpageApi.moveTo(propNum - 13)}
+      onClick={() => window.fullpage_api.moveTo(propNum - 13)}
     >
       <Circle className="propnav-circle" />
       <Label>{isHovered || isAmp ? `Prop ${propNum}` : null}</Label>
@@ -46,7 +65,7 @@ const MenuContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 16px;
-  margin-top: 19%;
+  margin-top: 30vh;
 `;
 
 const ItemContainer = styled.div`
@@ -61,6 +80,12 @@ const Circle = styled.div`
   height: 22px;
   border-radius: 11px;
   border: 1px solid #333;
+  transition: background-color 300ms ease-in;
+  @media screen and (max-width: 768px) {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+  }
 `;
 
 const Label = styled.span`
@@ -71,6 +96,9 @@ const Label = styled.span`
   font-weight: 500;
   user-select: none;
   height: 20px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const NavBtn = styled.div`
@@ -87,6 +115,9 @@ const NavBtn = styled.div`
     &:hover {
       text-decoration: underline;
     }
+  }
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 `;
 // background-color: ${(props) => (props.propNum ? propColors[props.propNum] : '#222')};

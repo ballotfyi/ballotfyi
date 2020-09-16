@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// import enhanceWithClickOutside from 'react-click-outside'
 
 import CitationButton from './citation-button';
 import PopupContainer from './popup-container';
@@ -118,95 +117,6 @@ const Citation = (props) => {
     </span>
   );
 };
-
-// class Citation extends React.Component {
-// 	constructor(props) {
-// 		super(props);
-// 		this.state = {
-// 			isPopupVisible: false,
-// 			taggedTextStyle: styles.deselectText,
-// 			isActive: false,
-// 		}
-// 	  this.clickLocationY=0;
-// 	}
-
-// 	componentDidMount() {
-//     window.addEventListener("resize", this.handleResize);
-// 	}
-// 	componentWillUnmount() {
-//     window.removeEventListener("resize", this.handleResize);
-// 	}
-
-// 	handleTouch = (event) =>  {
-// 		event.preventDefault();
-// 		event.stopPropagation(); //-- because will propagate to click outside
-// 		this.clickLocationY = event.touches[0].pageY;
-// 		this.toggleVisibility()
-// 	}
-
-// 	handleIconClick = (event) => {
-// 		// event.preventDefault();
-// 		this.clickLocationY = event.pageY
-// 		this.toggleVisibility()
-// 	}
-
-// 	selectText = () => {
-// 		this.setState({
-// 			taggedTextStyle: styles.hoverText,
-// 		})
-// 	}
-// 	deselectText = () => {
-// 		this.setState({
-// 			taggedTextStyle: styles.deselectText,
-// 		})
-// 	}
-
-// 	toggleVisibility = (forceVisible) => {
-// 		let visibility = !this.state.isPopupVisible
-// 		if(forceVisible !== undefined) visibility = forceVisible
-// 		this.setState({
-// 			isPopupVisible: visibility,
-// 			taggedTextStyle: (visibility ? styles.selectText : styles.deselectText),
-// 			isActive: visibility,
-// 		})
-// 	}
-
-// 	handleClickOutside() {
-// 		this.toggleVisibility(false)
-// 	}
-
-// 	render() {
-// 		const {isActive, taggedTextStyle, isPopupVisible} = this.state;
-
-// 		return(
-// 			<span>
-// 				<span style={taggedTextStyle}>
-// 					{this.props.children}
-// 					<CitationButton
-// 						onTouchEnd={this.handleTouch}
-// 						isActive={isActive}
-// 						onHover={this.selectText}
-// 						onMouseLeave={this.deselectText}
-// 						onClick={this.handleIconClick}
-// 					/>
-// 				</span>
-
-// 		    {isPopupVisible &&
-// 		      <React.Fragment>
-// 						<PopupContainer
-// 							toggleVisibility={this.toggleVisibility}
-// 							clickPos={this.clickLocationY}
-// 							{...this.props}
-// 						>
-// 							{this.props.children}
-// 						</PopupContainer>
-// 		      </React.Fragment>
-// 		    }
-// 			</span>
-// 		);
-// 	}
-// }
-
 Citation.propTypes = {
   link: PropTypes.string,
   publication: PropTypes.string,
@@ -214,5 +124,4 @@ Citation.propTypes = {
   quote: PropTypes.string,
 };
 
-// Citation = enhanceWithClickOutside(Citation) //-- easy hack to dismiss other dialogs when another button is clicked
 export default Citation;

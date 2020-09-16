@@ -65,6 +65,16 @@ export const breakpoints = {
   xxl: '1600px',
 };
 
+export const getNextAndPrevPropNum = (n) => {
+  let adj = { next: n + 1, prev: n - 1 };
+  if (n === 14) {
+    adj.prev = 25;
+  } else if (n === 25) {
+    adj.next = 14;
+  }
+  return adj;
+};
+
 // export const NoiseBackground = styled.div`
 //   position: relative;
 //   display: flex;
