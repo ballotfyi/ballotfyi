@@ -56,6 +56,7 @@ const Footer = React.forwardRef((props, ref) => {
       {isPropPage && isMobile && (
         <Set>
           <FooterItem
+            tabIndex="0"
             onClick={() => {
               router.push(`/prop-${nextAndPrev.prev}`);
             }}
@@ -63,6 +64,7 @@ const Footer = React.forwardRef((props, ref) => {
             Prev
           </FooterItem>
           <FooterItem
+            tabIndex="0"
             onClick={() => {
               router.push(`/prop-${nextAndPrev.next}`);
             }}
@@ -74,6 +76,7 @@ const Footer = React.forwardRef((props, ref) => {
       {isHomePage && isMobile && (
         <Set>
           <FooterItem
+            tabIndex="0"
             onClick={() => {
               window.fullpage_api.moveSectionUp();
             }}
@@ -81,6 +84,7 @@ const Footer = React.forwardRef((props, ref) => {
             Prev
           </FooterItem>
           <FooterItem
+            tabIndex="0"
             onClick={() => {
               window.fullpage_api.moveSectionDown();
             }}
@@ -99,9 +103,12 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: sticky;
+  position: fixed;
+  width: 100vw;
+  box-sizing: border-box;
   bottom: 0;
   background-color: white;
+  box-shadow: 0 -3px 20px 10px rgba(0, 0, 0, 0.006);
   @media screen and (max-width: 768px) {
     justify-content: space-between;
     padding-left: 16px;

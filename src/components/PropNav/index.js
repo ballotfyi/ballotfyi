@@ -26,19 +26,33 @@ const PropNav = () => {
       {listItems}
       {isHomePage && (
         <>
-          <NavBtn onClick={() => window.fullpage_api.moveSectionUp()}>Prev</NavBtn>
-          <NavBtn onClick={() => window.fullpage_api.moveSectionDown()}>Next</NavBtn>
+          <NavBtnWithEnter label="Prev" func={() => window.fullpage_api.moveSectionUp()} />
+          <NavBtnWithEnter label="Next" func={() => window.fullpage_api.moveSectionDown()} />
         </>
       )}
       {isPropPage && (
         <>
-          <NavBtn onClick={() => router.push(`/prop-${nextAndPrev.prev}`)}>Prev</NavBtn>
-          <NavBtn onClick={() => router.push(`/prop-${nextAndPrev.next}`)}>Next</NavBtn>
+          <NavBtnWithEnter label="Prev" func={() => router.push(`/prop-${nextAndPrev.prev}`)} />
+          <NavBtnWithEnter label="Next" func={() => router.push(`/prop-${nextAndPrev.next}`)} />
         </>
       )}
     </MenuContainer>
   );
 };
+
+const NavBtnWithEnter = ({ label, func }) => (
+  <NavBtn
+    tabIndex="0"
+    onClick={func}
+    onKeyDown={(e) => {
+      if (e.keyCode === 13) {
+        func();
+      }
+    }}
+  >
+    {label}
+  </NavBtn>
+);
 
 const NavItem = (props) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -59,13 +73,15 @@ const NavItem = (props) => {
 };
 
 const MenuContainer = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
+  position: fixed;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   margin-left: 16px;
-  margin-top: 30vh;
+  margin-bottom: 42px;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 13vh;
+  }
 `;
 
 const ItemContainer = styled.div`
@@ -76,9 +92,9 @@ const ItemContainer = styled.div`
 `;
 
 const Circle = styled.div`
-  width: 22px;
-  height: 22px;
-  border-radius: 11px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
   border: 1px solid #333;
   transition: background-color 300ms ease-in;
   @media screen and (max-width: 768px) {
@@ -95,13 +111,13 @@ const Label = styled.span`
   font-size: 12px;
   font-weight: 500;
   user-select: none;
-  height: 20px;
+  height: 18px;
   @media screen and (max-width: 768px) {
     display: none;
   }
 `;
 
-const NavBtn = styled.div`
+const NavBtn = styled.a`
   font-family: Inter, Helvetica;
   font-weight: 400;
   font-size: 16px;

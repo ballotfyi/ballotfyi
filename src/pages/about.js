@@ -7,17 +7,10 @@ import Button from 'components/Button';
 import Footer from 'components/Footer';
 import TopHat from 'components/TopHat';
 
-// const HeaderBgContainer = styled.div`
-//   position: absolute;
-// `;
-
 const AboutPage = () => {
   return (
     <div>
       <TopHat />
-      {/* <HeaderBgContainer>
-        <img style={{ minWidth: '100vw' }} src="./static/about-bg.png" alt="swirly line" />
-      </HeaderBgContainer> */}
       <Col
         off={{ xs: 2, sm: 0, md: 0, lg: 0, xl: 0, xxl: 0 }}
         span={{ xs: 20, sm: 24, md: 24, lg: 24, xl: 24, xxl: 24 }}
@@ -227,9 +220,9 @@ const CTAContainer = styled.div`
   }
 `;
 
-const Isolate = styled.div`
-  isolation: isolate;
-`;
+// const Isolate = styled.div`
+//   isolation: isolate;
+// `;
 
 // const Noise = styled.div`
 //   position: relative;
