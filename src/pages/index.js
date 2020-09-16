@@ -1,3 +1,4 @@
+import { db } from 'lib/firebase-config';
 import TopHat from 'components/TopHat';
 import ReactFullpage from '@fullpage/react-fullpage';
 import Footer from 'components/Footer';
@@ -39,8 +40,8 @@ const sections = [
   },
 ];
 
-const Sections = React.memo(() => {
-  const sectionsRendered = sections.map((section) => {
+const Sections = React.memo((props) => {
+  const sectionsRendered = props.sections.map((section) => {
     const { propNum, title, description } = section;
     return (
       <div key={propNum} className="section">
@@ -75,7 +76,8 @@ const Sections = React.memo(() => {
   return sectionsRendered;
 });
 
-const FullPageTest = () => {
+const HomePage = (props) => {
+  console.log(JSON.parse(props.sections));
   const seq = Array.from(Array(12).keys());
   const anchors = seq.map((n) => `prop-${n + 14}-intro`);
 
@@ -95,11 +97,11 @@ const FullPageTest = () => {
         verticalCentered={false}
         scrollingSpeed={600}
         touchSensitivity={1}
-        render={(comp) => {
+        render={() => {
           return (
             <>
               <ReactFullpage.Wrapper>
-                <Sections />
+                <Sections sections={sections} />
               </ReactFullpage.Wrapper>
             </>
           );
@@ -110,7 +112,25 @@ const FullPageTest = () => {
   );
 };
 
-export default FullPageTest;
+export default HomePage;
+
+export async function getStaticProps() {
+  const pagesRef = await db.collection(`pages`).get();
+  if (pagesRef.empty) return { props: {} };
+  let sections = [];
+  pagesRef.forEach((doc) => {
+    sections.push({
+      id: doc.id,
+      ...doc.data(),
+    });
+  });
+
+  return {
+    props: {
+      sections: JSON.stringify(sections),
+    },
+  };
+}
 
 const SeparateLayer = styled.div`
   width: 100%;
