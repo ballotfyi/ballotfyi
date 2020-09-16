@@ -61,7 +61,7 @@ const AboutPage = () => {
             <br /> In full transparency, we have asked for contributions in the past, and you can{' '}
             <Acronym
               toggleable={false}
-              long={`In previous years, we have asked for donations from readers after the elections were over. (All were under $100.) We are discontinuing that practice. Also, in 2018, ballot.fyi received a grant from The Knight Foundation, a nonpartisan organization advancing media and information to aid democracy. We no longer have any obligation or affiliation to The Knight Foundation, or any other organization`}
+              long={`In previous years, we have asked for donations from readers after the elections were over. (All were under $100.) We are discontinuing that practice. Also, in 2018, ballot.fyi received a grant from The Knight Foundation, a nonpartisan organization advancing media and information to aid democracy. We spent it all and no longer have any obligation or affiliation to The Knight Foundation, or any other organization`}
             >
               learn more about it here
             </Acronym>
@@ -104,7 +104,7 @@ const AboutPage = () => {
           <p>
             Let's be honest – convincing you to vote isn't the hard part. The hard part is finding
             the time and doing the work to understand the issues. We try to make that as easy as
-            possible for you
+            possible for you.
           </p>
         </div>
       </Col>
