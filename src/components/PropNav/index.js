@@ -78,8 +78,8 @@ const NavItem = (props) => {
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}
     >
-      <Circle className="propnav-circle" />
-      <Label>{isHovered || isAmp ? `Prop ${propNum}` : null}</Label>
+      <Circle className="propnav-circle">{isAmp && propNum}</Circle>
+      <Label>{isHovered ? `Prop ${propNum}` : null}</Label>
     </ItemContainer>
   );
 };
@@ -89,6 +89,9 @@ const MenuContainer = styled.div`
   bottom: 0;
   display: flex;
   flex-direction: column;
+  font-family: Inter, InterPre, sans-serif;
+  font-size: 12px;
+  color: #999;
   margin-left: 16px;
   margin-bottom: 42px;
   @media screen and (max-width: 768px) {
@@ -104,9 +107,12 @@ const ItemContainer = styled.div`
 `;
 
 const Circle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 20px;
   height: 20px;
-  border-radius: 10px;
+  border-radius: 11px;
   border: 1px solid #333;
   transition: background-color 300ms ease-in;
   @media screen and (max-width: 768px) {

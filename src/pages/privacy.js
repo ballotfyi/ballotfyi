@@ -1,12 +1,12 @@
 import withBasicTemplate from 'template/basic';
-import GradientBar from 'components/layout/gradient-bar';
+import TopHat from 'components/TopHat';
 import { Space, LinkOut, Col } from 'components/util';
 import Footer from 'components/Footer';
 
 const PrivacyPage = () => {
   return (
     <>
-      <GradientBar />
+      <TopHat />
       <Col
         off={{ xs: 2, sm: 3, md: 2, lg: 2, xl: 2, xxl: 3 }}
         span={{ xs: 20, sm: 18, md: 14, lg: 14, xl: 14, xxl: 15 }}

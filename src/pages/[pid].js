@@ -5,6 +5,8 @@ import Citation from 'components/Citation';
 import JsxParser from 'react-jsx-parser';
 import Footer from 'components/Footer';
 import PropNav from 'components/PropNav';
+import TopHat from 'components/TopHat';
+import { Row, Col, Space } from 'components/util';
 
 const PropPage = (props) => {
   const {
@@ -33,10 +35,19 @@ const PropPage = (props) => {
 
   return (
     <>
+      <TopHat />
       <PropNav />
-      <h1>{title}</h1>
-      <div>{description}</div>
-      {renderedBlocks}
+      <Row>
+        <Col
+          off={{ xs: 2, sm: 3, md: 2, lg: 2, xl: 2, xxl: 3 }}
+          span={{ xs: 20, sm: 18, md: 14, lg: 14, xl: 14, xxl: 15 }}
+        >
+          <h1>{title}</h1>
+          <div>{description}</div>
+          {renderedBlocks}
+          <Space h={100} />
+        </Col>
+      </Row>
       <Footer />
     </>
   );
@@ -104,3 +115,7 @@ export async function getStaticProps({ params }) {
     revalidate: 1,
   };
 }
+
+export const config = {
+  amp: 'hybrid',
+};
