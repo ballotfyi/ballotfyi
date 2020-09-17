@@ -156,8 +156,8 @@ const AboutPage = () => {
         <div>
           Ballot.fyi is designed, coded, and primarily written by Jimmy Chion, with the editorial
           help of many friends, left and right. Jimmy is a creative technologist at The New York
-          Times. (This project is not affiliated in any way to The New York Times.) He started{' '}
-          <LinkOut href="https://2016.ballot.fyi/">ballot.fyi in 2016</LinkOut>, and designed and
+          Times. (This project is not affiliated in any way with The New York Times.) He started{' '}
+          <LinkOut href="https://2016.ballot.fyi/">ballot.fyi in 2016</LinkOut>, and rebuilt and
           wrote for it again in <LinkOut href="https://2018.ballot.fyi/">2018</LinkOut>.
           <br />
           <br />

@@ -8,11 +8,6 @@ const PropNav = () => {
   const isAmp = useAmp();
   const router = useRouter();
 
-  const seq = Array.from(Array(12).keys());
-  const listItems = seq.map((n) => {
-    const propNum = n + 14;
-    return <NavItem key={n} isAmp={isAmp} propNum={propNum}></NavItem>;
-  });
   const propPageRegex = /prop-\d\d/i;
   const path = router.asPath;
   const isPropPage = propPageRegex.test(path);
@@ -21,6 +16,13 @@ const PropNav = () => {
     ? getNextAndPrevPropNum(currentPropNum)
     : { prev: null, next: null };
   const isHomePage = path === '/';
+
+  const seq = Array.from(Array(12).keys());
+  const listItems = seq.map((n) => {
+    const propNum = n + 14;
+    return <NavItem key={n} isAmp={isAmp} propNum={propNum} isPropPage={isPropPage} />;
+  });
+
   return (
     <MenuContainer id="propNav">
       {listItems}
@@ -55,16 +57,25 @@ const NavBtnWithEnter = ({ label, func }) => (
 );
 
 const NavItem = (props) => {
+  const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
-  const { propNum, isAmp } = props;
+  const { propNum, isAmp, isPropPage } = props;
   const sectionId = `prop-${propNum}-intro`;
+
+  const handleClick = () => {
+    if (isPropPage) {
+      router.push(`/prop-${propNum}`);
+    } else {
+      window.fullpage_api.moveTo(propNum - 13);
+    }
+  };
 
   return (
     <ItemContainer
       data-menuanchor={sectionId}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => window.fullpage_api.moveTo(propNum - 13)}
+      onClick={handleClick}
     >
       <Circle className="propnav-circle" />
       <Label>{isHovered || isAmp ? `Prop ${propNum}` : null}</Label>

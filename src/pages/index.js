@@ -14,7 +14,6 @@ const sections = [
   {
     propNum: '15',
     title: 'Prop 15 issues $4B for housing programs',
-
     description:
       'Michael Caputo, the assistant secretary of health for public affairs, told a Facebook audience without evidence that left-wing hit squads were being trained for insurrection, and he accused C.D.C. scientists of “sedition.”',
   },
