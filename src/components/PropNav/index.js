@@ -62,6 +62,7 @@ const NavItem = (props) => {
   const { propNum, isAmp, isPropPage } = props;
   const sectionId = `prop-${propNum}-intro`;
 
+  //-- go to main prop page if in a current prop page, otherwise, jump to the anchor on homepage
   const handleClick = () => {
     if (isPropPage) {
       router.push(`/prop-${propNum}`);
