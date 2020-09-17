@@ -20,7 +20,15 @@ const PropNav = () => {
   const seq = Array.from(Array(12).keys());
   const listItems = seq.map((n) => {
     const propNum = n + 14;
-    return <NavItem key={n} isAmp={isAmp} propNum={propNum} isPropPage={isPropPage} />;
+    return (
+      <NavItem
+        key={n}
+        isAmp={isAmp}
+        propNum={propNum}
+        currentPropNum={currentPropNum}
+        isPropPage={isPropPage}
+      />
+    );
   });
 
   return (
@@ -59,7 +67,7 @@ const NavBtnWithEnter = ({ label, func }) => (
 const NavItem = (props) => {
   const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
-  const { propNum, isAmp, isPropPage } = props;
+  const { propNum, isAmp, isPropPage, currentPropNum } = props;
   const sectionId = `prop-${propNum}-intro`;
 
   //-- go to main prop page if in a current prop page, otherwise, jump to the anchor on homepage
@@ -78,7 +86,9 @@ const NavItem = (props) => {
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}
     >
-      <Circle className="propnav-circle">{isAmp && propNum}</Circle>
+      <Circle className="propnav-circle" isActive={propNum === currentPropNum}>
+        {isAmp && propNum}
+      </Circle>
       <Label>{isHovered ? `Prop ${propNum}` : null}</Label>
     </ItemContainer>
   );
@@ -115,6 +125,7 @@ const Circle = styled.div`
   border-radius: 11px;
   border: 1px solid #333;
   transition: background-color 300ms ease-in;
+  background-color: ${(props) => (props.isActive ? '#333' : 'transparent')};
   @media screen and (max-width: 768px) {
     width: 10px;
     height: 10px;

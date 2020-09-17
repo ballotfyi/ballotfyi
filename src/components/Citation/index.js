@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import CitationButton from './citation-button';
@@ -58,6 +58,17 @@ const Citation = (props) => {
   const [isActive, setIsActive] = useState(false);
   const clickOutsideRef = useRef();
 
+  const toggleVisibility = useCallback(
+    (forceVisible) => {
+      let visibility = !isPopupVisible;
+      if (forceVisible !== undefined) visibility = forceVisible;
+      setIsPopupVisible(visibility);
+      setTaggedTextStyle(visibility ? styles.selectText : styles.deselectText);
+      setIsActive(visibility);
+    },
+    [isPopupVisible]
+  );
+
   //--click outside handler
   useEffect(() => {
     function handleClickOutside(event) {
@@ -87,14 +98,6 @@ const Citation = (props) => {
   };
   const deselectText = () => {
     setTaggedTextStyle(styles.deselectText);
-  };
-
-  const toggleVisibility = (forceVisible) => {
-    let visibility = !isPopupVisible;
-    if (forceVisible !== undefined) visibility = forceVisible;
-    setIsPopupVisible(visibility);
-    setTaggedTextStyle(visibility ? styles.selectText : styles.deselectText);
-    setIsActive(visibility);
   };
 
   return (
