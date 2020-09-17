@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import CitationButton from './citation-button';
@@ -56,13 +56,20 @@ const Citation = (props) => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [taggedTextStyle, setTaggedTextStyle] = useState(styles.deselectText);
   const [isActive, setIsActive] = useState(false);
+  const clickOutsideRef = useRef();
 
-  // useEffect( () => {
-  // 	window.addEventListener("resize", handleResize);
-  // 	return( () => {
-  // 		window.removeEventListener("resize", handleResize);
-  // 	})
-  // },[]);
+  //--click outside handler
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (clickOutsideRef.current && !clickOutsideRef.current.contains(event.target)) {
+        toggleVisibility(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [clickOutsideRef, toggleVisibility]);
 
   const handleTouch = (e) => {
     e.preventDefault();
@@ -90,12 +97,8 @@ const Citation = (props) => {
     setIsActive(visibility);
   };
 
-  // const handleClickOutside = () => {
-  // 	toggleVisibility(false)
-  // }
-
   return (
-    <span>
+    <span ref={clickOutsideRef}>
       <span style={taggedTextStyle}>
         {props.children}
         <CitationButton

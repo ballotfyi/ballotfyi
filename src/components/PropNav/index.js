@@ -154,6 +154,5 @@ const NavBtn = styled.a`
     display: none;
   }
 `;
-// background-color: ${(props) => (props.propNum ? propColors[props.propNum] : '#222')};
 
 export default PropNav;

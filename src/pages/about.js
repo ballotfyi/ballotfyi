@@ -37,12 +37,13 @@ const AboutPage = () => {
         <div>
           <div>
             <h3>We don't take sides</h3>
-            Unlike other ballot guides, we do our best to be as nonpartisan as possible. We'll try
-            to explain how the Yes and the No sides are trying to convince you and dive into the
-            relevant research and reporting behind their claims. The issues tend to be pretty
-            complicated, so we let you decide. Also, we recognize we don't know everything, or fully
-            understand every perspective. If you know something we don't (regarding the props), send
-            us the facts: <b>fax@ballot.fyi</b>.
+            We do our best to be as nonpartisan as possible. We aggregate all the opinions on the
+            issue and sanely digest it for you. We'll try to explain how the Yes and the No sides
+            are trying to convince you and dive into the relevant research and reporting behind
+            their claims. The issues tend to be pretty complicated (and luckily, not as polarized as
+            national politics) so we let you decide. Also, we recognize we don't know everything, or
+            fully understand every perspective. If you know something we don't, send us the facts:{' '}
+            <b>fax@ballot.fyi</b>.
           </div>
 
           <div>
