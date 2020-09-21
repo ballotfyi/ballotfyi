@@ -51,21 +51,11 @@ const StyledRow = styled(Row)`
 `;
 
 const ImgBlock = (props) => {
-  const { src, caption, nColWidth, link, alt } = props.data;
-  const nWidth = nColWidth || 8;
-  const offset = Math.floor((12 - nWidth) / 2);
+  const { src, caption, link, alt } = props.data;
+
   return (
     <StyledRow>
-      <Col
-        xsOffset={0}
-        xs={12}
-        smOffset={2}
-        sm={8}
-        mdOffset={offset}
-        md={nWidth}
-        lgOffset={offset}
-        lg={nWidth}
-      >
+      <Col>
         <Space h={20} />
         {link ? (
           <a target="_blank" rel="noopener noreferrer" href={link}>
@@ -91,7 +81,6 @@ ImgBlock.propTypes = {
     }),
     alt: PropTypes.string.isRequired,
     caption: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    nColWidth: PropTypes.number,
     link: PropTypes.string,
   }),
 };

@@ -1,7 +1,6 @@
-// import React from 'react'
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Row, Col, Space } from 'components/util';
+import { Row, ArticleCol, Space } from 'components/util';
 import FillRestWithLine from 'components/FillRestWithLine';
 import Acronym from 'components/Acronym';
 import Citation from 'components/Citation';
@@ -24,15 +23,10 @@ usage in data.js file:
 
 const TextWithTitleBlock = (props) => {
   const { title, subtitle, markup } = props.data;
-  // const nWidth = nColWidth || 6; // default hack
-  // const offset = Math.floor((12 - nWidth) / 2);
 
   return (
     <Row>
-      <Col
-        off={{ xs: 3, sm: 3, md: 2, lg: 3, xl: 3, xxl: 3 }}
-        span={{ xs: 18, sm: 16, md: 13, lg: 11, xl: 10, xxl: 9 }}
-      >
+      <ArticleCol>
         <Space h={40} />
         {title && (
           <>
@@ -45,7 +39,7 @@ const TextWithTitleBlock = (props) => {
         <Text>
           <JsxParser components={{ Acronym, Citation }} jsx={`${markup}`} showWarnings={true} />
         </Text>
-      </Col>
+      </ArticleCol>
     </Row>
   );
 };
@@ -55,7 +49,6 @@ TextWithTitleBlock.propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
     body: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-    nColWidth: PropTypes.number,
   }),
 };
 

@@ -93,6 +93,15 @@ export const mapResultToColor = {
   NA: '#000',
 };
 
+export const ArticleCol = (props) => (
+  <Col
+    off={{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}
+    span={{ xs: 18, sm: 16, md: 13, lg: 11, xl: 10, xxl: 9 }}
+  >
+    {props.children}
+  </Col>
+)
+
 // export const NoiseBackground = styled.div`
 //   position: relative;
 //   display: flex;
