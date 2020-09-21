@@ -40,54 +40,42 @@ usage
 
 const Snippet = (props) => (
   <Container>
-    <TitleContainer noBorder={props.noBorder}>
-      <StyledH3>{props.title}</StyledH3>
+    <TitleContainer>
+      <h3>{props.data.title}</h3>
     </TitleContainer>
-    {props.description}
+    {props.data.description}
   </Container>
 );
 
 const SummaryListBlock = (props) => {
   const [expanded, setExpanded] = useState(false);
 
-  const { stories, listNItems, buttonText, noBorder } = props.data;
+  const { stories, listNItems, buttonText } = props.data;
   const nItems = listNItems || 3;
-  const snippets = stories.map((story, i) => {
+  let snippets = [];
+  let restOfSnippets = [];
+  for (let i = 0; i < stories.length; i++) {
     if (i < nItems) {
-      return (
-        <Snippet key={i} title={story.title} description={story.description} noBorder={noBorder} />
-      );
+      snippets.push(<Snippet key={i} data={stories[i]} />);
     } else {
-      return null;
+      restOfSnippets.push(<Snippet key={i} data={stories[i]} />);
     }
-  });
-  //-- most readable, but stylistically inelegant way to do this
-  let restOfSnippets = stories.map((story, i) => {
-    if (i >= nItems) {
-      return <Snippet key={i} title={story.title} description={story.description} />;
-    } else {
-      return null;
-    }
-  });
-
-  if (restOfSnippets[restOfSnippets.length - 1] === null) {
-    restOfSnippets = null;
   }
+  if (snippets.length === 0) snippets = null;
+  if (restOfSnippets.length === 0) restOfSnippets = null;
+  const moreButton =
+    !expanded && restOfSnippets.length > 0 ? (
+      <ExpandButton onClick={() => setExpanded(true)}>{buttonText || 'View more'}</ExpandButton>
+    ) : null;
 
   return (
-    <div>
-      <Row>
-        <ArticleCol>
-          {snippets}
-          {!expanded && restOfSnippets && (
-            <ExpandButton onClick={() => setExpanded(true)}>
-              <ExpandButtonLabel>{buttonText}</ExpandButtonLabel>
-            </ExpandButton>
-          )}
-          {expanded && restOfSnippets}
-        </ArticleCol>
-      </Row>
-    </div>
+    <Row>
+      <ArticleCol>
+        {snippets}
+        {moreButton}
+        {expanded && restOfSnippets}
+      </ArticleCol>
+    </Row>
   );
 };
 
@@ -116,9 +104,7 @@ const Container = styled.div`
 `;
 
 const TitleContainer = styled.div`
-  border-top: ${(props) => (props.noBorder ? '2px solid black' : 'none')};
-  padding-top: ${(props) => (props.noBorder ? 10 : 0)}px;
-  margin-top: ${(props) => (props.noBorder ? 6 : 3)}px;
+  margin-top: 3px;
   margin-right: 30px;
   text-align: right;
   min-width: 180px;
@@ -132,29 +118,23 @@ const TitleContainer = styled.div`
   }
 `;
 
-export const ExpandButton = styled.div`
+const ExpandButton = styled.button`
   margin: 40px auto 0 auto;
   padding: 10px 20px;
   display: flex;
-  max-width: 200px;
   align-items: center;
   justify-content: center;
   background-color: black;
-  border-radius: 4px;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-family: Inter, InterPre, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.095rem;
   @media not all and (hover: none) {
     &:hover {
       background-color: orange;
-      cursor: pointer;
     }
   }
-`;
-
-const StyledH3 = styled.h3`
-  font-size: 14px;
-`;
-
-export const ExpandButtonLabel = styled.h2`
-  font-size: 14px;
-  text-align: center;
-  color: white;
 `;

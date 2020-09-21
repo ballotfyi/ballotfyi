@@ -1,39 +1,69 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Row, Col, Space } from 'components/util';
-// import AnnotationsList from 'components/interactive/annotation/AnnotationsList';
+import { Row, ArticleCol, Space } from 'components/util';
 import Image from 'components/Image';
 
 /*
 creates a centered image of an even number of columns
-
 {
 
 	component: ImgBlock,
 	data: {
-		src: {
-			_1x: partnerlogos,
-			_1x_webp: partnerlogos_w,
-		},
-		alt: "Image of partner logos",
-		nColWidth: 8,
+		srcset: [
+      {url: './static/lostcoast-sm.jpg', width: 800},
+      {url: './static/lostcoast-sm.webp', width: 800},
+      {url: './static/lostcoast-md.jpg', width: 1200},
+      {url: './static/lostcoast-md.webp', width: 1200},
+      {url: './static/lostcoast-lg.jpg', width: 1400},
+      {url: './static/lostcoast-lg.webp', width: 1400},
+    ],
+    alt: "Image of partner logos",
+    caption: "Caption for image, different from alt",
+    link: "https://www.nytimes.com"
+		width: 3,
+		height: 2,
 	}
 },
 
 */
 
-const Img = styled(Image)`
-  width: 100%;
-  object-fit: contain;
-  box-sizing: border-box;
-  border-radius: 6px;
-  @media not all and (hover: none) {
-    &:hover {
-      cursor: ${(props) => (props.isLink ? 'pointer' : 'auto')};
-    }
-  }
-`;
+const ImgBlock = (props) => {
+  const { caption, link } = props.data;
+
+  return (
+    <StyledRow>
+      <ArticleCol>
+        <Space h={20} />
+        {link ? (
+          <a target="_blank" rel="noopener noreferrer" href={link}>
+            <Image {...props.data} />
+          </a>
+        ) : (
+          <Image {...props.data} />
+        )}
+        {caption && <Caption>{caption}</Caption>}
+        <Space h={30} />
+      </ArticleCol>
+    </StyledRow>
+  );
+};
+
+ImgBlock.propTypes = {
+  data: PropTypes.shape({
+    srcset: PropTypes.arrayOf(
+      PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        width: PropTypes.number.number,
+      })
+    ).isRequired,
+    alt: PropTypes.string.isRequired,
+    caption: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    link: PropTypes.string,
+  }),
+};
+
+export default ImgBlock;
 
 const Caption = styled.div`
   font-size: 14px;
@@ -49,40 +79,3 @@ const StyledRow = styled(Row)`
     display: none;
   }
 `;
-
-const ImgBlock = (props) => {
-  const { src, caption, link, alt } = props.data;
-
-  return (
-    <StyledRow>
-      <Col>
-        <Space h={20} />
-        {link ? (
-          <a target="_blank" rel="noopener noreferrer" href={link}>
-            <Img isLink imageHandles={src} alt={alt || caption || ''} />
-          </a>
-        ) : (
-          <Img imageHandles={src} alt={alt || ''} />
-        )}
-        {caption && <Caption>{caption}</Caption>}
-        <Space h={30} />
-      </Col>
-    </StyledRow>
-  );
-};
-
-ImgBlock.propTypes = {
-  data: PropTypes.shape({
-    src: PropTypes.shape({
-      _1x: PropTypes.string.isRequired,
-      _2x: PropTypes.string,
-      _1x_webp: PropTypes.string,
-      _2x_webp: PropTypes.string,
-    }),
-    alt: PropTypes.string.isRequired,
-    caption: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    link: PropTypes.string,
-  }),
-};
-
-export default ImgBlock;

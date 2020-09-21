@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Row, Col, mapResultToColor } from 'components/util';
+import { Row, ArticleCol, mapResultToColor } from 'components/util';
 
 /*
 
@@ -19,29 +19,18 @@ usage in data.js file:
 */
 
 const ResultBlock = (props) => {
-  const { title, text, nColWidth, result } = props.data;
-  const nWidth = nColWidth || 8; // default hack
-  const offset = Math.floor((12 - nWidth) / 2);
+  const { title, text, result } = props.data;
 
   return (
     <Row>
-      <Col
-        xsOffset={1}
-        xs={10}
-        smOffset={2}
-        sm={8}
-        mdOffset={offset}
-        md={nWidth}
-        lgOffset={offset}
-        lg={nWidth}
-      >
+      <ArticleCol>
         <Container color={mapResultToColor[result]}>
           <TitlePos>
             <Title color={mapResultToColor[result]}>{title}</Title>
           </TitlePos>
           <Text>{text}</Text>
         </Container>
-      </Col>
+      </ArticleCol>
     </Row>
   );
 };
@@ -51,7 +40,6 @@ ResultBlock.propTypes = {
     title: PropTypes.string,
     result: PropTypes.string,
     text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-    nColWidth: PropTypes.number,
   }),
 };
 
@@ -70,6 +58,7 @@ const Title = styled.h2`
   padding: 0 20px;
   text-transform: none;
 `;
+
 const Container = styled.div`
   margin-top: 30px;
   box-sizing: border-box;

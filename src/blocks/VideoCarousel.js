@@ -14,15 +14,15 @@ usage:
 		videos: [
 			{
 				caption: "CalMatters interview (May 2018)",
-				link:"https://www.youtube-nocookie.com/embed/dbf5zOEvvUo",
+				url:"https://www.youtube-nocookie.com/embed/dbf5zOEvvUo",
 			},
 			{
 				caption: "SF Chronicle interview (May 2018)",
-				link:"https://www.youtube-nocookie.com/embed/GvQkvaokJcA?start=90",
+				url:"https://www.youtube-nocookie.com/embed/GvQkvaokJcA?start=90",
 			},
 			{
 				caption: "Allen v Cox on who's conservative (April 2018)",
-				link:"https://www.youtube-nocookie.com/embed/8OT0w3pE0vc",
+				url:"https://www.youtube-nocookie.com/embed/8OT0w3pE0vc",
 			},
 		],
 	},
@@ -62,7 +62,7 @@ const VideoCarouselBlock = (props) => {
         title={`carousel-vid-${i}`}
         width={iFrameWidth}
         height={iFrameHeight}
-        src={video.link}
+        src={video.url}
         frameBorder="0"
         allow="autoplay; encrypted-media"
         allowFullScreen
@@ -107,7 +107,7 @@ VideoCarouselBlock.propTypes = {
   data: PropTypes.shape({
     videos: PropTypes.arrayOf(
       PropTypes.shape({
-        link: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
         caption: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
       })
     ).isRequired,

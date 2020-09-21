@@ -100,7 +100,7 @@ export const ArticleCol = (props) => (
   >
     {props.children}
   </Col>
-)
+);
 
 // export const NoiseBackground = styled.div`
 //   position: relative;

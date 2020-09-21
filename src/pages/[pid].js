@@ -18,7 +18,7 @@ const PropPage = (props) => {
 
   const renderedBlocks = blocks.map((block, i) => {
     const BlockComponent = dynamic(() => import(`../blocks/${block.type}`), {
-      loading: () => <p>loading...</p>
+      loading: () => <p>loading...</p>,
     });
     return <BlockComponent key={i} data={block.data} />;
   });

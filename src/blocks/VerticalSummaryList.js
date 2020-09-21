@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'components/util';
+import { Row, ArticleCol } from 'components/util';
 import styled from 'styled-components';
 import { LinkOutIcon } from 'components/icons';
 /*
@@ -27,10 +27,7 @@ usage
 */
 
 const Snippet = (props) => {
-  const [expanded, setExpanded] = useState(false);
-
-  const { title, description, links, buttonText, expandedContent } = props.data;
-  const textOnButton = buttonText || 'View more';
+  const { title, description, links } = props.data;
   let expandedLinks = null;
   if (links) {
     expandedLinks = links.map((link, i) => {
@@ -46,39 +43,47 @@ const Snippet = (props) => {
       );
     });
   }
+
   return (
     <Container>
       <TitleContainer>
-        <StyledH3>{title}</StyledH3>
+        <h3>{title}</h3>
         {links && <LinkContainer>{expandedLinks}</LinkContainer>}
       </TitleContainer>
       {description}
-      {!expanded && expandedContent && (
-        <ButtonContainer>
-          <ExpandButton onClick={() => setExpanded(true)}>
-            <ExpandButtonLabel>{textOnButton}</ExpandButtonLabel>
-          </ExpandButton>
-        </ButtonContainer>
-      )}
-      {expanded && <div>{expandedContent}</div>}
     </Container>
   );
 };
 
 const VerticalSummaryListBlock = (props) => {
-  const { stories } = props.data;
-  const snippets = stories.map((story, i) => {
-    return <Snippet key={i} data={story} />;
-  });
+  const [expanded, setExpanded] = useState(false);
+
+  const { stories, listNItems, buttonText } = props.data;
+  const nItems = listNItems || 3;
+  let snippets = [];
+  let restOfSnippets = [];
+  for (let i = 0; i < stories.length; i++) {
+    if (i < nItems) {
+      snippets.push(<Snippet key={i} data={stories[i]} />);
+    } else {
+      restOfSnippets.push(<Snippet key={i} data={stories[i]} />);
+    }
+  }
+  if (snippets.length === 0) snippets = null;
+  if (restOfSnippets.length === 0) restOfSnippets = null;
+  const moreButton =
+    !expanded && restOfSnippets.length > 0 ? (
+      <ExpandButton onClick={() => setExpanded(true)}>{buttonText || 'View more'}</ExpandButton>
+    ) : null;
 
   return (
-    <div>
-      <Row>
-        <Col xsOffset={1} xs={10} smOffset={2} sm={8} mdOffset={3} md={6} lgOffset={3} lg={6}>
-          {snippets}
-        </Col>
-      </Row>
-    </div>
+    <Row>
+      <ArticleCol>
+        {snippets}
+        {moreButton}
+        {expanded && <div>{restOfSnippets}</div>}
+      </ArticleCol>
+    </Row>
   );
 };
 
@@ -108,37 +113,27 @@ const TitleContainer = styled.div`
   }
 `;
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-`;
-
-export const ExpandButton = styled.div`
-  margin-top: 20px;
-  padding: 5px 25px;
+const ExpandButton = styled.button`
+  margin: 40px auto 0 auto;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: black;
-  border-radius: 4px;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-family: Inter, InterPre, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.095rem;
   @media not all and (hover: none) {
     &:hover {
       background-color: orange;
-      cursor: pointer;
     }
   }
 `;
 
-const StyledH3 = styled.h3`
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 3px;
-`;
-export const ExpandButtonLabel = styled.h2`
-  font-size: 14px;
-  text-align: center;
-  color: white;
-`;
 const LinkContainer = styled.div`
   display: flex;
   @media screen and (max-width: 767px) {
@@ -147,7 +142,7 @@ const LinkContainer = styled.div`
 `;
 const StoryLink = styled.a`
   display: block;
-  font-family: ${(props) => props.theme.fonts.helvetica};
+  font-family: Inter, InterPre, Helvetica, sans-serif;
   font-size: 12px;
   margin-right: 20px;
 `;
