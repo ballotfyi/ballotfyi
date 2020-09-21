@@ -86,7 +86,7 @@ const NavItem = (props) => {
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}
     >
-      <Circle className="propnav-circle" isActive={propNum === currentPropNum}>
+      <Circle isHovered={isHovered} className="propnav-circle" isActive={propNum === currentPropNum}>
         {isAmp && propNum}
       </Circle>
       <Label>{isHovered ? `Prop ${propNum}` : null}</Label>
@@ -124,6 +124,7 @@ const Circle = styled.div`
   height: 20px;
   border-radius: 11px;
   border: 1px solid #333;
+  border-color: ${props => (props.isHovered ? 'white' : '#333')};
   transition: background-color 300ms ease-in;
   background-color: ${(props) => (props.isActive ? '#333' : 'transparent')};
   @media screen and (max-width: 768px) {

@@ -24,9 +24,9 @@ const CitationButton = (props) => {
       isActive={isActive}
     >
       <DotContainer>
-        <Dot />
-        <Dot />
-        <Dot />
+        <Dot isActive={isActive} />
+        <Dot isActive={isActive} />
+        <Dot isActive={isActive} />
       </DotContainer>
     </Icon>
   );
@@ -46,7 +46,7 @@ const Icon = styled.span`
   height: 14px;
   width: 14px;
   margin-left: 4px;
-  background-color: ${(props) => (props.isActive ? '#FFD988' : '#eee')};
+  background-color: ${(props) => (props.isActive ? 'navy' : 'CORAL')};
   border-radius: 7px;
   pointer-events: auto;
   cursor: pointer;
@@ -54,7 +54,7 @@ const Icon = styled.span`
   @media not all and (hover: none) {
     &:hover {
       border-color: transparent;
-      background-color: #ffd988;
+      background-color: rgba(0, 0, 0, 0.5);
     }
   }
 `;
@@ -71,6 +71,6 @@ const Dot = styled.span`
   display: block;
   width: 2px;
   height: 2px;
-  background-color: #323232;
+  background-color: white;
   border-radius: 1px;
 `;

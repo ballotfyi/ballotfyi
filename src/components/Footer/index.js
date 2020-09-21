@@ -55,47 +55,57 @@ const Footer = React.forwardRef((props, ref) => {
       <Set>{linkItems}</Set>
       {isPropPage && isMobile && (
         <Set>
-          <FooterItem
-            tabIndex="0"
-            onClick={() => {
+          <FooterItemWithEnter
+            func={() => {
               router.push(`/prop-${nextAndPrev.prev}`);
             }}
           >
             Prev
-          </FooterItem>
-          <FooterItem
-            tabIndex="0"
-            onClick={() => {
+          </FooterItemWithEnter>
+          <FooterItemWithEnter
+            func={() => {
               router.push(`/prop-${nextAndPrev.next}`);
             }}
           >
             Next
-          </FooterItem>
+          </FooterItemWithEnter>
         </Set>
       )}
       {isHomePage && isMobile && (
         <Set>
-          <FooterItem
-            tabIndex="0"
-            onClick={() => {
+          <FooterItemWithEnter
+            func={() => {
               window.fullpage_api.moveSectionUp();
             }}
           >
             Prev
-          </FooterItem>
-          <FooterItem
-            tabIndex="0"
-            onClick={() => {
+          </FooterItemWithEnter>
+          <FooterItemWithEnter
+            func={() => {
               window.fullpage_api.moveSectionDown();
             }}
           >
             Next
-          </FooterItem>
+          </FooterItemWithEnter>
         </Set>
       )}
     </Container>
   );
 });
+
+const FooterItemWithEnter = ({ children, func }) => (
+  <FooterItem
+    tabIndex="0"
+    onClick={func}
+    onKeyDown={(e) => {
+      if (e.keyCode === 13) {
+        func();
+      }
+    }}
+  >
+    {children}
+  </FooterItem>
+);
 
 export default Footer;
 

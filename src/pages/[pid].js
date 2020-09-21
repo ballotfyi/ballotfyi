@@ -1,18 +1,15 @@
 import { db } from 'lib/firebase-config';
-import { blockTypes } from 'lib/block-types';
-import Acronym from 'components/Acronym';
-import Citation from 'components/Citation';
-import JsxParser from 'react-jsx-parser';
 import Footer from 'components/Footer';
 import PropNav from 'components/PropNav';
 import TopHat from 'components/TopHat';
 import { Row, Col, Space } from 'components/util';
+import dynamic from 'next/dynamic';
 
 const PropPage = (props) => {
   const {
     title,
     // shortTitle,
-    description,
+    // description,
     // shortDescription,
     // propNum,
     // socialTitle,
@@ -20,20 +17,10 @@ const PropPage = (props) => {
   } = props;
 
   const renderedBlocks = blocks.map((block, i) => {
-    const hasBody = blockTypes[block.type].fields.some((field) => field.type === 'richText');
-    if (hasBody) {
-      return (
-        <JsxParser
-          key={i} //later change this to a nonsequential key
-          components={{ Acronym, Citation }}
-          jsx={`${block.data.markup}`}
-          showWarnings={true}
-        />
-      );
-    } else {
-      //-- return the right block component
-      return <div />;
-    }
+    const BlockComponent = dynamic(() => import(`../blocks/${block.type}`), {
+      loading: () => <p>loading...</p>
+    });
+    return <BlockComponent key={i} data={block.data} />;
   });
 
   return (
@@ -42,15 +29,14 @@ const PropPage = (props) => {
       <PropNav />
       <Row>
         <Col
-          off={{ xs: 2, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}
-          span={{ xs: 20, sm: 18, md: 14, lg: 14, xl: 14, xxl: 15 }}
+          off={{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}
+          span={{ xs: 18, sm: 16, md: 16, lg: 16, xl: 16, xxl: 16 }}
         >
           <h1>{title}</h1>
-          <div>{description}</div>
-          {renderedBlocks}
-          <Space h={100} />
         </Col>
       </Row>
+      {renderedBlocks}
+      <Space h={120} />
       <Footer />
     </>
   );
@@ -119,6 +105,6 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export const config = {
-  amp: 'hybrid',
-};
+// export const config = {
+//   amp: 'hybrid',
+// };

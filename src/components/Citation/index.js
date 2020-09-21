@@ -42,14 +42,14 @@ here's a blank to copy:
 
 const styles = {
   selectText: {
-    backgroundColor: '#FFD988',
+    backgroundColor: '#c7edff',
     transition: 'background-color 150ms ease-in',
   },
   deselectText: {
     backgroundColor: 'transparent',
   },
   hoverText: {
-    backgroundColor: '#ffe6b0',
+    backgroundColor: '#ffec96',
   },
 };
 const Citation = (props) => {
@@ -114,11 +114,9 @@ const Citation = (props) => {
       </span>
 
       {isPopupVisible && (
-        <React.Fragment>
-          <PopupContainer toggleVisibility={toggleVisibility} {...props}>
-            {props.children}
-          </PopupContainer>
-        </React.Fragment>
+        <PopupContainer toggleVisibility={toggleVisibility} {...props}>
+          {props.children}
+        </PopupContainer>
       )}
     </span>
   );

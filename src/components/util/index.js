@@ -75,6 +75,24 @@ export const getNextAndPrevPropNum = (n) => {
   return adj;
 };
 
+export const mapResultToText = {
+  Y: 'Passed',
+  N: 'Failed',
+  LY: 'Leaning Yes',
+  LN: 'Leaning No',
+  U: 'TBD',
+  NA: 'Not applicable',
+};
+
+export const mapResultToColor = {
+  Y: 'green',
+  LY: 'teal',
+  N: 'red',
+  LN: 'pink',
+  U: 'slategray',
+  NA: '#000',
+};
+
 // export const NoiseBackground = styled.div`
 //   position: relative;
 //   display: flex;

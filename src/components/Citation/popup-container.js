@@ -29,15 +29,19 @@ const popupDimensions = {
 
 ///------------------------------------------------
 const PopupContainer = (props) => {
-  // const [windowWidth, setWindowWidth] = useState(
-  //   window.innerWidth || document.documentElement.clientWidth
-  // );
+  // const [windowWidth, setWindowWidth] = useState(1000);
   const containerRef = useRef();
   const { toggleVisibility } = props;
 
+  //-- only do this for mobile
   useEffect(() => {
     if (containerRef.current) {
-      containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // const popupTop = containerRef.current.getBoundingClientRect().top;
+      // const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+      // window.scrollTo({
+      //   top: popupTop + window.scrollY - windowHeight/2 + popupDimensions.height/2,
+      //   behavior: 'smooth'
+      // });
     }
   }, [containerRef]);
 
@@ -46,7 +50,6 @@ const PopupContainer = (props) => {
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('resize', handleResize);
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('resize', handleResize);
@@ -64,12 +67,11 @@ const PopupContainer = (props) => {
   );
 
   const handleResize = useCallback(() => {
-    // setWindowWidth(window.innerWidth || document.documentElement.clientWidth);
     toggleVisibility(false);
   }, [toggleVisibility]);
 
   const handleScroll = useCallback(() => {
-    //-- dismiss after user scrolls past it
+    //-- dismiss after user scrolls past it (in desktop)
     const height = window.innerHeight || document.documentElement.clientHeight;
     const bottomOfPopup = containerRef.current
       ? containerRef.current.getBoundingClientRect().bottom
@@ -97,9 +99,9 @@ export default PopupContainer;
 
 const PopupPosition = styled.span`
   position: absolute;
-  left: 20px;
+  right: calc(5% + ${popupDimensions.width}px);
+  transform: translateY(-${popupDimensions.height / 2}px);
   z-index: 3;
-  transform: translateY(-${popupDimensions.height - 100}px);
   @media screen and (max-width: 767px) {
     position: static;
     width: 100%;
@@ -107,17 +109,16 @@ const PopupPosition = styled.span`
 `;
 
 const Container = styled.span`
-  font-family: Inter, Helvetica, sans-serif;
   position: absolute;
   display: inline-block;
   width: ${popupDimensions.width}px;
-  overflow: hidden;
-  box-shadow: 12px 12px 2px rgba(0, 0, 0, 0.1), -20px 16px 2px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3);
   color: white;
   border-radius: 4px;
   @media screen and (max-width: 767px) {
+    box-shadow: 0 5px 60px -12px rgba(50, 50, 93, 0.25), 0 10px 36px -18px rgba(0, 0, 0, 0.3);
     border-radius: 0;
-    max-height: 270;
+    max-height: 270px;
     position: fixed;
     width: 100%;
     left: 0;
