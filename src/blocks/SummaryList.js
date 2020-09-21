@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'components/util';
+import { Row, ArticleCol } from 'components/util';
 import styled from 'styled-components';
 
 /*
@@ -77,7 +77,7 @@ const SummaryListBlock = (props) => {
   return (
     <div>
       <Row>
-        <Col xsOffset={1} xs={10} smOffset={2} sm={8} mdOffset={3} md={6} lgOffset={3} lg={6}>
+        <ArticleCol>
           {snippets}
           {!expanded && restOfSnippets && (
             <ExpandButton onClick={() => setExpanded(true)}>
@@ -85,7 +85,7 @@ const SummaryListBlock = (props) => {
             </ExpandButton>
           )}
           {expanded && restOfSnippets}
-        </Col>
+        </ArticleCol>
       </Row>
     </div>
   );

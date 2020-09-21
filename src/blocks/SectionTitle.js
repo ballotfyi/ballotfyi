@@ -1,6 +1,6 @@
 // import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Space } from 'components/util';
+import { Row, ArticleCol, Space } from 'components/util';
 import styled from 'styled-components';
 import FillRestWithLine from 'components/FillRestWithLine';
 
@@ -21,22 +21,11 @@ usage
 */
 
 const TitleBar = (props) => {
-  const { img, title, subtitle, align, nColWidth, paddingTop } = props.data;
-  const nWidth = nColWidth || 8;
-  const offset = Math.floor((12 - nWidth) / 2);
+  const { img, title, subtitle, align, paddingTop } = props.data;
   const isReversed = align === 'right';
   return (
     <Row>
-      <Col
-        xsOffset={1}
-        xs={10}
-        smOffset={2}
-        sm={8}
-        mdOffset={offset}
-        md={nWidth}
-        lgOffset={offset}
-        lg={nWidth}
-      >
+      <ArticleCol>
         <Space h={paddingTop || 70} xsHeight={35} />
         <FillRestWithLine align={align}>
           {img && !isReversed && <Img src={img} isReversed={isReversed} alt="title image" />}
@@ -44,7 +33,7 @@ const TitleBar = (props) => {
           {img && isReversed && <Img src={img} isReversed={isReversed} alt="title image" />}
         </FillRestWithLine>
         {subtitle && <SectionSubtitle align={align}>{subtitle}</SectionSubtitle>}
-      </Col>
+      </ArticleCol>
     </Row>
   );
 };
@@ -53,7 +42,6 @@ TitleBar.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    nColWidth: PropTypes.number,
     paddingTop: PropTypes.number,
     img: PropTypes.string,
     align: PropTypes.string,
