@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import { LinkOutIcon } from 'components/icons';
+import { LinkOutIcon, CloseIcon } from 'components/icons';
 
 const CitationCard = (props) => {
   const { publication, headline, quote, url, noLink, toggleVisibility } = props;
   return (
     <Card>
-      <CardLabel>Source</CardLabel>
+      <Row>
+        <CardLabel>Source</CardLabel>
+        <DismissIcon name="dimiss" onClick={() => toggleVisibility(false)}>
+          <CloseIcon color="blue" />
+        </DismissIcon>
+      </Row>
       <SourcePublication>{publication}</SourcePublication>
       <SourceHeadline>{headline}</SourceHeadline>
       <SourceBody>
@@ -14,14 +19,16 @@ const CitationCard = (props) => {
         <Quotes>&rdquo;</Quotes>
       </SourceBody>
       <ActionRow>
-        <Dismiss onClick={() => toggleVisibility(false)}>Dismiss</Dismiss>
+        <Dismiss name="dimiss" onClick={() => toggleVisibility(false)}>
+          Dismiss
+        </Dismiss>
         {!noLink && (
-          <Button target="_blank" rel="noopener noreferrer" href={url}>
+          <ReadMoreLink target="_blank" rel="noopener noreferrer" href={url}>
             <LinkOutStyle>
               <LinkOutIcon color="blue" />
             </LinkOutStyle>
             Read more
-          </Button>
+          </ReadMoreLink>
         )}
       </ActionRow>
     </Card>
@@ -41,10 +48,15 @@ const Card = styled.span`
   background-color: white;
 `;
 
+const Row = styled.span`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const CardLabel = styled.span`
   display: block;
   font-weight: 700;
-  text-align: center;
   font-size: 16px;
   color: #333;
 `;
@@ -83,7 +95,7 @@ const Quotes = styled.span`
   color: gray;
 `;
 
-const ActionRow = styled.div`
+const ActionRow = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,7 +119,7 @@ const Dismiss = styled.button`
   }
 `;
 
-const Button = styled.a`
+const ReadMoreLink = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,4 +140,14 @@ const Button = styled.a`
 const LinkOutStyle = styled.span`
   width: 20px;
   height: 20px;
+`;
+
+const DismissIcon = styled.button`
+  display: inline;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  height: 20px;
+  width: 25px;
 `;

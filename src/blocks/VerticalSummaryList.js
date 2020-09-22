@@ -73,7 +73,9 @@ const VerticalSummaryListBlock = (props) => {
   if (restOfSnippets.length === 0) restOfSnippets = null;
   const moreButton =
     !expanded && restOfSnippets.length > 0 ? (
-      <ExpandButton onClick={() => setExpanded(true)}>{buttonText || 'View more'}</ExpandButton>
+      <ExpandButton name="more" onClick={() => setExpanded(true)}>
+        {buttonText || 'View more'}
+      </ExpandButton>
     ) : null;
 
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'components/util';
-import { FromThem, FromMe, Clear, Section, FromThemEmoji } from './iMessageStyles';
+import { FromThem, FromMe, Clear, Section, FromThemEmoji } from './chatStyles';
 
 /*
 an iMessage conversation block
@@ -9,7 +9,7 @@ an iMessage conversation block
 example usage for data.js
 {
 	
-	component: IMessageBlock,
+	component: ChatBlock,
 	data: {
 		messages: [
 			{
@@ -33,7 +33,7 @@ example usage for data.js
 },
 */
 
-const IMessageBlock = (props) => {
+const ChatBlock = (props) => {
   const { messages } = props.data;
   let lastSender = null;
   const conversation = messages.map((message, i) => {
@@ -76,7 +76,7 @@ const IMessageBlock = (props) => {
   );
 };
 
-IMessageBlock.propTypes = {
+ChatBlock.propTypes = {
   data: PropTypes.shape({
     messages: PropTypes.arrayOf(
       PropTypes.shape({
@@ -87,4 +87,4 @@ IMessageBlock.propTypes = {
   }).isRequired,
 };
 
-export default IMessageBlock;
+export default ChatBlock;
