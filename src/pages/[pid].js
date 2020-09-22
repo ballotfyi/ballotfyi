@@ -4,27 +4,34 @@ import PropNav from 'components/PropNav';
 import TopHat from 'components/TopHat';
 import { Row, Col, Space } from 'components/util';
 import dynamic from 'next/dynamic';
+import HeadContent from 'components/HeadContent';
+import withBasicTemplate from 'template/basic';
 
 const PropPage = (props) => {
-  const {
-    title,
-    // shortTitle,
-    // description,
-    // shortDescription,
-    // propNum,
-    // socialTitle,
-    blocks,
-  } = props;
+  const { title, blocks } = props;
 
+  //-- convert stringified dates back to javascript DateTime
+  let headProps = {};
+  for (const key in props) {
+    if (key.includes('date') || key === 'updated' || key === 'created') {
+      headProps[key] = new Date(props[key]);
+    } else {
+      headProps[key] = props[key];
+    }
+  }
   const renderedBlocks = blocks.map((block, i) => {
     const BlockComponent = dynamic(() => import(`../blocks/${block.type}`), {
       loading: () => <p>loading...</p>,
     });
     return <BlockComponent key={i} data={block.data} />;
   });
-
+  
   return (
     <>
+      <HeadContent
+        pageType={"article"}
+        {...headProps}
+      />
       <TopHat />
       <PropNav />
       <Row>
@@ -42,7 +49,7 @@ const PropPage = (props) => {
   );
 };
 
-export default PropPage;
+export default withBasicTemplate(PropPage);
 
 //----------------------------------------------
 

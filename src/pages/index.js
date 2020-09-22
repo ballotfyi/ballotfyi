@@ -9,7 +9,7 @@ import PropNav from 'components/PropNav';
 import { Row, Col } from 'components/util';
 import Image from 'components/Image';
 import Link from 'next/link';
-
+import HeadContent from 'components/HeadContent'
 const sections = [
   {
     propNum: '15',
@@ -124,6 +124,7 @@ const HomePage = () => {
 
   return (
     <>
+      <HeadContent />
       <SeparateLayer>
         <TopHat />
         <PropNav />

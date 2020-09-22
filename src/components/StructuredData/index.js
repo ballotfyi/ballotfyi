@@ -17,17 +17,18 @@ const StructuredData = (props) => {
     dateModified,
     title,
     description,
+    canonicalImage,
+    canonicalImageAlt,
+    canonicalImageWidth,
+    canonicalImageHeight,
     canonicalUrlSlug,
-    pageType,
-    // images
+    pageType
   } = props;
   const urlBase = 'https://www.ballot.fyi/';
   const publisherId = urlBase + '#publisher';
-  // const propNums = Array(12)
-  //   .fill(14)
-  //   .map((val, index) => val + index); // [14, 15, ..., 25]
-  // const articleUrls = propNums.map((n) => `${urlBase}prop-${n}`);
-
+  const seq = Array.from(Array(12).keys());
+  const articleUrls = seq.map((n) => `${urlBase}prop-${n+14}`);
+  console.log(pageType);
   const articleData = {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
@@ -37,14 +38,14 @@ const StructuredData = (props) => {
     },
     headline: title,
     description: description,
-    // image: images.map((img) => ({
-    //   '@context': 'https://schema.org',
-    //   '@type': 'ImageObject',
-    //   url: img.url || 'www.google.com',
-    //   caption: img.caption || '',
-    //   height: img.height || 1,
-    //   width: img.width || 1,
-    // })),
+    image: {
+      '@context': 'https://schema.org',
+      '@type': 'ImageObject',
+      url: canonicalImage,
+      caption: canonicalImageAlt || '',
+      height: canonicalImageHeight || 3,
+      width: canonicalImageWidth || 2,
+    },
     inLanguage: 'en-US',
     isAccessibleForFree: true,
     copyrightYear: datePublished.getFullYear(),
@@ -69,25 +70,25 @@ const StructuredData = (props) => {
   const homeData = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    // mainEntity: {
-    //   '@context': 'https://schema.org',
-    //   '@type': 'ItemList',
-    //   numberOfItems: articleUrls.length,
-    //   itemListElement: articleUrls.map((url, index) => ({
-    //     '@context': 'https://schema.org',
-    //     '@type': 'ListItem',
-    //     position: index,
-    //     url: url,
-    //   })),
-    // },
-    // image: images.map((img) => ({
+    mainEntity: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      numberOfItems: articleUrls.length,
+      itemListElement: articleUrls.map((url, index) => ({
+        '@context': 'https://schema.org',
+        '@type': 'ListItem',
+        position: index,
+        url: url,
+      })),
+    },
+    // image: {
     //   '@context': 'https://schema.org',
     //   '@type': 'ImageObject',
-    //   url: img.url || 'www.google.com',
-    //   caption: img.caption || '',
-    //   height: img.height || 1,
-    //   width: img.width || 1,
-    // })),
+    //   url: '/static/homepageHeadImg.jpg,
+    //   caption: 'I need to make this' || '',
+    //   height: 3,
+    //   width: 2,
+    // },
     name: 'ballot.fyi',
     publisher: {
       '@id': publisherId,
@@ -114,13 +115,13 @@ const StructuredData = (props) => {
       'https://twitter.com/ballotfyi/',
       'https://www.instagram.com/ballotfyi/',
     ],
-    // logo: {
-    //   '@context': 'https://schema.org',
-    //   '@type': 'ImageObject',
-    //   url: 'https://www.ballot.com/static/logo.jpg', //--TODO
-    //   width: 300,
-    //   height: 200,
-    // },
+    logo: {
+      '@context': 'https://schema.org',
+      '@type': 'ImageObject',
+      url: 'https://www.ballot.com/static/logo.jpg',
+      width: 300,
+      height: 200,
+    },
   };
   return (
     <Head>
@@ -149,16 +150,14 @@ StructuredData.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   canonicalUrlSlug: PropTypes.string.isRequired,
+  canonicalImage: PropTypes.string.isRequired,
+  canonicalImageAlt: PropTypes.string.isRequired,
+  canonicalImageWidth: PropTypes.number,
+  canonicalImageHeight: PropTypes.number,
+  socialImage: PropTypes.string.isRequired,
+  socialImageAlt: PropTypes.string.isRequired,
   datePublished: PropTypes.instanceOf(Date).isRequired,
   dateModified: PropTypes.instanceOf(Date),
-  images: PropTypes.arrayOf(
-    PropTypes.shape({
-      url: PropTypes.string,
-      width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-      height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-      caption: PropTypes.string,
-    })
-  ).isRequired,
   pageType: PropTypes.oneOf(['article', 'page']),
 };
 
@@ -167,6 +166,10 @@ StructuredData.defaultProps = {
   description:
     "Everything you need to vote informed Nov 2020 for California's ballot propositions.",
   canonicalUrlSlug: '',
+  canonicalImage: '',
+  canonicalImageAlt: '',
+  socialImage: '',
+  socialImageAlt: '',
   datePublished: new Date(),
   dateModified: null,
   images: [],
