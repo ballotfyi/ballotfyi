@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Row, ArticleCol, mapResultToColor } from 'components/util';
-
+import Acronym from 'components/Acronym';
+import Citation from 'components/Citation';
+import JsxParser from 'react-jsx-parser';
 /*
 
 usage in data.js file:
@@ -19,7 +21,7 @@ usage in data.js file:
 */
 
 const ResultBlock = (props) => {
-  const { title, text, result } = props.data;
+  const { title, markup, result } = props.data;
 
   return (
     <Row>
@@ -28,7 +30,7 @@ const ResultBlock = (props) => {
           <TitlePos>
             <Title color={mapResultToColor[result]}>{title}</Title>
           </TitlePos>
-          <Text>{text}</Text>
+          <JsxParser components={{ Acronym, Citation }} jsx={`${markup}`} showWarnings={true} />
         </Container>
       </ArticleCol>
     </Row>
@@ -47,11 +49,12 @@ export default ResultBlock;
 
 const TitlePos = styled.div`
   position: relative;
-  top: -38px;
+  top: -72px;
 `;
 
 const Title = styled.h2`
   display: block;
+  font-size: 16px;
   position: absolute;
   color: ${(props) => (props.color ? props.color : '#333')};
   background: #fff;
