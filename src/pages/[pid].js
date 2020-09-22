@@ -25,13 +25,10 @@ const PropPage = (props) => {
     });
     return <BlockComponent key={i} data={block.data} />;
   });
-  
+
   return (
     <>
-      <HeadContent
-        pageType={"article"}
-        {...headProps}
-      />
+      <HeadContent pageType={'article'} {...headProps} />
       <TopHat />
       <PropNav />
       <Row>
