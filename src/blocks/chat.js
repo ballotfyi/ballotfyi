@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'components/util';
-import { FromThem, FromMe, Clear, Section, FromThemEmoji } from './chatStyles';
+import { FromThem, FromMe, Clear, Section, FromThemEmoji } from './ChatStyles';
 
 /*
 an iMessage conversation block

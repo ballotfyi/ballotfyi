@@ -41,7 +41,7 @@ ResultBlock.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
     result: PropTypes.string,
-    text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    markup: PropTypes.string.isRequired,
   }),
 };
 
@@ -68,10 +68,4 @@ const Container = styled.div`
   padding: 20px 30px 30px 30px;
   border-radius: 8px;
   border: 4px solid ${(props) => (props.color ? props.color : '#323232')};
-`;
-
-const Text = styled.div`
-  margin-top: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
 `;
