@@ -51,6 +51,7 @@ const EmailSubscribe = () => {
       disabled={isSending || emailInput === ''}
       tabIndex="0"
       type="submit"
+      name="submit"
       onClick={handleFormSubmit}
     >
       {isSending ? (

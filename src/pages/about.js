@@ -220,37 +220,3 @@ const CTAContainer = styled.div`
     padding-bottom: 30px;
   }
 `;
-
-// const Isolate = styled.div`
-//   isolation: isolate;
-// `;
-
-// const Noise = styled.div`
-//   position: relative;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   margin-top: 30px;
-//   width: 100%;
-//   height: 400px;
-//   background: conic-gradient(from 325deg at 0% -4%, rgba(255, 255, 255, 0), black),
-//     url(/static/noise.svg);
-//   filter: contrast(170%) brightness(905%);
-//   @media not all and (min-resolution: 0.001dpcm) {
-//     @media {
-//       background: conic-gradient(from 232deg at -60% -34%, rgba(255, 255, 255, 0), black),
-//         url(/static/noise.svg);
-//       filter: contrast(310%) brightness(635%);
-//     }
-//   }
-// `;
-
-// const Overlay = styled.div`
-//   position: relative;
-//   top: -400px;
-//   width: 100%;
-//   height: 400px;
-//   box-shadow: 4px 6px 40px 30px rgba(0, 0, 0, 0.06);
-//   background: linear-gradient(90deg, orange, darkorchid);
-//   mix-blend-mode: lighten;
-// `;

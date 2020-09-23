@@ -10,6 +10,8 @@ import { Row, Col } from 'components/util';
 import Image from 'components/Image';
 import Link from 'next/link';
 import HeadContent from 'components/HeadContent';
+import SkipLink from 'components/SkipLink';
+
 const sections = [
   {
     propNum: '15',
@@ -126,6 +128,7 @@ const HomePage = () => {
     <>
       <HeadContent />
       <SeparateLayer>
+        <SkipLink />
         <TopHat />
         <PropNav />
       </SeparateLayer>
@@ -295,17 +298,17 @@ const ImageContainer = styled.div`
   top: -200px;
   margin-bottom: -200px;
   user-select: none;
-  transition: all 180ms ease-out;
+  transition: all 1500ms cubic-bezier(0.09, 0.85, 0.11, 0.98);
   filter: drop-shadow(3px 3px 0 white) drop-shadow(12px 12px 0 rgba(0, 0, 0, 0.15))
     drop-shadow(-20px 16px 2px rgba(0, 0, 0, 0.05));
   @media not all and (hover: none) {
     &:hover {
-      transform: translate(0, -5px);
+      transform: translate(0, -5px) scale(1.02);
       filter: drop-shadow(3px 3px 0 white) drop-shadow(14px 15px 0px rgba(0, 0, 0, 0.1))
         drop-shadow(-23px 19px 3px rgba(0, 0, 0, 0.03));
     }
     &:active {
-      transition-duration: 100ms;
+      transition-duration: 200ms;
       transform: translate(0, 2px);
       filter: drop-shadow(3px 3px 0 white) drop-shadow(8px 3px 0px rgba(0, 0, 0, 0.2))
         drop-shadow(-4px 6px 0 rgba(0, 0, 0, 0.1));
