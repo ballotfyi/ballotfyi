@@ -6,10 +6,19 @@ import Acronym from 'components/Acronym';
 import Button from 'components/Button';
 import Footer from 'components/Footer';
 import TopHat from 'components/TopHat';
+import HeadContent from 'components/HeadContent';
 
 const AboutPage = () => {
   return (
     <div>
+      {/* Needs canonicalImg image */}
+      <HeadContent
+        title="About"
+        description="Ballot.fyi simplifies the California ballot propositions. Read about the project's principles and the team behind it."
+        canonicalUrlSlug="about"
+        datePublished={new Date(2020, 10, 5)}
+        pageType="page"
+      />
       <TopHat />
       <Col
         off={{ xs: 2, sm: 0, md: 0, lg: 0, xl: 0, xxl: 0 }}

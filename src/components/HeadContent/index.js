@@ -43,8 +43,20 @@ const HeadContent = (props) => {
           property="og:description"
           content={socialDescription || description}
         />
-        <meta prefix="og: http://ogp.me/ns#" property="og:image" content={socialImage} />
-        <meta prefix="og: http://ogp.me/ns#" property="og:image:alt" content={socialImageAlt} />
+        {(socialImage || canonicalImage) && (
+          <meta
+            prefix="og: http://ogp.me/ns#"
+            property="og:image"
+            content={socialImage || canonicalImage}
+          />
+        )}
+        {(socialImage || canonicalImage) && (
+          <meta
+            prefix="og: http://ogp.me/ns#"
+            property="og:image:alt"
+            content={socialImageAlt || canonicalImageAlt}
+          />
+        )}
         <meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US" />
 
         <meta
@@ -63,8 +75,12 @@ const HeadContent = (props) => {
         <meta name="twitter:url" content={canonicalUrlBase + canonicalUrlSlug} />
         <meta name="twitter:title" content={socialTitle || title} />
         <meta name="twitter:description" content={socialDescription || description} />
-        <meta name="twitter:image" content={socialImage || canonicalImage} />
-        <meta name="twitter:image:alt" content={socialImageAlt || canonicalImageAlt} />
+        {(socialImage || canonicalImage) && (
+          <meta name="twitter:image" content={socialImage || canonicalImage} />
+        )}
+        {(socialImage || canonicalImage) && (
+          <meta name="twitter:image:alt" content={socialImageAlt || canonicalImageAlt} />
+        )}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ballotfyi" />
 
@@ -117,7 +133,7 @@ HeadContent.defaultProps = {
   canonicalImageAlt: '',
   socialImage: '',
   socialImageAlt: '',
-  datePublished: new Date(),
+  datePublished: new Date(2020, 10, 5),
   dateModified: null,
   pageType: 'page',
 };

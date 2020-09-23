@@ -2,10 +2,18 @@ import withBasicTemplate from 'template/basic';
 import TopHat from 'components/TopHat';
 import { Space, LinkOut, Col } from 'components/util';
 import Footer from 'components/Footer';
+import HeadContent from 'components/HeadContent';
 
 const PrivacyPage = () => {
   return (
     <>
+      <HeadContent
+        title="Privacy"
+        description="Ballot.fyi simplifies the California ballot propositions. Read about the project's privacy policy."
+        canonicalUrlSlug="privacy"
+        datePublished={new Date(2020, 10, 5)}
+        pageType="page"
+      />
       <TopHat />
       <Col
         off={{ xs: 2, sm: 3, md: 2, lg: 2, xl: 2, xxl: 3 }}
