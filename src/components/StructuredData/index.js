@@ -28,7 +28,6 @@ const StructuredData = (props) => {
   const publisherId = urlBase + '#publisher';
   const seq = Array.from(Array(12).keys());
   const articleUrls = seq.map((n) => `${urlBase}prop-${n + 14}`);
-  console.log(pageType);
   const articleData = {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',

@@ -67,11 +67,11 @@ const LinksChunk = (props) => {
           <LinkOutIcon />
         </LinkOutStyle>
         <ExternalLink target="_blank" rel="noopener noreferrer" href={link.url}>
-          {link.text}
+          {link.publisher}
         </ExternalLink>
       </LinkWrapper>
     ) : (
-      <LinkWrapper key={j}>{link.text}</LinkWrapper>
+      <LinkWrapper key={j}>{link.publisher}</LinkWrapper>
     );
   });
   return (
@@ -101,15 +101,24 @@ const LinksBlock = (props) => {
     <HideOnPrint>
       <Space h={30} />
       <Row>
-        <Col xsOffset={1} xs={10} smOffset={1} sm={5} mdOffset={3} md={3} lgOffset={3} lg={3}>
+        <Col
+          off={{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}
+          span={{ xs: 18, sm: 16, md: 13, lg: 11, xl: 10, xxl: 9 }}
+        >
           {evenSections}
         </Col>
-        <Col xsOffset={1} xs={10} smOffset={0} sm={5} mdOffset={0} md={3} lgOffset={0} lg={3}>
+        <Col
+          off={{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}
+          span={{ xs: 18, sm: 16, md: 13, lg: 11, xl: 10, xxl: 9 }}
+        >
           {oddSections}
         </Col>
       </Row>
       <Row>
-        <Col xsOffset={1} xs={10} smOffset={1} sm={10} mdOffset={3} md={6} lgOffset={3} lg={6}>
+        <Col
+          off={{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}
+          span={{ xs: 18, sm: 16, md: 13, lg: 11, xl: 10, xxl: 9 }}
+        >
           <Disclaimer>
             <b>Note</b>: We intentionally omit links to arguments &amp; rebuttals found in CA's
             official voter guide. We believe they exaggerate claims, are not fact-checked, and use
@@ -128,7 +137,7 @@ LinksBlock.propTypes = {
         subsectionTitle: PropTypes.string,
         links: PropTypes.arrayOf(
           PropTypes.shape({
-            text: PropTypes.string.isRequired,
+            publisher: PropTypes.string.isRequired,
             url: PropTypes.string,
           }).isRequired
         ),

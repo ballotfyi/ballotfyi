@@ -79,7 +79,7 @@ export const FromThem = styled.div`
     transform: translate(-30px, -2px);
   }
 `;
-export const FromThemEmoji = FromThem.extend`
+export const FromThemEmoji = styled(FromThem)`
   background: none;
   &:before {
     border-left: none;

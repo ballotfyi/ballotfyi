@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'components/util';
 import { FromThem, FromMe, Clear, Section, FromThemEmoji } from './ChatStyles';
+import JsxParser from 'components/JsxParser';
 
 /*
 an iMessage conversation block
@@ -46,16 +47,32 @@ const ChatBlock = (props) => {
 
     switch (message.from) {
       case 'them':
-        msg = <FromThem>{message.body}</FromThem>;
+        msg = (
+          <FromThem>
+            <JsxParser jsx={message.body.markup} />
+          </FromThem>
+        );
         break;
       case 'me':
-        msg = <FromMe>{message.body}</FromMe>;
+        msg = (
+          <FromMe>
+            <JsxParser jsx={message.body.markup} />
+          </FromMe>
+        );
         break;
       case 'me-no-bg':
-        msg = <FromMe style={{ background: 'none' }}>{message.body}</FromMe>;
+        msg = (
+          <FromMe style={{ background: 'none' }}>
+            <JsxParser jsx={message.body.markup} />
+          </FromMe>
+        );
         break;
       case 'them-no-bg':
-        msg = <FromThemEmoji>{message.body}</FromThemEmoji>;
+        msg = (
+          <FromThemEmoji>
+            <JsxParser jsx={message.body.markup} />
+          </FromThemEmoji>
+        );
         break;
       default:
         break;
@@ -69,7 +86,10 @@ const ChatBlock = (props) => {
   });
   return (
     <Row>
-      <Col xsOffset={1} xs={10} smOffset={2} sm={8} mdOffset={3} md={6} lgOffset={3} lg={6}>
+      <Col
+        off={{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}
+        span={{ xs: 18, sm: 16, md: 13, lg: 11, xl: 10, xxl: 9 }}
+      >
         <Section>{conversation}</Section>
       </Col>
     </Row>

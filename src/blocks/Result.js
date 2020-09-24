@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Row, ArticleCol, mapResultToColor } from 'components/util';
-import Acronym from 'components/Acronym';
-import Citation from 'components/Citation';
-import JsxParser from 'react-jsx-parser';
+import JsxParser from 'components/JsxParser';
+
 /*
 
 usage in data.js file:
@@ -21,7 +20,7 @@ usage in data.js file:
 */
 
 const ResultBlock = (props) => {
-  const { title, markup, result } = props.data;
+  const { title, text, result } = props.data;
 
   return (
     <Row>
@@ -30,7 +29,7 @@ const ResultBlock = (props) => {
           <TitlePos>
             <Title color={mapResultToColor[result]}>{title}</Title>
           </TitlePos>
-          <JsxParser components={{ Acronym, Citation }} jsx={`${markup}`} showWarnings={true} />
+          <JsxParser jsx={`${text.markup}`} />
         </Container>
       </ArticleCol>
     </Row>
@@ -41,7 +40,7 @@ ResultBlock.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
     result: PropTypes.string,
-    markup: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
   }),
 };
 

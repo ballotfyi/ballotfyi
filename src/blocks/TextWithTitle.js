@@ -2,9 +2,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Row, ArticleCol, Space } from 'components/util';
 import FillRestWithLine from 'components/FillRestWithLine';
-import Acronym from 'components/Acronym';
-import Citation from 'components/Citation';
-import JsxParser from 'react-jsx-parser';
+import JsxParser from 'components/JsxParser';
 /*
 A block of text
 takes a title and body of text
@@ -22,7 +20,7 @@ usage in data.js file:
 */
 
 const TextWithTitleBlock = (props) => {
-  const { title, subtitle, markup } = props.data;
+  const { title, subtitle, body } = props.data;
 
   return (
     <Row>
@@ -37,7 +35,7 @@ const TextWithTitleBlock = (props) => {
           </>
         )}
         <Text>
-          <JsxParser components={{ Acronym, Citation }} jsx={`${markup}`} showWarnings={true} />
+          <JsxParser jsx={`${body.markup}`} />
         </Text>
       </ArticleCol>
     </Row>

@@ -114,7 +114,6 @@ const Sections = (props) => {
 
 const HomePage = () => {
   const [currIndex, setCurrIndex] = useState(0);
-  // console.log(JSON.parse(props.sections));
   const seq = Array.from(Array(12).keys());
   const anchors = seq.map((n) => `prop-${n + 14}-intro`);
 
