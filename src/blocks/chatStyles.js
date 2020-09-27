@@ -8,7 +8,7 @@ export const Section = styled.div`
   font-weight: normal;
   max-width: 360px;
   margin: 40px auto;
-  div {
+  & > div {
     max-width: 200px;
     word-wrap: break-word;
     margin-bottom: 10px;
@@ -47,6 +47,10 @@ export const FromMe = styled.div`
     border-bottom-left-radius: 10px;
     transform: translate(-30px, -2px);
   }
+  p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
 `;
 export const FromThem = styled.div`
   position: relative;
@@ -77,6 +81,10 @@ export const FromThem = styled.div`
     background: white;
     border-bottom-right-radius: 10px;
     transform: translate(-30px, -2px);
+  }
+  p {
+    margin-block-start: 0;
+    margin-block-end: 0;
   }
 `;
 export const FromThemEmoji = styled(FromThem)`

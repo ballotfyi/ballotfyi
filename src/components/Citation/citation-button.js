@@ -45,7 +45,7 @@ const Icon = styled.button`
   margin-left: 4px;
   line-height: 0;
   padding: 0;
-  background-color: ${(props) => (props.isActive ? 'navy' : 'CORAL')};
+  background-color: ${(props) => (props.isActive ? 'navy' : 'GAINSBORO')};
   border-radius: 7px;
   pointer-events: auto;
   cursor: pointer;
@@ -71,6 +71,7 @@ const Dot = styled.span`
   display: block;
   width: 2px;
   height: 2px;
-  background-color: white;
+  background-color: black;
+  background-color: ${(props) => (props.isActive ? '#fff' : '#000')};
   border-radius: 1px;
 `;

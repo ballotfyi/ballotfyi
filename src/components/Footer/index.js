@@ -134,7 +134,7 @@ const Set = styled.div`
 const FooterItem = styled.a`
   display: flex;
   align-items: center;
-  font-family: Inter, Helvetica;
+  font-family: Inter, InterPre, Helvetica, sans-serif;
   font-size: 12px;
   letter-spacing: 0.095em;
   text-transform: uppercase;

@@ -14,10 +14,13 @@ const CitationCard = (props) => {
       </Row>
       <SourcePublication>{publication}</SourcePublication>
       <SourceHeadline>{headline}</SourceHeadline>
-      <SourceBody>
-        <Quotes>&ldquo;</Quotes>&nbsp;{quote}
-        <Quotes>&rdquo;</Quotes>
-      </SourceBody>
+      {quote && quote !== '' && (
+        <SourceBody>
+          <Quotes>&ldquo;</Quotes>
+          {quote}
+          <Quotes>&rdquo;</Quotes>
+        </SourceBody>
+      )}
       <ActionRow>
         <Dismiss name="dimiss" onClick={() => toggleVisibility(false)}>
           Dismiss
@@ -25,7 +28,7 @@ const CitationCard = (props) => {
         {!noLink && (
           <ReadMoreLink target="_blank" rel="noopener noreferrer" href={url}>
             <LinkOutStyle>
-              <LinkOutIcon color="blue" />
+              <LinkOutIcon />
             </LinkOutStyle>
             Read more
           </ReadMoreLink>
@@ -89,10 +92,8 @@ const SourceBody = styled.span`
 `;
 
 const Quotes = styled.span`
-	position: absolute;
 	font-family: Georgia, serif;
   font-size 13pt;
-  color: gray;
 `;
 
 const ActionRow = styled.span`

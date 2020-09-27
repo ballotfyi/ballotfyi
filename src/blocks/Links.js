@@ -103,13 +103,13 @@ const LinksBlock = (props) => {
       <Row>
         <Col
           off={{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}
-          span={{ xs: 18, sm: 16, md: 13, lg: 11, xl: 10, xxl: 9 }}
+          span={{ xs: 18, sm: 16, md: 8, lg: 8, xl: 8, xxl: 8 }}
         >
           {evenSections}
         </Col>
         <Col
-          off={{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}
-          span={{ xs: 18, sm: 16, md: 13, lg: 11, xl: 10, xxl: 9 }}
+          off={{ xs: 3, sm: 3, md: 1, lg: 1, xl: 1, xxl: 1 }}
+          span={{ xs: 18, sm: 16, md: 8, lg: 8, xl: 8, xxl: 8 }}
         >
           {oddSections}
         </Col>
@@ -148,24 +148,33 @@ LinksBlock.propTypes = {
 
 export default LinksBlock;
 
-const SubsectionTitle = styled.h3`
+const SubsectionTitle = styled.h4`
+  font-family: Inter, InterPre, Helvetica, sans-serif;
   display: block;
-  color: #666;
   margin-bottom: 10px;
   font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.095em;
 `;
 
-const LinkWrapper = styled.h4`
+const LinkWrapper = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 const ExternalLink = styled.a`
+  font-family: Inter, InterPre, Helvetica, sans-serif;
   margin-top: 4px;
-  font-size: 12px;
-  @media screen and (max-width: 767px) {
+  font-size: 14px;
+  @media screen and (max-width: 768px) {
     margin-top: 8px;
     font-size: 16px;
-    line-height: 21px;
+    line-height: 24px;
+  }
+  @media not all and (hover: none) {
+    &:hover {
+      text-decoration: none;
+    }
   }
 `;
 
@@ -180,10 +189,10 @@ const HideOnPrint = styled.div`
   }
 `;
 
-const Disclaimer = styled.h4`
-  font-size: 12px;
+const Disclaimer = styled.div`
+  font-size: 13px;
   line-height: 17px;
   padding: 10px 20px;
-  background-color: whitesmoke;
+  background-color: aliceblue;
   border-radius: 2px;
 `;

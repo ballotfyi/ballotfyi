@@ -64,7 +64,7 @@ const SummaryListBlock = (props) => {
   if (snippets.length === 0) snippets = null;
   if (restOfSnippets.length === 0) restOfSnippets = null;
   const moreButton =
-    !expanded && restOfSnippets.length > 0 ? (
+    !expanded && restOfSnippets && restOfSnippets.length > 0 ? (
       <ExpandButton name="more" onClick={() => setExpanded(true)}>
         {buttonText || 'View more'}
       </ExpandButton>

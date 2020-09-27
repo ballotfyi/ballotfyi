@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Row, ArticleCol, Space } from 'components/util';
+import { Row, ArticleCol, TitleCol, Space } from 'components/util';
 import FillRestWithLine from 'components/FillRestWithLine';
 import JsxParser from 'components/JsxParser';
 /*
@@ -24,7 +24,7 @@ const TextWithTitleBlock = (props) => {
 
   return (
     <Row>
-      <ArticleCol>
+      <TitleCol>
         <Space h={40} />
         {title && (
           <>
@@ -34,6 +34,8 @@ const TextWithTitleBlock = (props) => {
             {subtitle && <Subtitle>{subtitle}</Subtitle>}
           </>
         )}
+      </TitleCol>
+      <ArticleCol>
         <Text>
           <JsxParser jsx={`${body.markup}`} />
         </Text>

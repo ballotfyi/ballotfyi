@@ -10,12 +10,15 @@ const TextAndLine = (props) => {
 
   const handleResize = useCallback(() => {
     if (innerContentRef.current && wrapperRef.current) {
-      const w = innerContentRef.current.getBoundingClientRect().width;
-      const totalW = wrapperRef.current.getBoundingClientRect().width;
-      const shouldBeEmpty = w === 0 || Math.abs(totalW - w) < 50;
-      const lineW = shouldBeEmpty ? 0 : totalW - w - 36; //-- totalWidth - textWidth - borderRadius*2 - marginLeft
-      setIsEmpty(shouldBeEmpty);
-      setLineWidth(lineW);
+      //-- wrapped in a set timeout so that it's delayed until after the render
+      setTimeout(() => {
+        const w = innerContentRef.current.getBoundingClientRect().width;
+        const totalW = wrapperRef.current.getBoundingClientRect().width;
+        const shouldBeEmpty = w === 0 || Math.abs(totalW - w) < 50;
+        const lineW = shouldBeEmpty ? 0 : totalW - w - 36; //-- totalWidth - textWidth - borderRadius*2 - marginLeft
+        setIsEmpty(shouldBeEmpty);
+        setLineWidth(lineW);
+      }, 0);
     }
   }, [wrapperRef, innerContentRef]);
 
