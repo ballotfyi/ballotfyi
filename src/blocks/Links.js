@@ -60,7 +60,9 @@ example usage:
 */
 
 const LinksChunk = (props) => {
-  const links = props.data.links.map((link, j) => {
+  const { links, subsectionTitle, noEditorials } = props.data;
+  const isInSupport = subsectionTitle.toLowerCase().includes('supports') || subsectionTitle.toLowerCase().includes('yes');
+  const renderedLinks = links.map((link, j) => {
     return link.url ? (
       <LinkWrapper key={j}>
         <LinkOutStyle>
@@ -76,8 +78,9 @@ const LinksChunk = (props) => {
   });
   return (
     <SectionWrapper>
-      <SubsectionTitle>{props.data.subsectionTitle}</SubsectionTitle>
-      {links}
+      <SubsectionTitle>{subsectionTitle}</SubsectionTitle>
+      {noEditorials && <NoEditorials>[No Editorial Boards {isInSupport ? 'support' : 'oppose'} this proposition]</NoEditorials>}
+      {renderedLinks}
     </SectionWrapper>
   );
 };
@@ -135,6 +138,7 @@ LinksBlock.propTypes = {
     subsections: PropTypes.arrayOf(
       PropTypes.shape({
         subsectionTitle: PropTypes.string,
+        noEditorials: PropTypes.bool,
         links: PropTypes.arrayOf(
           PropTypes.shape({
             publisher: PropTypes.string.isRequired,
@@ -196,4 +200,11 @@ const Disclaimer = styled.div`
   padding: 10px 20px;
   background-color: cornsilk;
   border-radius: 2px;
+`;
+
+const NoEditorials = styled.div`
+  font-size: 13px;
+
+  font-family: Inter, InterPre, Helvetica, sans-serif;
+  font-style: italic;
 `;

@@ -67,7 +67,7 @@ const RightSide = styled.div`
 
 const Line = styled.div`
   height: 1px;
-  background-color: magenta;
+  background-color: black;
 `;
 
 const Description = styled.div`
