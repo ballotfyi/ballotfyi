@@ -25,10 +25,11 @@ export const LinkOutIcon = (props) => (
 export const LinkOutStyle = styled.div`
   display: inline-block;
   height: 22px;
-  width: 20px;
-  padding-top: 3px;
+  max-width: 20px;
+  min-width: 20px;
+  padding-top: 4px;
   @media screen and (max-width: 768px) {
-    padding-top: 8px;
+    padding-top: 10px;
   }
 `;
 

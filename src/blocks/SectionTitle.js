@@ -30,10 +30,10 @@ const TitleBar = (props) => {
         span={{
           xs: 18,
           sm: nColWidth || 16,
-          md: nColWidth || 13,
-          lg: nColWidth || 11,
-          xl: nColWidth || 10,
-          xxl: nColWidth || 9,
+          md: nColWidth || 15,
+          lg: nColWidth || 13,
+          xl: nColWidth || 12,
+          xxl: nColWidth || 11,
         }}
       >
         <Space h={paddingTop || 70} xsHeight={35} />

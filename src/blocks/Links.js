@@ -117,7 +117,7 @@ const LinksBlock = (props) => {
       <Row>
         <Col
           off={{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}
-          span={{ xs: 18, sm: 16, md: 13, lg: 11, xl: 10, xxl: 9 }}
+          span={{ xs: 18, sm: 16, md: 15, lg: 13, xl: 12, xxl: 11 }}
         >
           <Disclaimer>
             <b>Note</b>: We intentionally omit links to arguments &amp; rebuttals found in CA's
@@ -159,13 +159,13 @@ const SubsectionTitle = styled.h4`
 
 const LinkWrapper = styled.div`
   display: flex;
-  align-items: center;
 `;
 
 const ExternalLink = styled.a`
   font-family: Inter, InterPre, Helvetica, sans-serif;
   margin-top: 4px;
   font-size: 14px;
+  line-height: 21px;
   @media screen and (max-width: 768px) {
     margin-top: 8px;
     font-size: 16px;
@@ -190,9 +190,10 @@ const HideOnPrint = styled.div`
 `;
 
 const Disclaimer = styled.div`
+  font-family: Inter, InterPre, Helvetica, sans-serif;
   font-size: 13px;
   line-height: 17px;
   padding: 10px 20px;
-  background-color: aliceblue;
+  background-color: cornsilk;
   border-radius: 2px;
 `;
