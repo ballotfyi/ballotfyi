@@ -54,7 +54,7 @@ const Icon = styled.button`
   @media not all and (hover: none) {
     &:hover {
       border-color: transparent;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(255, 255, 255, 0.7);
     }
   }
 `;
