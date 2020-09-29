@@ -3,38 +3,59 @@ import PropTypes from 'prop-types';
 import { Row, ArticleCol } from 'components/util';
 import styled from 'styled-components';
 import { LinkOutIcon } from 'components/icons';
+import JsxParser from 'components/JsxParser';
+
 /*
 usage
 
 {
-
-	component: VerticalSummaryListBlock,
-	data: {
-		listNItems: 3, //optional
-		buttonText: "View more", //optional
-		stories: [
-			{
-				title: "Defied state law and issued same-sex marriage licenses (2004)",
-				description: <span>While it was still illegal in California in 2004, Gavin, as Mayor of SF, ordered his County Clerk to issue 4K same-sex marriage licenses.</span>,
-			},
-			{
-				title: <span>Passed universal health care in SF (2007)</span>,
-				description: "As mayor, Gavin implemented Healthy SF, a program that provided health care to all residents including undocumented immigrants",
-			},
-		],
-	}
-},
+  component: VerticalSummaryListBlock,
+  data: {
+    listNItems: 3,
+    stories: [
+      {
+        title: "Stanford study on SF rent control (2018)",
+        buttonText: "What they found",
+        links: [
+          {
+            label:"Summarized article",
+            url:"https://www.brookings.edu/research/what-does-economic-evidence-tell-us-about-the-effects-of-rent-control/"
+          },
+          {
+            label:"Research paper",
+            url:"https://web.stanford.edu/~diamondr/DMQ.pdf"
+          },
+        ],
+        description:
+          <span>Researchers took advantage of a unique "quasi-experimental" situation <Citation data={Citations['12']}>where in 1994, rent control in SF was suddenly applied to small multifamily homes (SMFH) built before 1980.</Citation> The researchers compared those <Acronym data={Acronyms.SMFH}/>s to <Acronym data={Acronyms.SMFH}/>s built after 1980 (not rent controlled) and studied how renters and landlords behaved after 1994.</span>,
+        expandedContent:
+          <span>
+            <br/>
+            A few findings: (1) <Citation data={Citations['13']}>People in rent controlled <Acronym data={Acronyms.SMFH}/>s were more likely to still be living at their 1994 addresses.</Citation> (Supporting what rent control advocates say.)
+            <br/><br/>
+            (2) <Citation data={Citations['16']}>Rent-controlled buildings were more likely to turn into condos or Tenancy in Common (TIC) buildings, effectively reducing the number of renters in buildings that were rent controlled.</Citation> (Supporting what rent control opponents say.)
+            <br/><br/>
+            (3) <Citation data={Citations['14']}>In areas where surrounding rents increased rapidly, being in a rent controlled apartment actually <em>decreased</em> the likelihood that renters remained at their address.</Citation> This is because landlords, who had a large incentive to remove tenants, <Citation data={Citations['15']}>could effectively do so through <Acronym data={Acronyms.variousMeans}/>.</Citation> (This is counter to rent control's intention)
+          </span>,
+      },
+      ...
+    ]
+  }
+}
 */
 
 const Snippet = (props) => {
-  const { title, description, links } = props.data;
-  let expandedLinks = null;
-  if (links) {
-    expandedLinks = links.map((link, i) => {
+  const [expanded, setExpanded] = useState(false);
+
+  const { title, description, links, buttonText, expandedContent } = props.data;
+  const textOnButton = buttonText || "View more"
+  let renderedLinks = null;
+  if (links && (links.length === 1 && links[0].url)) {
+    renderedLinks = links.map((link, i) => {
       return (
         <React.Fragment key={i}>
           <LinkOutStyle>
-            <LinkOutIcon color="red" />
+            <LinkOutIcon/>
           </LinkOutStyle>
           <StoryLink href={link.url} target="_blank" rel="noreferred noopener">
             {link.label}
@@ -43,14 +64,24 @@ const Snippet = (props) => {
       );
     });
   }
+  const buttonOrContent = expanded ? 
+    <JsxParser jsx={`${expandedContent.markup}`} />
+    :
+    (expandedContent ? 
+      <ExpandButton onClick={()=>setExpanded(true)}>
+        {textOnButton}
+      </ExpandButton>
+      :
+      null);
 
   return (
     <Container>
       <TitleContainer>
         <h3>{title}</h3>
-        {links && <LinkContainer>{expandedLinks}</LinkContainer>}
+        {links && <LinkContainer>{renderedLinks}</LinkContainer>}
       </TitleContainer>
-      {description}
+      <JsxParser jsx={`${description.markup}`} />
+      {buttonOrContent}
     </Container>
   );
 };
@@ -116,7 +147,7 @@ const TitleContainer = styled.div`
 `;
 
 const ExpandButton = styled.button`
-  margin: 40px auto 0 auto;
+  margin: 23px auto 0 auto;
   padding: 10px 20px;
   display: flex;
   align-items: center;
@@ -131,7 +162,7 @@ const ExpandButton = styled.button`
   letter-spacing: 0.095rem;
   @media not all and (hover: none) {
     &:hover {
-      background-color: orange;
+      background-color: blue;
     }
   }
 `;
@@ -152,5 +183,5 @@ const LinkOutStyle = styled.div`
   height: 20px;
   min-width: 20px;
   width: 20px;
-  transform: translateY(2px);
+  padding-top: 3px;
 `;
