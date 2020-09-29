@@ -56,8 +56,8 @@ const Sections = (props) => {
             <Overlay propNum={propNum} />
             <Overlay2 propNum={propNum} />
           </Isolate>
-          <FirstDigit>{propNum.substring(0, 1)}</FirstDigit>
-          <SecondDigit>{propNum.substring(1, 2)}</SecondDigit>
+          <FirstDigit>{propNum.toString().substring(0, 1)}</FirstDigit>
+          <SecondDigit>{propNum.toString().substring(1, 2)}</SecondDigit>
           <Row style={{ position: 'absolute', width: '100%' }}>
             <Col
               off={{ xs: 3, sm: 3, md: 13, lg: 13, xl: 12, xxl: 12 }}
@@ -112,7 +112,8 @@ const Sections = (props) => {
   return sectionsRendered;
 };
 
-const HomePage = () => {
+const HomePage = (props) => {
+  const sections = JSON.parse(props.sections);
   const [currIndex, setCurrIndex] = useState(0);
   const seq = Array.from(Array(12).keys());
   const anchors = seq.map((n) => `prop-${n + 14}-intro`);
@@ -164,6 +165,7 @@ export async function getStaticProps() {
   pagesRef.forEach((doc) => {
     sections.push({
       id: doc.id,
+      propNum: doc.id,
       ...doc.data(),
     });
   });
