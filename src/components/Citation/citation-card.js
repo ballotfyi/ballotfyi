@@ -125,7 +125,7 @@ const ReadMoreLink = styled.a`
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 6px 9px 6px 5px;
+  padding: 6px 24px 6px 5px;
   cursor: pointer;
   margin-left: 10px;
   @media not all and (hover: none) {

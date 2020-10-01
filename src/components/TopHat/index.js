@@ -29,7 +29,7 @@ const Container = styled.div`
 const Logo = styled.div`
   font-family: 'ITC Avant Garde', Inter, sans-serif;
   font-size: 14px;
-  background-color: rgba(0, 20, 20, 0.7);
+  background-color: MEDIUMSLATEBLUE;
   color: white;
   padding-left: 20px;
   padding-right: 20px;
@@ -39,7 +39,7 @@ const Logo = styled.div`
   align-items: center;
   cursor: pointer;
   height: 36px;
-  border-radius: 1px;
+  border-radius: 2px;
   @media screen and (max-width: 768px) {
     padding-left: 15px;
     padding-right: 15px;
