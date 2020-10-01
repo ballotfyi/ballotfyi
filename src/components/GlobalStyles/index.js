@@ -21,12 +21,12 @@ const Styles = createGlobalStyle`
 
   h1 {
     font-family: 'ITC Avant Garde', 'InterPre', sans-serif;
-    font-size: 2em;
-    line-height: 44px;
+    font-size: 1.8em;
+    line-height: 32px;
     letter-spacing: -1px;
     @media screen and (min-width: 576px) {
       font-size: 2.25em;
-      line-height: 47px;
+      line-height: 44px;
     }
     @media screen and (min-width: 768px) {
       font-size: 3.275em;
@@ -45,10 +45,10 @@ const Styles = createGlobalStyle`
     color: rgba(0, 0, 0, 0.85);
     font-weight: 850;
     font-size: 1.275em;
-    line-height: 36px;
+    line-height: 25px;
     @media screen and (min-width: 576px) {
       font-size: 1.4em;
-      line-height: 38px;
+      line-height: 29px;
     }
     @media screen and (min-width: 768px) {
       font-size: 1.875em;
@@ -64,23 +64,26 @@ const Styles = createGlobalStyle`
     font-family: Inter, 'InterPre', sans-serif;
     margin-top: 1.8em;
     margin-bottom: 0.5em;
-    color: rgba(0, 0, 0, 0.85);
-    font-weight: 850;
-    font-size: 1em;
-    line-height: 23px;
+    color: #222;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .035em;
+    font-size: 0.85em;
+    line-height: 19px;
     @media screen and (min-width: 576px) {
-      font-size: 0.975em;
-      line-height: 24px;
+      font-size: 0.87em;
+      line-height: 22px;
     }
     @media screen and (min-width: 768px) {
-      font-size: 1.125em;
-      line-height: 28px;
+      font-size: .9em;
+      line-height: 23px;
     }
     @media screen and (min-width: 992px) {
-      font-size: 1.1em;
-      line-height: 30px;
+      font-size: 0.9375em;
+      line-height: 24px;
     }
   }
+
 
   a {
     font-weight: 420;

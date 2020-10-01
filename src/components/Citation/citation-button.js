@@ -43,6 +43,7 @@ const Icon = styled.button`
   position: relative;
   top: -4.5px;
   margin-left: 4px;
+  margin-right: 1px;
   line-height: 0;
   padding: 0;
   background-color: ${(props) => (props.isActive ? 'navy' : 'GAINSBORO')};

@@ -12,39 +12,6 @@ import Link from 'next/link';
 import HeadContent from 'components/HeadContent';
 import SkipLink from 'components/SkipLink';
 
-const sections = [
-  {
-    propNum: '15',
-    title: 'Prop 15 issues $4B for housing programs',
-    description:
-      'Michael Caputo, the assistant secretary of health for public affairs, told a Facebook audience without evidence that left-wing hit squads were being trained for insurrection, and he accused C.D.C. scientists of “sedition.”',
-  },
-  {
-    propNum: '16',
-    title: 'Prop 16 gives old folks a property tax discount when they move',
-    description:
-      'Michael Caputo, the assistant secretary of health for public affairs, told a Facebook audience without evidence that left-wing hit squads were being trained for insurrection, and he accused C.D.C. scientists of “sedition.”',
-  },
-  {
-    propNum: '18',
-    title: `Prop 18 limits dialysis clinics' revenue`,
-    description:
-      'Michael Caputo, the assistant secretary of health for public affairs, told a Facebook audience without evidence that left-wing hit squads were being trained for insurrection, and he accused C.D.C. scientists of “sedition.”',
-  },
-  {
-    propNum: '20',
-    title: 'Would have split CA into three states',
-    description:
-      'Michael Caputo, the assistant secretary of health for public affairs, told a Facebook audience without evidence that left-wing hit squads were being trained for insurrection, and he accused C.D.C. scientists of “sedition.”',
-  },
-  {
-    propNum: '22',
-    title: 'Sets minimum space requirements for farm animals',
-    description:
-      'Michael Caputo, the assistant secretary of health for public affairs, told a Facebook audience without evidence that left-wing hit squads were being trained for insurrection, and he accused C.D.C. scientists of “sedition.”',
-  },
-];
-
 const Sections = (props) => {
   const sectionsRendered = props.sections.map((section, i) => {
     const { propNum, title, description } = section;

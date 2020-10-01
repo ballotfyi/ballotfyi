@@ -128,7 +128,7 @@ const Circle = styled.div`
   height: 20px;
   border-radius: 11px;
   border: 1px solid #333;
-  border-color: ${(props) => (props.isHovered ? 'white' : '#333')};
+  border-color: ${(props) => (props.isHovered ? 'blue' : '#333')};
   transition: background-color 300ms ease-in;
   background-color: ${(props) => (props.isActive ? '#333' : 'transparent')};
   @media screen and (max-width: 768px) {

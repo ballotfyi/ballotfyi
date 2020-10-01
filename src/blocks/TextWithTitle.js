@@ -25,7 +25,7 @@ const TextWithTitleBlock = (props) => {
   return (
     <Row>
       <TitleCol>
-        <Space h={40} />
+        <Space h={15} />
         {title && (
           <>
             <FillRestWithLine>

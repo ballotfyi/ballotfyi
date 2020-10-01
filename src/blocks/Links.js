@@ -61,7 +61,9 @@ example usage:
 
 const LinksChunk = (props) => {
   const { links, subsectionTitle, noEditorials } = props.data;
-  const isInSupport = subsectionTitle.toLowerCase().includes('supports') || subsectionTitle.toLowerCase().includes('yes');
+  const isInSupport =
+    subsectionTitle.toLowerCase().includes('supports') ||
+    subsectionTitle.toLowerCase().includes('yes');
   const renderedLinks = links.map((link, j) => {
     return link.url ? (
       <LinkWrapper key={j}>
@@ -79,7 +81,11 @@ const LinksChunk = (props) => {
   return (
     <SectionWrapper>
       <SubsectionTitle>{subsectionTitle}</SubsectionTitle>
-      {noEditorials && <NoEditorials>[No Editorial Boards {isInSupport ? 'support' : 'oppose'} this proposition]</NoEditorials>}
+      {noEditorials && (
+        <NoEditorials>
+          [No Editorial Boards {isInSupport ? 'support' : 'oppose'} this proposition]
+        </NoEditorials>
+      )}
       {renderedLinks}
     </SectionWrapper>
   );
