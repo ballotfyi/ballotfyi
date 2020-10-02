@@ -64,6 +64,21 @@ const NavBtnWithEnter = ({ label, func }) => (
   </NavBtn>
 );
 
+const biteDescriptions = [
+  'Prop 14: Stem Cells',
+  'Prop 15: Rewrites Prop 13',
+  'Prop 16: Affirmative action',
+  'Prop 17: Lets parolees vote',
+  'Prop 18: Lets some 17yo vote',
+  'Prop 19: moving for older folks',
+  'Prop 20: toughens criminal laws',
+  'Prop 21: Rewrites Costa-Hawkins',
+  'Prop 22: Uber/Lyft/Doordash',
+  'Prop 23: Dialysis clinics',
+  'Prop 24: User privacy',
+  'Prop 25: Cash bail',
+];
+
 const NavItem = (props) => {
   const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
@@ -93,7 +108,7 @@ const NavItem = (props) => {
       >
         {isAmp && propNum}
       </Circle>
-      <Label>{isHovered ? `Prop ${propNum}` : null}</Label>
+      <Label isHovered={isHovered}>{isHovered ? biteDescriptions[propNum - 14] : null}</Label>
     </ItemContainer>
   );
 };
@@ -105,9 +120,9 @@ const MenuContainer = styled.div`
   flex-direction: column;
   font-family: Inter, InterPre, sans-serif;
   font-size: 12px;
-  color: #999;
+  color: black;
   margin-left: 16px;
-  margin-bottom: 42px;
+  margin-bottom: 52px;
   @media screen and (max-width: 768px) {
     margin-bottom: 13vh;
   }
@@ -116,8 +131,10 @@ const MenuContainer = styled.div`
 const ItemContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
   cursor: pointer;
+  margin-top: -1px;
+  margin-bottom: 4px;
+  min-height: 28px;
 `;
 
 const Circle = styled.div`
@@ -138,8 +155,14 @@ const Circle = styled.div`
   }
 `;
 
-const Label = styled.span`
-  color: black;
+const Label = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: #333;
+  padding: ${(props) => (props.isHovered ? '5px 15px' : '0')};
+  border-radius: 15px;
   margin-left: 10px;
   font-family: Inter, InterPre, sans-serif;
   font-size: 12px;
@@ -152,9 +175,11 @@ const Label = styled.span`
 `;
 
 const NavBtn = styled.a`
-  font-family: Inter, Helvetica;
-  font-weight: 400;
-  font-size: 16px;
+  font-family: Inter, InterPre, Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  padding: 0 5px;
+  letter-spacing: 0.075em;
   text-transform: uppercase;
   margin-bottom: 40px;
   transform: rotate(90deg) translateY(-11px);
@@ -164,7 +189,11 @@ const NavBtn = styled.a`
   @media not all and (hover: none) {
     &:hover {
       text-decoration: underline;
+      color: mediumslateblue;
     }
+  }
+  &:focus {
+    color: mediumslateblue;
   }
   @media screen and (max-width: 768px) {
     display: none;

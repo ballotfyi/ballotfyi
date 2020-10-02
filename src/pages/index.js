@@ -25,13 +25,14 @@ const Sections = (props) => {
           </Isolate>
           <FirstDigit>{propNum.toString().substring(0, 1)}</FirstDigit>
           <SecondDigit>{propNum.toString().substring(1, 2)}</SecondDigit>
-          <Row style={{ position: 'absolute', width: '100%' }}>
+          <Row style={{ position: 'absolute', height: '100%', width: '100%' }}>
             <Col
               off={{ xs: 3, sm: 3, md: 13, lg: 13, xl: 12, xxl: 12 }}
               span={{ xs: 20, sm: 20, md: 10, lg: 10, xl: 10, xxl: 10 }}
+              style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}
             >
-              <Title>{title}</Title>
               <Bar />
+              <Title>{title}</Title>
             </Col>
           </Row>
         </Top>
@@ -228,18 +229,20 @@ const SecondDigit = styled(Digit)`
 `;
 
 const Title = styled.h2`
-  font-size: 52px;
-  line-height: 59px;
+  font-size: 44px;
+  line-height: 52px;
+  margin-top: 36px;
+  margin-bottom: 45px;
   font-family: 'ITC Avant Garde', Inter, Helvetica, sans-serif;
   color: #333;
   @media screen and (max-width: 768px) {
-    font-size: 30px;
+    font-size: 26px;
     line-height: normal;
     position: relative;
     top: 20vh;
   }
   @media screen and (max-width: 576px) {
-    font-size: 26px;
+    font-size: 24px;
     line-height: normal;
     position: relative;
     top: 10vh;
@@ -253,7 +256,8 @@ const Description = styled.div`
 
 const Bar = styled.div`
   height: 20px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background: linear-gradient(90deg, blue, red);
+  mix-blend-mode: color;
   border-radius: 10px;
   @media screen and (max-width: 768px) {
     display: none;
@@ -261,6 +265,7 @@ const Bar = styled.div`
 `;
 
 const ImageContainer = styled.div`
+  display: none;
   width: 380px;
   position: relative;
   top: -200px;

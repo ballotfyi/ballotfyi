@@ -3,6 +3,7 @@ import Footer from 'components/Footer';
 import PropNav from 'components/PropNav';
 import TopHat from 'components/TopHat';
 import { Row, Col, Space } from 'components/util';
+import GhostLoader from 'components/GhostLoader';
 import dynamic from 'next/dynamic';
 import HeadContent from 'components/HeadContent';
 import withBasicTemplate from 'template/basic';
@@ -21,7 +22,7 @@ const PropPage = (props) => {
   }
   const renderedBlocks = blocks.map((block, i) => {
     const BlockComponent = dynamic(() => import(`../blocks/${block.type}`), {
-      loading: () => <p>loading...</p>,
+      loading: GhostLoader,
     });
     return <BlockComponent key={i} data={block.data} />;
   });

@@ -29,7 +29,7 @@ const Container = styled.div`
 const Logo = styled.div`
   font-family: 'ITC Avant Garde', Inter, sans-serif;
   font-size: 14px;
-  background-color: MEDIUMSLATEBLUE;
+  background-color: mediumslateblue;
   color: white;
   padding-left: 20px;
   padding-right: 20px;

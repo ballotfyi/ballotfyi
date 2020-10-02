@@ -59,12 +59,21 @@ example usage:
 },
 */
 
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 const LinksChunk = (props) => {
   const { links, subsectionTitle, noEditorials } = props.data;
   const isInSupport =
     subsectionTitle.toLowerCase().includes('supports') ||
     subsectionTitle.toLowerCase().includes('yes');
-  const renderedLinks = links.map((link, j) => {
+  const linkArr = props.isInTopTwo ? shuffleArray(links) : links;
+  const renderedLinks = linkArr.map((link, j) => {
     return link.url ? (
       <LinkWrapper key={j}>
         <LinkOutStyle>
@@ -94,14 +103,14 @@ const LinksChunk = (props) => {
 const LinksBlock = (props) => {
   const evenSections = props.data.subsections.map((section, i) => {
     if (i % 2 === 0) {
-      return <LinksChunk key={i} data={section} />;
+      return <LinksChunk isInTopTwo={i < 2} key={i} data={section} />;
     }
     return null;
   });
   //-- to make two columns
   const oddSections = props.data.subsections.map((section, i) => {
     if (i % 2 === 1) {
-      return <LinksChunk key={i} data={section} />;
+      return <LinksChunk isInTopTwo={i < 2} key={i} data={section} />;
     }
     return null;
   });

@@ -118,7 +118,7 @@ const Container = styled.div`
   box-sizing: border-box;
   bottom: 0;
   background-color: white;
-  box-shadow: 0 -3px 20px 10px rgba(20, 20, 0, 0.033);
+  box-shadow: 0 -1px 5px 3px rgba(20, 20, 0, 0.043);
   @media screen and (max-width: 768px) {
     justify-content: space-between;
     padding-left: 16px;
