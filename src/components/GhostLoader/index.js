@@ -24,10 +24,12 @@ const GhostBlock = styled.div`
 const GhostHeader = styled(GhostBlock)`
   height: 40px;
   margin-bottom: 28px;
+  border-radius: 20px;
 `;
 const GhostText = styled(GhostBlock)`
   height: 16px;
   margin-bottom: 12px;
+  border-radius: 8px;
 `;
 const Container = styled.div`
   margin-top: 60px;

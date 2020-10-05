@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useAmp } from 'next/amp';
 import { useRouter } from 'next/router';
 import { getNextAndPrevPropNum } from 'components/util';
+import { propColors } from 'components/attributes';
 
 const PropNav = () => {
   const isAmp = useAmp();
@@ -70,8 +71,8 @@ const biteDescriptions = [
   'Prop 16: Affirmative action',
   'Prop 17: Lets parolees vote',
   'Prop 18: Lets some 17yo vote',
-  'Prop 19: moving for older folks',
-  'Prop 20: toughens criminal laws',
+  'Prop 19: Propert tax assessment',
+  'Prop 20: Toughens criminal laws',
   'Prop 21: Rewrites Costa-Hawkins',
   'Prop 22: Uber/Lyft/Doordash',
   'Prop 23: Dialysis clinics',
@@ -108,7 +109,9 @@ const NavItem = (props) => {
       >
         {isAmp && propNum}
       </Circle>
-      <Label isHovered={isHovered}>{isHovered ? biteDescriptions[propNum - 14] : null}</Label>
+      <Label color={propColors[`${propNum}`]} isHovered={isHovered}>
+        {isHovered ? biteDescriptions[propNum - 14] : null}
+      </Label>
     </ItemContainer>
   );
 };
@@ -160,7 +163,7 @@ const Label = styled.div`
   display: flex;
   align-items: center;
   color: white;
-  background-color: #333;
+  background-color: ${(props) => (props.color ? props.color : '#333')};
   padding: ${(props) => (props.isHovered ? '5px 15px' : '0')};
   border-radius: 15px;
   margin-left: 10px;
