@@ -6,30 +6,30 @@ const shimmer = keyframes`
     background-position: -250px 0
   }
   100% {
-    background-position: 600px 0
+    background-position: 900px 0
   }
 `;
 
 const GhostBlock = styled.div`
-  animation-duration: 1.4s;
+  animation-duration: 2400ms;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
   animation-name: ${shimmer};
-  animation-timing-function: linear;
+  animation-timing-function: ease-in-ease-out;
   background: #eee;
-  background: linear-gradient(90deg, #eee 8%, #ddd 18%, #eee 33%);
+  background: linear-gradient(30deg, #eee 8%, #ddd 18%, #eee 33%);
   position: relative;
 `;
 
 const GhostHeader = styled(GhostBlock)`
   height: 40px;
   margin-bottom: 28px;
-  border-radius: 20px;
+  border-radius: 5px;
 `;
 const GhostText = styled(GhostBlock)`
   height: 16px;
   margin-bottom: 12px;
-  border-radius: 8px;
+  border-radius: 5px;
 `;
 const Container = styled.div`
   margin-top: 60px;
