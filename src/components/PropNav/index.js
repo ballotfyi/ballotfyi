@@ -74,7 +74,7 @@ const biteDescriptions = [
   'Prop 19: Propert tax assessment',
   'Prop 20: Toughens criminal laws',
   'Prop 21: Rewrites Costa-Hawkins',
-  'Prop 22: Uber/Lyft/Doordash',
+  'Prop 22: Uber, Lyft et al.',
   'Prop 23: Dialysis clinics',
   'Prop 24: User privacy',
   'Prop 25: Cash bail',

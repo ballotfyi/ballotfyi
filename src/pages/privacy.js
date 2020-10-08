@@ -1,6 +1,7 @@
 import withBasicTemplate from 'template/basic';
 import TopHat from 'components/TopHat';
 import { Space, LinkOut, Col } from 'components/util';
+import Link from 'next/link';
 import Footer from 'components/Footer';
 import HeadContent from 'components/HeadContent';
 
@@ -197,12 +198,14 @@ const PrivacyPage = () => {
 
         <h2>CCPA</h2>
         <p>
-          The California Consumer Privacy Act of 2018 provides rights to all California residents
-          with respect to the data that a company holds about them. In fact, the changes proposed by
-          Prop 24 of this year build on top of the CCPA. For example, you have the right, as a
-          California resident, to know &ldquo;what personal information [a company has] collected,
-          used, shared, or sold about you&rdquo;, and why they did so. Please read more about it{' '}
-          <LinkOut href="https://oag.ca.gov/privacy/ccpa">here</LinkOut>
+          The California Consumer Privacy Act of 2018 (CCPA) provides rights to all California
+          residents with respect to the data that a company holds about them. In fact, the changes
+          proposed by
+          {` `}
+          <Link href="/prop-24">Prop 24</Link> of this year build on top of the CCPA. For example,
+          you have the right, as a California resident, to know &ldquo;what personal information [a
+          company has] collected, used, shared, or sold about you&rdquo;, and why they did so.
+          Please read more about it <LinkOut href="https://oag.ca.gov/privacy/ccpa">here</LinkOut>
           .
           <br />
           <br />
