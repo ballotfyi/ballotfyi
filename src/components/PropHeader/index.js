@@ -14,7 +14,7 @@ const PropHeader = (props) => {
     hour: 'numeric',
     minute: 'numeric',
   };
-
+  const showLastModified = dtModified > dtPublished;
   return (
     <Row>
       <Col
@@ -23,7 +23,7 @@ const PropHeader = (props) => {
       >
         <h1>{title}</h1>
         <DateLine>Published: {dtPublished.toLocaleDateString('en-US', options)}</DateLine>
-        <DateLine>Last modified: {dtModified.toLocaleDateString('en-US', options)}</DateLine>
+        {showLastModified && <DateLine>Last modified: {dtModified.toLocaleDateString('en-US', options)}</DateLine>}
       </Col>
     </Row>
   );
