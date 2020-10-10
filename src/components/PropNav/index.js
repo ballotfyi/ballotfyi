@@ -140,6 +140,12 @@ const MaskingCircle = styled.div`
   transform: ${(props) => (props.isHovered ? (props.isClicked ? 'scale(0)' : 'scale(0.4)') : 'scale(1)')};
   transition: transform 200ms ease-in;
   opacity: ${(props) => (props.isActive ? 0 : 1)};
+  @media screen and (max-width: 768px) {
+    width: 10px;
+    height: 10px;
+    left: -11px;
+    border-radius: 5px;
+  }
 `;
 
 const ItemContainer = styled.div`

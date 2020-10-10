@@ -18,7 +18,7 @@ const PropHeader = (props) => {
   return (
     <Row>
       <Col
-        off={{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}
+        off={{ xs: 3, sm: 3, md: 4, lg: 3, xl: 3, xxl: 3 }}
         span={{ xs: 18, sm: 16, md: 16, lg: 16, xl: 16, xxl: 16 }}
       >
         <h1>{title}</h1>

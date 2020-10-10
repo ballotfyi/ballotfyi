@@ -73,6 +73,9 @@ const Logo = styled(LogoBlock)`
       background-color: #333;
     }
   }
+  @media screen and (max-width: 768px) {
+    position: absolute;
+  }
 `;
 
 const RightSide = styled.div`
