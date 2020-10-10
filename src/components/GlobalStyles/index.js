@@ -33,8 +33,8 @@ const Styles = createGlobalStyle`
       line-height: 64px;
     }
     @media screen and (min-width: 992px) {
-      font-size: 3.875em;
-      line-height: 76px;
+      font-size: 3.475em;
+      line-height: 63px;
     }
   }
 
@@ -92,4 +92,5 @@ const Styles = createGlobalStyle`
       text-decoration: underline;
     }
   }
+
 `;

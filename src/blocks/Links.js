@@ -156,7 +156,7 @@ LinksBlock.propTypes = {
         noEditorials: PropTypes.bool,
         links: PropTypes.arrayOf(
           PropTypes.shape({
-            publisher: PropTypes.string.isRequired,
+            publisher: PropTypes.string,
             url: PropTypes.string,
           }).isRequired
         ),
@@ -213,7 +213,7 @@ const Disclaimer = styled.div`
   font-size: 13px;
   line-height: 17px;
   padding: 10px 20px;
-  background-color: cornsilk;
+  background-color: pink;
   border-radius: 2px;
 `;
 

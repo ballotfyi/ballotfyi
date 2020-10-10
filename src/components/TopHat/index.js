@@ -1,17 +1,28 @@
 import styled from 'styled-components';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { propColors } from 'components/attributes';
 
 const TopHat = () => {
+  const router = useRouter();
+  const pathSplit = router.asPath.split('-');
+  let color = '#000';
+  if (pathSplit[0] === '/prop' && pathSplit.length > 1) {
+    color = propColors[parseInt(pathSplit[1])];
+  }
   return (
-    <Container>
+    <>
       <Link href="/">
-        <Logo>ballot.fyi</Logo>
+        <Logo color={color}>ballot.fyi</Logo>
       </Link>
-      <RightSide>
-        <Line />
-        <Description>California Props 2020</Description>
-      </RightSide>
-    </Container>
+      <Container>
+        <LogoBlock>ballot.fyi</LogoBlock>
+        <RightSide>
+          <Line />
+          <Description>California Props 2020</Description>
+        </RightSide>
+      </Container>
+    </>
   );
 };
 
@@ -26,20 +37,16 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const Logo = styled.div`
+const LogoBlock = styled.div`
   font-family: 'ITC Avant Garde', Inter, sans-serif;
   font-size: 14px;
-  background-color: mediumslateblue;
-  color: white;
+  min-width: 62.5px;
   padding-left: 20px;
   padding-right: 20px;
   margin-left: 16px;
   margin-top: 16px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
   height: 36px;
-  border-radius: 2px;
+  color: white;
   @media screen and (max-width: 768px) {
     padding-left: 15px;
     padding-right: 15px;
@@ -49,6 +56,22 @@ const Logo = styled.div`
     padding-left: 10px;
     padding-right: 10px;
     height: 30px;
+  }
+`;
+
+const Logo = styled(LogoBlock)`
+  position: fixed;
+  background-color: ${(props) => (props.color ? props.color : '#000')};
+  color: white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 200ms ease-in;
+  @media not all and (hover: none) {
+    &:hover {
+      background-color: #333;
+    }
   }
 `;
 

@@ -70,8 +70,8 @@ const biteDescriptions = [
   'Prop 15: Rewrites Prop 13',
   'Prop 16: Affirmative action',
   'Prop 17: Lets parolees vote',
-  'Prop 18: Lets some 17yo vote',
-  'Prop 19: Propert tax assessment',
+  'Prop 18: Lets some 17yos vote',
+  'Prop 19: Property tax assessment',
   'Prop 20: Toughens criminal laws',
   'Prop 21: Rewrites Costa-Hawkins',
   'Prop 22: Uber, Lyft et al.',
@@ -94,7 +94,8 @@ const NavItem = (props) => {
       window.fullpage_api.moveTo(propNum - 13);
     }
   };
-
+  const isActive = propNum === currentPropNum;
+  const color = propColors[propNum];
   return (
     <ItemContainer
       data-menuanchor={sectionId}
@@ -102,14 +103,11 @@ const NavItem = (props) => {
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}
     >
-      <Circle
-        isHovered={isHovered}
-        className="propnav-circle"
-        isActive={propNum === currentPropNum}
-      >
+      <Circle isHovered={isHovered} className="propnav-circle" isActive={isActive} color={color}>
         {isAmp && propNum}
       </Circle>
-      <Label color={propColors[`${propNum}`]} isHovered={isHovered}>
+      <MaskingCircle isHovered={isHovered} isActive={isActive} />
+      <Label color={color} isHovered={isHovered}>
         {isHovered ? biteDescriptions[propNum - 14] : null}
       </Label>
     </ItemContainer>
@@ -130,6 +128,17 @@ const MenuContainer = styled.div`
     margin-bottom: 13vh;
   }
 `;
+const MaskingCircle = styled.div`
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: relative;
+  left: -21px;
+  border-radius: 10px;
+  transform: ${(props) => (props.isHovered ? 'scale(0.2)' : 'scale(1)')};
+  transition: transform 200ms ease-in;
+  opacity: ${(props) => (props.isActive ? 0 : 1)};
+`;
 
 const ItemContainer = styled.div`
   display: flex;
@@ -147,10 +156,10 @@ const Circle = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 11px;
-  border: 1px solid #333;
-  border-color: ${(props) => (props.isHovered ? 'blue' : '#333')};
+  border: 1px solid ${(props) => props.color};
+  border-color: ${(props) => (props.isHovered ? props.color : 'transparent')};
   transition: background-color 300ms ease-in;
-  background-color: ${(props) => (props.isActive ? '#333' : 'transparent')};
+  background-color: ${(props) => props.color};
   @media screen and (max-width: 768px) {
     width: 10px;
     height: 10px;
@@ -160,6 +169,8 @@ const Circle = styled.div`
 
 const Label = styled.div`
   position: relative;
+  left: -21px;
+  z-index: 20;
   display: flex;
   align-items: center;
   color: white;

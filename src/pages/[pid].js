@@ -2,14 +2,15 @@ import { db } from 'lib/firebase-config';
 import Footer from 'components/Footer';
 import PropNav from 'components/PropNav';
 import TopHat from 'components/TopHat';
-import { Row, Col, Space } from 'components/util';
+import { Space } from 'components/util';
 import GhostLoader from 'components/GhostLoader';
 import dynamic from 'next/dynamic';
 import HeadContent from 'components/HeadContent';
 import withBasicTemplate from 'template/basic';
+import PropHeader from 'components/PropHeader';
 
 const PropPage = (props) => {
-  const { title, blocks } = props;
+  const { title, blocks, dateModified, datePublished } = props;
 
   //-- convert stringified dates back to javascript DateTime
   let headProps = {};
@@ -32,14 +33,7 @@ const PropPage = (props) => {
       <HeadContent pageType={'article'} {...headProps} />
       <TopHat />
       <PropNav />
-      <Row>
-        <Col
-          off={{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}
-          span={{ xs: 18, sm: 16, md: 16, lg: 16, xl: 16, xxl: 16 }}
-        >
-          <h1>{title}</h1>
-        </Col>
-      </Row>
+      <PropHeader dateModified={dateModified} datePublished={datePublished} title={title} />
       {renderedBlocks}
       <Space h={120} />
       <Footer />

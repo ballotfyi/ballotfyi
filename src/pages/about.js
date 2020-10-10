@@ -57,14 +57,14 @@ const AboutPage = () => {
 
           <div>
             <h3>We don't make or take money</h3>
-            Unlike most people (and we all know corporations are people too), we don't make money
-            and won't accept contributions. That's a feature. Mixed with politics, money is messy,
-            and we'd probably lose your trust if there was some ulterior motive with this site.
+            Unlike most people (which includes corporations of course), we don't make money and
+            won't accept contributions. That's a feature. Mixed with politics, money is messy, and
+            we'd probably lose your trust if there was some ulterior motive with this site.
             <br />
             <br /> In full transparency, we have asked for contributions in the past, and you can{' '}
             <Acronym
               toggleable={false}
-              long={`In previous years, we have asked for donations from readers after the elections were over. (All were under $100.) We are discontinuing that practice. Also, in 2018, ballot.fyi received a grant from The Knight Foundation, a nonpartisan organization advancing media and information to aid democracy. We spent it all and no longer have any obligation or affiliation to The Knight Foundation, or any other organization`}
+              long={`learn more about it: In previous years, we have asked for donations from readers after the elections were over. (All were under $100.) We are discontinuing that practice. Also, in 2018, ballot.fyi received a grant from The Knight Foundation, a nonpartisan organization advancing media and information to aid democracy. We spent all of that and no longer have any obligation or affiliation to The Knight Foundation, or any other organization for that matter.`}
             >
               learn more about it here
             </Acronym>
@@ -84,18 +84,19 @@ const AboutPage = () => {
             Understandably, you may feel like your vote, as a Californian, doesn't matter. Unless
             everyone pandemic-fled SF to move into their parents' basements in Ohio, California is
             all but certain to vote blue in the presidential election, electorally-speaking. So why
-            tf should you vote? RHETORICAL QUESTION. Because we put weighty, consequential
-            propositions on the ballot that sometimes become laws (or state constitutional
-            amendments) for a hell-uh long time.
+            {` `}
+            <Acronym long="the faaa">tf</Acronym> should you vote? RHETORICAL QUESTION. Because we
+            put weighty, consequential propositions on the ballot that sometimes become laws (or
+            state constitutional amendments) for a hell-uh long time.
           </p>
 
           <p>
             For example, we're voting on whether to make affirmative action legal again in CA. It
             was banned via ballot proposition 24 years ago. In 2016, a ballot prop was the vehicle
-            for marijuana legalization. Own property? It's a really big deal this year that we might
-            change Prop 13, a ballot prop voted in 1978, which sets the max for your property taxes.
-            Oh, you don't have $1M so you rent? You get to decide whether cities can enact new rent
-            control measures.
+            for legalizing marijuana. Own property? It's a really big deal this year that we might
+            change Prop 13, a ballot prop voted in 1978, which defines your property taxes. Oh, I'm
+            sorry, you don't have $1M+ so you're a renter? You get to decide whether cities can
+            enact new rent control measures this year.
           </p>
 
           <p>
@@ -165,16 +166,18 @@ const AboutPage = () => {
         <h2>About this project</h2>
         <div>
           Ballot.fyi is designed, coded, and primarily written by Jimmy Chion, with the editorial
-          help of many friends, left and right. Jimmy is a creative technologist at The New York
-          Times. (This project is not affiliated in any way with The New York Times.) He started{' '}
-          <LinkOut href="https://2016.ballot.fyi/">ballot.fyi in 2016</LinkOut>, and rebuilt and
-          wrote for it again in <LinkOut href="https://2018.ballot.fyi/">2018</LinkOut>.
+          help of many friends, left and right. Jimmy is a creative technologist at{' '}
+          <em>The New York Times</em>. This project is not affiliated in any way with{' '}
+          <em>The Times</em>, and was started waaay before working there. First released in{' '}
+          <LinkOut href="https://2016.ballot.fyi/">2016</LinkOut> and then rebuilt in{' '}
+          <LinkOut href="https://2018.ballot.fyi/">2018</LinkOut>, it's back in 2020.
           <br />
           <br />
-          Ballot.fyi is entirely a side project, with the only goal of informing voters with
-          to-the-point but explorable information, research, and reporting. It is built on top of
-          the hard work of many local journalists and people with way more expertise than us. The
-          best way to support ballot.fyi is to buy a subscription to your local paper.
+          Ballot.fyi is entirely a side project, with the two goals: (1) to inform voters with
+          to-the-point but explorable information, research, and reporting, and (2) to look good. It
+          is built on top of the hard work of many local journalists and people with way more
+          expertise than us. The best way to support ballot.fyi is to buy a subscription to your
+          local paper.
           <br />
           <br />
           Contact us at fax@ballot.fyi (via email).
