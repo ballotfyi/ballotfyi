@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useAmp } from 'next/amp';
 import { useRouter } from 'next/router';
 import { getNextAndPrevPropNum } from 'components/util';
 import { propColors } from 'components/attributes';
+import Link from 'next/link';
 
 const PropNav = () => {
   const isAmp = useAmp();
@@ -43,8 +44,8 @@ const PropNav = () => {
       )}
       {isPropPage && (
         <>
-          <NavBtnWithEnter label="Prev" func={() => router.push(`/prop-${nextAndPrev.prev}`)} />
-          <NavBtnWithEnter label="Next" func={() => router.push(`/prop-${nextAndPrev.next}`)} />
+          <Link href={`/prop-${nextAndPrev.prev}`} passHref><NavBtn>Prev</NavBtn></Link>
+          <Link href={`/prop-${nextAndPrev.next}`} passHref><NavBtn>Next</NavBtn></Link>
         </>
       )}
     </MenuContainer>
@@ -86,6 +87,12 @@ const NavItem = (props) => {
   const [isClicked, setIsClicked] = useState(false);
   const { propNum, isAmp, isPropPage, currentPropNum } = props;
   const sectionId = `prop-${propNum}-intro`;
+  const {asPath} = router;
+
+  //-- reset when route changes
+  useEffect( () => {
+    setIsClicked(false);
+  },[asPath])
 
   //-- go to main prop page if in a current prop page, otherwise, jump to the anchor on homepage
   const handleClick = () => {
@@ -99,25 +106,28 @@ const NavItem = (props) => {
   const isActive = propNum === currentPropNum;
   const color = propColors[propNum];
   return (
-    <ItemContainer
-      data-menuanchor={sectionId}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={handleClick}
-    >
-      <Circle
-        isHovered={isHovered}
-        className="propnav-circle"
-        isActive={isActive}
-        propColor={color}
+    <Link href={`/prop-${propNum}`} passHref>
+      <ItemContainer
+        data-menuanchor={sectionId}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={handleClick}
+        tabIndex="-1"
       >
-        {isAmp && propNum}
-      </Circle>
-      {!isAmp && <MaskingCircle isClicked={isClicked} isHovered={isHovered} isActive={isActive} />}
-      <Label propColor={color} isHovered={isHovered}>
-        {isHovered ? biteDescriptions[propNum - 14] : null}
-      </Label>
-    </ItemContainer>
+        <Circle
+          isHovered={isHovered}
+          className="propnav-circle"
+          isActive={isActive}
+          propColor={color}
+        >
+          {isAmp && propNum}
+        </Circle>
+        {!isAmp && <MaskingCircle isClicked={isClicked} isHovered={isHovered} isActive={isActive} />}
+        <Label propColor={color} isHovered={isHovered}>
+          {isHovered ? biteDescriptions[propNum - 14] : null}
+        </Label>
+      </ItemContainer>
+    </Link>
   );
 };
 
@@ -154,13 +164,19 @@ const MaskingCircle = styled.div`
   }
 `;
 
-const ItemContainer = styled.div`
+const ItemContainer = styled.a`
   display: flex;
   align-items: center;
   cursor: pointer;
   margin-top: -1px;
   margin-bottom: 4px;
   min-height: 28px;
+  text-decoration: none;
+  outline: none;
+  &:focus {
+    text-decoration: none;
+    outline: none;
+  }
 `;
 
 const Circle = styled.div`
@@ -210,6 +226,7 @@ const NavBtn = styled.a`
   padding: 0 5px;
   letter-spacing: 0.075em;
   text-transform: uppercase;
+  text-decoration: none;
   margin-bottom: 40px;
   transform: rotate(90deg) translateY(-11px);
   transform-origin: left;

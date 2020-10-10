@@ -101,7 +101,7 @@ const Citation = (props) => {
           {props.children}
           <CitationButton
             on={`tap:${key}.toggleVisibility`}
-          >open</CitationButton>
+          />
         </span>
         <PopupContainer 
           {...props}
