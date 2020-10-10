@@ -83,11 +83,13 @@ const biteDescriptions = [
 const NavItem = (props) => {
   const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
   const { propNum, isAmp, isPropPage, currentPropNum } = props;
   const sectionId = `prop-${propNum}-intro`;
 
   //-- go to main prop page if in a current prop page, otherwise, jump to the anchor on homepage
   const handleClick = () => {
+    setIsClicked(true);
     if (isPropPage) {
       router.push(`/prop-${propNum}`);
     } else {
@@ -106,7 +108,7 @@ const NavItem = (props) => {
       <Circle isHovered={isHovered} className="propnav-circle" isActive={isActive} color={color}>
         {isAmp && propNum}
       </Circle>
-      <MaskingCircle isHovered={isHovered} isActive={isActive} />
+      <MaskingCircle isClicked={isClicked} isHovered={isHovered} isActive={isActive} />
       <Label color={color} isHovered={isHovered}>
         {isHovered ? biteDescriptions[propNum - 14] : null}
       </Label>
@@ -135,7 +137,7 @@ const MaskingCircle = styled.div`
   position: relative;
   left: -21px;
   border-radius: 10px;
-  transform: ${(props) => (props.isHovered ? 'scale(0.2)' : 'scale(1)')};
+  transform: ${(props) => (props.isHovered ? (props.isClicked ? 'scale(0)' : 'scale(0.4)') : 'scale(1)')};
   transition: transform 200ms ease-in;
   opacity: ${(props) => (props.isActive ? 0 : 1)};
 `;
