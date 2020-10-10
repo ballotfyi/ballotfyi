@@ -13,7 +13,7 @@ const TopHat = () => {
   return (
     <>
       <Link href="/">
-        <Logo color={color}>ballot.fyi</Logo>
+        <Logo bgColor={color}>ballot.fyi</Logo>
       </Link>
       <Container>
         <LogoBlock>ballot.fyi</LogoBlock>
@@ -61,7 +61,7 @@ const LogoBlock = styled.div`
 
 const Logo = styled(LogoBlock)`
   position: fixed;
-  background-color: ${(props) => (props.color ? props.color : '#000')};
+  background-color: ${(props) => (props.bgColor ? props.bgColor : '#000')};
   color: white;
   display: flex;
   align-items: center;

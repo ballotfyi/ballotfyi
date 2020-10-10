@@ -20,7 +20,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <HeadContent datePublished={new Date('July 31, 2020')} pageType="page" />
+      <HeadContent datePublished={new Date('October 10, 2020')} pageType="page" />
       <TopHat />
       <div style={{ minHeight: `calc(100vh - ${footerHeight}px)` }}>
         <Space h={60} xsHeight={35} />

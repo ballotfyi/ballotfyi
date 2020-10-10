@@ -27,7 +27,7 @@ const AmpHead = React.memo(() => {
         on: 'visible',
         request: 'pageview',
         vars: {
-          canonicalPath: router.pathname,
+          canonicalPath: router.asPath,
         },
       },
     },

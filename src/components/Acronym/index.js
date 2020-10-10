@@ -1,7 +1,8 @@
 import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { useAmp } from 'next/amp';
+import {useAmp} from 'next/amp';
+
 /*
 Expands an acronym to the full text. Toggleable
 
@@ -11,15 +12,18 @@ Usage:
 Text-decoration style not supported on mobile, so maybe have to switch to border-bottom
 */
 
-// text-decoration: ${p => p.isExpanded ? 'none' : 'underline dotted black'};
 const AcronymContainer = styled.span`
   border-bottom: ${(p) => (p.isExpanded ? 'none' : '1px dashed #333')};
   cursor: pointer;
+  outline: none;
 
   @media not all and (hover: none) {
     &:hover {
       border-bottom: ${(p) => (p.toggleable ? '1px solid black' : 'none')};
     }
+  }
+  &:focus {
+    background-color: linen;
   }
 `;
 
@@ -28,7 +32,7 @@ const Acronym = (props) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [didExpand, setDidExpand] = useState(false);
   const textRef = useRef(null);
-
+  const isAmp = useAmp();
   const selectText = () => {
     if (!textRef.current) return;
     let text = textRef.current;
@@ -65,17 +69,17 @@ const Acronym = (props) => {
 
   //-- without some craziness, in AMP, the acronym is not toggleable. You can only exapnd it once.
   //-- role="button" for space/enter key to work. I would prefer it to be a role.defintion
-  if (useAmp()) {
+  if (isAmp) {
+    const key = props.children.key;
     return (
       <AcronymContainer
         role="button"
         tabIndex="0"
         toggleable={false}
-        data-amp-bind-text="displayedText"
-        data-amp-bind-class="containerClass"
-        on={`tap:AMP.setState({displayedText:'${props.long}', containerClass: 'unstyled'})`}
+        on={`tap:${key}.toggleVisibility`}
       >
-        {props.children}
+        <span>{props.children}</span>
+        <span hidden id={key}>{` (${props.long})`}</span>
       </AcronymContainer>
     );
   } else {
@@ -106,4 +110,5 @@ Acronym.defaultProps = {
   toggleable: true,
   highlightOnClick: false,
 };
+
 export default Acronym;

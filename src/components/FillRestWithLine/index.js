@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { useAmp } from 'next/amp';
 
 const TextAndLine = (props) => {
   const [lineWidth, setLineWidth] = useState(100);
@@ -29,6 +30,10 @@ const TextAndLine = (props) => {
       window.removeEventListener('resize', handleResize);
     };
   }, [handleResize]);
+
+  //-- escape for AMP
+  const isAmp = useAmp();
+  if (isAmp) return <span>{props.children}</span>;
 
   const isReversed = props.align === 'right';
   return (

@@ -3,41 +3,13 @@ import PropTypes from 'prop-types';
 
 import CitationButton from './citation-button';
 import PopupContainer from './popup-container';
-
+// import {AmpState} from 'components/amp/amp-wrappers';
+import {useAmp} from 'next/amp';
 /*
-When a Citation is clicked, a popover (CitatationPopup) appears near
-the highlighted text. It will show the direct quote
-from which By The Bay's text is derived from.
-The article is then directly linked.
-
-this component handles the highlighting and has a button
-what happens after that is handled by popup-container
-
-PROPS:
-------------------------
-	link: string.isRequired,
-	publication: string.isRequired,
-	headline: string.isRequired,
-	quote: string.isRequired,
-
-USAGE:
-------------------------
-<Citation
-	noLink
-	noComment
-	link='https://nytimes.com/some-article/'
-	publication='ny times'
-	headline='X-men fight for their lives'
-	quote='Professor X said all xmen are created equal.'
->
-	Xavier said it directly himself. This part will be highlighted.
-</Citation>
-
 here's a blank to copy:
 
 <Citation link="" publication="" headline="" quote="">
 </Citation>
-
 */
 
 const styles = {
@@ -52,11 +24,13 @@ const styles = {
     backgroundColor: '#ffec96',
   },
 };
+
 const Citation = (props) => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [taggedTextStyle, setTaggedTextStyle] = useState(styles.deselectText);
   const [isActive, setIsActive] = useState(false);
   const clickOutsideRef = useRef();
+  const isAmp = useAmp();
 
   const toggleVisibility = useCallback(
     (forceVisible) => {
@@ -100,27 +74,45 @@ const Citation = (props) => {
     setTaggedTextStyle(styles.deselectText);
   };
 
-  return (
-    <span ref={clickOutsideRef}>
-      <span style={taggedTextStyle}>
-        {props.children}
-        <CitationButton
-          onTouchEnd={handleTouch}
-          isActive={isActive}
-          onHover={selectText}
-          onMouseLeave={deselectText}
-          onClick={handleIconClick}
-        />
-      </span>
-
-      {isPopupVisible && (
-        <PopupContainer toggleVisibility={toggleVisibility} {...props}>
+  if( !isAmp ) {
+    return (
+      <span ref={clickOutsideRef}>
+        <span style={taggedTextStyle}>
           {props.children}
-        </PopupContainer>
-      )}
-    </span>
-  );
+          <CitationButton
+            onTouchEnd={handleTouch}
+            isActive={isActive}
+            onHover={selectText}
+            onMouseLeave={deselectText}
+            onClick={handleIconClick}
+          />
+        </span>
+
+        {isPopupVisible && (
+          <PopupContainer toggleVisibility={toggleVisibility} {...props} />
+        )}
+      </span>
+    );
+  } else {
+    const key = props.children.key;
+    return (
+      <>
+        <span style={taggedTextStyle}>
+          {props.children}
+          <CitationButton
+            on={`tap:${key}.toggleVisibility`}
+          >open</CitationButton>
+        </span>
+        <PopupContainer 
+          {...props}
+          toggleVisibility={`tap:${key}.toggleVisibility`}
+          id={`${key}`}
+        />
+      </>
+    )
+  }
 };
+
 Citation.propTypes = {
   link: PropTypes.string,
   publication: PropTypes.string,

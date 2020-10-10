@@ -8,10 +8,12 @@ import dynamic from 'next/dynamic';
 import HeadContent from 'components/HeadContent';
 import withBasicTemplate from 'template/basic';
 import PropHeader from 'components/PropHeader';
+import AmpBlockLoader from 'components/AmpBlockLoader';
+import { useAmp } from 'next/amp';
 
 const PropPage = (props) => {
   const { title, blocks, dateModified, datePublished } = props;
-
+  const isAmp = useAmp();
   //-- convert stringified dates back to javascript DateTime
   let headProps = {};
   for (const key in props) {
@@ -21,24 +23,40 @@ const PropPage = (props) => {
       headProps[key] = props[key];
     }
   }
-  const renderedBlocks = blocks.map((block, i) => {
-    const BlockComponent = dynamic(() => import(`../blocks/${block.type}`), {
-      loading: GhostLoader,
-    });
-    return <BlockComponent key={i} data={block.data} />;
-  });
 
-  return (
-    <>
-      <HeadContent pageType={'article'} {...headProps} />
-      <TopHat />
-      <PropNav />
-      <PropHeader dateModified={dateModified} datePublished={datePublished} title={title} />
-      {renderedBlocks}
-      <Space h={120} />
-      <Footer />
-    </>
-  );
+  if (!isAmp) {
+    //-- dynamically import blocks. this doesn't work in AMP
+    const renderedBlocks = blocks.map((block, i) => {
+      const BlockComponent = dynamic(() => import(`../blocks/${block.type}`), {
+        loading: GhostLoader,
+      });
+      return <BlockComponent key={i} data={block.data} />;
+    });
+
+    return (
+      <>
+        <HeadContent pageType={'article'} {...headProps} />
+        <TopHat />
+        <PropNav />
+        <PropHeader dateModified={dateModified} datePublished={datePublished} title={title} />
+        {renderedBlocks}
+        <Space h={120} />
+        <Footer />
+      </>
+    );
+  } else {
+    return (
+      <>
+        <HeadContent pageType={'article'} {...headProps} />
+        <TopHat />
+        <PropNav />
+        <PropHeader dateModified={dateModified} datePublished={datePublished} title={title} />
+        <AmpBlockLoader blocks={blocks} />
+        <Space h={120} />
+        <Footer />
+      </>
+    );
+  }
 };
 
 export default withBasicTemplate(PropPage);
@@ -104,6 +122,6 @@ export async function getStaticProps({ params }) {
   };
 }
 
-// export const config = {
-//   amp: 'hybrid',
-// };
+export const config = {
+  amp: 'hybrid',
+};

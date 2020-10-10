@@ -8,7 +8,7 @@ const CitationCard = (props) => {
     <Card>
       <Row>
         <CardLabel>Source</CardLabel>
-        <DismissIcon name="dimiss" onClick={() => toggleVisibility(false)}>
+        <DismissIcon name="dimiss" onClick={() => toggleVisibility(false)} on={toggleVisibility}>
           <CloseIcon color="blue" />
         </DismissIcon>
       </Row>
@@ -22,7 +22,11 @@ const CitationCard = (props) => {
         </SourceBody>
       )}
       <ActionRow>
-        <Dismiss name="dimiss" onClick={() => toggleVisibility(false)}>
+        <Dismiss 
+          name="dimiss" 
+          onClick={() => toggleVisibility(false)} 
+          on={toggleVisibility}
+        >
           Dismiss
         </Dismiss>
         {!noLink && (

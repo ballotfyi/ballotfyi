@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CitationButton = (props) => {
+
   const handleMouseEnter = () => {
     if (!props.isActive) {
       props.onHover();
@@ -22,6 +23,7 @@ const CitationButton = (props) => {
       onMouseLeave={handleMouseLeave}
       onTouchEnd={onTouchStart}
       isActive={isActive}
+      on={props.on}
     >
       <DotContainer>
         <Dot isActive={isActive} />

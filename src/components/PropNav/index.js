@@ -105,11 +105,16 @@ const NavItem = (props) => {
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}
     >
-      <Circle isHovered={isHovered} className="propnav-circle" isActive={isActive} color={color}>
+      <Circle
+        isHovered={isHovered}
+        className="propnav-circle"
+        isActive={isActive}
+        propColor={color}
+      >
         {isAmp && propNum}
       </Circle>
-      <MaskingCircle isClicked={isClicked} isHovered={isHovered} isActive={isActive} />
-      <Label color={color} isHovered={isHovered}>
+      {!isAmp && <MaskingCircle isClicked={isClicked} isHovered={isHovered} isActive={isActive} />}
+      <Label propColor={color} isHovered={isHovered}>
         {isHovered ? biteDescriptions[propNum - 14] : null}
       </Label>
     </ItemContainer>
@@ -137,14 +142,15 @@ const MaskingCircle = styled.div`
   position: relative;
   left: -21px;
   border-radius: 10px;
-  transform: ${(props) => (props.isHovered ? (props.isClicked ? 'scale(0)' : 'scale(0.4)') : 'scale(1)')};
+  transform: ${(props) =>
+    props.isHovered ? (props.isClicked ? 'scale(0)' : 'scale(0.4)') : 'scale(1)'};
   transition: transform 200ms ease-in;
   opacity: ${(props) => (props.isActive ? 0 : 1)};
   @media screen and (max-width: 768px) {
-    width: 10px;
-    height: 10px;
-    left: -11px;
-    border-radius: 5px;
+    width: 13px;
+    height: 13px;
+    left: -15px;
+    border-radius: 8px;
   }
 `;
 
@@ -164,14 +170,15 @@ const Circle = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 11px;
-  border: 1px solid ${(props) => props.color};
-  border-color: ${(props) => (props.isHovered ? props.color : 'transparent')};
+  color: white;
+  border: 1px solid ${(props) => props.propColor};
+  border-color: ${(props) => (props.isHovered ? props.propColor : 'transparent')};
   transition: background-color 300ms ease-in;
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props.propColor};
   @media screen and (max-width: 768px) {
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 8px;
   }
 `;
 
@@ -182,7 +189,7 @@ const Label = styled.div`
   display: flex;
   align-items: center;
   color: white;
-  background-color: ${(props) => (props.color ? props.color : '#333')};
+  background-color: ${(props) => (props.propColor ? props.propColor : '#333')};
   padding: ${(props) => (props.isHovered ? '5px 15px' : '0')};
   border-radius: 15px;
   margin-left: 10px;

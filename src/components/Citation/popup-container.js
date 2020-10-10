@@ -2,6 +2,8 @@ import React, { useEffect, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import CitationCard from './citation-card';
+import {useAmp} from 'next/amp';
+
 /*
 When a PopupContainer is clicked, a popover appears over
 the highlighted text. It will show the direct quote
@@ -32,6 +34,7 @@ const PopupContainer = (props) => {
   // const [windowWidth, setWindowWidth] = useState(1000);
   const containerRef = useRef();
   const { toggleVisibility } = props;
+  const isAmp = useAmp();
 
   //-- only do this for mobile
   useEffect(() => {
@@ -44,18 +47,6 @@ const PopupContainer = (props) => {
       // });
     }
   }, [containerRef]);
-
-  //-- listeners
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [handleKeyDown, handleResize, handleScroll]);
 
   const handleKeyDown = useCallback(
     (e) => {
@@ -81,8 +72,20 @@ const PopupContainer = (props) => {
     }
   }, [toggleVisibility, containerRef]);
 
+  //-- listeners
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleKeyDown, handleResize, handleScroll]);
+
   return (
-    <PopupPosition ref={containerRef}>
+    <PopupPosition hidden={isAmp} id={props.id} ref={containerRef}>
       <Container>
         <CitationCard {...props} />
       </Container>

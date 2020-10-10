@@ -19,6 +19,23 @@ AmpAnimation.propTypes = {
 };
 
 //-------------------------------------
+// https://amp.dev/documentation/components/amp-animation/
+export const AmpState = (props) => {
+  return (
+    <amp-state id={props.id}>
+      <script
+        type="application/json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(props.children) }}
+      ></script>
+    </amp-state>
+  );
+};
+AmpState.propTypes = {
+  id: PropTypes.string,
+  children: PropTypes.object.isRequired,
+};
+
+//-------------------------------------
 // https://amp.dev/documentation/components/amp-analytics/
 export const AmpAnalytics = (props) => {
   return (
