@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import CitationCard from './citation-card';
-import {useAmp} from 'next/amp';
+import { useAmp } from 'next/amp';
 
 /*
 When a PopupContainer is clicked, a popover appears over
@@ -94,7 +94,7 @@ const PopupContainer = (props) => {
 };
 
 PopupContainer.propTypes = {
-  toggleVisibility: PropTypes.func.isRequired, //-- to give access to the the visibility function
+  toggleVisibility: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired, //-- to give access to the the visibility function
   noComment: PropTypes.bool, //-- in case you don't want the comment card
 };
 

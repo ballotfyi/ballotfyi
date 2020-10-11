@@ -22,11 +22,7 @@ const CitationCard = (props) => {
         </SourceBody>
       )}
       <ActionRow>
-        <Dismiss 
-          name="dimiss" 
-          onClick={() => toggleVisibility(false)} 
-          on={toggleVisibility}
-        >
+        <Dismiss name="dimiss" onClick={() => toggleVisibility(false)} on={toggleVisibility}>
           Dismiss
         </Dismiss>
         {!noLink && (

@@ -12,7 +12,7 @@ const TopHat = () => {
   }
   return (
     <>
-      <Link href="/">
+      <Link href="/" passHref>
         <Logo bgColor={color}>ballot.fyi</Logo>
       </Link>
       <Container>
@@ -37,7 +37,8 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const LogoBlock = styled.div`
+const LogoBlock = styled.a`
+  display: block;
   font-family: 'ITC Avant Garde', Inter, sans-serif;
   font-size: 14px;
   min-width: 62.5px;
@@ -47,6 +48,8 @@ const LogoBlock = styled.div`
   margin-top: 16px;
   height: 36px;
   color: white;
+  text-decoration: none;
+  outline: none;
   @media screen and (max-width: 768px) {
     padding-left: 15px;
     padding-right: 15px;
@@ -56,6 +59,10 @@ const LogoBlock = styled.div`
     padding-left: 10px;
     padding-right: 10px;
     height: 30px;
+  }
+  &:focus {
+    text-decoration: none;
+    outline: none;
   }
 `;
 

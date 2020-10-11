@@ -4,50 +4,15 @@ import { Row, ArticleCol } from 'components/util';
 import styled from 'styled-components';
 import { LinkOutIcon } from 'components/icons';
 import JsxParser from 'components/JsxParser';
-
-/*
-usage
-
-{
-  component: VerticalSummaryListBlock,
-  data: {
-    listNItems: 3,
-    stories: [
-      {
-        title: "Stanford study on SF rent control (2018)",
-        buttonText: "What they found",
-        links: [
-          {
-            label:"Summarized article",
-            url:"https://www.brookings.edu/research/what-does-economic-evidence-tell-us-about-the-effects-of-rent-control/"
-          },
-          {
-            label:"Research paper",
-            url:"https://web.stanford.edu/~diamondr/DMQ.pdf"
-          },
-        ],
-        description:
-          <span>Researchers took advantage of a unique "quasi-experimental" situation <Citation data={Citations['12']}>where in 1994, rent control in SF was suddenly applied to small multifamily homes (SMFH) built before 1980.</Citation> The researchers compared those <Acronym data={Acronyms.SMFH}/>s to <Acronym data={Acronyms.SMFH}/>s built after 1980 (not rent controlled) and studied how renters and landlords behaved after 1994.</span>,
-        expandedContent:
-          <span>
-            <br/>
-            A few findings: (1) <Citation data={Citations['13']}>People in rent controlled <Acronym data={Acronyms.SMFH}/>s were more likely to still be living at their 1994 addresses.</Citation> (Supporting what rent control advocates say.)
-            <br/><br/>
-            (2) <Citation data={Citations['16']}>Rent-controlled buildings were more likely to turn into condos or Tenancy in Common (TIC) buildings, effectively reducing the number of renters in buildings that were rent controlled.</Citation> (Supporting what rent control opponents say.)
-            <br/><br/>
-            (3) <Citation data={Citations['14']}>In areas where surrounding rents increased rapidly, being in a rent controlled apartment actually <em>decreased</em> the likelihood that renters remained at their address.</Citation> This is because landlords, who had a large incentive to remove tenants, <Citation data={Citations['15']}>could effectively do so through <Acronym data={Acronyms.variousMeans}/>.</Citation> (This is counter to rent control's intention)
-          </span>,
-      },
-      ...
-    ]
-  }
-}
-*/
+import { useAmp } from 'next/amp';
+import { useRouter } from 'next/router';
 
 const Snippet = (props) => {
   const [expanded, setExpanded] = useState(false);
-
-  const { title, description, links, buttonText, expandedContent } = props.data;
+  const isAmp = useAmp();
+  const { asPath } = useRouter();
+  const propNum = parseInt(asPath.split('-')[1]);
+  const { title, description, links, buttonText, expandedContent, index } = props.data;
   const textOnButton = buttonText || 'View more';
   let renderedLinks = null;
   if (links && links.length > 0 && links[0].url) {
@@ -64,22 +29,43 @@ const Snippet = (props) => {
       );
     });
   }
-  const buttonOrContent = expanded ? (
-    <JsxParser jsx={`${expandedContent.markup}`} />
-  ) : expandedContent ? (
-    <ExpandButton onClick={() => setExpanded(true)}>{textOnButton}</ExpandButton>
-  ) : null;
-
-  return (
-    <Container>
-      <TitleContainer>
-        <h3>{title}</h3>
-        {links && <LinkContainer>{renderedLinks}</LinkContainer>}
-      </TitleContainer>
-      <JsxParser jsx={`${description.markup}`} />
-      {buttonOrContent}
-    </Container>
-  );
+  if (!isAmp) {
+    const buttonOrContent = expanded ? (
+      <JsxParser jsx={`${expandedContent.markup}`} />
+    ) : expandedContent ? (
+      <ExpandButton name="more" onClick={() => setExpanded(true)}>
+        {textOnButton}
+      </ExpandButton>
+    ) : null;
+    return (
+      <Container>
+        <TitleContainer>
+          <h3>{title}</h3>
+          {links && <LinkContainer>{renderedLinks}</LinkContainer>}
+        </TitleContainer>
+        <JsxParser jsx={`${description.markup}`} />
+        {buttonOrContent}
+      </Container>
+    );
+  } else {
+    const btnKey = `prop${propNum}snipBtn${index}`;
+    const textKey = `prop${propNum}snipText${index}`;
+    return (
+      <Container>
+        <TitleContainer>
+          <h3>{title}</h3>
+          {links && <LinkContainer>{renderedLinks}</LinkContainer>}
+        </TitleContainer>
+        <JsxParser jsx={`${description.markup}`} />
+        <ExpandButton id={btnKey} name="more" on={`tap:${textKey}.show`}>
+          {textOnButton}
+        </ExpandButton>
+        <div id={textKey} hidden={isAmp}>
+          <JsxParser jsx={`${expandedContent.markup}`} />
+        </div>
+      </Container>
+    );
+  }
 };
 
 const VerticalSummaryListBlock = (props) => {
@@ -91,9 +77,9 @@ const VerticalSummaryListBlock = (props) => {
   let restOfSnippets = [];
   for (let i = 0; i < stories.length; i++) {
     if (i < nItems) {
-      snippets.push(<Snippet key={i} data={stories[i]} />);
+      snippets.push(<Snippet key={i} data={{ ...stories[i], index: i }} />);
     } else {
-      restOfSnippets.push(<Snippet key={i} data={stories[i]} />);
+      restOfSnippets.push(<Snippet key={i} data={{ ...stories[i], index: i }} />);
     }
   }
   if (snippets.length === 0) snippets = null;
@@ -132,7 +118,7 @@ VerticalSummaryListBlock.propTypes = {
 export default VerticalSummaryListBlock;
 
 const Container = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 `;
 
 const TitleContainer = styled.div`
@@ -142,8 +128,8 @@ const TitleContainer = styled.div`
 `;
 
 const ExpandButton = styled.button`
-  margin: 15px 0 0 0;
-  padding: 10px 20px;
+  margin: 15px 0 15px 0;
+  padding: 9px 20px;
   display: flex;
   align-items: center;
   justify-content: center;

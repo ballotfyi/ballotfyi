@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {useAmp} from 'next/amp';
+import { useAmp } from 'next/amp';
 
 /*
 Expands an acronym to the full text. Toggleable

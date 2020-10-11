@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CitationButton = (props) => {
-
   const handleMouseEnter = () => {
     if (!props.isActive) {
       props.onHover();

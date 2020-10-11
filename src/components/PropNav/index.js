@@ -44,8 +44,12 @@ const PropNav = () => {
       )}
       {isPropPage && (
         <>
-          <Link href={`/prop-${nextAndPrev.prev}`} passHref><NavBtn>Prev</NavBtn></Link>
-          <Link href={`/prop-${nextAndPrev.next}`} passHref><NavBtn>Next</NavBtn></Link>
+          <Link href={`/prop-${nextAndPrev.prev}`} passHref>
+            <NavBtn>Prev</NavBtn>
+          </Link>
+          <Link href={`/prop-${nextAndPrev.next}`} passHref>
+            <NavBtn>Next</NavBtn>
+          </Link>
         </>
       )}
     </MenuContainer>
@@ -87,12 +91,12 @@ const NavItem = (props) => {
   const [isClicked, setIsClicked] = useState(false);
   const { propNum, isAmp, isPropPage, currentPropNum } = props;
   const sectionId = `prop-${propNum}-intro`;
-  const {asPath} = router;
+  const { asPath } = router;
 
   //-- reset when route changes
-  useEffect( () => {
+  useEffect(() => {
     setIsClicked(false);
-  },[asPath])
+  }, [asPath]);
 
   //-- go to main prop page if in a current prop page, otherwise, jump to the anchor on homepage
   const handleClick = () => {
@@ -122,7 +126,9 @@ const NavItem = (props) => {
         >
           {isAmp && propNum}
         </Circle>
-        {!isAmp && <MaskingCircle isClicked={isClicked} isHovered={isHovered} isActive={isActive} />}
+        {!isAmp && (
+          <MaskingCircle isClicked={isClicked} isHovered={isHovered} isActive={isActive} />
+        )}
         <Label propColor={color} isHovered={isHovered}>
           {isHovered ? biteDescriptions[propNum - 14] : null}
         </Label>

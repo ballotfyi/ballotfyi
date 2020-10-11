@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 import CitationButton from './citation-button';
 import PopupContainer from './popup-container';
-// import {AmpState} from 'components/amp/amp-wrappers';
-import {useAmp} from 'next/amp';
+import { useAmp } from 'next/amp';
 /*
 here's a blank to copy:
 
@@ -74,7 +73,7 @@ const Citation = (props) => {
     setTaggedTextStyle(styles.deselectText);
   };
 
-  if( !isAmp ) {
+  if (!isAmp) {
     return (
       <span ref={clickOutsideRef}>
         <span style={taggedTextStyle}>
@@ -88,9 +87,7 @@ const Citation = (props) => {
           />
         </span>
 
-        {isPopupVisible && (
-          <PopupContainer toggleVisibility={toggleVisibility} {...props} />
-        )}
+        {isPopupVisible && <PopupContainer toggleVisibility={toggleVisibility} {...props} />}
       </span>
     );
   } else {
@@ -99,17 +96,11 @@ const Citation = (props) => {
       <>
         <span style={taggedTextStyle}>
           {props.children}
-          <CitationButton
-            on={`tap:${key}.toggleVisibility`}
-          />
+          <CitationButton on={`tap:${key}.toggleVisibility`} />
         </span>
-        <PopupContainer 
-          {...props}
-          toggleVisibility={`tap:${key}.toggleVisibility`}
-          id={`${key}`}
-        />
+        <PopupContainer {...props} toggleVisibility={`tap:${key}.toggleVisibility`} id={`${key}`} />
       </>
-    )
+    );
   }
 };
 
