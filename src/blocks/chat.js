@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'components/util';
-import { FromThem, FromMe, Clear, Section, FromThemEmoji } from 'blocks/ChatStyles.js';
 import JsxParser from 'components/JsxParser';
+import styled from 'styled-components';
 
 /*
 an iMessage conversation block
@@ -108,3 +108,103 @@ ChatBlock.propTypes = {
 };
 
 export default ChatBlock;
+
+
+const Section = styled.div`
+  font-family: -apple-system-body, Helvetica Neue, Helvetica, 'Helvetica-bd', sans-serif;
+  font-weight: bold;
+  color: #fff;
+  font-size: 13pt;
+  font-weight: normal;
+  max-width: 360px;
+  margin: 40px auto;
+  & > div {
+    max-width: 200px;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+    line-height: 22px;
+  }
+`;
+const Clear = styled.div`
+  clear: both;
+`;
+const FromMe = styled.div`
+  position: relative;
+  padding: 10px 20px;
+  color: white;
+  background: #0b93f6;
+  border-radius: 25px;
+  float: right;
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    right: -7px;
+    height: 20px;
+    border-right: 20px solid #0b93f6;
+    border-bottom-left-radius: 16px 14px;
+    transform: translate(0, -2px);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    bottom: -2px;
+    right: -56px;
+    width: 26px;
+    height: 20px;
+    background: white;
+    border-bottom-left-radius: 10px;
+    transform: translate(-30px, -2px);
+  }
+  p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+`;
+const FromThem = styled.div`
+  position: relative;
+  padding: 10px 20px;
+  background: #e5e5ea;
+  border-radius: 25px;
+  color: black;
+  float: left;
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    bottom: -2px;
+    left: -7px;
+    height: 20px;
+    border-left: 20px solid #e5e5ea;
+    border-bottom-right-radius: 16px 14px;
+    transform: translate(0, -2px);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: 3;
+    bottom: -2px;
+    left: 4px;
+    width: 26px;
+    height: 20px;
+    background: white;
+    border-bottom-right-radius: 10px;
+    transform: translate(-30px, -2px);
+  }
+  p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+`;
+const FromThemEmoji = styled(FromThem)`
+  background: none;
+  &:before {
+    border-left: none;
+  }
+`;
+
+const EmojiLg = styled.span`
+  font-size: 50pt;
+  line-height: 55pt;
+`;
