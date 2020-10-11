@@ -21,7 +21,7 @@
     "react-is": "^16.13.1",
     "react-jsx-parser": "^1.25.1",
     "styled-components": "^5.1.0",
-    "webpack": "^4.44.1"
+    "webpack": "^5.0.0"
   },
   "devDependencies": {
     "cssnano": "^4.1.10",
