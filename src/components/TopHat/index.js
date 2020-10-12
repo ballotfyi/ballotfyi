@@ -7,6 +7,8 @@ const TopHat = () => {
   const router = useRouter();
   const propPageRegex = /prop-\d\d/i;
   const path = router.asPath;
+  const isHomePage = path === '/';
+
   const isPropPage = propPageRegex.test(path);
   const currentPropNum = isPropPage ? path.match(propPageRegex)[0].split('-')[1] : null;
   const color = currentPropNum ? propColors[currentPropNum] : '#000';
@@ -21,8 +23,8 @@ const TopHat = () => {
       <Container>
         <LogoBlock>ballot.fyi</LogoBlock>
         <RightSide>
-          <Line isPropPage={isPropPage} />
-          <Description isPropPage={isPropPage}>California Props 2020</Description>
+          <Line isHomePage={isHomePage} />
+          <Description isHomePage={isHomePage}>California Props 2020</Description>
         </RightSide>
       </Container>
     </>
@@ -103,7 +105,7 @@ const RightSide = styled.div`
 
 const Line = styled.div`
   height: 1px;
-  background-color: ${(props) => (props.isPropPage ? '#333' : '#fff')};
+  background-color: ${(props) => (props.isHomePage ? '#fff' : '#333')};
 `;
 
 const Description = styled.div`
@@ -113,7 +115,7 @@ const Description = styled.div`
   font-size: 12px;
   letter-spacing: 0.095em;
   text-transform: uppercase;
-  color: ${(props) => (props.isPropPage ? 'black' : '#fff')};
+  color: ${(props) => (props.isHomePage ? '#fff' : '#000')};
   @media screen and (max-width 767px) {
     font-size: 10px;
     font-weight: 400;

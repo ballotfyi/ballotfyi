@@ -161,7 +161,7 @@ StructuredData.propTypes = {
 };
 
 StructuredData.defaultProps = {
-  title: 'ballot.fyi → 2020 CA Propositions, explained',
+  title: '2020 CA Propositions, explained',
   description:
     "Everything you need to vote informed Nov 2020 for California's ballot propositions.",
   canonicalUrlSlug: '',
