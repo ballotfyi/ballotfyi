@@ -96,7 +96,7 @@ export const mapResultToColor = {
 export const ArticleCol = (props) => (
   <Col
     off={{ xs: 3, sm: 3, md: 5, lg: 4, xl: 4, xxl: 4 }}
-    span={{ xs: 18, sm: 16, md: 13, lg: 11, xl: 10, xxl: 9 }}
+    span={{ xs: 20, sm: 16, md: 13, lg: 11, xl: 10, xxl: 9 }}
   >
     {props.children}
   </Col>

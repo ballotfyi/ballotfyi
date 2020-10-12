@@ -119,7 +119,8 @@ const MenuContainer = styled.div`
   margin-left: 16px;
   margin-bottom: 52px;
   @media screen and (max-width: 767px) {
-    margin-bottom: 13vh;
+    margin-bottom: 10vh;
+    margin-left: 8px;
   }
 `;
 const MaskingCircle = styled.div`

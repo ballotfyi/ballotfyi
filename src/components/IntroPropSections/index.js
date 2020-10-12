@@ -174,6 +174,7 @@ const Digit = styled.div`
   font-weight: 750;
   color: rgba(255, 255, 255, 0.7);
   user-select: none;
+  z-index: 10;
   @media screen and (min-width: 576px) {
     font-size: 140px;
   }
@@ -192,6 +193,7 @@ const FirstDigit = styled(Digit)`
   top: 38%;
   left: 16px;
   @media screen and (max-width: 767px) {
+    left: 40%;
     top: 2%;
   }
 `;
@@ -201,7 +203,7 @@ const SecondDigit = styled(Digit)`
   left: calc(16px + 6%);
   @media screen and (max-width: 767px) {
     top: 14%;
-    left: calc(16px + 5%);
+    left: calc(16px + 42%);
   }
 `;
 
@@ -225,7 +227,7 @@ const PropTitle = styled.h2`
   font-family: 'ITC Avant Garde', Inter, Helvetica, sans-serif;
   margin-top: 16px;
   margin-bottom: 16px;
-  color: white;
+  color: #333;
   text-align: center;
   padding-left: 20px;
   padding-right: 20px;
@@ -288,5 +290,10 @@ const MoreButton = styled.a`
   @media screen and (max-width: 375px) {
     margin-top: 16px;
     font-size: 12px;
+  }
+  @media not all and (hover: none) {
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
