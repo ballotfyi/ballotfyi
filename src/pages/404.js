@@ -21,7 +21,7 @@ const Page404 = () => {
           off={{ xs: 2, sm: 4, md: 5, lg: 5, xl: 5, xxl: 4 }}
           span={{ xs: 20, sm: 16, md: 14, lg: 14, xl: 14, xxl: 16 }}
         >
-          You might be navigating to a page that no longer exists (maybe from 2018 or 2016?), or
+          Stand back and stand by. You might be navigating to a page that no longer exists (maybe from 2018 or 2016?), or
           never existed to begin with. Head back to our main home page to find all that we offer.
         </Col>
       </div>
