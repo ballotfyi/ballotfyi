@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 const SkipLink = () => {
   const handleClick = () => {
-    const windowHeight = (window.innerHeight || document.documentElement.clientHeight)
-    window.scrollTo({top: windowHeight, left: 0, behavior: 'smooth'});
-  }
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    window.scrollTo({ top: windowHeight, left: 0, behavior: 'smooth' });
+  };
   return (
     <SkipButton name="skip to content" onClick={handleClick}>
       Skip to content

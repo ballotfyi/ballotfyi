@@ -71,7 +71,7 @@ const Line = styled.div`
   margin-left: ${(props) => (props.isReversed ? 0 : props.isEmpty ? 0 : 20)}px;
   margin-right: ${(props) => (props.isReversed ? (props.isEmpty ? 0 : 20) : 0)}px;
   margin-bottom: 6px;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width 767px) {
     border-radius: 2px;
     border-width: 2px;
     margin-bottom: 3px;

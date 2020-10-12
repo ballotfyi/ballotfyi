@@ -54,7 +54,7 @@ const LogoBlock = styled.a`
   color: white;
   text-decoration: none;
   outline: none;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width 767px) {
     padding-left: 15px;
     padding-right: 15px;
     height: 35px;
@@ -84,7 +84,7 @@ const Logo = styled(LogoBlock)`
       background-color: #333;
     }
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width 767px) {
     position: absolute;
   }
 `;
@@ -92,7 +92,7 @@ const Logo = styled(LogoBlock)`
 const RightSide = styled.div`
   margin: 17px 16px 0 16px;
   width: 100%;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width 767px) {
     margin-left: 12px;
     margin-right: 12px;
   }
@@ -115,7 +115,7 @@ const Description = styled.div`
   letter-spacing: 0.095em;
   text-transform: uppercase;
   color: white;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width 767px) {
     font-size: 10px;
     font-weight: 400;
   }

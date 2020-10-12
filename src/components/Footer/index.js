@@ -71,24 +71,6 @@ const Footer = React.forwardRef((props, ref) => {
           </FooterItemWithEnter>
         </Set>
       )}
-      {isHomePage && isMobile && (
-        <Set>
-          <FooterItemWithEnter
-            func={() => {
-              window.fullpage_api.moveSectionUp();
-            }}
-          >
-            Prev
-          </FooterItemWithEnter>
-          <FooterItemWithEnter
-            func={() => {
-              window.fullpage_api.moveSectionDown();
-            }}
-          >
-            Next
-          </FooterItemWithEnter>
-        </Set>
-      )}
     </Container>
   );
 });
@@ -119,7 +101,7 @@ const Container = styled.div`
   bottom: 0;
   background-color: white;
   box-shadow: 0 -1px 5px 3px rgba(20, 20, 0, 0.043);
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width 767px) {
     justify-content: space-between;
     padding-left: 16px;
     padding-right: 16px;
@@ -146,7 +128,7 @@ const FooterItem = styled.a`
   text-align: center;
   color: black;
   transition: all 200ms ease-out;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width 767px) {
     padding: 0 10px;
     margin-left: 5px;
     margin-right: 5px;

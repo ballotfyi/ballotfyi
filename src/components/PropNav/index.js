@@ -118,7 +118,7 @@ const MenuContainer = styled.div`
   color: black;
   margin-left: 16px;
   margin-bottom: 52px;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width 767px) {
     margin-bottom: 13vh;
   }
 `;
@@ -133,7 +133,7 @@ const MaskingCircle = styled.div`
     props.isHovered ? (props.isClicked ? 'scale(0)' : 'scale(0.4)') : 'scale(1)'};
   transition: transform 200ms ease-in;
   opacity: ${(props) => (props.isActive ? 0 : 1)};
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width 767px) {
     width: 13px;
     height: 13px;
     left: -15px;
@@ -168,7 +168,7 @@ const Circle = styled.div`
   border-color: ${(props) => (props.isHovered ? props.propColor : 'transparent')};
   transition: background-color 300ms ease-in;
   background-color: ${(props) => props.propColor};
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width 767px) {
     width: 15px;
     height: 15px;
     border-radius: 8px;
@@ -191,7 +191,7 @@ const Label = styled.div`
   font-weight: 500;
   user-select: none;
   height: 18px;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width 767px) {
     display: none;
   }
 `;
@@ -218,7 +218,7 @@ const NavBtn = styled.a`
   &:focus {
     color: mediumslateblue;
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width 767px) {
     display: none;
   }
 `;

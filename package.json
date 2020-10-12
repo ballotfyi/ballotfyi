@@ -9,7 +9,6 @@
     "export": "next export"
   },
   "dependencies": {
-    "@fullpage/react-fullpage": "^0.1.17",
     "@sentry/react": "^5.20.1",
     "@svgr/webpack": "^5.4.0",
     "axios": "^0.19.2",

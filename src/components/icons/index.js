@@ -28,7 +28,7 @@ export const LinkOutStyle = styled.div`
   max-width: 20px;
   min-width: 20px;
   padding-top: 4px;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width 767px) {
     padding-top: 10px;
   }
 `;

@@ -3,7 +3,7 @@ import { Row, Col } from 'components/util';
 
 const Intro = () => (
   <IntroBackground>
-    <Row style={{ height: '100vh' }}>
+    <Row style={{ minHeight: '100vh' }}>
       <Col
         off={{ xs: 1, sm: 1, md: 1, lg: 1, xl: 1, xxl: 1 }}
         span={{ xs: 22, sm: 22, md: 16, lg: 16, xl: 16, xxl: 16 }}
@@ -28,10 +28,10 @@ const Intro = () => (
         </Disclaimer>
       </Col>
       <Col
-        off={{ xs: 1, sm: 1, md: 0, lg: 0, xl: 0, xxl: 0 }}
-        span={{ xs: 22, sm: 22, md: 7, lg: 7, xl: 7, xxl: 7 }}
+        off={{ xs: 0, sm: 0, md: 0, lg: 0, xl: 0, xxl: 0 }}
+        span={{ xs: 24, sm: 24, md: 7, lg: 7, xl: 7, xxl: 7 }}
       >
-        <IntroRight>
+        <RightSide>
           <Isolate>
             <Noise />
             <Overlay />
@@ -41,7 +41,7 @@ const Intro = () => (
             nonboring explainers.
           </P2>
           <P3>Let’s begin.</P3>
-        </IntroRight>
+        </RightSide>
         <TruncateRight>
           <CircleContainer>
             <BigCircle />
@@ -119,7 +119,7 @@ const IntroBackground = styled.div`
   isolation: isolate;
 `;
 
-const IntroRight = styled.div`
+const RightSide = styled.div`
   position: absolute;
   right: 0;
   width: 50%;
@@ -131,7 +131,21 @@ const IntroRight = styled.div`
   flex-direction: column;
   align-items: center;
   @media screen and (max-width: 767px) {
+    position: relative;
     width: 100%;
+    min-height: 300px;
+    justify-content: center;
+  }
+`;
+
+const BgForMobile = styled.div`
+  display: none;
+  @media screen and (max-width: 767px) {
+    display: block;
+    background-color: #5a4abc;
+    position: absolute;
+    top: 0;
+    height: 100vh;
   }
 `;
 
@@ -143,6 +157,7 @@ const Disclaimer = styled.div`
   line-height: 18px;
   padding-left: 10px;
   margin-top: 30px;
+  margin-bottom: 50px;
   @media screen and (max-width: 576px) {
     padding-left: 0;
   }
@@ -174,6 +189,9 @@ const TruncateRight = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `;
 
 const CircleContainer = styled.div`
@@ -247,12 +265,19 @@ const P2 = styled(Paragraph)`
   @media screen and (max-width: 992px) {
     background-color: white;
   }
+  @media screen and (max-width: 767px) {
+    position: static;
+    isolation: isolate;
+  }
 `;
 const P3 = styled(Paragraph)`
   text-align: center;
   position: absolute;
   bottom: 15%;
   text-align: center;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `;
 
 const Noise = styled.div`
