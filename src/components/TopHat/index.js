@@ -5,13 +5,12 @@ import { propColors } from 'components/attributes';
 
 const TopHat = () => {
   const router = useRouter();
-  const pathSplit = router.asPath.split('-');
-  let color = '#000';
-  let isPropPage = false;
-  if (pathSplit[0] === '/prop' && pathSplit.length > 1) {
-    isPropPage = true;
-    color = propColors[parseInt(pathSplit[1])];
-  }
+  const propPageRegex = /prop-\d\d/i;
+  const path = router.asPath;
+  const isPropPage = propPageRegex.test(path);
+  const currentPropNum = isPropPage ? path.match(propPageRegex)[0].split('-')[1] : null;
+  const color = currentPropNum ? propColors[currentPropNum] : '#000';
+
   return (
     <>
       <Link href="/" passHref>
@@ -22,8 +21,8 @@ const TopHat = () => {
       <Container>
         <LogoBlock>ballot.fyi</LogoBlock>
         <RightSide>
-          <Line />
-          <Description>California Props 2020</Description>
+          <Line isPropPage={isPropPage} />
+          <Description isPropPage={isPropPage}>California Props 2020</Description>
         </RightSide>
       </Container>
     </>
@@ -104,7 +103,7 @@ const RightSide = styled.div`
 
 const Line = styled.div`
   height: 1px;
-  background-color: #fff;
+  background-color: ${(props) => (props.isPropPage ? '#333' : '#fff')};
 `;
 
 const Description = styled.div`
@@ -114,7 +113,7 @@ const Description = styled.div`
   font-size: 12px;
   letter-spacing: 0.095em;
   text-transform: uppercase;
-  color: white;
+  color: ${(props) => (props.isPropPage ? 'black' : '#fff')};
   @media screen and (max-width 767px) {
     font-size: 10px;
     font-weight: 400;

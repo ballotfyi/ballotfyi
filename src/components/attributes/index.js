@@ -3,7 +3,7 @@ export const propColors = {
   '14': '#DB5382',
   '15': '#AABCE4',
   '16': '#DB5382', //redpink
-  '17': '#d1b900', //yellow
+  '17': '#e8ae00', //yellow
   '18': '#4fc6c9', //turquoise
   '19': '#99C0F2',
   '20': '#574DB8',
@@ -11,5 +11,5 @@ export const propColors = {
   '22': '#574DB8', //blue
   '23': '#4fc6c9', //turquoise
   '24': '#B328FF',
-  '25': '#FFF4A0',
+  '25': '#e8ae00',
 };

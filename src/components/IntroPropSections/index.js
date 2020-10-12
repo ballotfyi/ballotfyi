@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Image from 'components/Image';
+// import Image from 'components/Image';
 import Link from 'next/link';
 // import { Row, Col, Space } from 'components/util';
 import { propColors } from 'components/attributes';
@@ -13,29 +13,31 @@ const IntroPropSections = (props) => {
       <PropSection key={propNum} id={`#prop-${propNum}-intro`}>
         <FirstDigit>{firstDigit}</FirstDigit>
         <SecondDigit>{secondDigit}</SecondDigit>
-        <InnerContainer>
-          <Isolate>
-            <Noise propNum={parseInt(propNum)} />
-            <Overlay propNum={propNum} />
-            <Overlay2 propNum={propNum} />
-          </Isolate>
-          <PropBody>
-            <ImageContainer>
-              <Image
-                alt={`prop ${propNum}`}
-                srcset={[
-                  { url: `./static/props/prop-${propNum}.png`, width: 310 },
-                  { url: `./static/props/prop-${propNum}.webp`, width: 310 },
-                  { url: `./static/props/prop-${propNum}@2x.png`, width: 620 },
-                  { url: `./static/props/prop-${propNum}@2x.webp`, width: 620 },
-                ]}
-                width={1}
-                height={1}
-              />
-            </ImageContainer>
-            <PropTitle>{title}</PropTitle>
-          </PropBody>
-        </InnerContainer>
+        <Link href={`/prop-${propNum}`} passHref>
+          <InnerContainer>
+            <Isolate>
+              <Noise propNum={parseInt(propNum)} />
+              <Overlay propNum={propNum} />
+              <Overlay2 propNum={propNum} />
+            </Isolate>
+            <PropBody>
+              {/* <ImageContainer>
+                <Image
+                  alt={`prop ${propNum}`}
+                  srcset={[
+                    { url: `./static/props/prop-${propNum}.png`, width: 310 },
+                    { url: `./static/props/prop-${propNum}.webp`, width: 310 },
+                    { url: `./static/props/prop-${propNum}@2x.png`, width: 620 },
+                    { url: `./static/props/prop-${propNum}@2x.webp`, width: 620 },
+                  ]}
+                  width={1}
+                  height={1}
+                />
+              </ImageContainer> */}
+              <PropTitle>{title}</PropTitle>
+            </PropBody>
+          </InnerContainer>
+        </Link>
         <Description>
           {description}
           <Link href={`/prop-${propNum}`} passHref>
@@ -77,7 +79,8 @@ const PropSection = styled.div`
   margin-bottom: 120px;
 `;
 
-const InnerContainer = styled.div`
+const InnerContainer = styled.a`
+  display: block;
   position: relative;
   height: 60vw;
   width: 90vw;
@@ -237,28 +240,28 @@ const PropBody = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 35px;
 `;
 
 // filter: drop-shadow(3px 3px 0 white) drop-shadow(12px 12px 0 rgba(0, 0, 0, 0.15))
 //   drop-shadow(-20px 16px 2px rgba(0, 0, 0, 0.05));
-const ImageContainer = styled.div`
-  width: 300px;
-  user-select: none;
+// const ImageContainer = styled.div`
+//   display: none;
+//   width: 300px;
+//   user-select: none;
 
-  @media screen and (max-width 767px) {
-    margin-left: auto;
-    margin-right: auto;
-    width: 250px;
-    top: -120px;
-    margin-bottom: -120px;
-  }
-  @media screen and (max-width: 375px) {
-    width: 160px;
-    top: -100px;
-    margin-bottom: -120px;
-  }
-`;
+//   @media screen and (max-width 767px) {
+//     margin-left: auto;
+//     margin-right: auto;
+//     width: 250px;
+//     top: -120px;
+//     margin-bottom: -120px;
+//   }
+//   @media screen and (max-width: 375px) {
+//     width: 160px;
+//     top: -100px;
+//     margin-bottom: -120px;
+//   }
+// `;
 // @media not all and (hover: none) {
 //   &:hover {
 //     transform: translate(0, -5px) scale(1.02);

@@ -213,7 +213,7 @@ const Disclaimer = styled.div`
   font-size: 13px;
   line-height: 17px;
   padding: 10px 20px;
-  background-color: pink;
+  background-color: #eee;
   border-radius: 2px;
 `;
 
