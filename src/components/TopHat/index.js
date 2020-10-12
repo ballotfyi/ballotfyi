@@ -42,54 +42,6 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const LogoBlock = styled.a`
-  display: block;
-  font-family: 'ITC Avant Garde', Inter, sans-serif;
-  font-size: 14px;
-  min-width: 62.5px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-left: 16px;
-  margin-top: 16px;
-  height: 36px;
-  color: white;
-  text-decoration: none;
-  outline: none;
-  @media screen and (max-width: 767px) {
-    padding-left: 15px;
-    padding-right: 15px;
-    height: 35px;
-  }
-  @media screen and (max-width: 576px) {
-    padding-left: 10px;
-    padding-right: 10px;
-    height: 30px;
-  }
-  &:focus {
-    text-decoration: none;
-    outline: none;
-  }
-`;
-
-const Logo = styled(LogoBlock)`
-  position: ${(props) => (props.isPropPage ? 'fixed' : 'absolute')};
-  background-color: ${(props) => (props.bgColor ? props.bgColor : '#000')};
-  color: white;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 2px;
-  transition: background-color 200ms ease-in;
-  @media not all and (hover: none) {
-    &:hover {
-      background-color: #333;
-    }
-  }
-  @media screen and (max-width: 767px) {
-    position: absolute;
-  }
-`;
-
 const RightSide = styled.div`
   margin: 17px 16px 0 16px;
   width: 100%;
@@ -119,5 +71,52 @@ const Description = styled.div`
   @media screen and (max-width: 767px) {
     font-size: 10px;
     font-weight: 400;
+  }
+`;
+const LogoBlock = styled.a`
+  display: block;
+  font-family: 'ITC Avant Garde', Inter, 'InterPre', sans-serif;
+  font-size: 14px;
+  min-width: 62.5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 16px;
+  margin-top: 16px;
+  height: 36px;
+  color: white;
+  text-decoration: none;
+  outline: none;
+  &:focus {
+    text-decoration: none;
+    outline: none;
+  }
+  @media screen and (max-width: 767px) {
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 35px;
+  }
+  @media screen and (max-width: 576px) {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 30px;
+  }
+`;
+
+const Logo = styled(LogoBlock)`
+  position: ${(props) => (props.isPropPage ? 'fixed' : 'absolute')};
+  background-color: ${(props) => (props.bgColor ? props.bgColor : '#000')};
+  color: white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 200ms ease-in;
+  @media not all and (hover: none) {
+    &:hover {
+      background-color: #333;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    position: absolute;
   }
 `;
