@@ -98,6 +98,9 @@ const Styles = createGlobalStyle`
     background-color: #eee;
     margin-top: 0;
     margin-bottom: 0;
+    padding-left: 16px;
+    padding-top: 8px;
+    padding-bottom 8px;
   }
 
 `;

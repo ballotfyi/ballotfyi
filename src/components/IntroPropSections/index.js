@@ -249,7 +249,7 @@ const PropBody = styled.div`
 //   width: 300px;
 //   user-select: none;
 
-//   @media screen and (max-width 767px) {
+//   @media screen and (max-width: 767px) {
 //     margin-left: auto;
 //     margin-right: auto;
 //     width: 250px;

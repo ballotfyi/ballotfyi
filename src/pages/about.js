@@ -202,7 +202,7 @@ const Title = styled.h1`
 const DarkH2 = styled.h2`
   color: white;
   margin-top: 0;
-  @media screen and (max-width 767px) {
+  @media screen and (max-width: 767px) {
     margin-top: 30px;
   }
 `;
@@ -215,7 +215,7 @@ const CTARow = styled.div`
 `;
 
 const Action = styled.div`
-  @media screen and (max-width 767px) {
+  @media screen and (max-width: 767px) {
     display: flex;
     justify-content: center;
     margin-top: 15px;
@@ -227,7 +227,7 @@ const CTAContainer = styled.div`
   padding-bottom: 60px;
   color: white;
   background-color: #222;
-  @media screen and (max-width 767px) {
+  @media screen and (max-width: 767px) {
     padding-top: 0;
     padding-bottom: 30px;
   }

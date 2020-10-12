@@ -39,7 +39,7 @@ const DateLine = styled.div`
   font-size: 12px;
   letter-spacing: 0.045em;
   text-transform: uppercase;
-  @media screen and (max-width 767px) {
+  @media screen and (max-width: 767px) {
     font-size: 10px;
     font-weight: 400;
   }
