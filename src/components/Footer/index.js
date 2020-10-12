@@ -143,10 +143,10 @@ const FooterItem = styled.a`
   }
   @media not all and (hover: none) {
     &:hover {
-      background-color: #eddd19;
+      background-color: #BEE3E3;
     }
   }
   &:focus {
-    background-color: #eddd19;
+    background-color: #BEE3E3;
   }
 `;
