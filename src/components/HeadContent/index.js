@@ -127,9 +127,9 @@ HeadContent.defaultProps = {
   description:
     "Everything you need to vote informed Nov 2020 for California's ballot propositions.",
   canonicalUrlSlug: '',
-  canonicalImage: '/static/social/general.png',
+  canonicalImage: 'static/social/general.png',
   canonicalImageAlt: 'ballot.fyi explains the California state propositions',
-  socialImage: '/static/social/general.png',
+  socialImage: 'static/social/general.png',
   socialImageAlt: 'ballot.fyi explains the California state propositions',
   datePublished: new Date(2020, 10, 12),
   dateModified: null,

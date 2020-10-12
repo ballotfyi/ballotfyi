@@ -16,6 +16,7 @@ const AboutPage = () => {
         title="About ballot.fyi"
         description="Ballot.fyi simplifies the California ballot propositions. Read about the project's principles and the team behind it."
         canonicalUrlSlug="about"
+        socialImage="static/social/general.png"
         datePublished={new Date(2020, 10, 12)}
         pageType="page"
       />

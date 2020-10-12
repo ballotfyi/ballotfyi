@@ -12,6 +12,7 @@ const PrivacyPage = () => {
         title="Privacy @ ballot.fyi"
         description="Ballot.fyi simplifies the California ballot propositions. Read about the project's privacy policy."
         canonicalUrlSlug="privacy"
+        socialImage="static/social/general.png"
         datePublished={new Date(2020, 10, 12)}
         pageType="page"
       />
