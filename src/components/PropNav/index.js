@@ -17,7 +17,7 @@ const PropNav = () => {
   const nextAndPrev = currentPropNum
     ? getNextAndPrevPropNum(currentPropNum)
     : { prev: null, next: null };
-  const isHomePage = path === '/';
+  // const isHomePage = path === '/';
 
   const seq = Array.from(Array(12).keys());
   const listItems = seq.map((n) => {
@@ -36,39 +36,15 @@ const PropNav = () => {
   return (
     <MenuContainer id="propNav">
       {listItems}
-      {isHomePage && (
-        <>
-          <NavBtnWithEnter label="Prev" func={() => window.fullpage_api.moveSectionUp()} />
-          <NavBtnWithEnter label="Next" func={() => window.fullpage_api.moveSectionDown()} />
-        </>
-      )}
-      {isPropPage && (
-        <>
-          <Link href={`/prop-${nextAndPrev.prev}`} passHref>
-            <NavBtn>Prev</NavBtn>
-          </Link>
-          <Link href={`/prop-${nextAndPrev.next}`} passHref>
-            <NavBtn>Next</NavBtn>
-          </Link>
-        </>
-      )}
+      <Link href={`/prop-${nextAndPrev.prev}`} passHref>
+        <NavBtn>Prev</NavBtn>
+      </Link>
+      <Link href={`/prop-${nextAndPrev.next}`} passHref>
+        <NavBtn>Next</NavBtn>
+      </Link>
     </MenuContainer>
   );
 };
-
-const NavBtnWithEnter = ({ label, func }) => (
-  <NavBtn
-    tabIndex="0"
-    onClick={func}
-    onKeyDown={(e) => {
-      if (e.keyCode === 13) {
-        func();
-      }
-    }}
-  >
-    {label}
-  </NavBtn>
-);
 
 const biteDescriptions = [
   'Prop 14: Stem Cells',
@@ -89,7 +65,7 @@ const NavItem = (props) => {
   const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const { propNum, isAmp, isPropPage, currentPropNum } = props;
+  const { propNum, isAmp, currentPropNum } = props;
   const sectionId = `prop-${propNum}-intro`;
   const { asPath } = router;
 
@@ -101,11 +77,6 @@ const NavItem = (props) => {
   //-- go to main prop page if in a current prop page, otherwise, jump to the anchor on homepage
   const handleClick = () => {
     setIsClicked(true);
-    if (isPropPage) {
-      router.push(`/prop-${propNum}`);
-    } else {
-      window.fullpage_api.moveTo(propNum - 13);
-    }
   };
   const isActive = propNum === currentPropNum;
   const color = propColors[propNum];

@@ -1,46 +1,34 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { db } from 'lib/firebase-config';
 import TopHat from 'components/TopHat';
-import ReactFullpage from '@fullpage/react-fullpage';
 import Footer from 'components/Footer';
 import styled from 'styled-components';
-import { propColors } from 'components/attributes';
-import PropNav from 'components/PropNav';
-import { Row, Col } from 'components/util';
-import Image from 'components/Image';
-import Link from 'next/link';
+// import PropNav from 'components/PropNav';
 import HeadContent from 'components/HeadContent';
 import SkipLink from 'components/SkipLink';
+import Image from 'components/Image';
+import Link from 'next/link';
+// import { Row, Col, Space } from 'components/util';
+import { propColors } from 'components/attributes';
+import Intro from 'components/Intro';
 
 const Sections = (props) => {
-  const sectionsRendered = props.sections.map((section, i) => {
+  
+  const sectionsRendered = props.sections.map((section) => {
     const { propNum, title, description } = section;
+    const firstDigit = propNum.toString().substring(0, 1);
+    const secondDigit = propNum.toString().substring(1, 2);
     return (
-      <div key={propNum} className="section">
-        <Top>
+      <PropSection key={propNum} id={`#prop-${propNum}-intro`}>
+        <FirstDigit>{firstDigit}</FirstDigit>
+        <SecondDigit>{secondDigit}</SecondDigit>
+        <InnerContainer>
           <Isolate>
-            <Noise />
+            <Noise propNum={parseInt(propNum)}/>
             <Overlay propNum={propNum} />
             <Overlay2 propNum={propNum} />
           </Isolate>
-          <FirstDigit>{propNum.toString().substring(0, 1)}</FirstDigit>
-          <SecondDigit>{propNum.toString().substring(1, 2)}</SecondDigit>
-          <Row style={{ position: 'absolute', height: '100%', width: '100%' }}>
-            <Col
-              off={{ xs: 3, sm: 3, md: 13, lg: 13, xl: 12, xxl: 12 }}
-              span={{ xs: 20, sm: 20, md: 10, lg: 10, xl: 10, xxl: 10 }}
-              style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}
-            >
-              <Bar />
-              <Title>{title}</Title>
-            </Col>
-          </Row>
-        </Top>
-        <Row>
-          <Col
-            off={{ xs: 2, sm: 2, md: 2, lg: 2, xl: 3, xxl: 3 }}
-            span={{ xs: 20, sm: 20, md: 9, lg: 9, xl: 8, xxl: 8 }}
-          >
+          <PropBody>
             <ImageContainer>
               <Image
                 alt="alt text example"
@@ -54,43 +42,43 @@ const Sections = (props) => {
                 height={1}
               />
             </ImageContainer>
-          </Col>
-          <Col
-            off={{ xs: 3, sm: 3, md: 2, lg: 2, xl: 1, xxl: 1 }}
-            span={{ xs: 20, sm: 20, md: 9, lg: 9, xl: 10, xxl: 10 }}
-          >
-            <Description>{description}</Description>
-            <MorePosition>
-              <Link href={`/prop-${propNum}`} passHref>
-                <MoreButton tabIndex={props.activeIndex === i ? '0' : '-1'}>
-                  See the full summary{' '}
-                  <span role="img" aria-label="arrow">
-                    →
-                  </span>
-                </MoreButton>
-              </Link>
-              <LinkUnderline propNum={propNum} />
-            </MorePosition>
-          </Col>
-        </Row>
-      </div>
+            <PropTitle>{title}</PropTitle>
+          </PropBody>
+        </InnerContainer>
+        <Description>
+          {description}
+          <Link href={`/prop-${propNum}`} passHref>
+            <MoreButton>
+              Read more{' '}
+              <span role="img" aria-label="arrow">
+                →
+              </span>
+            </MoreButton>
+          </Link>
+        </Description>
+      </PropSection>
     );
   });
-
   return sectionsRendered;
 };
+{/* <Row>
+  <Col
+    off={{ xs: 2, sm: 2, md: 2, lg: 2, xl: 3, xxl: 3 }}
+    span={{ xs: 20, sm: 20, md: 9, lg: 9, xl: 8, xxl: 8 }}
+  >
+  </Col>
+  <Col
+    off={{ xs: 3, sm: 3, md: 2, lg: 2, xl: 1, xxl: 1 }}
+    span={{ xs: 20, sm: 20, md: 9, lg: 9, xl: 10, xxl: 10 }}
+  >
+    <Description>{description}</Description>
+  </Col>
+</Row> */}
+
 
 const HomePage = (props) => {
   const sections = JSON.parse(props.sections);
-  const [currIndex, setCurrIndex] = useState(0);
-  const seq = Array.from(Array(12).keys());
-  const anchors = seq.map((n) => `prop-${n + 14}-intro`);
-
-  //-- necessary to avoid having all Read More links tab-indexable
-  const handleLeave = (origin, destination) => {
-    // eslint-disable-line
-    setCurrIndex(destination.index);
-  };
+  // const seq = Array.from(Array(12).keys());
 
   return (
     <>
@@ -98,27 +86,12 @@ const HomePage = (props) => {
       <SeparateLayer>
         <SkipLink />
         <TopHat />
-        <PropNav />
+        {/* <PropNav /> */}
       </SeparateLayer>
-      <ReactFullpage
-        licenseKey="3CB1143B-BE7D4092-876D11C1-7FBD29BB"
-        lockAnchors
-        easing={'cubic-bezier(0.215, 0.610, 0.355, 1.000)'}
-        easingcss3={'cubic-bezier(0.215, 0.610, 0.355, 1.000)'}
-        menu="#propNav"
-        anchors={anchors}
-        verticalCentered={false}
-        scrollingSpeed={600}
-        touchSensitivity={1}
-        onLeave={handleLeave}
-        render={() => {
-          return (
-            <ReactFullpage.Wrapper>
-              <Sections activeIndex={currIndex} sections={sections} />
-            </ReactFullpage.Wrapper>
-          );
-        }}
-      />
+      <Intro />
+      <SectionsContainer>
+        <Sections sections={sections} />
+      </SectionsContainer>
       <Footer />
     </>
   );
@@ -145,15 +118,35 @@ export async function getStaticProps() {
   };
 }
 
+//---------------------------------------------------
 const SeparateLayer = styled.div`
   width: 100%;
   position: absolute;
-  z-index: 10;
+  z-index: 30;
 `;
 
+const SectionsContainer = styled.div`
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #eee;
+`;
+
+const PropSection = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+`;
+
+const InnerContainer = styled.div`
+  position: relative;
+  height: 450px;
+  width: 50%;
+`;
+  
 const Noise = styled.div`
   height: 100%;
-  background: conic-gradient(from 325deg at 12% -4%, rgba(255, 255, 255, 0), black),
+  background: conic-gradient(from ${(props) => (props.propNum) ? 325+(props.propNum-14)*10 : 325}deg at ${(props) => (props.propNum) ? 12+(props.propNum-14)*7 : 12}% -10%, rgba(255, 255, 255, 0), black),
     url(/static/noise.svg);
   filter: contrast(170%) brightness(905%);
   @media not all and (min-resolution: 0.001dpcm) {
@@ -165,50 +158,47 @@ const Noise = styled.div`
   }
 `;
 
-const Top = styled.div`
-  position: relative;
-  height: 63vh;
-  @media screen and (max-width: 768px) {
-    height: 50vh;
-  }
-`;
-
 const Isolate = styled.div`
   isolation: isolate;
   height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
+  box-shadow: 0px 30px 60px -12px rgba(50, 50, 93, 0.15), 0px 18px 36px -18px rgba(0, 0, 0, 0.22);
+  border-radius: 3px;
 `;
 
 const Overlay = styled.div`
   position: absolute;
   top: 0;
   width: 100%;
-  height: calc(100% - 10px);
+  height: 100%;
   background: linear-gradient(
     90deg,
     ${(props) => (props.propNum ? propColors[props.propNum] : 'purple')},
     ${(props) => (props.propNum ? propColors[`${parseInt(props.propNum - 1)}`] : 'purple')}
   );
-  box-shadow: 4px 6px 40px 30px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 30px 60px -12px rgba(50, 50, 93, 0.15), 0px 18px 36px -18px rgba(0, 0, 0, 0.22);
   mix-blend-mode: lighten;
 `;
 const Overlay2 = styled.div`
   position: absolute;
-  top: calc(100% - 10px);
-  width: 100%;
-  height: 10px;
-  background-color: ${(props) => (props.propNum ? propColors[props.propNum] : 'purple')};
-  mix-blend-mode: exclusion;
+  top: -25px;
+  left: calc(50% - 250px);
+  width: 500px;
+  height: 500px;
+  border-radius: 250px;
+  background-color: #555;
+  mix-blend-mode: hue;
 `;
+  // background-color: ${(props) => (props.propNum ? propColors[props.propNum] : 'purple')};
 
 const Digit = styled.div`
   position: absolute;
   font-size: 290px;
   font-family: Inter, InterPre, Helvetica, sans-serif;
   font-weight: 750;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255,255,255,0.7);
   user-select: none;
   @media screen and (max-width: 576px) {
     font-size: 230px;
@@ -223,70 +213,51 @@ const FirstDigit = styled(Digit)`
 const SecondDigit = styled(Digit)`
   top: 52%;
   left: calc(16px + 6%);
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     left: calc(16px + 16%);
   }
 `;
 
-const Title = styled.h2`
-  font-size: 44px;
-  line-height: 52px;
-  margin-top: 36px;
-  margin-bottom: 45px;
-  font-family: 'ITC Avant Garde', Inter, Helvetica, sans-serif;
-  color: #333;
-  @media screen and (max-width: 768px) {
-    font-size: 26px;
-    line-height: normal;
-    position: relative;
-    top: 20vh;
-  }
-  @media screen and (max-width: 576px) {
-    font-size: 24px;
-    line-height: normal;
-    position: relative;
-    top: 10vh;
-  }
-`;
-
 const Description = styled.div`
-  display: inline-block;
-  margin-top: 30px;
+  position: absolute;
+  right: 20px;
+  font-family: Inter, serif;
+  font-size: 0.875em;
+  line-height: calc(1ex / 0.39);
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 `;
 
-const Bar = styled.div`
-  height: 20px;
-  background: linear-gradient(90deg, blue, red);
-  mix-blend-mode: color;
-  border-radius: 10px;
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
+const PropTitle = styled.h2`
+  font-family: 'ITC Avant Garde', Inter, Helvetica, sans-serif;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  color: white;
+  text-align: center;
+  padding-left: 30px;
+  padding-right: 30px;
 `;
+
+const PropBody = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 
 const ImageContainer = styled.div`
-  display: none;
-  width: 380px;
-  position: relative;
-  top: -200px;
-  margin-bottom: -200px;
+  width: 300px;
   user-select: none;
-  transition: all 1500ms cubic-bezier(0.09, 0.85, 0.11, 0.98);
   filter: drop-shadow(3px 3px 0 white) drop-shadow(12px 12px 0 rgba(0, 0, 0, 0.15))
     drop-shadow(-20px 16px 2px rgba(0, 0, 0, 0.05));
-  @media not all and (hover: none) {
-    &:hover {
-      transform: translate(0, -5px) scale(1.02);
-      filter: drop-shadow(3px 3px 0 white) drop-shadow(14px 15px 0px rgba(0, 0, 0, 0.1))
-        drop-shadow(-23px 19px 3px rgba(0, 0, 0, 0.03));
-    }
-    &:active {
-      transition-duration: 200ms;
-      transform: translate(0, 2px);
-      filter: drop-shadow(3px 3px 0 white) drop-shadow(8px 3px 0px rgba(0, 0, 0, 0.2))
-        drop-shadow(-4px 6px 0 rgba(0, 0, 0, 0.1));
-    }
-  }
+
   @media screen and (max-width: 768px) {
     margin-left: auto;
     margin-right: auto;
@@ -300,39 +271,31 @@ const ImageContainer = styled.div`
     margin-bottom: -120px;
   }
 `;
+// @media not all and (hover: none) {
+//   &:hover {
+//     transform: translate(0, -5px) scale(1.02);
+//     filter: drop-shadow(3px 3px 0 white) drop-shadow(14px 15px 0px rgba(0, 0, 0, 0.1))
+//       drop-shadow(-23px 19px 3px rgba(0, 0, 0, 0.03));
+//   }
+//   &:active {
+//     transition-duration: 200ms;
+//     transform: translate(0, 2px);
+//     filter: drop-shadow(3px 3px 0 white) drop-shadow(8px 3px 0px rgba(0, 0, 0, 0.2))
+//       drop-shadow(-4px 6px 0 rgba(0, 0, 0, 0.1));
+//   }
+// }
 
 const MoreButton = styled.a`
   display: block;
   font-family: Inter, InterPre, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.095em;
   margin-top: 30px;
-  text-align: right;
   text-decoration: none;
   color: blue;
   @media screen and (max-width: 375px) {
     margin-top: 16px;
     font-size: 12px;
   }
-`;
-
-const MorePosition = styled.div`
-  position: absolute;
-  right: 0;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  width: 300px;
-  @media screen and (max-width: 375px) {
-    width: 250px;
-  }
-`;
-
-const LinkUnderline = styled.div`
-  background-color: ${(props) => (props.propNum ? propColors[props.propNum] : 'purple')};
-  height: 10px;
-  width: 100%;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
 `;

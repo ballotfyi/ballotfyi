@@ -7,13 +7,17 @@ const TopHat = () => {
   const router = useRouter();
   const pathSplit = router.asPath.split('-');
   let color = '#000';
+  let isPropPage = false;
   if (pathSplit[0] === '/prop' && pathSplit.length > 1) {
+    isPropPage = true;
     color = propColors[parseInt(pathSplit[1])];
   }
   return (
     <>
       <Link href="/" passHref>
-        <Logo bgColor={color}>ballot.fyi</Logo>
+        <Logo isPropPage={isPropPage} bgColor={color}>
+          ballot.fyi
+        </Logo>
       </Link>
       <Container>
         <LogoBlock>ballot.fyi</LogoBlock>
@@ -67,7 +71,7 @@ const LogoBlock = styled.a`
 `;
 
 const Logo = styled(LogoBlock)`
-  position: fixed;
+  position: ${(props) => (props.isPropPage ? 'fixed' : 'absolute')};
   background-color: ${(props) => (props.bgColor ? props.bgColor : '#000')};
   color: white;
   display: flex;
@@ -100,7 +104,7 @@ const RightSide = styled.div`
 
 const Line = styled.div`
   height: 1px;
-  background-color: black;
+  background-color: #fff;
 `;
 
 const Description = styled.div`
@@ -110,6 +114,7 @@ const Description = styled.div`
   font-size: 12px;
   letter-spacing: 0.095em;
   text-transform: uppercase;
+  color: white;
   @media screen and (max-width: 768px) {
     font-size: 10px;
     font-weight: 400;

@@ -10,8 +10,8 @@ const Styles = createGlobalStyle`
     padding: 0;
     font-family: Georgia, serif;
     font-synthesis: weight style;
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 1em;
+    line-height: calc(1ex / 0.3);
     color: #222;
     @media screen and (max-width: 576px) {
       font-size: 14px;
@@ -22,7 +22,7 @@ const Styles = createGlobalStyle`
   h1 {
     font-family: 'ITC Avant Garde', 'InterPre', sans-serif;
     font-size: 1.8em;
-    line-height: 32px;
+    line-height: calc(1ex / 0.45);
     letter-spacing: -1px;
     @media screen and (min-width: 576px) {
       font-size: 2.25em;
@@ -45,7 +45,7 @@ const Styles = createGlobalStyle`
     color: rgba(0, 0, 0, 0.85);
     font-weight: 850;
     font-size: 1.275em;
-    line-height: 25px;
+    line-height: calc(1ex / 0.47);
     @media screen and (min-width: 576px) {
       font-size: 1.4em;
       line-height: 29px;
