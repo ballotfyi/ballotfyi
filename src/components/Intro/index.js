@@ -3,7 +3,7 @@ import { Row, Col } from 'components/util';
 
 const Intro = () => (
   <IntroBackground>
-    <Row style={{ minHeight: '100vh' }}>
+    <Row style={{ minHeight: '100vh', position: 'relative' }}>
       <Col
         off={{ xs: 1, sm: 1, md: 1, lg: 1, xl: 1, xxl: 1 }}
         span={{ xs: 22, sm: 22, md: 16, lg: 16, xl: 16, xxl: 16 }}
@@ -125,7 +125,7 @@ const RightSide = styled.div`
   width: 50%;
   background-color: rgba(136, 193, 23, 0.85);
   mix-blend-mode: color-dodge;
-  min-height: 100vh;
+  min-height: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -135,17 +135,6 @@ const RightSide = styled.div`
     width: 100%;
     min-height: 300px;
     justify-content: center;
-  }
-`;
-
-const BgForMobile = styled.div`
-  display: none;
-  @media screen and (max-width: 767px) {
-    display: block;
-    background-color: #5a4abc;
-    position: absolute;
-    top: 0;
-    height: 100vh;
   }
 `;
 
@@ -187,7 +176,8 @@ const TruncateRight = styled.div`
   position: absolute;
   right: 0;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   overflow: hidden;
   @media screen and (max-width: 767px) {
     display: none;
@@ -198,7 +188,8 @@ const CircleContainer = styled.div`
   position: absolute;
   right: 0;
   width: 50%;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
 `;
@@ -299,7 +290,6 @@ const Isolate = styled.div`
   isolation: isolate;
   height: 100%;
   width: 100%;
-  top: 0;
 `;
 
 const Overlay = styled.div`

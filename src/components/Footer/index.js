@@ -27,7 +27,7 @@ const Footer = React.forwardRef((props, ref) => {
   const nextAndPrev = currentPropNum
     ? getNextAndPrevPropNum(currentPropNum)
     : { prev: null, next: null };
-  const isHomePage = path === '/';
+  // const isHomePage = path === '/';
   const isMobile = windowWidth < 768;
 
   const items = [
