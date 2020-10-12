@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Row, Col } from 'components/util';
+import { Row, Col, Space } from 'components/util';
 
 const PropHeader = (props) => {
   const { title, dateModified, datePublished } = props;
@@ -21,10 +21,11 @@ const PropHeader = (props) => {
         off={{ xs: 3, sm: 3, md: 4, lg: 3, xl: 3, xxl: 3 }}
         span={{ xs: 18, sm: 16, md: 16, lg: 16, xl: 16, xxl: 16 }}
       >
+        <Space h={10} xsHeight={15} />
         <h1>{title}</h1>
         <DateLine>Published: {dtPublished.toLocaleDateString('en-US', options)}</DateLine>
         {showLastModified && (
-          <DateLine>Last modified: {dtModified.toLocaleDateString('en-US', options)}</DateLine>
+          <DateLine>Updated: {dtModified.toLocaleDateString('en-US', options)}</DateLine>
         )}
       </Col>
     </Row>
@@ -40,7 +41,7 @@ const DateLine = styled.div`
   letter-spacing: 0.045em;
   text-transform: uppercase;
   @media screen and (max-width: 767px) {
-    font-size: 10px;
+    font-size: 0.625em;
     font-weight: 400;
   }
 `;

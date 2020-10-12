@@ -9,10 +9,10 @@ const PrivacyPage = () => {
   return (
     <>
       <HeadContent
-        title="Privacy"
+        title="Privacy @ ballot.fyi"
         description="Ballot.fyi simplifies the California ballot propositions. Read about the project's privacy policy."
         canonicalUrlSlug="privacy"
-        datePublished={new Date(2020, 10, 5)}
+        datePublished={new Date(2020, 10, 12)}
         pageType="page"
       />
       <TopHat />

@@ -14,8 +14,8 @@ const Styles = createGlobalStyle`
     line-height: calc(1ex / 0.3);
     color: #222;
     @media screen and (max-width: 576px) {
-      font-size: 14px;
-      line-height: 22px;
+      font-size: 0.94em;
+      line-height: calc(1ex / 0.3);
     }
   }
 

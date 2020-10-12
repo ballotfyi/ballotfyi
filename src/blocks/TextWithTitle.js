@@ -62,7 +62,7 @@ const Title = styled.h2`
 `;
 const Subtitle = styled.div`
   font-style: italic;
-  font-size: 14px;
+  font-size: 0.875em;
 `;
 
 const Text = styled.div`

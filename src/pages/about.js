@@ -13,10 +13,10 @@ const AboutPage = () => {
     <div>
       {/* Needs canonicalImg image */}
       <HeadContent
-        title="About"
+        title="About ballot.fyi"
         description="Ballot.fyi simplifies the California ballot propositions. Read about the project's principles and the team behind it."
         canonicalUrlSlug="about"
-        datePublished={new Date(2020, 10, 5)}
+        datePublished={new Date(2020, 10, 12)}
         pageType="page"
       />
       <TopHat />

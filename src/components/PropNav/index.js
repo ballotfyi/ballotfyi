@@ -134,9 +134,9 @@ const MaskingCircle = styled.div`
   transition: transform 200ms ease-in;
   opacity: ${(props) => (props.isActive ? 0 : 1)};
   @media screen and (max-width: 767px) {
-    width: 13px;
-    height: 13px;
-    left: -15px;
+    width: 10px;
+    height: 10px;
+    left: -12px;
     border-radius: 8px;
   }
 `;
@@ -154,6 +154,9 @@ const ItemContainer = styled.a`
     text-decoration: none;
     outline: none;
   }
+  @media screen and (max-width: 767px) {
+    margin-bottom: 2px;
+  }
 `;
 
 const Circle = styled.div`
@@ -169,8 +172,8 @@ const Circle = styled.div`
   transition: background-color 300ms ease-in;
   background-color: ${(props) => props.propColor};
   @media screen and (max-width: 767px) {
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     border-radius: 8px;
   }
 `;
