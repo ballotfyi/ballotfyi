@@ -46,7 +46,7 @@ const Footer = React.forwardRef((props, ref) => {
   ];
 
   const linkItems = items.map((item) => (
-    <Link href={item.link} key={item.link} passHref>
+    <Link href={item.link} key={item.link} passHref scroll>
       <FooterItem>{item.label}</FooterItem>
     </Link>
   ));
@@ -55,39 +55,17 @@ const Footer = React.forwardRef((props, ref) => {
       <Set>{linkItems}</Set>
       {isPropPage && isMobile && (
         <Set>
-          <FooterItemWithEnter
-            func={() => {
-              router.push(`/prop-${nextAndPrev.prev}`);
-            }}
-          >
+          <FooterItem href={`/prop-${nextAndPrev.prev}`} passHref scroll>
             Prev
-          </FooterItemWithEnter>
-          <FooterItemWithEnter
-            func={() => {
-              router.push(`/prop-${nextAndPrev.next}`);
-            }}
-          >
+          </FooterItem>
+          <FooterItem href={`/prop-${nextAndPrev.next}`} passHref scroll>
             Next
-          </FooterItemWithEnter>
+          </FooterItem>
         </Set>
       )}
     </Container>
   );
 });
-
-const FooterItemWithEnter = ({ children, func }) => (
-  <FooterItem
-    tabIndex="0"
-    onClick={func}
-    onKeyDown={(e) => {
-      if (e.keyCode === 13) {
-        func();
-      }
-    }}
-  >
-    {children}
-  </FooterItem>
-);
 
 export default Footer;
 

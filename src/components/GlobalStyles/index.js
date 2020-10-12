@@ -93,4 +93,11 @@ const Styles = createGlobalStyle`
     }
   }
 
+  pre {
+    white-space: normal;
+    background-color: #eee;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
 `;
