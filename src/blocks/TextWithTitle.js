@@ -60,6 +60,7 @@ const Title = styled.h2`
   margin: 20px 0 3px 0;
   text-transform: none;
 `;
+
 const Subtitle = styled.div`
   font-style: italic;
   font-size: 0.875em;
