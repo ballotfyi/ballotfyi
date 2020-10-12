@@ -20,7 +20,7 @@ const Styles = createGlobalStyle`
   }
 
   h1 {
-    font-family: 'ITC Avant Garde', 'InterPre', sans-serif;
+    font-family: 'ITC Avant Garde', Inter, 'InterPre', sans-serif;
     font-size: 1.8em;
     line-height: calc(1ex / 0.45);
     letter-spacing: -1px;

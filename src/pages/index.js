@@ -56,9 +56,9 @@ export async function getStaticProps() {
   };
 }
 
-// export const config = {
-//   amp: 'hybrid',
-// };
+export const config = {
+  amp: 'hybrid',
+};
 
 //---------------------------------------------------
 const SeparateLayer = styled.div`
