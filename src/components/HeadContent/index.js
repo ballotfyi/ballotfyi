@@ -23,7 +23,7 @@ const HeadContent = (props) => {
     <>
       <Head>
         <title>{headline}</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href={canonicalUrlBase + "favicon.ico"} />
         <link rel="canonical" href={canonicalUrlBase + canonicalUrlSlug} />
         {/* <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> */}
         <meta name="description" content={description} />
@@ -45,7 +45,7 @@ const HeadContent = (props) => {
           <meta
             prefix="og: http://ogp.me/ns#"
             property="og:image"
-            content={socialImage || canonicalImage}
+            content={canonicalUrlBase + (socialImage || canonicalImage)}
           />
         )}
         {(socialImage || canonicalImage) && (
@@ -74,7 +74,7 @@ const HeadContent = (props) => {
         <meta name="twitter:title" content={socialTitle || title} />
         <meta name="twitter:description" content={socialDescription || description} />
         {(socialImage || canonicalImage) && (
-          <meta name="twitter:image" content={socialImage || canonicalImage} />
+          <meta name="twitter:image" content={canonicalUrlBase + (socialImage || canonicalImage)} />
         )}
         {(socialImage || canonicalImage) && (
           <meta name="twitter:image:alt" content={socialImageAlt || canonicalImageAlt} />
@@ -85,17 +85,17 @@ const HeadContent = (props) => {
         <meta name="application-name" content="ballot.fyi" />
         <meta name="apple-mobile-web-app-title" content="ballot.fyi" />
         {/* TODO actually create these assets */}
-        <link rel="apple-touch-icon" href="./static/touch/touch-icon-iphone-retina.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="./static/touch/touch-icon-ipad.png" />
+        <link rel="apple-touch-icon" href={canonicalUrlBase + 'static/touch/touch-icon-iphone-retina.png'} />
+        <link rel="apple-touch-icon" sizes="152x152" href={canonicalUrlBase + 'static/touch/touch-icon-ipad.png'} />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="./static/touch/touch-icon-iphone-retina.png"
+          href={canonicalUrlBase + 'static/touch/touch-icon-iphone-retina.png'}
         />
         <link
           rel="apple-touch-icon"
           sizes="167x167"
-          href="./static/touch/touch-icon-ipad-retina.png"
+          href={canonicalUrlBase + "static/touch/touch-icon-ipad-retina.png"}
         />
       </Head>
 
