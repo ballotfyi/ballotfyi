@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+
+<url>
+  <loc>https://www.ballot.fyi/</loc>
+  <lastmod>2020-10-12T21:33:47+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.ballot.fyi/prop-14</loc>
+  <lastmod>2020-10-12T21:33:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.ballot.fyi/prop-15</loc>
+  <lastmod>2020-10-12T21:33:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.ballot.fyi/prop-16</loc>
+  <lastmod>2020-10-12T21:33:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.ballot.fyi/prop-17</loc>
+  <lastmod>2020-10-12T21:33:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.ballot.fyi/prop-18</loc>
+  <lastmod>2020-10-12T21:33:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.ballot.fyi/prop-19</loc>
+  <lastmod>2020-10-12T21:33:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.ballot.fyi/prop-20</loc>
+  <lastmod>2020-10-12T21:33:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.ballot.fyi/prop-21</loc>
+  <lastmod>2020-10-12T21:33:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.ballot.fyi/prop-22</loc>
+  <lastmod>2020-10-12T21:33:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.ballot.fyi/prop-23</loc>
+  <lastmod>2020-10-12T21:33:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.ballot.fyi/prop-24</loc>
+  <lastmod>2020-10-12T21:33:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.ballot.fyi/prop-25</loc>
+  <lastmod>2020-10-12T21:33:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.ballot.fyi/about</loc>
+  <lastmod>2020-10-12T21:33:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.ballot.fyi/privacy</loc>
+  <lastmod>2020-10-12T21:33:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
+</urlset>
