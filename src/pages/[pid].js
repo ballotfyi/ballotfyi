@@ -99,6 +99,7 @@ export async function getStaticPaths() {
 //-- such as data needed to render page
 //-- console.log's don't work
 export async function getStaticProps({ params }) {
+  if(!params) return {};
   const pageId = params.pid.split('-')[1];
   const pageDataRef = await db.doc(`pages/${pageId}`).get();
   if (!pageDataRef.exists) return;
