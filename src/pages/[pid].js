@@ -131,7 +131,6 @@ export async function getStaticProps({ params }) {
       ...pageData,
       ...params,
     },
-    revalidate: 1,
   };
 }
 
