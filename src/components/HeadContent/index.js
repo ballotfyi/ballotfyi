@@ -89,7 +89,7 @@ const HeadContent = (props) => {
           sizes="180x180"
           href={canonicalUrlBase + '/static/touch/apple-touch-icon.png'}
         />
-        <link rel="manifest" href={canonicalUrlBase + 'site.webmanifest'} />
+        <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
       {/* Structured Data  */}
