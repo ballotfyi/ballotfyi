@@ -18,14 +18,14 @@ const Snippet = (props) => {
   if (links && links.length > 0 && links[0].url) {
     renderedLinks = links.map((link, i) => {
       return (
-        <React.Fragment key={i}>
+        <LinkAndIcon key={i}>
           <LinkOutStyle>
             <LinkOutIcon />
           </LinkOutStyle>
           <StoryLink href={link.url} target="_blank" rel="noreferred noopener">
             {link.label}
           </StoryLink>
-        </React.Fragment>
+        </LinkAndIcon>
       );
     });
   }
@@ -39,10 +39,10 @@ const Snippet = (props) => {
     ) : null;
     return (
       <Container>
-        <TitleContainer>
+        <div>
           <h3>{title}</h3>
           {links && <LinkContainer>{renderedLinks}</LinkContainer>}
-        </TitleContainer>
+        </div>
         <JsxParser jsx={`${description.markup}`} />
         {buttonOrContent}
       </Container>
@@ -52,10 +52,10 @@ const Snippet = (props) => {
     const textKey = `prop${propNum}snipText${index}`;
     return (
       <Container>
-        <TitleContainer>
+        <div>
           <h3>{title}</h3>
           {links && <LinkContainer>{renderedLinks}</LinkContainer>}
-        </TitleContainer>
+        </div>
         <JsxParser jsx={`${description.markup}`} />
         <ExpandButton id={btnKey} name="more" on={`tap:${textKey}.show`}>
           {textOnButton}
@@ -121,11 +121,6 @@ const Container = styled.div`
   margin-bottom: 50px;
 `;
 
-const TitleContainer = styled.div`
-  @media screen and (max-width: 767px) {
-    text-align: center;
-  }
-`;
 
 const ExpandButton = styled.button`
   margin: 15px 0 15px 0;
@@ -151,9 +146,6 @@ const ExpandButton = styled.button`
 const LinkContainer = styled.div`
   display: flex;
   margin-bottom: -5px;
-  @media screen and (max-width: 767px) {
-    justify-content: center;
-  }
 `;
 const StoryLink = styled.a`
   display: block;
@@ -168,5 +160,9 @@ const LinkOutStyle = styled.div`
   height: 20px;
   min-width: 20px;
   width: 20px;
-  padding-top: 3px;
+`;
+
+const LinkAndIcon = styled.div`
+  display: flex;
+  align-items: center;
 `;
