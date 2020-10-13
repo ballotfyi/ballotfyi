@@ -104,7 +104,7 @@ export const ArticleCol = (props) => (
 export const TitleCol = (props) => (
   <Col
     off={{ xs: 3, sm: 3, md: 4, lg: 3, xl: 3, xxl: 3 }}
-    span={{ xs: 18, sm: 18, md: 14, lg: 12, xl: 11, xxl: 10 }}
+    span={{ xs: 20, sm: 18, md: 14, lg: 12, xl: 11, xxl: 10 }}
   >
     {props.children}
   </Col>

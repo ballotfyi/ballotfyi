@@ -113,7 +113,7 @@ const Section = styled.div`
   font-family: -apple-system-body, Helvetica Neue, Helvetica, 'Helvetica-bd', sans-serif;
   font-weight: bold;
   color: #fff;
-  font-size: 13pt;
+  font-size: 1.063em;
   font-weight: normal;
   max-width: 360px;
   margin: 40px auto;
@@ -122,7 +122,13 @@ const Section = styled.div`
     word-wrap: break-word;
     margin-bottom: 10px;
     line-height: 22px;
+    @media screen and (max-width: 767px) {
+      max-width: 170px;
+      font-size: 1em;
+      line-height: calc(1ex / 0.4);
+    }
   }
+
 `;
 const Clear = styled.div`
   clear: both;
