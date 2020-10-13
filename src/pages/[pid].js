@@ -98,8 +98,7 @@ export async function getStaticPaths() {
 //-- returned object gets sent to default exported object
 //-- such as data needed to render page
 //-- console.log's don't work
-export async function getStaticProps({ params }) {
-  if(!params) return {};
+export async function getStaticProps({params}) {
   const pageId = params.pid.split('-')[1];
   const pageDataRef = await db.doc(`pages/${pageId}`).get();
   if (!pageDataRef.exists) return;

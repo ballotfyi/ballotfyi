@@ -38,3 +38,5 @@ yarn-error.log*
 src/pages/props/*
 
 src/pages/index.min.css
+
+.vercel
