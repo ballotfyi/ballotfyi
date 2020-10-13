@@ -11,6 +11,21 @@ import PropHeader from 'components/PropHeader';
 import AmpBlockLoader from 'components/AmpBlockLoader';
 import { useAmp } from 'next/amp';
 
+const blockList = {
+  Chat: dynamic(() => import(`../blocks/Chat`), { loading: GhostLoader }),
+  Img: dynamic(() => import(`../blocks/Img`), { loading: GhostLoader }),
+  IntroText: dynamic(() => import(`../blocks/IntroText`), { loading: GhostLoader }),
+  Links: dynamic(() => import(`../blocks/Links`), { loading: GhostLoader }),
+  Result: dynamic(() => import(`../blocks/Result`), { loading: GhostLoader }),
+  SectionTitle: dynamic(() => import(`../blocks/SectionTitle`), { loading: GhostLoader }),
+  SummaryList: dynamic(() => import(`../blocks/SummaryList`), { loading: GhostLoader }),
+  TextWithTitle: dynamic(() => import(`../blocks/TextWithTitle`), { loading: GhostLoader }),
+  VerticalSummaryList: dynamic(() => import(`../blocks/VerticalSummaryList`), {
+    loading: GhostLoader,
+  }),
+  VideoCarousel: dynamic(() => import(`../blocks/VideoCarousel`), { loading: GhostLoader }),
+};
+
 const PropPage = (props) => {
   const { title, blocks, dateModified, datePublished } = props;
   const isAmp = useAmp();
@@ -27,9 +42,7 @@ const PropPage = (props) => {
   if (!isAmp) {
     //-- dynamically import blocks. this doesn't work in AMP
     const renderedBlocks = blocks.map((block, i) => {
-      const BlockComponent = dynamic(() => import(`../blocks/${block.type}`), {
-        loading: GhostLoader,
-      });
+      const BlockComponent = blockList[block.type];
       return <BlockComponent key={i} data={block.data} />;
     });
 

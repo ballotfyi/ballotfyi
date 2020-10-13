@@ -121,7 +121,6 @@ const Container = styled.div`
   margin-bottom: 50px;
 `;
 
-
 const ExpandButton = styled.button`
   margin: 15px 0 15px 0;
   padding: 9px 20px;

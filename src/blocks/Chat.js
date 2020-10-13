@@ -128,7 +128,6 @@ const Section = styled.div`
       line-height: calc(1ex / 0.4);
     }
   }
-
 `;
 const Clear = styled.div`
   clear: both;
