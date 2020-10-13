@@ -84,26 +84,8 @@ const HeadContent = (props) => {
 
         <meta name="application-name" content="ballot.fyi" />
         <meta name="apple-mobile-web-app-title" content="ballot.fyi" />
-        {/* TODO actually create these assets */}
-        <link
-          rel="apple-touch-icon"
-          href={canonicalUrlBase + 'static/touch/touch-icon-iphone-retina.png'}
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="152x152"
-          href={canonicalUrlBase + 'static/touch/touch-icon-ipad.png'}
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href={canonicalUrlBase + 'static/touch/touch-icon-iphone-retina.png'}
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="167x167"
-          href={canonicalUrlBase + 'static/touch/touch-icon-ipad-retina.png'}
-        />
+        <link rel="apple-touch-icon" sizes="180x180" href={canonicalUrlBase + "/static/touch/apple-touch-icon.png"} />
+        <link rel="manifest" href={canonicalUrlBase + 'site.webmanifest'} />
       </Head>
 
       {/* Structured Data  */}
