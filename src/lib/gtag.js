@@ -2,7 +2,7 @@ export const GA_TRACKING_ID = 'UA-83939332-1';
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url) => {
-  if(window.gtag) {
+  if (window.gtag) {
     window.gtag('config', GA_TRACKING_ID, {
       page_path: url,
     });
@@ -11,7 +11,7 @@ export const pageview = (url) => {
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/events
 export const event = ({ action, category, label, value }) => {
-  if(window.gtag) {
+  if (window.gtag) {
     window.gtag('event', action, {
       event_category: category,
       event_label: label,
