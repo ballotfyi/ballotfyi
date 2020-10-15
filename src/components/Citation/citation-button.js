@@ -14,7 +14,7 @@ const CitationButton = (props) => {
     }
   };
 
-  const { onClick, onTouchStart, isActive } = props;
+  const { onClick, onTouchStart, isActive, on } = props;
   return (
     <Icon
       onClick={onClick}
@@ -22,7 +22,7 @@ const CitationButton = (props) => {
       onMouseLeave={handleMouseLeave}
       onTouchEnd={onTouchStart}
       isActive={isActive}
-      on={props.on}
+      on={on}
     >
       <DotContainer>
         <Dot isActive={isActive} />

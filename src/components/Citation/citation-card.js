@@ -1,14 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { LinkOutIcon, CloseIcon } from 'components/icons';
-
+import { useAmp } from 'next/amp';
 const CitationCard = (props) => {
   const { publication, headline, quote, url, noLink, toggleVisibility } = props;
+  const isAmp = useAmp();
   return (
     <Card>
       <Row>
         <CardLabel>Source</CardLabel>
-        <DismissIcon name="dimiss" onClick={() => toggleVisibility(false)} on={toggleVisibility}>
+        <DismissIcon
+          name="dimiss"
+          onClick={() => toggleVisibility(false)}
+          on={isAmp ? toggleVisibility : ''}
+        >
           <CloseIcon color="blue" />
         </DismissIcon>
       </Row>
@@ -22,7 +27,11 @@ const CitationCard = (props) => {
         </SourceBody>
       )}
       <ActionRow>
-        <Dismiss name="dimiss" onClick={() => toggleVisibility(false)} on={toggleVisibility}>
+        <Dismiss
+          name="dimiss"
+          onClick={() => toggleVisibility(false)}
+          on={isAmp ? toggleVisibility : ''}
+        >
           Dismiss
         </Dismiss>
         {!noLink && (
