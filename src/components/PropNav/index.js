@@ -110,6 +110,7 @@ const NavItem = (props) => {
 
 const MenuContainer = styled.div`
   position: fixed;
+  z-index: 30;
   bottom: 0;
   display: flex;
   flex-direction: column;

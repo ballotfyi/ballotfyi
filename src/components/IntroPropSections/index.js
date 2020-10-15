@@ -193,7 +193,7 @@ const FirstDigit = styled(Digit)`
   top: 38%;
   left: 16px;
   @media screen and (max-width: 767px) {
-    left: 40%;
+    left: 38%;
     top: 2%;
   }
 `;
@@ -203,7 +203,7 @@ const SecondDigit = styled(Digit)`
   left: calc(16px + 6%);
   @media screen and (max-width: 767px) {
     top: 14%;
-    left: calc(16px + 42%);
+    left: calc(16px + 41%);
   }
 `;
 

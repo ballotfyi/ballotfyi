@@ -83,9 +83,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   position: fixed;
+  bottom: 0;
+  z-index: 30;
   width: 100vw;
   box-sizing: border-box;
-  bottom: 0;
   background-color: white;
   box-shadow: 0 -1px 5px 3px rgba(20, 20, 0, 0.043);
   @media screen and (max-width: 767px) {
