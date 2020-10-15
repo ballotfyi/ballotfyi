@@ -79,7 +79,7 @@ const NavItem = (props) => {
     setIsClicked(true);
   };
   const isActive = propNum === currentPropNum;
-  const color = propColors[propNum];
+  const color = propColors(propNum);
   return (
     <Link href={`/prop-${propNum}`} passHref>
       <ItemContainer
@@ -152,6 +152,7 @@ const ItemContainer = styled.a`
   min-height: 28px;
   text-decoration: none;
   outline: none;
+  opacity: 0.9;
   &:focus {
     text-decoration: none;
     outline: none;

@@ -11,7 +11,7 @@ const TopHat = () => {
 
   const isPropPage = propPageRegex.test(path);
   const currentPropNum = isPropPage ? path.match(propPageRegex)[0].split('-')[1] : null;
-  const color = currentPropNum ? propColors[currentPropNum] : '#000';
+  const color = currentPropNum ? propColors(currentPropNum) : '#000';
 
   return (
     <>
@@ -63,7 +63,7 @@ const Line = styled.div`
 const Description = styled.div`
   padding-top: 4px;
   font-family: Inter, Helvetica;
-  font-weight: 300;
+  font-weight: 450;
   font-size: 12px;
   letter-spacing: 0.095em;
   text-transform: uppercase;

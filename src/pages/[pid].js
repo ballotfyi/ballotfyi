@@ -10,6 +10,7 @@ import withBasicTemplate from 'template/basic';
 import PropHeader from 'components/PropHeader';
 import AmpBlockLoader from 'components/AmpBlockLoader';
 import { useAmp } from 'next/amp';
+import NoiseBackground from 'components/NoiseBackground';
 
 const blockList = {
   Chat: dynamic(() => import(`../blocks/Chat`), { loading: GhostLoader }),
@@ -27,7 +28,7 @@ const blockList = {
 };
 
 const PropPage = (props) => {
-  const { title, blocks, dateModified, datePublished } = props;
+  const { title, blocks, dateModified, datePublished, propNum } = props;
   const isAmp = useAmp();
   //-- convert stringified dates back to javascript DateTime
   let headProps = {};
@@ -49,9 +50,11 @@ const PropPage = (props) => {
     return (
       <>
         <HeadContent pageType={'article'} {...headProps} />
-        <TopHat />
         <PropNav />
-        <PropHeader dateModified={dateModified} datePublished={datePublished} title={title} />
+        <NoiseBackground propNum={propNum}>
+          <TopHat />
+          <PropHeader dateModified={dateModified} datePublished={datePublished} title={title} />
+        </NoiseBackground>
         {renderedBlocks}
         <Space h={120} />
         <Footer />
@@ -61,9 +64,11 @@ const PropPage = (props) => {
     return (
       <>
         <HeadContent pageType={'article'} {...headProps} />
-        <TopHat />
         <PropNav />
-        <PropHeader dateModified={dateModified} datePublished={datePublished} title={title} />
+        <NoiseBackground>
+          <TopHat />
+          <PropHeader dateModified={dateModified} datePublished={datePublished} title={title} />
+        </NoiseBackground>
         <AmpBlockLoader blocks={blocks} />
         <Space h={120} />
         <Footer />

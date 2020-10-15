@@ -19,13 +19,15 @@ const PropHeader = (props) => {
     <Row>
       <Col
         off={{ xs: 3, sm: 3, md: 4, lg: 3, xl: 3, xxl: 3 }}
-        span={{ xs: 18, sm: 16, md: 16, lg: 16, xl: 16, xxl: 16 }}
+        span={{ xs: 20, sm: 18, md: 16, lg: 16, xl: 16, xxl: 16 }}
       >
         <Space h={10} xsHeight={15} />
         <h1>{title}</h1>
         <DateLine>Published: {dtPublished.toLocaleDateString('en-US', options)}</DateLine>
         {showLastModified && (
-          <DateLine>Updated: {dtModified.toLocaleDateString('en-US', options)}</DateLine>
+          <div>
+            <DateLine>Updated: {dtModified.toLocaleDateString('en-US', options)}</DateLine>
+          </div>
         )}
       </Col>
     </Row>
@@ -35,9 +37,10 @@ const PropHeader = (props) => {
 export default PropHeader;
 
 const DateLine = styled.div`
-  font-family: Inter, Helvetica;
-  font-weight: 300;
-  font-size: 12px;
+  font-family: Inter, Helvetica, sans-serif;
+  font-weight: 450;
+  font-size: 11px;
+  line-height: calc(1ex / 0.33);
   letter-spacing: 0.045em;
   text-transform: uppercase;
   @media screen and (max-width: 767px) {
@@ -45,3 +48,8 @@ const DateLine = styled.div`
     font-weight: 400;
   }
 `;
+// padding: 0 20px;
+// display: inline-block;
+// color: white;
+// border-radius: 10px;
+// background-color: rgba(0,0,0,0.7);

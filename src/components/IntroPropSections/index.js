@@ -130,8 +130,8 @@ const Overlay = styled.div`
   height: 100%;
   background: linear-gradient(
     90deg,
-    ${(props) => (props.propNum ? propColors[props.propNum] : 'purple')},
-    ${(props) => (props.propNum ? propColors[`${parseInt(props.propNum - 1)}`] : 'purple')}
+    ${(props) => (props.propNum ? propColors(props.propNum) : 'purple')},
+    ${(props) => (props.propNum ? propColors(props.propNum + 1) : 'purple')}
   );
   box-shadow: 0px 30px 60px -12px rgba(50, 50, 93, 0.15), 0px 18px 36px -18px rgba(0, 0, 0, 0.22);
   mix-blend-mode: lighten;
@@ -165,7 +165,7 @@ const Overlay2 = styled.div`
     height: 500px;
   }
 `;
-// background-color: ${(props) => (props.propNum ? propColors[props.propNum] : 'purple')};
+// background-color: ${(props) => (props.propNum ? propColors(props.propNum) : 'purple')};
 
 const Digit = styled.div`
   position: absolute;
