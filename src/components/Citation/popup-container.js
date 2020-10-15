@@ -104,7 +104,6 @@ const PopupPosition = styled.span`
   position: absolute;
   right: calc(5% + ${popupDimensions.width}px);
   transform: translateY(-${popupDimensions.height / 2}px);
-  z-index: 3;
   @media screen and (max-width: 767px) {
     position: static;
     width: 100%;
@@ -119,13 +118,13 @@ const Container = styled.span`
   border-radius: 4px;
   box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.15), 0 18px 36px -18px rgba(0, 0, 0, 0.22);
   @media screen and (max-width: 767px) {
-    box-shadow: 0 5px 60px -12px rgba(50, 50, 93, 0.25), 0 10px 36px -18px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 -5px 60px -12px rgba(50, 50, 93, 0.25), 0 -10px 36px -18px rgba(0, 0, 0, 0.3);
     border-radius: 0;
-    max-height: 270px;
     position: fixed;
     width: 100%;
     left: 0;
     bottom: 0;
-    z-index: 3;
+    z-index: 40;
+    padding-bottom: 36px;
   }
 `;

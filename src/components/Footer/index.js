@@ -84,7 +84,7 @@ const Container = styled.div`
   justify-content: center;
   position: fixed;
   bottom: 0;
-  z-index: 30;
+  z-index: 50;
   width: 100vw;
   box-sizing: border-box;
   background-color: white;
