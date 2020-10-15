@@ -17,15 +17,15 @@ const goodColorPairs = [
 
 const NoiseBackground = (props) => {
   const { propNum } = props;
-
+  const num = parseInt(propNum);
+  if(!num) return null;
   return (
     <>
-      <Background col={goodColorPairs[propNum - 14][0]}>
+      <Background col={goodColorPairs[num - 14][0]}>
         <Isolate>
           <Noise />
-          <Overlay col={goodColorPairs[propNum - 14][1]} />
+          <Overlay col={goodColorPairs[num - 14][1]} />
         </Isolate>
-        {/* <Overlay2 propNum={propNum} /> */}
         <Invisible>{props.children}</Invisible>
       </Background>
       <ShiftUp>{props.children}</ShiftUp>
