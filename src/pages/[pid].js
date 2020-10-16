@@ -65,7 +65,7 @@ const PropPage = (props) => {
       <>
         <HeadContent pageType={'article'} {...headProps} />
         <PropNav />
-        <NoiseBackground>
+        <NoiseBackground propNum={propNum}>
           <TopHat />
           <PropHeader dateModified={dateModified} datePublished={datePublished} title={title} />
         </NoiseBackground>
