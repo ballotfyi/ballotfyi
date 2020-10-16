@@ -75,6 +75,7 @@ const Overlay = styled.div`
 
 const ShiftUp = styled.div`
   position: absolute;
+  width: 100%;
   top: 0;
   background-color: transparent;
 `;
