@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { propColors } from 'components/attributes';
+import { useAmp } from 'next/amp';
 
 const TopHat = () => {
   const router = useRouter();
@@ -13,9 +14,12 @@ const TopHat = () => {
   const currentPropNum = isPropPage ? path.match(propPageRegex)[0].split('-')[1] : null;
   const color = currentPropNum ? propColors(currentPropNum) : '#000';
 
+  const isAmp = useAmp();
+  const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
+  const ampAddon = isAmp ? (isProd ? '.amp' : '?amp=1') : '';
   return (
     <>
-      <Link href="/" passHref>
+      <Link href={`/` + ampAddon} passHref>
         <Logo isPropPage={isPropPage} bgColor={color}>
           ballot.fyi
         </Logo>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { getNextAndPrevPropNum } from 'components/util';
+import { useAmp } from 'next/amp';
 
 const Footer = React.forwardRef((props, ref) => {
   const [windowWidth, setWindowWidth] = useState(1000);
@@ -29,7 +30,9 @@ const Footer = React.forwardRef((props, ref) => {
     : { prev: null, next: null };
   // const isHomePage = path === '/';
   const isMobile = windowWidth < 768;
-
+  const isAmp = useAmp();
+  const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
+  const ampAddon = isAmp ? (isProd ? '.amp' : '?amp=1') : '';
   const items = [
     {
       label: 'Home',
@@ -51,7 +54,7 @@ const Footer = React.forwardRef((props, ref) => {
   const linkItems = items.map((item) => {
     if (!isPropPage || (isPropPage && item.showOnPropPages)) {
       return (
-        <Link href={item.link} key={item.link} passHref scroll>
+        <Link href={item.link + ampAddon} key={item.link} passHref scroll>
           <FooterItem>{item.label}</FooterItem>
         </Link>
       );
@@ -64,10 +67,10 @@ const Footer = React.forwardRef((props, ref) => {
       <Set>{linkItems}</Set>
       {isPropPage && isMobile && (
         <Set>
-          <FooterItem href={`/prop-${nextAndPrev.prev}`} passHref scroll>
+          <FooterItem href={`/prop-${nextAndPrev.prev}` + ampAddon} passHref scroll>
             {`< `}Prev
           </FooterItem>
-          <FooterItem href={`/prop-${nextAndPrev.next}`} passHref scroll>
+          <FooterItem href={`/prop-${nextAndPrev.next}` + ampAddon} passHref scroll>
             Next{` >`}
           </FooterItem>
         </Set>

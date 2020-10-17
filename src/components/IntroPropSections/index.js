@@ -3,8 +3,13 @@ import styled from 'styled-components';
 import Link from 'next/link';
 // import { Row, Col, Space } from 'components/util';
 import { propColors } from 'components/attributes';
+import { useAmp } from 'next/amp';
 
 const IntroPropSections = (props) => {
+  const isAmp = useAmp();
+  const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
+  const ampAddon = isAmp ? (isProd ? '.amp' : '?amp=1') : '';
+
   const sectionsRendered = props.sections.map((section) => {
     const { propNum, title, description } = section;
     const firstDigit = propNum.toString().substring(0, 1);
@@ -13,7 +18,7 @@ const IntroPropSections = (props) => {
       <PropSection key={propNum} id={`#prop-${propNum}-intro`}>
         <FirstDigit>{firstDigit}</FirstDigit>
         <SecondDigit>{secondDigit}</SecondDigit>
-        <Link href={`/prop-${propNum}`} passHref>
+        <Link href={`/prop-${propNum}` + ampAddon} passHref>
           <InnerContainer>
             <Isolate>
               <Noise propNum={parseInt(propNum)} />
@@ -40,7 +45,7 @@ const IntroPropSections = (props) => {
         </Link>
         <Description>
           {description}
-          <Link href={`/prop-${propNum}`} passHref>
+          <Link href={`/prop-${propNum}` + ampAddon} passHref>
             <MoreButton>
               Read more{' '}
               <span role="img" aria-label="arrow">

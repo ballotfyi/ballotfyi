@@ -18,7 +18,9 @@ const PropNav = () => {
     ? getNextAndPrevPropNum(currentPropNum)
     : { prev: null, next: null };
   // const isHomePage = path === '/';
+  const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
 
+  const ampAddon = isAmp ? (isProd ? '.amp' : '?amp=1') : '';
   const seq = Array.from(Array(12).keys());
   const listItems = seq.map((n) => {
     const propNum = n + 14;
@@ -36,10 +38,10 @@ const PropNav = () => {
   return (
     <MenuContainer id="propNav">
       {listItems}
-      <Link href={`/prop-${nextAndPrev.prev}`} passHref>
+      <Link href={`/prop-${nextAndPrev.prev}` + ampAddon} passHref>
         <NavBtn>Prev</NavBtn>
       </Link>
-      <Link href={`/prop-${nextAndPrev.next}`} passHref>
+      <Link href={`/prop-${nextAndPrev.next}` + ampAddon} passHref>
         <NavBtn>Next</NavBtn>
       </Link>
     </MenuContainer>
@@ -80,8 +82,10 @@ const NavItem = (props) => {
   };
   const isActive = propNum === currentPropNum;
   const color = propColors(propNum);
+  const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
+  const ampAddon = isAmp ? (isProd ? '.amp' : '?amp=1') : '';
   return (
-    <Link href={`/prop-${propNum}`} passHref>
+    <Link href={`/prop-${propNum}` + ampAddon} passHref>
       <ItemContainer
         data-menuanchor={sectionId}
         onMouseEnter={() => setIsHovered(true)}

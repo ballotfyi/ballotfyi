@@ -18,7 +18,7 @@ const goodColorPairs = [
 const NoiseBackground = (props) => {
   const { propNum } = props;
   const num = parseInt(propNum);
-  if(!num) return null;
+  if (!num) return null;
   return (
     <>
       <Background col={goodColorPairs[num - 14][0]}>
