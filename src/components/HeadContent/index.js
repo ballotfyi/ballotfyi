@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import StructuredData from 'components/StructuredData';
+import {join} from 'path';
 
 const HeadContent = (props) => {
   const {
@@ -17,14 +18,16 @@ const HeadContent = (props) => {
     socialImageAlt,
   } = props;
   const headline = `${title} → ballot.fyi`;
-  const canonicalUrlBase = 'https://www.ballot.fyi/';
-
+  // const canonicalUrlBase = 'https://www.ballot.fyi/';
+  const composeLinkUrl = (suffix) => {
+    return 'https://' + join('www.ballot.fyi/', suffix);
+  }
   return (
     <>
       <Head>
         <title>{headline}</title>
-        <link rel="icon" href={canonicalUrlBase + 'favicon.ico'} />
-        <link rel="canonical" href={canonicalUrlBase + canonicalUrlSlug} />
+        <link rel="icon" href={composeLinkUrl('favicon.ico') }/>
+        <link rel="canonical" href={composeLinkUrl(canonicalUrlSlug)} />
         {/* <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> */}
         <meta name="description" content={description} />
         <meta name="keywords" content="California, Nov 2020, propositions" />
@@ -32,7 +35,7 @@ const HeadContent = (props) => {
         <meta
           prefix="og: http://ogp.me/ns#"
           property="og:url"
-          content={canonicalUrlBase + canonicalUrlSlug}
+          content={composeLinkUrl(canonicalUrlSlug)}
         />
         <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
         <meta prefix="og: http://ogp.me/ns#" property="og:title" content={socialTitle || title} />
@@ -45,7 +48,7 @@ const HeadContent = (props) => {
           <meta
             prefix="og: http://ogp.me/ns#"
             property="og:image"
-            content={canonicalUrlBase + (socialImage || canonicalImage)}
+            content={composeLinkUrl((socialImage || canonicalImage))}
           />
         )}
         {(socialImage || canonicalImage) && (
@@ -70,11 +73,11 @@ const HeadContent = (props) => {
           />
         )}
 
-        <meta name="twitter:url" content={canonicalUrlBase + canonicalUrlSlug} />
+        <meta name="twitter:url" content={composeLinkUrl(canonicalUrlSlug)} />
         <meta name="twitter:title" content={socialTitle || title} />
         <meta name="twitter:description" content={socialDescription || description} />
         {(socialImage || canonicalImage) && (
-          <meta name="twitter:image" content={canonicalUrlBase + (socialImage || canonicalImage)} />
+          <meta name="twitter:image" content={composeLinkUrl((socialImage || canonicalImage))} />
         )}
         {(socialImage || canonicalImage) && (
           <meta name="twitter:image:alt" content={socialImageAlt || canonicalImageAlt} />
@@ -87,7 +90,7 @@ const HeadContent = (props) => {
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href={canonicalUrlBase + '/static/touch/apple-touch-icon.png'}
+          href={composeLinkUrl('/static/touch/apple-touch-icon.png')}
         />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
