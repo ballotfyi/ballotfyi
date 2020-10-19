@@ -1,6 +1,7 @@
-import Document from 'next/document';
+// import Document from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import stylesCss from '!raw-loader!./index.min.css';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 export default class CustomDocument extends Document {
   static async getInitialProps(ctx) {
@@ -30,5 +31,16 @@ export default class CustomDocument extends Document {
     } finally {
       sheet.seal();
     }
+  }
+  render() {
+    return (
+      <Html lang="en">
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
   }
 }
