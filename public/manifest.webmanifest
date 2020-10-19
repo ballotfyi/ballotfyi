@@ -20,7 +20,7 @@
   "background_color": "#333",
   "display": "minimal-ui",
   "scope": "/",
-  "theme_color": "#333",
+  "theme_color": "#333333",
   "shortcuts": [
     {
       "name": "About ballot.fyi",
