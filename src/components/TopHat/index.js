@@ -16,7 +16,7 @@ const TopHat = () => {
 
   const isAmp = useAmp();
   const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
-  const ampAddon = isAmp ? (isProd ? '.amp' : '?amp=1') : '';
+  const ampAddon = isAmp ? (isProd ? 'index.amp' : '?amp=1') : '';
   return (
     <>
       <Link href={`/` + ampAddon} passHref>

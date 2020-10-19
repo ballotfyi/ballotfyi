@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import StructuredData from 'components/StructuredData';
-import {join} from 'path';
+import { join } from 'path';
 
 const HeadContent = (props) => {
   const {
@@ -21,12 +21,12 @@ const HeadContent = (props) => {
   // const canonicalUrlBase = 'https://www.ballot.fyi/';
   const composeLinkUrl = (suffix) => {
     return 'https://' + join('www.ballot.fyi/', suffix);
-  }
+  };
   return (
     <>
       <Head>
         <title>{headline}</title>
-        <link rel="icon" href={composeLinkUrl('favicon.ico') }/>
+        <link rel="icon" href={composeLinkUrl('favicon.ico')} />
         <link rel="canonical" href={composeLinkUrl(canonicalUrlSlug)} />
         {/* <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> */}
         <meta name="description" content={description} />
@@ -48,7 +48,7 @@ const HeadContent = (props) => {
           <meta
             prefix="og: http://ogp.me/ns#"
             property="og:image"
-            content={composeLinkUrl((socialImage || canonicalImage))}
+            content={composeLinkUrl(socialImage || canonicalImage)}
           />
         )}
         {(socialImage || canonicalImage) && (
@@ -77,7 +77,7 @@ const HeadContent = (props) => {
         <meta name="twitter:title" content={socialTitle || title} />
         <meta name="twitter:description" content={socialDescription || description} />
         {(socialImage || canonicalImage) && (
-          <meta name="twitter:image" content={composeLinkUrl((socialImage || canonicalImage))} />
+          <meta name="twitter:image" content={composeLinkUrl(socialImage || canonicalImage)} />
         )}
         {(socialImage || canonicalImage) && (
           <meta name="twitter:image:alt" content={socialImageAlt || canonicalImageAlt} />
