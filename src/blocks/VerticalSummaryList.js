@@ -92,13 +92,15 @@ const VerticalSummaryListBlock = (props) => {
     ) : null;
 
   return (
-    <Row>
-      <ArticleCol>
-        {snippets}
-        {moreButton}
-        {expanded && <div>{restOfSnippets}</div>}
-      </ArticleCol>
-    </Row>
+    <section>
+      <Row>
+        <ArticleCol>
+          {snippets}
+          {moreButton}
+          {expanded && <div>{restOfSnippets}</div>}
+        </ArticleCol>
+      </Row>
+    </section>
   );
 };
 

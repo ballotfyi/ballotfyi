@@ -23,24 +23,26 @@ const TextWithTitleBlock = (props) => {
   const { title, subtitle, body } = props.data;
 
   return (
-    <Row>
-      <TitleCol>
-        <Space h={15} />
-        {title && (
-          <>
-            <FillRestWithLine>
-              <Title>{title}</Title>
-            </FillRestWithLine>
-            {subtitle && <Subtitle>{subtitle}</Subtitle>}
-          </>
-        )}
-      </TitleCol>
-      <ArticleCol>
-        <Text>
-          <JsxParser jsx={`${body.markup}`} />
-        </Text>
-      </ArticleCol>
-    </Row>
+    <section>
+      <Row>
+        <TitleCol>
+          <Space h={15} />
+          {title && (
+            <>
+              <FillRestWithLine>
+                <Title>{title}</Title>
+              </FillRestWithLine>
+              {subtitle && <Subtitle>{subtitle}</Subtitle>}
+            </>
+          )}
+        </TitleCol>
+        <ArticleCol>
+          <Text>
+            <JsxParser jsx={`${body.markup}`} />
+          </Text>
+        </ArticleCol>
+      </Row>
+    </section>
   );
 };
 

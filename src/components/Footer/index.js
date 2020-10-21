@@ -81,7 +81,7 @@ const Footer = React.forwardRef((props, ref) => {
 
 export default Footer;
 
-const Container = styled.div`
+const Container = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;

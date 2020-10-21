@@ -22,13 +22,15 @@ const PropHeader = (props) => {
         span={{ xs: 20, sm: 18, md: 16, lg: 16, xl: 16, xxl: 16 }}
       >
         <Space h={10} xsHeight={15} />
-        <h1>{title}</h1>
-        <DateLine>Published: {dtPublished.toLocaleDateString('en-US', options)}</DateLine>
-        {showLastModified && (
-          <div>
-            <DateLine>Updated: {dtModified.toLocaleDateString('en-US', options)}</DateLine>
-          </div>
-        )}
+        <header>
+          <h1>{title}</h1>
+          <DateLine>Published: {dtPublished.toLocaleDateString('en-US', options)}</DateLine>
+          {showLastModified && (
+            <div>
+              <DateLine>Updated: {dtModified.toLocaleDateString('en-US', options)}</DateLine>
+            </div>
+          )}
+        </header>
       </Col>
     </Row>
   );

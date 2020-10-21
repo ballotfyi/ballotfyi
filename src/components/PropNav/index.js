@@ -112,7 +112,7 @@ const NavItem = (props) => {
   );
 };
 
-const MenuContainer = styled.div`
+const MenuContainer = styled.nav`
   position: fixed;
   z-index: 30;
   bottom: 0;
