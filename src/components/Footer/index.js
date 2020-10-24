@@ -36,7 +36,7 @@ const Footer = React.forwardRef((props, ref) => {
   const items = [
     {
       label: 'Home',
-      link: '/',
+      link: isAmp ? (isProd ? '/index.amp' : '?amp=1') : '/',
       showOnPropPages: true,
     },
     {
