@@ -182,6 +182,7 @@ const Circle = styled.div`
     width: 12px;
     height: 12px;
     border-radius: 8px;
+    font-size: 10px;
   }
 `;
 
