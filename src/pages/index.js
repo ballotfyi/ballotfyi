@@ -13,7 +13,7 @@ const HomePage = (props) => {
   return (
     <>
       <HeadContent
-        title="2020 CA Propositions, explained"
+        title="California Ballot Propositions 2020, explained"
         description="Dear California, on your ballot is affirmative action, rent control, property taxes, cash bail, and voting rights. If you don't care about the Presidential election, fine, but don't tell me your vote doesn't matter."
         canonicalUrlSlug=""
         socialImage="static/social/general.png"
