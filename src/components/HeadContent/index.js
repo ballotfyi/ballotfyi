@@ -31,6 +31,7 @@ const HeadContent = (props) => {
         {/* <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> */}
         <meta name="description" content={description} />
         <meta name="keywords" content="California, Nov 2020, propositions" />
+        <meta name="title" content={headline || "California ballot propositions, explained"} />
 
         <meta
           prefix="og: http://ogp.me/ns#"
