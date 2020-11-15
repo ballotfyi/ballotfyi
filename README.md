@@ -1,7 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/78dce639-08f4-4601-9d43-2d6dc1d96b19/deploy-status)](https://app.netlify.com/sites/ballotfyi/deploys)
 
 # ballot.fyi
-*2020 edition*
+*Archive of 2020 edition*
 Previous editions:
 [2016](https://www.2016.ballot.fyi)
 [2018](https://www.2018.ballot.fyi)
