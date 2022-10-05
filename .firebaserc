@@ -1,7 +1,0 @@
-{
-  "projects": {
-    "dev": "ballotfyi-dev",
-    "prd": "ballotfyi",
-    "default": "ballotfyi"
-  }
-}
